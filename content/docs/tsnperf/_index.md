@@ -68,8 +68,12 @@ The following figures show the test results for GCL capability, bandwidth guaran
 The results reveal that the Brand A TSN switch provides high-priority resource reservation (i.e., gating capability) and bandwidth guarantees for critical traffic, 
 but its GCL accuracy is low, failing to meet the requirements of the IEEE 802.1Qbv protocol.
 
+![GCL Capability](./figs/gclcapability.png "GCL Capability")
+
+![Bandwidth Guarantee](./figs/bwguarantee.png "Bandwidth Guarantee")
+
 <img src="./figs/gclcapability.png" alt="GCL Capability" style="zoom:49%;" />  <img src="./figs/bwguarantee.png" alt="Bandwidth Guarantee" style="zoom:49%;" />
-<img src="./figs/gclaccuracy.png" alt="GCL Accuracy" />
+![GCL Accuracy](./figs/gclaccuracy.png "GCL Accuracy")
 
 For more details of this test case, please refer to the [test report](http://tns.thss.tsinghua.edu.cn/ziggo/data/switch_report.pdf).
 
