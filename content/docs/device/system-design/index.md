@@ -34,13 +34,13 @@ The ZIGGO Evaluation Toolkit is used to send and receive test data frames for th
 
 To achieve this accuracy, the toolkit needs to **synchronize its time** with the TSN switch and record a **global hardware timestamp** in the test data frames. 
 
-As shown in the diagram below, in a data flow link with $n$ network nodes, Node $1$ serves as the source node to send test data frames, Node $n$ acts as the destination node to receive test data frames, and all the intermediate nodes (Node $2$ to Node $n-1$) are TSN switches. 
+As shown in the diagram below, in a data flow link with {{< katex display=false class="optional" >}} n {{< /katex >}} network nodes, Node {{< katex display=false class="optional" >}} 1 {{< /katex >}} serves as the source node to send test data frames, Node {{< katex display=false class="optional" >}} n {{< /katex >}} acts as the destination node to receive test data frames, and all the intermediate nodes (Node {{< katex display=false class="optional" >}} 2 {{< /katex >}} to Node {{< katex display=false class="optional" >}} n-1 {{< /katex >}}) are TSN switches. 
 
-When a test data frame is sent from the source node, the hardware records the timestamp $t^+$ of when the frame was sent in the data frame. Finally, when the data frame arrives at the destination node, the destination node records the timestamp $t^-$ of when the frame entered that node. By calculating $(t^−−t^+)$, we can determine the end-to-end latency of the data frame.
+When a test data frame is sent from the source node, the hardware records the timestamp {{< katex display=false class="optional" >}} t^+ {{< /katex >}} of when the frame was sent in the data frame. Finally, when the data frame arrives at the destination node, the destination node records the timestamp {{< katex display=false class="optional" >}} t^- {{< /katex >}} of when the frame entered that node. By calculating {{< katex display=false class="optional" >}} t^--t^+ {{< /katex >}}, we can determine the end-to-end latency of the data frame.
 
 ![device_test_demo](./device_test_demo.png)
 
-> In this doc, $t^{dir}$ is used to represent the timestamp of data frames entering and leaving the hardware. Here, "dir" represents the direction of data frames entering or leaving the nodes, with " + " indicating data frames leaving the node and " − " indicating data frames entering the node. 
+> In this doc, {{< katex display=false class="optional" >}} t^{dir} {{< /katex >}} is used to represent the timestamp of data frames entering and leaving the hardware. Here, "dir" represents the direction of data frames entering or leaving the nodes, with " + " indicating data frames leaving the node and " − " indicating data frames entering the node. 
 
 ## Test data frame data structure
 
@@ -53,8 +53,8 @@ In order to analyze the end-to-end latency of each data frame on complex network
 | VLAN Tag                | 4           | Divided into four fields: VLAN Data Frame Type (0x8100), Priority, Canonical Format Indicator, and VLAN Number |
 | Data Frame Type         | 2           | Used to identify test data frames, set to 0x66ab                                                               |
 | Reserved Bits           | 2           |                                                                                                                |
-| `$t^+$ (TX Timestamp)`  | 8           | Timestamp when transmitted from the source node                                                                |
-| `$t^-$ (RX Timestamp)`  | 8           | Timestamp when received by the destination node                                                                |
+| {{< katex display=false class="optional" >}} t^+ {{< /katex >}} (TX Timestamp)  | 8           | Timestamp when transmitted from the source node                                                                |
+| {{< katex display=false class="optional" >}} t^- {{< /katex >}} (RX Timestamp)  | 8           | Timestamp when received by the destination node                                                                |
 | Data Stream ID (SEQ_ID) | 2           | Unique identifier for each data stream                                                                         |
 | Data Frame ID (PKT_ID)  | 4           | Sequence number of data frames within each data stream, starting from 0                                        |
 
@@ -154,7 +154,7 @@ if (slv_reg_wren)
 ...
 ```
 
-In this context, the hardware registers with names starting with "slv_reg" are each 32 bits wide, and their addresses are spaced by 4 bytes. So, for example, if the software-level address is $0x00000018$, you need to divide this address by 4, which results in $ 24/4 = 6$. Therefore, this address corresponds to the hardware register "`slv_reg6`" in the hardware module. This helps establish the correspondence between software and hardware registers.
+In this context, the hardware registers with names starting with "slv_reg" are each 32 bits wide, and their addresses are spaced by 4 bytes. So, for example, if the software-level address is {{< katex display=false class="optional" >}} 0x00000018 {{< /katex >}}, you need to divide this address by 4, which results in {{< katex display=false class="optional" >}} 24/4 = 6 {{< /katex >}}. Therefore, this address corresponds to the hardware register "`slv_reg6`" in the hardware module. This helps establish the correspondence between software and hardware registers.
 
 ### Offline Analysis and Design
 

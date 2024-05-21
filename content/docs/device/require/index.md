@@ -39,7 +39,7 @@ MobaXterm的官方下载地址：[MobaXterm Xserver with SSH, telnet, RDP, VNC a
 
 ### SD启动卡
 
-SD启动卡中存储着操作系统，建议容量 $\geq$ 32G。
+SD启动卡中存储着操作系统，建议容量 {{< katex display=false class="optional" >}} \geq {{< /katex >}} 32G。
 
 ### 必要的线材
 

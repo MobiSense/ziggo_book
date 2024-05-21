@@ -19,7 +19,7 @@ TSNPerf是一款专为时间敏感网络（Time-Sensitive Networking, TSN）设�
 
 为了直观地展示`send()`函数的发包精度限制，我们进行了一项测试。在测试中，我们使用`send()`函数以1毫秒为设定间隔，连续发送了10000个数据包。然后，我们记录了每两个相邻数据包之间的实际时间间隔，并计算了它们与预期的1毫秒间隔之间的误差。结果显示，即使没有任何背景进程/流量的干扰，相邻数据包的间隔任然达到了***最高14微秒***左右。接下来我们分析该现象的原因。
 
-如下图所示，在 $t_0$ 时刻，程序调用 `send()` 函数向网络发送数据包，但实际上，数据包在 $t_1$ 时刻才会被发送到网络中去。这是因为，操作系统的网络协议栈需要花费一定的时间处理该数据包。我们将 $t_1-t_0$ 称之为网络栈的处理时延，这个时延通常在微秒级别。
+如下图所示，在 {{< katex display=false class="optional" >}} t_0 {{< /katex >}} 时刻，程序调用 `send()` 函数向网络发送数据包，但实际上，数据包在 {{< katex display=false class="optional" >}} t_1 {{< /katex >}} 时刻才会被发送到网络中去。这是因为，操作系统的网络协议栈需要花费一定的时间处理该数据包。我们将 {{< katex display=false class="optional" >}} t_1-t_0 {{< /katex >}} 称之为网络栈的处理时延，这个时延通常在微秒级别。
 
 ![](./principle_basic.png "Linux网络栈处理时延")
 
@@ -29,7 +29,7 @@ Intel 的 I210 / I225 / I226 网卡，提供了 LaunchTime 功能，可以精准
 
 ![](./principle_advanced.png "LaunchTime原理")
 
-利用 LaunchTime，可以提高数据包的发送精度。如上图所示，对于一个需要在 $t_0$ 时刻发出的数据包，我们预留一段时间给网络栈的处理流程，提前在 $t_2$ 时刻就调用 `send()` 函数，保证数据包在 $t_0$ 前就在网卡的出队列口等待，LaunchTime 会在$t_0$时刻打开出队列的门，将数据包发出。
+利用 LaunchTime，可以提高数据包的发送精度。如上图所示，对于一个需要在 {{< katex display=false class="optional" >}} t_0 {{< /katex >}} 时刻发出的数据包，我们预留一段时间给网络栈的处理流程，提前在 {{< katex display=false class="optional" >}} t_2 {{< /katex >}} 时刻就调用 `send()` 函数，保证数据包在 {{< katex display=false class="optional" >}} t_0 {{< /katex >}} 前就在网卡的出队列口等待，LaunchTime 会在 {{< katex display=false class="optional" >}} t_0 {{< /katex >}} 时刻打开出队列的门，将数据包发出。
 
 ## 性能验证
 
