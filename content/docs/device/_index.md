@@ -47,7 +47,7 @@ The construction of the ZIGGO Open Platform consists of three levels: network de
 
 - The software and hardware projects, along with the development board startup [tutorial](/ziggo_book/docs/device/getting-started/), provide instructions for setting up an individual network device.
 
-- The [CNC User Manual](docs/cnc-manual.md) and [Device User Manual](/ziggo_book/docs/device/getting-started/) cover system configuration and management tools.
+- The [CNC User Manual](/ziggo_book/docs/device/cnc_manual/) and [Device User Manual](/ziggo_book/docs/device/ziggo_device_manual/) cover system configuration and management tools.
 
 - Lastly, we offer a comprehensive [Demo App building tutorial](/ziggo_book/docs/device/testbed/) that instructs how to
   collaboratively build a complete and functional Demo using network devices and

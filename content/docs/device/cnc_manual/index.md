@@ -26,7 +26,6 @@ const hosts = {
 }
 ```
 
-```
 安装好需要的依赖：
 ```bash
 sudo npm install -g zx@4.3.0

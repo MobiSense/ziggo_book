@@ -65,6 +65,6 @@ The branches of TSNPerf submitted this time can be divided into three categories
 
 ## Building and Starting the TSNPerf
 
-[Set up the FPGA board and initialize PS system](/device/hardware-build/)
+[Set up the FPGA board and initialize PS system](/ziggo_book/docs/device/hardware-build/)
 
-[Compile software code, run the time synchronization & pkt _gen_app](/device/software-build/)
+[Compile software code, run the time synchronization & pkt _gen_app](/ziggo_book/docs/device/software-build/)

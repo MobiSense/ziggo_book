@@ -112,7 +112,7 @@ TSNPerf的软硬件代码在本仓库。
 
 #### 控制脚本准备
 
-可以参考 [CNC-User-Manual](/device/cnc_manual/)
+可以参考 [CNC-User-Manual](/ziggo_book/docs/device/cnc_manual/)
 
 #### 背景流量发送
 

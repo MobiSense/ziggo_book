@@ -93,7 +93,7 @@ We also provide more in-depth [documentation](/ziggo_book/docs/switch/system-des
 
 ## Demo APP Tutorial
 
-We also provide a [testbed build document](https://github.com/Mobisense/Ziggo-Device/blob/main/docs/testbed.md)(in ZIGGO Device) that allows you to build a real-time Ethernet system using the ZIGGO swtich and ZIGGO Device.
+We also provide a [testbed build document](/ziggo_book/docs/device/testbed/)(in ZIGGO Device) that allows you to build a real-time Ethernet system using the ZIGGO swtich and ZIGGO Device.
 
 Through this platform, we can measure the `delay` and `jitter` of TSN time-critcial traffic, the switch's `gating capability`, `bandwidth guarantee` and `gating accuracy`.
 
@@ -101,7 +101,7 @@ Replacing ZIGGO CaaS switches with commercial TSN switches can also test its abo
 
 ## License and Citation
 
-ZIGGO is released under a [MIT license]([LICENSE.txt](https://github.com/MobiSense/Ziggo-Switch/blob/main/LICENSE.txt)). 
+ZIGGO is released under a [MIT license](https://github.com/MobiSense/Ziggo-CaaS-Switch/blob/main/LICENSE.txt). 
 
 Please consider citing our papers if the project helps your research with the following BibTex:
 

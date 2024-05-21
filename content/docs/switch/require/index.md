@@ -27,7 +27,7 @@ Vivado 软件的 Xilinx 官方下载地址： http://china.xilinx.com/support/do
 
 ### MobaXterm
 
-MobaXterm是串口连接工具，我们在[hardware-build](/switch/hardware-build/)中“Launch the Board and log in”这一章节进行了使用介绍。
+MobaXterm是串口连接工具，我们在[hardware-build](/ziggo_book/docs/switch/hardware-build/)中“Launch the Board and log in”这一章节进行了使用介绍。
 
 MobaXterm的官方下载地址：[MobaXterm Xserver with SSH, telnet, RDP, VNC and X11 - Download (mobatek.net)](https://mobaxterm.mobatek.net/download.html)
 
