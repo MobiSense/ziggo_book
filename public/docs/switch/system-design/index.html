@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Docs to enable CaaS Switches&rsquo; time synchronization logic and set up TSN GCL (gate control list), switch forwarding rules (including to dual-DMA).">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/switch/system-design/">
+  <meta property="og:site_name" content="ZIGGO BOOK">
+  <meta property="og:title" content="System Design">
+  <meta property="og:description" content="Docs to enable CaaS Switches’ time synchronization logic and set up TSN GCL (gate control list), switch forwarding rules (including to dual-DMA).">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2024-05-01T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-05-01T00:00:00+00:00">
+    <meta property="article:tag" content="ZIGGO-SWITCH">
+    <meta property="article:tag" content="ZIGGO">
+    <meta property="article:tag" content="Markdown">
+    <meta property="og:image" content="http://localhost:1313/docs/switch/system-design/featured.png">
+<title>System Design | ZIGGO BOOK</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="canonical" href="http://localhost:1313/docs/switch/system-design/">
+<link rel="stylesheet" href="/book.min.309b7ed028807cdb68d8d61e26d609f48369c098dbf5e4d8c0dcf4cdf49feafc.css" integrity="sha256-MJt&#43;0CiAfNto2NYeJtYJ9INpwJjb9eTYwNz0zfSf6vw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.af43789cc07a0b1ae7d3d8f9fdea4a5de96e162eb464aa66c620338e07d88a13.js" integrity="sha256-r0N4nMB6Cxrn09j5/epKXeluFi60ZKpmxiAzjgfYihM=" crossorigin="anonymous"></script>
+
+  
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>ZIGGO BOOK</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/tsnperf/" class="">ZIGGO TSNPerf</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/tsnperf/principle/" class="">TSNPerf 设计原理</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/tsnperf/configuration/" class="">TSNPerf 使用指南</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/tsnperf/manual/" class="">TSNPerf 检测内容及使用表</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/tsnperf/report/" class="">某品牌交换机报告</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/" class="">ZIGGO Switch</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/basic_knowledge/" class="">基础知识列表</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/require/" class="">准备清单</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/system-design/" class="active">System Design</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/hardware-build/" class="">Hardware Build</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/software-build/" class="">Software Build</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/contributing/" class="">How to contribute</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/" class="">ZIGGO Device</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/basic_knowledge/" class="">基础知识列表</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/require/" class="">准备清单</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/getting-started/" class="">Getting start</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/system-design/" class="">System Design</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/hardware-build/" class="">Hardware Build</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/software-build/" class="">Software Build</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/ziggo_device_manual/" class="">ZIGGO Device使用手册</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/cnc_manual/" class="">CNC脚本使用指南</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/testbed/" class="">TestBed搭建流程</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/contributing/" class="">How to contribute</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>System Design</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#time-synchronization">Time Synchronization</a></li>
+    <li><a href="#switch-fabric--gate-control">Switch Fabric &amp; Gate Control</a></li>
+    <li><a href="#source-code-description">Source Code Description</a>
+      <ul>
+        <li><a href="#time-sync-state-machine">Time Sync State Machine</a></li>
+        <li><a href="#uio-addresses">UIO addresses</a></li>
+        <li><a href="#mac-forwarding">MAC Forwarding</a></li>
+        <li><a href="#gate-control">Gate Control</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="system-design">
+  System Design
+  <a class="anchor" href="#system-design">#</a>
+</h1>
+<p>The CaaS/TSN Switch is developed based on the ZYNQ platform. The diagram below shows the composition of the ZYNQ chip. ZYNQ mainly consists of a Processing System (PS) and Programmable Logic (PL). The PS and PL mainly communicate with each other through the high-performance Advanced eXtensible Interface (AXI), which is more efficient than using FPGA directly as a peripheral. The PS contains an ARM-based processor suitable for running applications, drivers, and operating systems, while the PL contains FPGA suitable for running low-level hardware logic with high real-time performance requirements.</p>
+<p><img src="./zynq.png" alt="" /></p>
+<p>For the Switch, the PL part mainly implements:</p>
+<ol>
+<li>the real-time clock module and timestamp cache module in time synchronization;</li>
+<li>the basic forwarding function and traffic control function of the switch.</li>
+</ol>
+<p>The PS part mainly implements:</p>
+<ol>
+<li>the state machine logic related to time synchronization;</li>
+<li>the configuration program of the switch.</li>
+</ol>
+<h2 id="time-synchronization">
+  Time Synchronization
+  <a class="anchor" href="#time-synchronization">#</a>
+</h2>
+<p>Please refer to the Wikipedia for basic knowledge about <a href="https://en.wikipedia.org/wiki/Clock_synchronization">clock synchronization</a> .</p>
+<p>The TSN switch complies with IEEE 802.1AS standards. It synchronize neighbor clocks in a decentralized manner and achieves clock accuracy in the sub-microsecond range, making it suitable for measurement and control systems. For each pair of connected devices, their time synchronization state machine will measure link delay and update their local RTC (real-time clock) according to Master clock.</p>
+<p>The overall design of the time synchronization module is shown in the diagram below. The PS mainly consists of time synchronization state machine modules, which mainly run the state machine logic defined in the 802.1AS standard. The PL mainly consists of real-time clock modules and timestamp cache modules, which are mainly responsible for running the real-time clock and recording the time when data frames enter and exit the switch port.</p>
+<p><img src="./time_sync_state_machine.png" alt="" /></p>
+<p>After the data frame enters the PL from the input port of the switch, the timestamp cache module will record and cache the timestamp when the data frame enters the hardware. The switch&rsquo;s exchange module will determine whether the data frame is related to time synchronization. Time synchronization data frames will be forwarded from the PL to the PS for processing through the Direct Memory Access (DMA) channel. In the PS, the time synchronization state machine module needs to obtain the real-time clock information of the underlying PL and the hardware timestamps corresponding to different data frames through the AXI4-Lite interface. When the switch needs to send time synchronization-related data frames, the PS is responsible for encapsulating the sent data frames and then forwarding them to the PL for processing through the DMA channel. Since time synchronization also needs to record the sending time of messages such as Sync and Pdelay_Req, the timestamp cache module will still cache the sending timestamp before the data frame is sent from the output port, so that the PS can use it later.</p>
+<h2 id="switch-fabric--gate-control">
+  Switch Fabric &amp; Gate Control
+  <a class="anchor" href="#switch-fabric--gate-control">#</a>
+</h2>
+<p>The overall design of the switch fabric and gate control module is shown in the diagram below. The PS part mainly includes a configuration module, which is used for software-level configuration of the switch&rsquo;s Gate Control List (GCL) and MAC forwarding table; the PL part mainly consists of the switch fabric and the gate control module, which are responsible for port forwarding and real-time control of traffic.</p>
+<p><img src="./switch_fabric.png" alt="" /></p>
+<p>After the data frame enters the PL from the input port, both ordinary traffic and key traffic will enter the switch fabric. The switch fabric will look up the corresponding output port based on the destination MAC address in the data frame, and then put the data frame into the priority queue in the gate module. The gate control module will control the gate state of each priority queue according to the pre-configured GCL, and then forward the data frame from the corresponding port. In the above process, the gate control module needs to obtain the globally synchronized time from the time synchronization module. The configuration module in the PS part mainly modifies the registers related to GCL (<code>tsn_drivers\gcl.c</code>) and MAC forwarding table (<code>tsn_drivers\switch_rules.c</code>) through the UIO driver and AXI4-Lite interface, thereby controlling the parameters in the switch fabric and gate module in the PL part.</p>
+<h2 id="source-code-description">
+  Source Code Description
+  <a class="anchor" href="#source-code-description">#</a>
+</h2>
+<h3 id="time-sync-state-machine">
+  Time Sync State Machine
+  <a class="anchor" href="#time-sync-state-machine">#</a>
+</h3>
+<p>The main function for time synchronization is located in <code>time_sync_main_loop.c</code>. It is implemented based on IEEE 802.1AS 2020 standard. The following table introduces the relationship between the state machine code in the code and the state machine in the standard.</p>
+<table>
+<thead>
+<tr>
+<th>Code Filename (.c/.h)</th>
+<th>Corresponding Section in 802.1AS-2020</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>site_sync_sync_sm</td>
+<td>10.2.7 SiteSyncSync</td>
+</tr>
+<tr>
+<td>port_sync_sync_receive_sm</td>
+<td>10.2.8 PortSyncSyncReceive</td>
+</tr>
+<tr>
+<td>clock_master_sync_send_sm</td>
+<td>10.2.9 ClockMasterSyncSend</td>
+</tr>
+<tr>
+<td>clock_master_sync_receive_sm</td>
+<td>10.2.11 ClockMasterSyncReceive</td>
+</tr>
+<tr>
+<td>port_sync_sync_send_sm</td>
+<td>10.2.12 PortSyncSyncSend</td>
+</tr>
+<tr>
+<td>clock_slave_sync_sm</td>
+<td>10.2.13 ClockSlaveSync</td>
+</tr>
+<tr>
+<td>port_announce_information_sm</td>
+<td>10.3.12 PortAnnounceInformation</td>
+</tr>
+<tr>
+<td>port_state_selection_sm</td>
+<td>10.3.13 PortStateSelection</td>
+</tr>
+<tr>
+<td>port_announce_information_ext_sm</td>
+<td>10.3.14 PortAnnounceInformationExt</td>
+</tr>
+<tr>
+<td>port_announce_transmit_sm</td>
+<td>10.3.16 PortAnnounceTransmit</td>
+</tr>
+<tr>
+<td>md_sync_receive_sm</td>
+<td>11.2.14 MDSyncReceiveSM</td>
+</tr>
+<tr>
+<td>md_sync_send_sm</td>
+<td>11.2.15 MDSyncSendSM</td>
+</tr>
+<tr>
+<td>md_pdelay_req_sm</td>
+<td>11.2.19 MDPdelayReq</td>
+</tr>
+<tr>
+<td>md_pdelay_resp_sm</td>
+<td>11.2.20 MDPdelayResp</td>
+</tr>
+</tbody>
+</table>
+<h3 id="uio-addresses">
+  UIO addresses
+  <a class="anchor" href="#uio-addresses">#</a>
+</h3>
+<p>The UIO driver is mainly used to map logical addresses to physical addresses, thereby controlling the registers of modules such as TSU, RTC, GCL, etc. The driver code is located in the <code>tsn_drivers</code> folder. The correspondence between the register addresses in the software part and the hardware are described in the header files.</p>
+<p>For example, in the <code>tsn_drivers\rtc.h</code> file, the address of the RTC module is defined as follows:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">// define RTC address values
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#define RTC_CTRL       0x00000000
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define RTC_NULL_0x04  0x00000004
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define RTC_NULL_0x08  0x00000008
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define RTC_NULL_0x0C  0x0000000C
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define RTC_TIME_SEC_H 0x00000010
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define RTC_TIME_SEC_L 0x00000014
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define RTC_TIME_NSC_H 0x00000018
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define RTC_TIME_NSC_L 0x0000001C
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define RTC_PERIOD_H   0x00000020
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define RTC_PERIOD_L   0x00000024
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define RTC_ADJPER_H   0x00000028
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define RTC_ADJPER_L   0x0000002C
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define RTC_ADJNUM     0x00000030
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define RTC_OFFSET_S_H 0x00000034
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define RTC_OFFSET_S_L 0x00000038
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define RTC_OFFSET_NS  0x0000003C
+</span></span></span></code></pre></div><h3 id="mac-forwarding">
+  MAC Forwarding
+  <a class="anchor" href="#mac-forwarding">#</a>
+</h3>
+<p>The MAC address forwarding table configured in the <code>switch_rules.c/h</code> file actually operates the registers in swtich datapath and gate control list. These registers are in pairs, the first register represents the network byte order of the last 32 bits of the destination MAC address, and the second register represents the forwarding port.</p>
+<p>The CaaS switch has 7 ports, of which 4 are external physical ports, and 3 are virtual ports inside the switch connecting PL and PS. The 3 internal virtual ports specifically include:</p>
+<ul>
+<li>Time Synchronization DMA: Used for transferring time synchronization data frames between PS and PL.</li>
+<li>PS ETH: Used for communication between PL&rsquo;s physical network port and PS&rsquo;s operating system (for example, using an SSH client to remotely log in and access the switch&rsquo;s PS).</li>
+<li>PLC DMA: Used in CaaS to transfer input and output of control tasks.</li>
+</ul>
+<p>The following interface is provided to control the switch fabric&rsquo;s forwarding rule:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">push_switch_rule</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>mac_addr, <span style="color:#66d9ef">int</span> output_port) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        Push a switch rule to the rule table
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        mac_addr: 6 byte destination mac address.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        output_port: 0 -&gt; to Port 0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">                    1 -&gt; to Port 1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">                    2 -&gt; to Port 2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">                    3 -&gt; to Port 3
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">                    4 -&gt; to PLC DMA
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        The switch rule for PTP frames are fixed in hardware, no need to specify explicitly.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    */</span>
+</span></span><span style="display:flex;"><span>   ...
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="gate-control">
+  Gate Control
+  <a class="anchor" href="#gate-control">#</a>
+</h3>
+<p>TSN critical traffic data frames adopt the standard VLAN data frame format, and the priority is defined in the VLAN tag. VLAN refers to Virtual Local Area Network technology, defined in the 802.1Q standard. As shown in the figure below, the standard VLAN data frame contains a 4-byte VLAN tag, the TPID field represents the VLAN data frame type (<code>0x8100</code>), and the priority of critical traffic is defined in the PRI field, with a value range of [0, 7], corresponding to 8 priority queues. The output queue module identifies the priority of data frames based on the VLAN field in the critical data frame, and then places the data frame in the corresponding output port&rsquo;s priority queue waiting for transmission.</p>
+<p><em>Notice: According to the IEEE 802.1Qbv standard, priority = 1 maps to priority 0; priority = 0 maps to priority 1; other priorities map to the corresponding queues. Therefore, normal traffic will default to entering priority queue 1 of the corresponding port.</em></p>
+<p>The CaaS Switch&rsquo;s gate control module implements the Time Aware Shaper defined by 802.1Qbv, which is used to execute hardware gate scheduling according to the TSN schedule table configured by PS, to ensure the deterministic transmission of critical traffic.
+Our GCL is represented by 9 bits, with the highest bit representing whether the Guardband is enabled, and the remaining 8 bits representing the gate switches. For example, <code>9'1_0000_0001</code> means that the Guardband is enabled, and only the gate switch of the first queue is open.</p>
+<p><em>Notice that the time unit of GCL in hardware is 2^11 ns, while the time unit in the configuration file issued is 2^14 ns.</em></p>
+<p>The following interfaces in <code>gcl.c/h</code> are provided to get/set the hardware GCL (set the gate state and time interval seperately):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @description: This function is used to get gcl values of the port [portNumber].
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @param {uint16_t} portNumber port&#39;s number.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @return {*} 0 by default.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">get_gcl</span>(<span style="color:#66d9ef">uint16_t</span> portNumber) {
+</span></span><span style="display:flex;"><span>  ...
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @description: This function is used to set GCL&#39;s value, set port [portNumber] &#39;s GCL[gcl_id] to [value].
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @param {uint16_t} portNumber port number, start from 0.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @param {uint16_t} gcl_id GCL index.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @param {uint16_t} value the GCL value to set.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @return {*} 0 by default.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">set_gcl</span>(<span style="color:#66d9ef">uint16_t</span> portNumber, <span style="color:#66d9ef">uint16_t</span> gcl_id, <span style="color:#66d9ef">uint16_t</span> value) {
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @description: This function is used to get all GCL time intervals of port [portNumber]. Consider we get time interval is x, the real time interval is (x * 2^8 * 8) nanoseconds.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @param {uint16_t} portNumber port number, start from 0.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @return {*} 0 by default.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">get_gcl_time_interval</span>(<span style="color:#66d9ef">uint16_t</span> portNumber)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @description: This function is used to set GCL&#39;s time interval, set port [portNumber] &#39;s GCL time interval[gcl_id] to [value].
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @param {uint16_t} portNumber port number, start from 0.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @param {uint16_t} gcl_id GCL index.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @param {uint16_t} value the GCL time interval x to set. The real time interval is (x * 2^8 * 8) nanoseconds.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @return {*} 0 by default.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">set_gcl_time_interval</span>(<span style="color:#66d9ef">uint16_t</span> portNumber, <span style="color:#66d9ef">uint16_t</span> gcl_id, <span style="color:#66d9ef">uint16_t</span> value)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#time-synchronization">Time Synchronization</a></li>
+    <li><a href="#switch-fabric--gate-control">Switch Fabric &amp; Gate Control</a></li>
+    <li><a href="#source-code-description">Source Code Description</a>
+      <ul>
+        <li><a href="#time-sync-state-machine">Time Sync State Machine</a></li>
+        <li><a href="#uio-addresses">UIO addresses</a></li>
+        <li><a href="#mac-forwarding">MAC Forwarding</a></li>
+        <li><a href="#gate-control">Gate Control</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

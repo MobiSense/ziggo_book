@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Docs to enable CaaS Switches&rsquo; time synchronization logic and set up TSN GCL (gate control list), switch forwarding rules (including to dual-DMA).">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/device/ziggo_device_manual/">
+  <meta property="og:site_name" content="ZIGGO BOOK">
+  <meta property="og:title" content="ZIGGO Device使用手册">
+  <meta property="og:description" content="Docs to enable CaaS Switches’ time synchronization logic and set up TSN GCL (gate control list), switch forwarding rules (including to dual-DMA).">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2024-05-01T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-05-01T00:00:00+00:00">
+    <meta property="article:tag" content="ZIGGO-Device">
+    <meta property="article:tag" content="ZIGGO">
+    <meta property="article:tag" content="Markdown">
+    <meta property="og:image" content="http://localhost:1313/docs/device/ziggo_device_manual/featured.jpg">
+<title>ZIGGO Device使用手册 | ZIGGO BOOK</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="canonical" href="http://localhost:1313/docs/device/ziggo_device_manual/">
+<link rel="stylesheet" href="/book.min.309b7ed028807cdb68d8d61e26d609f48369c098dbf5e4d8c0dcf4cdf49feafc.css" integrity="sha256-MJt&#43;0CiAfNto2NYeJtYJ9INpwJjb9eTYwNz0zfSf6vw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.af43789cc07a0b1ae7d3d8f9fdea4a5de96e162eb464aa66c620338e07d88a13.js" integrity="sha256-r0N4nMB6Cxrn09j5/epKXeluFi60ZKpmxiAzjgfYihM=" crossorigin="anonymous"></script>
+
+  
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>ZIGGO BOOK</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/tsnperf/" class="">ZIGGO TSNPerf</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/tsnperf/principle/" class="">TSNPerf 设计原理</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/tsnperf/configuration/" class="">TSNPerf 使用指南</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/tsnperf/manual/" class="">TSNPerf 检测内容及使用表</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/tsnperf/report/" class="">某品牌交换机报告</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/" class="">ZIGGO Switch</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/basic_knowledge/" class="">基础知识列表</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/require/" class="">准备清单</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/system-design/" class="">System Design</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/hardware-build/" class="">Hardware Build</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/software-build/" class="">Software Build</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/contributing/" class="">How to contribute</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/" class="">ZIGGO Device</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/basic_knowledge/" class="">基础知识列表</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/require/" class="">准备清单</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/getting-started/" class="">Getting start</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/system-design/" class="">System Design</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/hardware-build/" class="">Hardware Build</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/software-build/" class="">Software Build</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/ziggo_device_manual/" class="active">ZIGGO Device使用手册</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/cnc_manual/" class="">CNC脚本使用指南</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/testbed/" class="">TestBed搭建流程</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/contributing/" class="">How to contribute</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>ZIGGO Device使用手册</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#ziggo-device-directly-analyzes-latency-and-jitter">ZIGGO Device directly analyzes latency and jitter</a></li>
+    <li><a href="#offline-analysis-of-latency-and-jitter">Offline analysis of latency and jitter</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="ziggo-device使用手册">
+  ZIGGO Device使用手册
+  <a class="anchor" href="#ziggo-device%e4%bd%bf%e7%94%a8%e6%89%8b%e5%86%8c">#</a>
+</h1>
+<p>There are two analysis methods for ZIGGO Device:</p>
+<blockquote>
+<p>Hint: If you want to use offline anaylze, please switch branch to &lsquo;offline_anaylze&rsquo;, and you need to link device to anthor PC(linux) by wire.</p>
+</blockquote>
+<p>One method is to <code>directly</code> analyze latency and jitter on the ZIGGO Device. The advantage of this method is that it is convenient and fast. We can directly count the latency and jitter of all received data frames on the Device. However, due to the limited processing power of the development board CPU, when analyzing a large number of data packets (such as sending more than 10 1500B data packets at a time with a cycle of 33ms), packet loss may occur;</p>
+<p><img src="./online_analyse.png" alt="" /></p>
+<p>Another method is to use Device to stamp the received packet and forward it from another port to a powerful desktop computer for packet capture analysis. Even if entering the Device at a gigabit rate, there will be no packet loss. The disadvantage is that a separate program needs to be written offline to analyze the delay and jitter of the packet.</p>
+<p><img src="./offline_analyse.png" alt="" /></p>
+<h2 id="ziggo-device-directly-analyzes-latency-and-jitter">
+  ZIGGO Device directly analyzes latency and jitter
+  <a class="anchor" href="#ziggo-device-directly-analyzes-latency-and-jitter">#</a>
+</h2>
+<p>During the operation of the  <code>time sync</code> program, after receiving the test data frame, the program will save the delay information of the data frame in the package under the <code>build/packet_log.csv</code> file, save the batch statistics of latency and jitter in the critical directory under the build directory at the same time in the <code>build/critical_log.csv</code>.</p>
+<p>Example of <code>packet_log.csv</code>:</p>
+<pre tabindex="0"><code>Seq ID, Pkt ID, TX timestamp, RX timestamp, Latency
+0101, 0, 12683587446, 12683613722, 26276
+0101, 1, 12683599662, 12683625970, 26308
+0101, 2, 12683611862, 12683638162, 26300
+0101, 3, 12683624078, 12683650386, 26308
+0101, 4, 12717142039, 12717168273, 26234
+0101, 5, 12717154223, 12717180465, 26242
+0101, 6, 12717166391, 12717192625, 26234
+0101, 7, 12717178575, 12717204825, 26250
+0101, 8, 12750696471, 12750722712, 26241
+0101, 9, 12750708655, 12750734904, 26249
+</code></pre><p>Example of <code>critical_ log.csv</code>, where Latency Variance is the variance of Latency:</p>
+<pre tabindex="0"><code>Seq ID, Received Number, Max pkt_id, Min pkt_id, Loss Rate, Latency Mean, Latency Variance
+0101, 1000, 0, 999, 0.000000,  26230, 1199
+0101, 1000, 1000, 1999, 0.000000,  26218, 2811
+0101, 1000, 2000, 2999, 0.000000,  26218, 2808
+0101, 1000, 3000, 3999, 0.000000,  26195, 18331
+0101, 1000, 4000, 4999, 0.000000,  26233, 921
+0101, 1000, 5000, 5999, 0.000000,  26226, 852
+0101, 1000, 6000, 6999, 0.000000,  26226, 5080
+0101, 1000, 7000, 7999, 0.000000,  26250, 105272
+0101, 1000, 8000, 8999, 0.000000,  26204, 7233
+0101, 1000, 9000, 9999, 0.000000,  26205, 7361
+</code></pre><p>You can display the content of the header and the last 5 lines using the following command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat critical.log | head -n1
+</span></span><span style="display:flex;"><span>cat critical.log | tail -n5
+</span></span></code></pre></div><h2 id="offline-analysis-of-latency-and-jitter">
+  Offline analysis of latency and jitter
+  <a class="anchor" href="#offline-analysis-of-latency-and-jitter">#</a>
+</h2>
+<p>If conducting offline analysis, it is important to note that the hardware used is located at <code>offline_analyze</code> branch. This version will stamp the key data with a receive timestamp and forward it from ETH2. We need to use a PC equipped with a Linux system to capture packets for analysis.</p>
+<p>Example of packet capture command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo tcpdump -i enx207bd272812b ether src 00:0a:35:00:00:14 -n -B <span style="color:#ae81ff">100000</span> -w packets.pcapng
+</span></span></code></pre></div><p><code>Enx207bd272812b</code> is the name of the network card, which can be obtained through ifconfig. <code>Src</code> is used to specify that the captured packet comes from a certain MAC address. <code>-B</code> is used to specify the buffer size. If packet loss needs to be set to a larger size, you can check the information output after packet capture to see if Dropped by kernel: is 0. If it is not 0, it indicates that there is packet loss in the kernel. <code>-W</code> specifies the path to save the file.</p>
+<p>Code for analyzing programs is <code>analyze_packet.py</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python .<span style="color:#ae81ff">\a</span>nalyze_packet.py <span style="color:#f92672">[</span>capture file path<span style="color:#f92672">]</span> --step <span style="color:#f92672">[</span>interval<span style="color:#f92672">]</span>
+</span></span></code></pre></div><p>At the same time, a packet will be generated in the current directory (<code>packet_log.csv</code> and <code>critical_log.csv</code>).</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#ziggo-device-directly-analyzes-latency-and-jitter">ZIGGO Device directly analyzes latency and jitter</a></li>
+    <li><a href="#offline-analysis-of-latency-and-jitter">Offline analysis of latency and jitter</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

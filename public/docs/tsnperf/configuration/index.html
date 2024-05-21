@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="TSNPerf 硬件准备 系统准备 和 测试程序使用">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/tsnperf/configuration/">
+  <meta property="og:site_name" content="ZIGGO BOOK">
+  <meta property="og:title" content="TSNPerf 使用指南">
+  <meta property="og:description" content="TSNPerf 硬件准备 系统准备 和 测试程序使用">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2024-05-01T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-05-01T00:00:00+00:00">
+    <meta property="article:tag" content="TSNPerf">
+    <meta property="article:tag" content="ZIGGO">
+    <meta property="article:tag" content="Markdown">
+    <meta property="og:image" content="http://localhost:1313/docs/tsnperf/configuration/featured.jpg">
+<title>TSNPerf 使用指南 | ZIGGO BOOK</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="canonical" href="http://localhost:1313/docs/tsnperf/configuration/">
+<link rel="stylesheet" href="/book.min.309b7ed028807cdb68d8d61e26d609f48369c098dbf5e4d8c0dcf4cdf49feafc.css" integrity="sha256-MJt&#43;0CiAfNto2NYeJtYJ9INpwJjb9eTYwNz0zfSf6vw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.af43789cc07a0b1ae7d3d8f9fdea4a5de96e162eb464aa66c620338e07d88a13.js" integrity="sha256-r0N4nMB6Cxrn09j5/epKXeluFi60ZKpmxiAzjgfYihM=" crossorigin="anonymous"></script>
+
+  
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>ZIGGO BOOK</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/tsnperf/" class="">ZIGGO TSNPerf</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/tsnperf/principle/" class="">TSNPerf 设计原理</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/tsnperf/configuration/" class="active">TSNPerf 使用指南</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/tsnperf/manual/" class="">TSNPerf 检测内容及使用表</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/tsnperf/report/" class="">某品牌交换机报告</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/" class="">ZIGGO Switch</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/basic_knowledge/" class="">基础知识列表</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/require/" class="">准备清单</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/system-design/" class="">System Design</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/hardware-build/" class="">Hardware Build</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/software-build/" class="">Software Build</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/contributing/" class="">How to contribute</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/" class="">ZIGGO Device</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/basic_knowledge/" class="">基础知识列表</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/require/" class="">准备清单</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/getting-started/" class="">Getting start</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/system-design/" class="">System Design</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/hardware-build/" class="">Hardware Build</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/software-build/" class="">Software Build</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/ziggo_device_manual/" class="">ZIGGO Device使用手册</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/cnc_manual/" class="">CNC脚本使用指南</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/testbed/" class="">TestBed搭建流程</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/contributing/" class="">How to contribute</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>TSNPerf 使用指南</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#硬件准备">硬件准备</a></li>
+    <li><a href="#系统准备">系统准备</a></li>
+    <li><a href="#启用时间同步">启用时间同步</a>
+      <ul>
+        <li><a href="#安装linuxptp">安装linuxPTP</a></li>
+        <li><a href="#同步publisher与recorder的网卡时钟">同步Publisher与Recorder的网卡时钟</a></li>
+        <li><a href="#同步网卡时钟与系统时钟">同步网卡时钟与系统时钟</a></li>
+      </ul>
+    </li>
+    <li><a href="#优化网络栈">优化网络栈</a>
+      <ul>
+        <li><a href="#将关键流量绑定到-queue-0">将关键流量绑定到 Queue 0</a></li>
+        <li><a href="#绑定-queue-0-中断到隔离核心并设置优先级">绑定 Queue 0 中断到隔离核心，并设置优先级</a></li>
+        <li><a href="#开启-launchtime-功能">开启 LaunchTime 功能</a></li>
+      </ul>
+    </li>
+    <li><a href="#修改配置文件">修改配置文件</a></li>
+    <li><a href="#在publisher启动接收程序">在Publisher启动接收程序</a></li>
+    <li><a href="#在recorder启动发送程序">在Recorder启动发送程序</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="tsnperf-使用指南">
+  TSNPerf 使用指南
+  <a class="anchor" href="#tsnperf-%e4%bd%bf%e7%94%a8%e6%8c%87%e5%8d%97">#</a>
+</h1>
+<h2 id="硬件准备">
+  硬件准备
+  <a class="anchor" href="#%e7%a1%ac%e4%bb%b6%e5%87%86%e5%a4%87">#</a>
+</h2>
+<p>准备两台机器，一台作为发送方Publisher，一台作为接收方Recorder，每一台上的硬件需满足以下条件</p>
+<ul>
+<li>Intel 八代及以上的处理器</li>
+<li>Intel I210 / I225-LM / I225-LM 网卡</li>
+</ul>
+<p><strong>注意</strong>：Publisher上需要安装两个网卡，一个负责时间同步，一个负责发送数据包。Recorder上只要安装一个网卡，该网卡同时负责时间同步和数据接收。</p>
+<h2 id="系统准备">
+  系统准备
+  <a class="anchor" href="#%e7%b3%bb%e7%bb%9f%e5%87%86%e5%a4%87">#</a>
+</h2>
+<p>在发送发和接收方的机器上，安装以下系统与软件依赖</p>
+<ul>
+<li>安装 Ubuntu 22.04</li>
+<li>安装 Intel ECI <a href="https://eci.intel.com/docs/3.1/getstarted/requirements.html">https://eci.intel.com/docs/3.1/getstarted/requirements.html</a></li>
+<li>安装linuxPTP，参考下一章节</li>
+<li>安装依赖</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo apt-get install libconfig-dev libpcap-dev
+</span></span></code></pre></div><p>在进行实验前，请将待测设备与Publisher、Recorder按照合适的方式连接，并开机启动。</p>
+<h2 id="启用时间同步">
+  启用时间同步
+  <a class="anchor" href="#%e5%90%af%e7%94%a8%e6%97%b6%e9%97%b4%e5%90%8c%e6%ad%a5">#</a>
+</h2>
+<h3 id="安装linuxptp">
+  安装linuxPTP
+  <a class="anchor" href="#%e5%ae%89%e8%a3%85linuxptp">#</a>
+</h3>
+<h4 id="1-安装网卡驱动">
+  1. 安装网卡驱动
+  <a class="anchor" href="#1-%e5%ae%89%e8%a3%85%e7%bd%91%e5%8d%a1%e9%a9%b1%e5%8a%a8">#</a>
+</h4>
+<p><a href="https://www.intel.com/content/www/us/en/download/14098/intel-network-adapter-driver-for-82575-6-82580-i350-and-i210-211-based-gigabit-network-connections-for-linux.html">下载</a>驱动，参照压缩包中 README 的教程编译安装驱动。</p>
+<p>使用下面的命令检查安装（enp3s0为网卡名）。如安装成功，应有下图红框中的输出（表示网卡具有硬件时间戳功能）：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ethtool -T enp3s0
+</span></span></code></pre></div><p><img src="./configuration_linuxptp_check.jpg" alt="" title="linuxPTP安装检查"/></p>
+<h4 id="2-安装linuxptp">
+  2. 安装linuxPTP
+  <a class="anchor" href="#2-%e5%ae%89%e8%a3%85linuxptp">#</a>
+</h4>
+<p>按照以下命令安装linuxPTP</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git clone http://git.code.sf.net/p/linuxptp/code linuxptp
+</span></span><span style="display:flex;"><span>cd linuxptp/
+</span></span><span style="display:flex;"><span>make
+</span></span><span style="display:flex;"><span>sudo make install
+</span></span></code></pre></div><h3 id="同步publisher与recorder的网卡时钟">
+  同步Publisher与Recorder的网卡时钟
+  <a class="anchor" href="#%e5%90%8c%e6%ad%a5publisher%e4%b8%8erecorder%e7%9a%84%e7%bd%91%e5%8d%a1%e6%97%b6%e9%92%9f">#</a>
+</h3>
+<p>用以下命令启动Publisher和Recorder的时间同步网卡。<code>enp3s0</code>为网卡名，<code>&lt;configuration&gt;.cfg</code>为配置文件，可参考<code>linuxptp/configs/</code>中的文件，并结合需求写该配置。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo ptp4l -i enp3s0 -f &lt;configuration&gt;.cfg -m -l <span style="color:#ae81ff">6</span> --socket_priority <span style="color:#ae81ff">7</span>
+</span></span></code></pre></div><p><strong>注意</strong>：如有需要，请同时启动待测设备的时间同步功能</p>
+<h3 id="同步网卡时钟与系统时钟">
+  同步网卡时钟与系统时钟
+  <a class="anchor" href="#%e5%90%8c%e6%ad%a5%e7%bd%91%e5%8d%a1%e6%97%b6%e9%92%9f%e4%b8%8e%e7%b3%bb%e7%bb%9f%e6%97%b6%e9%92%9f">#</a>
+</h3>
+<p>Publisher和Recorder的两张网卡同步完成后，再将网卡时钟与系统时钟同步上。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo phc2sys -c CLOCK_REALTIME -s enp3s0 -O -0 -m -l <span style="color:#ae81ff">6</span>
+</span></span></code></pre></div><p>由于Publisher上时间同步与数据包发送使用了不同的网卡，请将发送数据包的网卡上的时钟也与系统同步上</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo phc2sys -s CLOCK_REALTIME -c enp1s0 -O -0 -m -l <span style="color:#ae81ff">6</span>
+</span></span></code></pre></div><h2 id="优化网络栈">
+  优化网络栈
+  <a class="anchor" href="#%e4%bc%98%e5%8c%96%e7%bd%91%e7%bb%9c%e6%a0%88">#</a>
+</h2>
+<h3 id="将关键流量绑定到-queue-0">
+  将关键流量绑定到 Queue 0
+  <a class="anchor" href="#%e5%b0%86%e5%85%b3%e9%94%ae%e6%b5%81%e9%87%8f%e7%bb%91%e5%ae%9a%e5%88%b0-queue-0">#</a>
+</h3>
+<p>在Publisher和Recorder上执行以下命令，将关键流量绑定到 Queue 0 上。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo ethtool --config-ntuple enp1s0 delete <span style="color:#ae81ff">15</span>
+</span></span><span style="display:flex;"><span>sudo ethtool --config-ntuple enp1s0 flow-type ether proto 0xb62c loc <span style="color:#ae81ff">15</span> action <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>sudo ethtool -X enp1s0 equal <span style="color:#ae81ff">2</span>
+</span></span></code></pre></div><p><strong>注意：</strong></p>
+<ol>
+<li><code>enp1s0</code>代表Publisher上负责发送数据包的网卡，或者Recorder上的网卡。</li>
+<li>第2行命令中的<code>0xb62c</code>代表关键流量的类型，请保持该值与下一章节中<code>ethertype</code>一致。</li>
+</ol>
+<h3 id="绑定-queue-0-中断到隔离核心并设置优先级">
+  绑定 Queue 0 中断到隔离核心，并设置优先级
+  <a class="anchor" href="#%e7%bb%91%e5%ae%9a-queue-0-%e4%b8%ad%e6%96%ad%e5%88%b0%e9%9a%94%e7%a6%bb%e6%a0%b8%e5%bf%83%e5%b9%b6%e8%ae%be%e7%bd%ae%e4%bc%98%e5%85%88%e7%ba%a7">#</a>
+</h3>
+<p>在Publisher和Recorder上执行以下命令。</p>
+<p><strong>绑定到隔离核心</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cat /proc/interrupts | grep TxRx-0
+</span></span></code></pre></div><p><img src="./configuration_stack_irqaffi.jpg" alt="中断绑定隔离核心" title="中断绑定隔离核心"/></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo sh -c <span style="color:#e6db74">&#34;echo 2 &gt; /proc/irq/131/smp_affinity&#34;</span>
+</span></span></code></pre></div><p><strong>设置优先级</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ps -ae | grep <span style="color:#ae81ff">131</span>
+</span></span></code></pre></div><p><img src="./configuration_stack_irpri.jpg" alt="" title="中断设置优先级"/></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo chrt -fp <span style="color:#ae81ff">95</span> 
+</span></span></code></pre></div><h3 id="开启-launchtime-功能">
+  开启 LaunchTime 功能
+  <a class="anchor" href="#%e5%bc%80%e5%90%af-launchtime-%e5%8a%9f%e8%83%bd">#</a>
+</h3>
+<p>在Publisher上开启 LaunchTime 功能</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo tc qdisc add dev enp1s0 handle 8001: parent root mqprio num_tc <span style="color:#ae81ff">4</span> map <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">3</span> queues 1@0 1@1 1@2 1@3 hw <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>sudo tc qdisc replace dev enp1s0 parent 8001:1 etf offload clockid CLOCK_TAI delta <span style="color:#ae81ff">500000</span>
+</span></span></code></pre></div><h2 id="修改配置文件">
+  修改配置文件
+  <a class="anchor" href="#%e4%bf%ae%e6%94%b9%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6">#</a>
+</h2>
+<p>根据测试需求，修改配置文件，以下是一个示例配置 default.ini</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mode:                   <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>tx-mode:                <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>verbose:                true
+</span></span><span style="display:flex;"><span>use-ziggo-analysis:     false
+</span></span><span style="display:flex;"><span>pcap-filename:          <span style="color:#e6db74">&#34;/home/i210/launchtimedemo/captured_10w_1500Byte.pcap&#34;</span>
+</span></span><span style="display:flex;"><span>interface:              <span style="color:#e6db74">&#34;enp1s0&#34;</span>
+</span></span><span style="display:flex;"><span>smac:                   <span style="color:#e6db74">&#34;00:1b:21:77:ac:ae&#34;</span>
+</span></span><span style="display:flex;"><span>dmac:                   <span style="color:#e6db74">&#34;00:1b:21:76:ae:75&#34;</span>
+</span></span><span style="display:flex;"><span>ethertype:              0xb62c
+</span></span><span style="display:flex;"><span>socket-priority:        <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>vlan-priority:          <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>offset:                 <span style="color:#ae81ff">150000</span>
+</span></span><span style="display:flex;"><span>early-offset:           <span style="color:#ae81ff">300000</span>
+</span></span><span style="display:flex;"><span>use-launchtime:         true
+</span></span><span style="display:flex;"><span>basetime:               1684559640000000100L
+</span></span><span style="display:flex;"><span>packet-size:            <span style="color:#ae81ff">1500</span>
+</span></span><span style="display:flex;"><span>packets-to-send:        <span style="color:#ae81ff">100000</span>
+</span></span><span style="display:flex;"><span>interval:               <span style="color:#ae81ff">1000000</span>
+</span></span><span style="display:flex;"><span>use-udp:                true
+</span></span><span style="display:flex;"><span>sip:                    <span style="color:#e6db74">&#34;192.168.16.10&#34;</span>
+</span></span><span style="display:flex;"><span>dip:                    <span style="color:#e6db74">&#34;192.168.16.11&#34;</span>
+</span></span><span style="display:flex;"><span>sport:                  <span style="color:#ae81ff">10000</span>
+</span></span><span style="display:flex;"><span>dport:                  <span style="color:#ae81ff">10000</span>
+</span></span></code></pre></div><p>下面是每个配置参数的含义：</p>
+<ul>
+<li>mode：运行模式，INT类型。0 表示发送，1 表示接收。目前仅支持发送功能。</li>
+<li>tx-mode：发送模式，INT类型。0 表示 完全按照pcap文件中的时间戳，重放数据包；1 表示 按顺序每周期发送一个pcap文件中的数据包；2 表示 每个周期发送一个构造的数据包； 3 表示 全力向网络中发送数据包（用于带宽保证测试）。</li>
+<li>verbose：是否输出额外的信息，BOOL类型。主要包括每发出一个数据包的 序号 和 tx 时间戳。</li>
+<li>use-ziggo-analysis：是否使用ZIGGO测试模式，BOOL类型。使用 ZIGGO 测试，会将 tx 时间戳 打印在ethernet数据包的第20个字节开始（从0编号）的8个字节；否则会使用 Intel 测试模式，会将 tx 时间戳 打印在第26个字节开始的8个字节；</li>
+<li>pcap-filename：需要重放的 pcap 文件，STRING类型。当tx-mode=0/1时有效。</li>
+<li>interface：网口名字，STRING类型。</li>
+<li>smac，dmac：源/目的mac地址，STRING类型。</li>
+<li>ethertype：数据包类型，INT类型。当tx-mode=2/3时有效。</li>
+<li>socket-priority, vlan-priority：数据包类型，INT类型。vlan相关参数，默认值为0。当tx-mode=2/3时有效。</li>
+<li>offset：提前调用send的时长，单位ns，INT类型。当use-launchtime为true时有效。</li>
+<li>early-offset：给网络栈处理预留的时长，单位ns，INT类型。当use-launchtime为true时有效。</li>
+<li>use-launchtime：是否使用 launchtime，BOOL类型。只有当使用 launchtime 时，数据包的tx时间戳精度才是亚微秒级别。<strong>注意</strong>：目前，当且仅当仅支持tx-mode=2时，可将use-launchtime设置为false。</li>
+<li>basetime：INT64类型。整个网络设备共享的基准时间，用于调整数据包的发送时间，与交换机的门控配合。</li>
+<li>packet-size：数据包大小，INT类型。单位Byte。当tx-mode=2/3时有效。</li>
+<li>packets-to-send：发送数据包的数量，INT类型。</li>
+<li>interval：一个周期的时长，INT类型。单位ns。当tx-mode=1/2时有效。</li>
+<li>use-udp：是否使用udp填充以太网报文，BOOL类型。<strong>注意</strong>：目前，当且仅当仅支持tx-mode=2/3时，可将use-udp设置为true。</li>
+<li>sip：原ip地址，STRING类型。注意ip地址是字符串，需要加上引号。</li>
+<li>dip：目的ip地址，STRING类型。注意ip地址是字符串，需要加上引号。</li>
+<li>sport：原端口号，INT类型。</li>
+<li>dport：目的端口号，INT类型。</li>
+</ul>
+<h2 id="在publisher启动接收程序">
+  在Publisher启动接收程序
+  <a class="anchor" href="#%e5%9c%a8publisher%e5%90%af%e5%8a%a8%e6%8e%a5%e6%94%b6%e7%a8%8b%e5%ba%8f">#</a>
+</h2>
+<p>接收程序可以使用 Intel 的 <a href="https://github.com/intel/iotg_tsn_ref_sw">txrx-tsn</a> 中的接收模式，配合 use-ziggo-analysis = false，其打出来的 log 可以直接拿到数据包的发送时间戳和接收时间戳。
+但是实验中发现，该程序与iperf打背景流量冲突，可以考虑用tcpdump抓包，并保存高精度的 rx 时间戳，tx时间戳可以从发送端的程序输出获得，从而进行分析。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo tcpdump -i &lt;网口&gt; ether proto 0xb62c -j adapter_unsynced --time-stamp-precision<span style="color:#f92672">=</span>nano -s <span style="color:#ae81ff">0</span> -tttt -w &lt;存储的pcap文件&gt;
+</span></span></code></pre></div><h2 id="在recorder启动发送程序">
+  在Recorder启动发送程序
+  <a class="anchor" href="#%e5%9c%a8recorder%e5%90%af%e5%8a%a8%e5%8f%91%e9%80%81%e7%a8%8b%e5%ba%8f">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cd /path/to/launchtimedemo
+</span></span><span style="display:flex;"><span>make
+</span></span><span style="display:flex;"><span>sudo taskset -c <span style="color:#ae81ff">1</span> chrt -f <span style="color:#ae81ff">92</span> ./pcap_replay -c ~/launchtimedemo/config.ini
+</span></span></code></pre></div></article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#硬件准备">硬件准备</a></li>
+    <li><a href="#系统准备">系统准备</a></li>
+    <li><a href="#启用时间同步">启用时间同步</a>
+      <ul>
+        <li><a href="#安装linuxptp">安装linuxPTP</a></li>
+        <li><a href="#同步publisher与recorder的网卡时钟">同步Publisher与Recorder的网卡时钟</a></li>
+        <li><a href="#同步网卡时钟与系统时钟">同步网卡时钟与系统时钟</a></li>
+      </ul>
+    </li>
+    <li><a href="#优化网络栈">优化网络栈</a>
+      <ul>
+        <li><a href="#将关键流量绑定到-queue-0">将关键流量绑定到 Queue 0</a></li>
+        <li><a href="#绑定-queue-0-中断到隔离核心并设置优先级">绑定 Queue 0 中断到隔离核心，并设置优先级</a></li>
+        <li><a href="#开启-launchtime-功能">开启 LaunchTime 功能</a></li>
+      </ul>
+    </li>
+    <li><a href="#修改配置文件">修改配置文件</a></li>
+    <li><a href="#在publisher启动接收程序">在Publisher启动接收程序</a></li>
+    <li><a href="#在recorder启动发送程序">在Recorder启动发送程序</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

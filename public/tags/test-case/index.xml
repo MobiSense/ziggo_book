@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Test Case on ZIGGO BOOK</title>
+    <link>http://localhost:1313/tags/test-case/</link>
+    <description>Recent content in Test Case on ZIGGO BOOK</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 01 May 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/test-case/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>TSNPerf 检测内容及使用表</title>
+      <link>http://localhost:1313/docs/tsnperf/manual/</link>
+      <pubDate>Wed, 01 May 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tsnperf/manual/</guid>
+      <description>时间同步测试，流量整形测试，网络配置测试</description>
+    </item>
+  </channel>
+</rss>

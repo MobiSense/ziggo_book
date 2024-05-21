@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="How to build the Caas Device Hardware step by step.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/device/hardware-build/">
+  <meta property="og:site_name" content="ZIGGO BOOK">
+  <meta property="og:title" content="Hardware Build">
+  <meta property="og:description" content="How to build the Caas Device Hardware step by step.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2024-05-01T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-05-01T00:00:00+00:00">
+    <meta property="article:tag" content="TSNPerf">
+    <meta property="article:tag" content="ZIGGO-Device">
+    <meta property="article:tag" content="Basic">
+    <meta property="og:image" content="http://localhost:1313/docs/device/hardware-build/featured.jpg">
+<title>Hardware Build | ZIGGO BOOK</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="canonical" href="http://localhost:1313/docs/device/hardware-build/">
+<link rel="stylesheet" href="/book.min.309b7ed028807cdb68d8d61e26d609f48369c098dbf5e4d8c0dcf4cdf49feafc.css" integrity="sha256-MJt&#43;0CiAfNto2NYeJtYJ9INpwJjb9eTYwNz0zfSf6vw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.af43789cc07a0b1ae7d3d8f9fdea4a5de96e162eb464aa66c620338e07d88a13.js" integrity="sha256-r0N4nMB6Cxrn09j5/epKXeluFi60ZKpmxiAzjgfYihM=" crossorigin="anonymous"></script>
+
+  
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>ZIGGO BOOK</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/tsnperf/" class="">ZIGGO TSNPerf</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/tsnperf/principle/" class="">TSNPerf 设计原理</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/tsnperf/configuration/" class="">TSNPerf 使用指南</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/tsnperf/manual/" class="">TSNPerf 检测内容及使用表</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/tsnperf/report/" class="">某品牌交换机报告</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/" class="">ZIGGO Switch</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/basic_knowledge/" class="">基础知识列表</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/require/" class="">准备清单</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/system-design/" class="">System Design</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/hardware-build/" class="">Hardware Build</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/software-build/" class="">Software Build</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/contributing/" class="">How to contribute</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/" class="">ZIGGO Device</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/basic_knowledge/" class="">基础知识列表</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/require/" class="">准备清单</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/getting-started/" class="">Getting start</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/system-design/" class="">System Design</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/hardware-build/" class="active">Hardware Build</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/software-build/" class="">Software Build</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/ziggo_device_manual/" class="">ZIGGO Device使用手册</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/cnc_manual/" class="">CNC脚本使用指南</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/testbed/" class="">TestBed搭建流程</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/contributing/" class="">How to contribute</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Hardware Build</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#before-start">Before Start</a></li>
+    <li><a href="#table-of-content">Table of Content</a></li>
+    <li><a href="#install-vivado">Install Vivado</a></li>
+    <li><a href="#vivado-project-construction">Vivado project construction</a></li>
+    <li><a href="#petalinux">Petalinux</a>
+      <ul>
+        <li><a href="#1install-ubuntu-os">1.install ubuntu OS</a></li>
+        <li><a href="#2download-petalinux-related-image-files-in-advance">2.Download PetaLinux related image files in advance</a></li>
+        <li><a href="#3activate-the-petalinux-environment">3.Activate the PetaLinux environment</a></li>
+        <li><a href="#4create-petalinux-project">4.Create PetaLinux Project</a></li>
+        <li><a href="#5petalinux-configuration">5.Petalinux Configuration</a></li>
+        <li><a href="#6-sd-card-partition-and-copy-file">6. SD card partition and copy file</a></li>
+      </ul>
+    </li>
+    <li><a href="#launch-the-board-and-log-in">Launch the Board and log in</a>
+      <ul>
+        <li><a href="#1-launch-the-board">1. Launch the Board</a></li>
+        <li><a href="#2-initialize-ps">2. Initialize PS</a></li>
+        <li><a href="#3-connect-to-internet">3. Connect to Internet</a></li>
+        <li><a href="#4-run-the-software">4. Run the Software</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="hardware-build">
+  Hardware Build
+  <a class="anchor" href="#hardware-build">#</a>
+</h1>
+<h2 id="before-start">
+  Before Start
+  <a class="anchor" href="#before-start">#</a>
+</h2>
+<p>If you just want to teach the board to run instead of modifying it, and you use the hardware files we provide, you can skip directly to step <a href="#6-sd-card-partition-and-copy-file">SD card partition and copy file</a>.</p>
+<h2 id="table-of-content">
+  Table of Content
+  <a class="anchor" href="#table-of-content">#</a>
+</h2>
+<ul>
+<li><a href="#hardware-build">Hardware Build</a>
+<ul>
+<li><a href="#before-start">Before Start</a></li>
+<li><a href="#table-of-content">Table of Content</a></li>
+<li><a href="#install-vivado">Install Vivado</a></li>
+<li><a href="#vivado-project-construction">Vivado project construction</a></li>
+<li><a href="#petalinux">Petalinux</a>
+<ul>
+<li><a href="#1install-ubuntu-os">1.install ubuntu OS</a></li>
+<li><a href="#2download-petalinux-related-image-files-in-advance">2.Download PetaLinux related image files in advance</a></li>
+<li><a href="#3activate-the-petalinux-environment">3.Activate the PetaLinux environment</a></li>
+<li><a href="#4create-petalinux-project">4.Create PetaLinux Project</a></li>
+<li><a href="#5petalinux-configuration">5.Petalinux Configuration</a></li>
+<li><a href="#6-sd-card-partition-and-copy-file">6. SD card partition and copy file</a>
+<ul>
+<li><a href="#file-downloading">File downloading</a></li>
+<li><a href="#sd-card-partition">SD card partition</a></li>
+<li><a href="#copy-files-into-sd-card">Copy files into SD card</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#launch-the-board-and-log-in">Launch the Board and log in</a>
+<ul>
+<li><a href="#1-launch-the-board">1. Launch the Board</a></li>
+<li><a href="#2-initialize-ps">2. Initialize PS</a></li>
+<li><a href="#3-connect-to-internet">3. Connect to Internet</a></li>
+<li><a href="#4-run-the-software">4. Run the Software</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="install-vivado">
+  Install Vivado
+  <a class="anchor" href="#install-vivado">#</a>
+</h2>
+<p>You can download Vivado <a href="https://www.xilinx.com/products/design-tools/vivado.html">here</a>.</p>
+<p>We are using Vivado version 2020.1 (note: a unified version is required, otherwise running may cause problems).</p>
+<h2 id="vivado-project-construction">
+  Vivado project construction
+  <a class="anchor" href="#vivado-project-construction">#</a>
+</h2>
+<ol>
+<li>clone the git repository for the hardware part.</li>
+<li>Open Vivado and enter the command <code>cd Porject_Dir</code> in Tcl Console and <code>source ./tsn_device.tcl</code>. After the command is executed, Vivado will automatically open the created project. Here, we will first close Vivado and rename the folder where the project is located to <code>Work_ Dir</code>, so that git can correctly ignore this directory and enter <code>Work_ Dir</code>, double-click the <code>.xpr</code> file to open the project again.</li>
+</ol>
+<p><img src="./vivado_tcl_console.png" alt="" /></p>
+<p><img src="./vivado_workdir.png" alt="" /></p>
+<ol>
+<li>Click <code>Generate Bitstream</code></li>
+</ol>
+<p><img src="./vivado_bitstream.png" alt="" /></p>
+<ol>
+<li>
+<p>Export the xsa file. In Vivado, File Export Export Hardware. Select Fixed for Platform type. Select include bitstream for Output. Click Finish to export the xsa file.</p>
+<p>Exported xsa file path: <code>Work_Dir/tns+tsn_device.xsa</code></p>
+</li>
+</ol>
+<h2 id="petalinux">
+  Petalinux
+  <a class="anchor" href="#petalinux">#</a>
+</h2>
+<h3 id="1install-ubuntu-os">
+  1.install ubuntu OS
+  <a class="anchor" href="#1install-ubuntu-os">#</a>
+</h3>
+<p>The following compilation processes are all completed within the virtual machine.</p>
+<p>We recommend using the following configuration:</p>
+<pre tabindex="0"><code>Virtual machine version: VMware Workstation 16 Pro
+Ubuntu version: ubuntu-16.04.3-desktop-amd64.iso
+</code></pre><h3 id="2download-petalinux-related-image-files-in-advance">
+  2.Download PetaLinux related image files in advance
+  <a class="anchor" href="#2download-petalinux-related-image-files-in-advance">#</a>
+</h3>
+<p>Enter website: <a href="https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools/archive.html">https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools/archive.html</a></p>
+<p>Select 2020.1 to find <code>PetaLinux Tools sstate-cache artifacts</code> and download <code>sstate_ arm_ 2020.1</code> and <code>downloads</code> and save the downloads in a specified directory in the virtual machine on January 2021 (the directory for this document is set to/home/alinx/data/)</p>
+<p>​    <img src="./download_petalinux.png" alt="" /></p>
+<h3 id="3activate-the-petalinux-environment">
+  3.Activate the PetaLinux environment
+  <a class="anchor" href="#3activate-the-petalinux-environment">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>source /opt/pkg/petalinux/settings.sh
+</span></span></code></pre></div><p>​    Automatically activate the PetaLinux environment every time Terminal is started.</p>
+<h3 id="4create-petalinux-project">
+  4.Create PetaLinux Project
+  <a class="anchor" href="#4create-petalinux-project">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>petalinux-create --type project --template zynq --name &lt;project_name&gt;
+</span></span><span style="display:flex;"><span>cd &lt;project_name&gt;
+</span></span></code></pre></div><h3 id="5petalinux-configuration">
+  5.Petalinux Configuration
+  <a class="anchor" href="#5petalinux-configuration">#</a>
+</h3>
+<ol>
+<li>Import Hardware Configuration</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>petalinux-config --get-hw-description &lt;PATH-TO-XSA Directory&gt;
+</span></span></code></pre></div><p>Then you will enter the menuconfig page and configure as follows:</p>
+<pre tabindex="0"><code>Subsystem AUTO Hardware Settings
+-&gt; Ethernet Settings  
+  -&gt; [*] Randomise MAC address
+
+Image Packaging Configurations 
+-&gt; Root filesystem type 
+  -&gt; [*] EXT4 (SD/eMMC/SATA/USB)
+
+Yocto Settings (Use downloaded image)
+-&gt; Local sstate feeds settings: /home/alinx/data/sstate_arm_2020.1/arm
+-&gt; Add pre-mirror url: file:///home/alinx/data/downloads
+</code></pre><ol start="2">
+<li>make <code>Kernel Module</code></li>
+</ol>
+<p>​    make a module named &ldquo;<code>dma proxy</code>&rdquo;:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>petalinux-create -t modules -n dma-proxy --enable
+</span></span></code></pre></div><p>​    replace the dma-proxy folder:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>rm -rf project-spec/meta-user/recipes-modules/*
+</span></span></code></pre></div><p>download our dma-proxy (from <a href="https://cloud.tsinghua.edu.cn/f/85cfd8e8174e4689b79b/">here</a>) and unzip in <code>project-spec/meta-user/recipes-modules/</code></p>
+<ol start="3">
+<li>Configuring the kernel</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>petalinux-config -c kernel
+</span></span></code></pre></div><p>Entering the <code>menuconfig</code> page, and do:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Device Drivers 
+</span></span><span style="display:flex;"><span>-&gt; Userspace I/O drivers 
+</span></span><span style="display:flex;"><span>  -&gt; <span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Userspace I/O platform driver with generic IRQ handling 
+</span></span><span style="display:flex;"><span>  -&gt; <span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Userspace platform driver with generic irq and dynamic memory 
+</span></span><span style="display:flex;"><span>  -&gt; <span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Xilinx AI Engine driverDevice Drivers 
+</span></span><span style="display:flex;"><span>-&gt; Dma Engine Support  
+</span></span><span style="display:flex;"><span>  -&gt; <span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Xilinx DMA Engines
+</span></span><span style="display:flex;"><span>-&gt; Network device support    
+</span></span><span style="display:flex;"><span>  -&gt; Ethernet driver support        
+</span></span><span style="display:flex;"><span>    -&gt; <span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Cadence devices        
+</span></span><span style="display:flex;"><span>    -&gt; <span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Cadence MACB/GEM support
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>General setup 
+</span></span><span style="display:flex;"><span>-&gt; Preemption Model    
+</span></span><span style="display:flex;"><span>  -&gt; <span style="color:#f92672">(</span>X<span style="color:#f92672">)</span> No Forced Preemption <span style="color:#f92672">(</span>Server<span style="color:#f92672">)</span>
+</span></span></code></pre></div><ol start="4">
+<li>Configuring rootfs</li>
+</ol>
+<p>Edit file <code>project-spec/meta-user/conf/user-rootfsconfig</code>, and <em><strong>add</strong></em> the following configuration:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>CONFIG_sudo
+</span></span><span style="display:flex;"><span>CONFIG_sudo-dev
+</span></span><span style="display:flex;"><span>CONFIG_dnf
+</span></span><span style="display:flex;"><span>CONFIG_packagegroup-core-buildessential
+</span></span><span style="display:flex;"><span>CONFIG_packagegroup-core-buildessential-dev
+</span></span><span style="display:flex;"><span>CONFIG_packagegroup-self-hosted
+</span></span><span style="display:flex;"><span>CONFIG_packagegroup-self-hosted-dev
+</span></span><span style="display:flex;"><span>CONFIG_packagegroup-self-hosted-sdk-dev
+</span></span><span style="display:flex;"><span>CONFIG_packagegroup-self-hosted-sdk
+</span></span><span style="display:flex;"><span>CONFIG_python3
+</span></span><span style="display:flex;"><span>CONFIG_autoconf
+</span></span><span style="display:flex;"><span>CONFIG_autoconf-dev
+</span></span><span style="display:flex;"><span>CONFIG_automake
+</span></span><span style="display:flex;"><span>CONFIG_automake-dev
+</span></span><span style="display:flex;"><span>CONFIG_bison
+</span></span><span style="display:flex;"><span>CONFIG_bison-dev
+</span></span><span style="display:flex;"><span>CONFIG_flex
+</span></span><span style="display:flex;"><span>CONFIG_flex-dev
+</span></span><span style="display:flex;"><span>CONFIG_make
+</span></span><span style="display:flex;"><span>CONFIG_make-dev
+</span></span><span style="display:flex;"><span>CONFIG_python
+</span></span><span style="display:flex;"><span>CONFIG_libtool
+</span></span><span style="display:flex;"><span>CONFIG_libtool-dev
+</span></span><span style="display:flex;"><span>CONFIG_sqlite3
+</span></span><span style="display:flex;"><span>CONFIG_cmake
+</span></span><span style="display:flex;"><span>CONFIG_util-linux
+</span></span><span style="display:flex;"><span>CONFIG_net-tools
+</span></span></code></pre></div><p>Save and exit.</p>
+<p>Input:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>petalinux-config -c rootfs
+</span></span></code></pre></div><p>Then you will enter the menuconfig page and configure as follows:</p>
+<pre tabindex="0"><code>Image Features 
+-&gt; [*] package management   
+  -&gt; (http://petalinux.xilinx.com/sswreleases/rel-v2020/feeds/zc702-zynq7/) Package feed url.
+user packages
+-&gt; SELECT ALL
+</code></pre><ol start="5">
+<li>Compile the device tree</li>
+</ol>
+<pre tabindex="0"><code>petalinux-build -c device-tree
+</code></pre><ol start="6">
+<li>Modify the device tree</li>
+</ol>
+<p>The generated device tree is located in <code>components/plnx_workspace/device tree/device tree/pl.dtsi</code> directory, we need to make modifications based on this file to meet some of our peripheral needs. The modified files are stored in the <code>project-spec/meta user/recipes bsp/device tree/files/system-user.dtsi</code> directory.</p>
+<blockquote>
+<p>Note: Between the <code>//&gt;&gt;&gt;</code> and <code>//&lt;&lt;&lt;</code> is the content added between the comments.</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#f92672">/</span>include<span style="color:#f92672">/</span> <span style="color:#e6db74">&#34;system-conf.dtsi&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">/</span> {
+</span></span><span style="display:flex;"><span>        amba_pl: amba_pl {
+</span></span><span style="display:flex;"><span>                dma_proxy {  
+</span></span><span style="display:flex;"><span>            compatible <span style="color:#f92672">=</span><span style="color:#e6db74">&#34;xlnx,dma_proxy&#34;</span>;
+</span></span><span style="display:flex;"><span>            dmas <span style="color:#f92672">=</span> <span style="color:#f92672">&lt;&amp;</span>axi_dma_0 <span style="color:#ae81ff">0</span>  <span style="color:#f92672">&amp;</span>axi_dma_0 <span style="color:#ae81ff">1</span><span style="color:#f92672">&gt;</span>;
+</span></span><span style="display:flex;"><span>            dma<span style="color:#f92672">-</span>names <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;dma_proxy_tx&#34;</span>, <span style="color:#e6db74">&#34;dma_proxy_rx&#34;</span>;  
+</span></span><span style="display:flex;"><span>        };
+</span></span><span style="display:flex;"><span>                pkt_gen_controller_0: pkt_gen_controller<span style="color:#960050;background-color:#1e0010">@</span><span style="color:#ae81ff">43</span>c00000 {
+</span></span><span style="display:flex;"><span>                        compatible <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;generic-uio&#34;</span>,<span style="color:#e6db74">&#34;uio&#34;</span>;
+</span></span><span style="display:flex;"><span>                        reg <span style="color:#f92672">=</span> <span style="color:#f92672">&lt;</span><span style="color:#ae81ff">0x43c00000</span> <span style="color:#ae81ff">0x10000</span><span style="color:#f92672">&gt;</span>;
+</span></span><span style="display:flex;"><span>                };
+</span></span><span style="display:flex;"><span>                rtc0: time_sync_uio<span style="color:#960050;background-color:#1e0010">@</span><span style="color:#ae81ff">43</span>c10000 {
+</span></span><span style="display:flex;"><span>                        compatible <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;generic-uio&#34;</span>,<span style="color:#e6db74">&#34;uio&#34;</span>;
+</span></span><span style="display:flex;"><span>                        reg <span style="color:#f92672">=</span> <span style="color:#f92672">&lt;</span><span style="color:#ae81ff">0x43c10000</span> <span style="color:#ae81ff">0x10000</span><span style="color:#f92672">&gt;</span>;
+</span></span><span style="display:flex;"><span>                };
+</span></span><span style="display:flex;"><span>        };
+</span></span><span style="display:flex;"><span>        chosen{
+</span></span><span style="display:flex;"><span>                        bootargs <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;console=ttyPS0,115200 earlyprintk cma=256M uio_pdrv_genirq.of_id=generic-uio root=/dev/mmcblk0p2 rw rootwait&#34;</span>;
+</span></span><span style="display:flex;"><span>      stdout<span style="color:#f92672">-</span>path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;serial0:115200n8&#34;</span>;
+</span></span><span style="display:flex;"><span>        };
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&amp;</span>gem1 {
+</span></span><span style="display:flex;"><span>    local<span style="color:#f92672">-</span>mac<span style="color:#f92672">-</span>address <span style="color:#f92672">=</span> [<span style="color:#ae81ff">00</span> <span style="color:#ae81ff">00</span> <span style="color:#ae81ff">00</span> <span style="color:#ae81ff">00</span> <span style="color:#ae81ff">02</span> <span style="color:#ae81ff">01</span>];
+</span></span><span style="display:flex;"><span>    phy<span style="color:#f92672">-</span>mode <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;gmii&#34;</span>;
+</span></span><span style="display:flex;"><span>    fixed<span style="color:#f92672">-</span>link {
+</span></span><span style="display:flex;"><span>        speed <span style="color:#f92672">=</span> <span style="color:#f92672">&lt;</span><span style="color:#ae81ff">1000</span><span style="color:#f92672">&gt;</span>;
+</span></span><span style="display:flex;"><span>        full<span style="color:#f92672">-</span>duplex;
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><ol start="7">
+<li>Complie</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>petalinux-build
+</span></span></code></pre></div><ol start="8">
+<li>Pack</li>
+</ol>
+<p>Here, you need to copy the bitstream file generated by Vivado to the virtual machine.  (You can export bitstream file to where you want).</p>
+<p><img src="./export_bitstream.png" alt="" /></p>
+<p>Then:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd images/linux
+</span></span><span style="display:flex;"><span>petalinux-package --boot --fsbl zynq_fsbl.elf --fpga &lt;FPGA bitstream path&gt; --u-boot --force
+</span></span></code></pre></div><p>After that, you can get 4 key file: <code>BOOT.BIN</code> <code>boot.scr</code> <code>image.ub</code> <code>rootfs.tar.gz</code></p>
+<h3 id="6-sd-card-partition-and-copy-file">
+  6. SD card partition and copy file
+  <a class="anchor" href="#6-sd-card-partition-and-copy-file">#</a>
+</h3>
+<h4 id="file-downloading">
+  File downloading
+  <a class="anchor" href="#file-downloading">#</a>
+</h4>
+<p>Download the following file from <a href="https://cloud.tsinghua.edu.cn/d/0bbc00543e5b4b82a6ea/">this</a> public link or from preceding steps:</p>
+<ul>
+<li>BOOT.BIN</li>
+<li>boot.scr</li>
+<li>image.ub</li>
+<li>rootfs.tar.gz</li>
+</ul>
+<h4 id="sd-card-partition">
+  SD card partition
+  <a class="anchor" href="#sd-card-partition">#</a>
+</h4>
+<p>In order to boot the TSNPerf, you are supposed to have a micro SD card with &gt;32GiB storage. Then use:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt-get install gparted
+</span></span><span style="display:flex;"><span>sudo gparted
+</span></span></code></pre></div><p>Parition it into two partition below</p>
+<ul>
+<li>
+<p>BOOT: store boot files from petalinux</p>
+<p>Free space preceding (MiB): 4</p>
+<p>New size (MiB): 500</p>
+<p>File system: fat32</p>
+<p>Label: BOOT</p>
+</li>
+<li>
+<p>ROOTFS: store debian system rootfs</p>
+<p>Free space preceding (MiB): 0</p>
+<p>Free space following (MiB): 0</p>
+<p>File system: ext4</p>
+<p>Label: ROOTFS</p>
+</li>
+</ul>
+<h4 id="copy-files-into-sd-card">
+  Copy files into SD card
+  <a class="anchor" href="#copy-files-into-sd-card">#</a>
+</h4>
+<p>Mound SD card:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo mount /dev/sda1 /media/alinx/BOOT/
+</span></span><span style="display:flex;"><span>sudo mount /dev/sda2 /media/alinx/ROOTFS/
+</span></span></code></pre></div><p>Remove original files:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo rm -rf /media/alinx/BOOT/* /media/alinx/ROOTFS/*
+</span></span></code></pre></div><p>Copy files:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo cp BOOT.BIN boot.scr image.ub /media/alinx/BOOT
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo tar -zxvf rootfs.tar.gz -C /media/alinx/ROOTFS
+</span></span><span style="display:flex;"><span>sudo cp -r ~/init_os.sh /media/alinx/ROOTFS/home/root/init_os.sh 
+</span></span><span style="display:flex;"><span>sync
+</span></span><span style="display:flex;"><span>sudo chown root:root /media/alinx/ROOTFS
+</span></span><span style="display:flex;"><span>sudo chmod <span style="color:#ae81ff">755</span> /media/alinx/ROOTFS
+</span></span></code></pre></div><h2 id="launch-the-board-and-log-in">
+  Launch the Board and log in
+  <a class="anchor" href="#launch-the-board-and-log-in">#</a>
+</h2>
+<h3 id="1-launch-the-board">
+  1. Launch the Board
+  <a class="anchor" href="#1-launch-the-board">#</a>
+</h3>
+<p>Plug the SD card into FPGA board, turn the switch to SD card boot mode.</p>
+<p><img src="./FPGA_boot_mode_switch.png" alt="SD boot" /></p>
+<h3 id="2-initialize-ps">
+  2. Initialize PS
+  <a class="anchor" href="#2-initialize-ps">#</a>
+</h3>
+<p>Plug in SD card, setup AX7021 board to boot on SD, power on.</p>
+<p>Connect a PC to the UART port of the board. We recommend using MobaXterm to connect the serial. Set up the Speed to 115200, Flow Control to None.</p>
+<p><img src="./moba_serial.png" alt="MobaXterm" /></p>
+<p>The default username and password are as follows:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">username:</span> <span style="color:#e6db74">&#34;root&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">password:</span> <span style="color:#e6db74">&#34;root&#34;</span>
+</span></span></code></pre></div><p>Execute the initilization script to set up the linux environment. (<code>hardware/init_os.sh</code>)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sh init_os.sh
+</span></span></code></pre></div><p>You can freely configure the host name, IP address, and MAC address, etc with the script, and can modify the script if needed.</p>
+<h3 id="3-connect-to-internet">
+  3. Connect to Internet
+  <a class="anchor" href="#3-connect-to-internet">#</a>
+</h3>
+<p>Connect the PC&rsquo;s network port to the device&rsquo;s <strong>PS</strong> network port (ETH0).</p>
+<p>Set up PC&rsquo;s corresponding port to be in the same subnet with the device (i.e., 192.168.137.x).</p>
+<p>Afterwards, you can connect to the device through <code>ssh</code> and copy any Software files needed.</p>
+<h3 id="4-run-the-software">
+  4. Run the Software
+  <a class="anchor" href="#4-run-the-software">#</a>
+</h3>
+<p>Please refer to the software part of this repo for further instructions.</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#before-start">Before Start</a></li>
+    <li><a href="#table-of-content">Table of Content</a></li>
+    <li><a href="#install-vivado">Install Vivado</a></li>
+    <li><a href="#vivado-project-construction">Vivado project construction</a></li>
+    <li><a href="#petalinux">Petalinux</a>
+      <ul>
+        <li><a href="#1install-ubuntu-os">1.install ubuntu OS</a></li>
+        <li><a href="#2download-petalinux-related-image-files-in-advance">2.Download PetaLinux related image files in advance</a></li>
+        <li><a href="#3activate-the-petalinux-environment">3.Activate the PetaLinux environment</a></li>
+        <li><a href="#4create-petalinux-project">4.Create PetaLinux Project</a></li>
+        <li><a href="#5petalinux-configuration">5.Petalinux Configuration</a></li>
+        <li><a href="#6-sd-card-partition-and-copy-file">6. SD card partition and copy file</a></li>
+      </ul>
+    </li>
+    <li><a href="#launch-the-board-and-log-in">Launch the Board and log in</a>
+      <ul>
+        <li><a href="#1-launch-the-board">1. Launch the Board</a></li>
+        <li><a href="#2-initialize-ps">2. Initialize PS</a></li>
+        <li><a href="#3-connect-to-internet">3. Connect to Internet</a></li>
+        <li><a href="#4-run-the-software">4. Run the Software</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

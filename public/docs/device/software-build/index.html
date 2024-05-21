@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Docs to enable CaaS Device&rsquo; time synchronization logic and set up pkt gen.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/device/software-build/">
+  <meta property="og:site_name" content="ZIGGO BOOK">
+  <meta property="og:title" content="Software Build">
+  <meta property="og:description" content="Docs to enable CaaS Device’ time synchronization logic and set up pkt gen.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2024-05-01T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-05-01T00:00:00+00:00">
+    <meta property="article:tag" content="ZIGGO-Device">
+    <meta property="article:tag" content="ZIGGO">
+    <meta property="article:tag" content="Markdown">
+    <meta property="og:image" content="http://localhost:1313/docs/device/software-build/featured.jpg">
+<title>Software Build | ZIGGO BOOK</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="canonical" href="http://localhost:1313/docs/device/software-build/">
+<link rel="stylesheet" href="/book.min.309b7ed028807cdb68d8d61e26d609f48369c098dbf5e4d8c0dcf4cdf49feafc.css" integrity="sha256-MJt&#43;0CiAfNto2NYeJtYJ9INpwJjb9eTYwNz0zfSf6vw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.af43789cc07a0b1ae7d3d8f9fdea4a5de96e162eb464aa66c620338e07d88a13.js" integrity="sha256-r0N4nMB6Cxrn09j5/epKXeluFi60ZKpmxiAzjgfYihM=" crossorigin="anonymous"></script>
+
+  
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>ZIGGO BOOK</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/tsnperf/" class="">ZIGGO TSNPerf</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/tsnperf/principle/" class="">TSNPerf 设计原理</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/tsnperf/configuration/" class="">TSNPerf 使用指南</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/tsnperf/manual/" class="">TSNPerf 检测内容及使用表</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/tsnperf/report/" class="">某品牌交换机报告</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/" class="">ZIGGO Switch</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/basic_knowledge/" class="">基础知识列表</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/require/" class="">准备清单</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/system-design/" class="">System Design</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/hardware-build/" class="">Hardware Build</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/software-build/" class="">Software Build</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/contributing/" class="">How to contribute</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/" class="">ZIGGO Device</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/basic_knowledge/" class="">基础知识列表</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/require/" class="">准备清单</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/getting-started/" class="">Getting start</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/system-design/" class="">System Design</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/hardware-build/" class="">Hardware Build</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/software-build/" class="active">Software Build</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/ziggo_device_manual/" class="">ZIGGO Device使用手册</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/cnc_manual/" class="">CNC脚本使用指南</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/testbed/" class="">TestBed搭建流程</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/contributing/" class="">How to contribute</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Software Build</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#table-of-content">Table of Content</a></li>
+    <li><a href="#1-build">1. Build</a></li>
+    <li><a href="#2-config">2. Config</a></li>
+    <li><a href="#3-run">3. Run</a></li>
+    <li><a href="#4-analyze">4. Analyze</a>
+      <ul>
+        <li><a href="#41-tsnperf-directly-analyzes-latency-and-jitter">4.1 TSNPerf directly analyzes latency and jitter</a></li>
+        <li><a href="#42-offline-analysis-of-latency-and-jitter">4.2 Offline analysis of latency and jitter</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="software-build">
+  Software Build
+  <a class="anchor" href="#software-build">#</a>
+</h1>
+<p>This repo contains source code to enable TSN/CaaS TSNPerf&rsquo; time synchronization logic and set up packet generation plan.</p>
+<h2 id="table-of-content">
+  Table of Content
+  <a class="anchor" href="#table-of-content">#</a>
+</h2>
+<ul>
+<li><a href="#software-build">Software Build</a>
+<ul>
+<li><a href="#table-of-content">Table of Content</a></li>
+<li><a href="#1-build">1. Build</a></li>
+<li><a href="#2-config">2. Config</a></li>
+<li><a href="#3-run">3. Run</a></li>
+<li><a href="#4-analyze">4. Analyze</a>
+<ul>
+<li><a href="#41-tsnperf-directly-analyzes-latency-and-jitter">4.1 TSNPerf directly analyzes latency and jitter</a></li>
+<li><a href="#42-offline-analysis-of-latency-and-jitter">4.2 Offline analysis of latency and jitter</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="1-build">
+  1. Build
+  <a class="anchor" href="#1-build">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir build
+</span></span><span style="display:flex;"><span>cd build
+</span></span><span style="display:flex;"><span>cmake ..
+</span></span><span style="display:flex;"><span>make
+</span></span></code></pre></div><p>After successfully build, there should be two executables: &ldquo;time_sync&rdquo; &amp; &ldquo;pkt_gen&rdquo;</p>
+<h2 id="2-config">
+  2. Config
+  <a class="anchor" href="#2-config">#</a>
+</h2>
+<p>The &ldquo;build&rdquo; directory contains topology &amp; TSN/CaaS schedule results.</p>
+<ul>
+<li>config.json: topology file, contains node info (type, mac, ptp ports), link between nodes (with ports), and forwarding table.</li>
+<li>schedule.json: schedule file, contains each links&rsquo; schedule time interval &amp; each CaaS switch&rsquo;s computation time interval.</li>
+</ul>
+<p>(Hints: This is similar to a Ziggo Switch)</p>
+<h2 id="3-run">
+  3. Run
+  <a class="anchor" href="#3-run">#</a>
+</h2>
+<ul>
+<li>Start time syncronization</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./time_sync
+</span></span></code></pre></div><ul>
+<li>Start device critical packet generation</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./pkt_gen
+</span></span></code></pre></div><h2 id="4-analyze">
+  4. Analyze
+  <a class="anchor" href="#4-analyze">#</a>
+</h2>
+<p>There are two analysis methods for TSNPerf:</p>
+<blockquote>
+<p>Hint: If you want to use offline anaylze, please switch branch to &lsquo;offline_anaylze&rsquo;, and you need to link device to anthor PC(linux) by wire.</p>
+</blockquote>
+<p>One method is to directly analyze latency and jitter on the TSNPerf.</p>
+<p>Another method is to use Device to stamp the received packet and forward it from another port to a powerful desktop computer for packet capture analysis. Even if entering the Device at a gigabit rate, there will be no packet loss. The disadvantage is that a separate program needs to be written offline to analyze the delay and jitter of the packet.</p>
+<h3 id="41-tsnperf-directly-analyzes-latency-and-jitter">
+  4.1 TSNPerf directly analyzes latency and jitter
+  <a class="anchor" href="#41-tsnperf-directly-analyzes-latency-and-jitter">#</a>
+</h3>
+<p>During the operation of the  <code>time sync</code> program, after receiving the test data frame, the program will save the delay information of the data frame in the package under the <code>build/packet_log.csv</code>   file, save the batch statistics of latency and jitter in the critical directory under the build directory at the same time in the <code>build/critical_log.csv</code>.</p>
+<p>You can display the content of the header and the last 5 lines using the following command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat critical.log | head -n1
+</span></span><span style="display:flex;"><span>cat critical.log | tail -n5
+</span></span></code></pre></div><h3 id="42-offline-analysis-of-latency-and-jitter">
+  4.2 Offline analysis of latency and jitter
+  <a class="anchor" href="#42-offline-analysis-of-latency-and-jitter">#</a>
+</h3>
+<p>If conducting offline analysis, it is important to note that the hardware used is located at <code>offline_analyze</code> branch. This version will stamp the key data with a receive timestamp and forward it from ETH2. We need to use a PC equipped with a Linux system to capture packets for analysis.</p>
+<p>Example of packet capture command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo tcpdump -i enx207bd272812b ether src 00:0a:35:00:00:14 -n -B <span style="color:#ae81ff">100000</span> -w packets.pcapng
+</span></span></code></pre></div><p><code>Enx207bd272812b</code> is the name of the network card, which can be obtained through ifconfig. <code>Src</code> is used to specify that the captured packet comes from a certain MAC address. <code>-B</code> is used to specify the buffer size. If packet loss needs to be set to a larger size, you can check the information output after packet capture to see if Dropped by kernel: is 0. If it is not 0, it indicates that there is packet loss in the kernel. <code>-W</code> specifies the path to save the file.</p>
+<p>Code for analyzing programs is <code>analyze_packet.py</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python .<span style="color:#ae81ff">\a</span>nalyze_packet.py <span style="color:#f92672">[</span>capture file path<span style="color:#f92672">]</span> --step <span style="color:#f92672">[</span>interval<span style="color:#f92672">]</span>
+</span></span></code></pre></div><p>At the same time, a packet will be generated in the current directory (<code>packet_log.csv</code> and <code>critical_log.csv</code>).</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#table-of-content">Table of Content</a></li>
+    <li><a href="#1-build">1. Build</a></li>
+    <li><a href="#2-config">2. Config</a></li>
+    <li><a href="#3-run">3. Run</a></li>
+    <li><a href="#4-analyze">4. Analyze</a>
+      <ul>
+        <li><a href="#41-tsnperf-directly-analyzes-latency-and-jitter">4.1 TSNPerf directly analyzes latency and jitter</a></li>
+        <li><a href="#42-offline-analysis-of-latency-and-jitter">4.2 Offline analysis of latency and jitter</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

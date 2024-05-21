@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ZIGGO Device: A flexible and standard-compliant toolkit for TSN performance evaluation.#Table of Contents#ZIGGO Device: A flexible and standard-compliant toolkit for TSN performance evaluation. Table of Contents Introduction ZIGGO Open Platform Demo Features Read before start Getting Started System Design Demo APP Tutorial License and Citation TODO List Contributing Introduction#ZIGGO is a flexible, standard-compliant, and control-function-virtualized TSN switch platform ready for industrial control, automotive electronics, and other time-sensitive applications.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/device/">
+  <meta property="og:site_name" content="ZIGGO BOOK">
+  <meta property="og:title" content="ZIGGO Device">
+  <meta property="og:description" content="ZIGGO Device: A flexible and standard-compliant toolkit for TSN performance evaluation.#Table of Contents#ZIGGO Device: A flexible and standard-compliant toolkit for TSN performance evaluation. Table of Contents Introduction ZIGGO Open Platform Demo Features Read before start Getting Started System Design Demo APP Tutorial License and Citation TODO List Contributing Introduction#ZIGGO is a flexible, standard-compliant, and control-function-virtualized TSN switch platform ready for industrial control, automotive electronics, and other time-sensitive applications.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="website">
+<title>ZIGGO Device | ZIGGO BOOK</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="canonical" href="http://localhost:1313/docs/device/">
+<link rel="stylesheet" href="/book.min.309b7ed028807cdb68d8d61e26d609f48369c098dbf5e4d8c0dcf4cdf49feafc.css" integrity="sha256-MJt&#43;0CiAfNto2NYeJtYJ9INpwJjb9eTYwNz0zfSf6vw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.af43789cc07a0b1ae7d3d8f9fdea4a5de96e162eb464aa66c620338e07d88a13.js" integrity="sha256-r0N4nMB6Cxrn09j5/epKXeluFi60ZKpmxiAzjgfYihM=" crossorigin="anonymous"></script>
+
+  
+
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/docs/device/index.xml" title="ZIGGO BOOK" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>ZIGGO BOOK</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/tsnperf/" class="">ZIGGO TSNPerf</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/tsnperf/principle/" class="">TSNPerf 设计原理</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/tsnperf/configuration/" class="">TSNPerf 使用指南</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/tsnperf/manual/" class="">TSNPerf 检测内容及使用表</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/tsnperf/report/" class="">某品牌交换机报告</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/" class="">ZIGGO Switch</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/basic_knowledge/" class="">基础知识列表</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/require/" class="">准备清单</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/system-design/" class="">System Design</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/hardware-build/" class="">Hardware Build</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/software-build/" class="">Software Build</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/contributing/" class="">How to contribute</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/" class="active">ZIGGO Device</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/basic_knowledge/" class="">基础知识列表</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/require/" class="">准备清单</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/getting-started/" class="">Getting start</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/system-design/" class="">System Design</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/hardware-build/" class="">Hardware Build</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/software-build/" class="">Software Build</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/ziggo_device_manual/" class="">ZIGGO Device使用手册</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/cnc_manual/" class="">CNC脚本使用指南</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/testbed/" class="">TestBed搭建流程</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/contributing/" class="">How to contribute</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>ZIGGO Device</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#table-of-contents">Table of Contents</a></li>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#ziggo-open-platform">ZIGGO Open Platform</a></li>
+    <li><a href="#demo">Demo</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#read-before-start">Read before start</a></li>
+    <li><a href="#getting-started">Getting Started</a></li>
+    <li><a href="#system-design">System Design</a></li>
+    <li><a href="#demo-app-tutorial">Demo APP Tutorial</a></li>
+    <li><a href="#license-and-citation">License and Citation</a></li>
+    <li><a href="#todo-list">TODO List</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><!-- raw HTML omitted -->
+<h1 id="ziggo-device-a-flexible-and-standard-compliant-toolkit-for-tsn-performance-evaluation">
+  ZIGGO Device: A flexible and standard-compliant toolkit for TSN performance evaluation.
+  <a class="anchor" href="#ziggo-device-a-flexible-and-standard-compliant-toolkit-for-tsn-performance-evaluation">#</a>
+</h1>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p><img src="figs/banner.jpg" alt="" /></p>
+<h2 id="table-of-contents">
+  Table of Contents
+  <a class="anchor" href="#table-of-contents">#</a>
+</h2>
+<ul>
+<li><a href="#ziggo-device-a-flexible-and-standard-compliant-toolkit-for-tsn-performance-evaluation">ZIGGO Device: A flexible and standard-compliant toolkit for TSN performance evaluation.</a>
+<ul>
+<li><a href="#table-of-contents">Table of Contents</a></li>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#ziggo-open-platform">ZIGGO Open Platform</a></li>
+<li><a href="#demo">Demo</a></li>
+<li><a href="#features">Features</a></li>
+<li><a href="#read-before-start">Read before start</a></li>
+<li><a href="#getting-started">Getting Started</a></li>
+<li><a href="#system-design">System Design</a></li>
+<li><a href="#demo-app-tutorial">Demo APP Tutorial</a></li>
+<li><a href="#license-and-citation">License and Citation</a></li>
+<li><a href="#todo-list">TODO List</a></li>
+<li><a href="#contributing">Contributing</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="introduction">
+  Introduction
+  <a class="anchor" href="#introduction">#</a>
+</h2>
+<p>ZIGGO is a <code>flexible</code>, <code>standard-compliant</code>, and <code>control-function-virtualized</code> TSN switch platform ready for <strong>industrial control</strong>, <strong>automotive electronics</strong>, and other <strong>time-sensitive applications</strong>.</p>
+<p>This is the document for the ZIGGO Device. (We also offer <a href="https://github.com/Mobisense/Ziggo-CaaS-Switch">ZIGGO-CaaS-Switch</a> that comply with the IEEE 802.1 TSN standard.) Our Device supports testing all standards-compliant switches.</p>
+<h2 id="ziggo-open-platform">
+  ZIGGO Open Platform
+  <a class="anchor" href="#ziggo-open-platform">#</a>
+</h2>
+<p><img src="./demo-app.png" alt="" /></p>
+<p>The construction of the ZIGGO Open Platform consists of three levels: network device, management tools, and a Demo App:</p>
+<ul>
+<li>
+<p>The software and hardware projects, along with the development board startup <a href="/ZIGGO_WEB/device/getting-started/">tutorial</a>, provide instructions for setting up an individual network device.</p>
+</li>
+<li>
+<p>The <a href="docs/cnc-manual.md">CNC User Manual</a> and <a href="/ZIGGO_WEB/device/getting-started/">Device User Manual</a> cover system configuration and management tools.</p>
+</li>
+<li>
+<p>Lastly, we offer a comprehensive <a href="/ZIGGO_WEB/device/testbed/">Demo App building tutorial</a> that instructs how to
+collaboratively build a complete and functional Demo using network devices and
+management tools.</p>
+</li>
+</ul>
+<h2 id="demo">
+  Demo
+  <a class="anchor" href="#demo">#</a>
+</h2>
+<p>We provide a demonstration video of the TSN switch. It demonstrates the superior performance of the <code>ZIGGO-CaaS-Switch</code> compared to the normal switch.</p>
+<p>The left side of the picture is the ZYNQ development board we use, and the right side is the TSN display board we built.</p>
+<p><a href="https://cloud.tsinghua.edu.cn/f/b307da6840d84e5f9ff1/"><img src="figs/testbed.jpg" alt="Watch the video" /></a></p>
+<blockquote>
+<p>Click the pic to watch the video! Or just click <a href="https://cloud.tsinghua.edu.cn/f/b307da6840d84e5f9ff1/">here</a>.</p>
+</blockquote>
+<h2 id="features">
+  Features
+  <a class="anchor" href="#features">#</a>
+</h2>
+<ul>
+<li>
+<p>ZIGGO supports the simultaneous transmission of both <code>Information Technology (IT)</code> and <code>Operation Technology (OT)</code> data traffic with QoS guarantee.</p>
+</li>
+<li>
+<p>ZIGGO complies with IEEE standards <code>802.1AS</code>, <code>Qav</code>, <code>Qbv</code>, and <code>Qcc</code>.</p>
+</li>
+<li>
+<p>ZIGGO provides <code>Real-time</code> and <code>Deterministic</code> Ethernet transport</p>
+<ul>
+<li>ZIGGO achieve <strong>Zero Packet Loss</strong> , <strong>Microsecond-level Latency</strong> with <strong>Nanosecond-level Jitter Gate Ability</strong>.</li>
+<li>ZIGGO guarantee <strong>Gigabit Throughput</strong>.</li>
+<li>ZIGGO provide gate accuracy applicable to <strong>All Ethernet Frame Sizes</strong>.</li>
+</ul>
+</li>
+</ul>
+<h2 id="read-before-start">
+  Read before start
+  <a class="anchor" href="#read-before-start">#</a>
+</h2>
+<p>Getting started with ZIGGO-CaaS-Switch/ZIGGO-Device is a <em><strong>pretty hard</strong></em> task. Users/developers need to have sufficient basic knowledge and be prepare to for a long periond of learning and debugging.</p>
+<p>Please refer to <a href="/ZIGGO_WEB/device/basic_knowledge/">basic_knowledge.md</a> to check if you have ability to use ZIGGO competently.</p>
+<h2 id="getting-started">
+  Getting Started
+  <a class="anchor" href="#getting-started">#</a>
+</h2>
+<p>Please refer to <a href="/ZIGGO_WEB/device/require/">required.md</a>  to  get prepared.</p>
+<p>After that, please refer to <a href="/ZIGGO_WEB/device/getting-started/">getting_started.md</a> for the build and run a single ZIGGO Device.</p>
+<h2 id="system-design">
+  System Design
+  <a class="anchor" href="#system-design">#</a>
+</h2>
+<p>ZIGGO is implemented on ZYNQ-7000 SoC and exploits ZYNQ&rsquo;s both hardware and software programmability.</p>
+<p><img src="figs/framework.jpg" alt="framework" /></p>
+<p>We also provide more in-depth <a href="/ZIGGO_WEB/device/system-design/">documentation</a> explaining specific design principles for ZIGGO Device.</p>
+<h2 id="demo-app-tutorial">
+  Demo APP Tutorial
+  <a class="anchor" href="#demo-app-tutorial">#</a>
+</h2>
+<p>We also provide a <a href="/ZIGGO_WEB/device/testbed/">testbed build document</a> that allows you to build a real-time Ethernet system using the ZIGGO swtich and Device.</p>
+<p>Through this platform, we can measure the <code>delay</code> and <code>jitter</code> of TSN time-critcial traffic, the switch&rsquo;s <code>gating capability</code>, <code>bandwidth guarantee</code> and <code>gating accuracy</code>.</p>
+<p>Replacing ZIGGO CaaS switches with commercial TSN switches can also test its above capabilities.</p>
+<h2 id="license-and-citation">
+  License and Citation
+  <a class="anchor" href="#license-and-citation">#</a>
+</h2>
+<p>ZIGGO is released under a <a href="https://github.com/MobiSense/Ziggo-Device/blob/main/LICENSE.txt">MIT license</a>.</p>
+<p>Please consider citing our papers if the project helps your research with the following BibTex:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bibtex" data-lang="bibtex"><span style="display:flex;"><span><span style="color:#a6e22e">@inproceedings</span>{caas,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">author</span>=<span style="color:#e6db74">{Yang, Zheng and Zhao, Yi and Dang, Fan and He, Xiaowu and Wu, Jiahang and Cao, Hao and Wang, Zeyu and Liu, Yunhao}</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">booktitle</span>=<span style="color:#e6db74">{IEEE INFOCOM 2023 - IEEE Conference on Computer Communications}</span>, 
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">title</span>=<span style="color:#e6db74">{CaaS: Enabling Control-as-a-Service for Time-Sensitive Networking}</span>, 
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">year</span>=<span style="color:#e6db74">{2023}</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">pages</span>=<span style="color:#e6db74">{1-10}</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">doi</span>=<span style="color:#e6db74">{10.1109/INFOCOM53939.2023.10228980}</span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bibtex" data-lang="bibtex"><span style="display:flex;"><span><span style="color:#a6e22e">@inproceedings</span>{etsn,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">author</span>=<span style="color:#e6db74">{Zhao, Yi and Yang, Zheng and He, Xiaowu and Wu, Jiahang and Cao, Hao and Dong, Liang and Dang, Fan and Liu, Yunhao}</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">booktitle</span>=<span style="color:#e6db74">{IEEE ICDCS 2022 - IEEE International Conference on Distributed Computing Systems}</span>, 
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">title</span>=<span style="color:#e6db74">{E-TSN: Enabling Event-triggered Critical Traffic in Time-Sensitive Networking for Industrial Applications}</span>, 
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">year</span>=<span style="color:#e6db74">{2022}</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">volume</span>=<span style="color:#e6db74">{}</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">number</span>=<span style="color:#e6db74">{}</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">pages</span>=<span style="color:#e6db74">{691-701}</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">doi</span>=<span style="color:#e6db74">{10.1109/ICDCS54860.2022.00072}</span>}
+</span></span></code></pre></div><h2 id="todo-list">
+  TODO List
+  <a class="anchor" href="#todo-list">#</a>
+</h2>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> ZIGGO CaaS Switch Release</li>
+<li><input checked="" disabled="" type="checkbox"> ZIGGO Device Release</li>
+<li><input checked="" disabled="" type="checkbox"> ZIGGO Device Source Code</li>
+<li><input checked="" disabled="" type="checkbox"> Tutorial for build a testbed</li>
+<li><input disabled="" type="checkbox"> Test Case for TSN</li>
+</ul>
+<blockquote>
+<p>We will expand each test in the tutorial to multiple test cases to cover different edge cases and comprehensively test the performance of TSN switches.</p>
+</blockquote>
+<ul>
+<li><input disabled="" type="checkbox"> Support Device List</li>
+</ul>
+<blockquote>
+<p>At present, we have only tested our own Ziggo switches and are testing other commercial switches (such as Huawei ,H3C and NXP). We expect to maintain a list of test results in the future.</p>
+</blockquote>
+<h2 id="contributing">
+  Contributing
+  <a class="anchor" href="#contributing">#</a>
+</h2>
+<p>Please see the <a href="/ZIGGO_WEB/device/contributing/">guide</a> for information on how to ask for help or contribute to the development of ZIGGO!</p>
+<blockquote>
+<p>The development team will only answer questions on github issues and reject other forms of questions.</p>
+</blockquote>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#table-of-contents">Table of Contents</a></li>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#ziggo-open-platform">ZIGGO Open Platform</a></li>
+    <li><a href="#demo">Demo</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#read-before-start">Read before start</a></li>
+    <li><a href="#getting-started">Getting Started</a></li>
+    <li><a href="#system-design">System Design</a></li>
+    <li><a href="#demo-app-tutorial">Demo APP Tutorial</a></li>
+    <li><a href="#license-and-citation">License and Citation</a></li>
+    <li><a href="#todo-list">TODO List</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

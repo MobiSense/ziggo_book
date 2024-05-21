@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Basic on ZIGGO BOOK</title>
+    <link>http://localhost:1313/tags/basic/</link>
+    <description>Recent content in Basic on ZIGGO BOOK</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 01 May 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/basic/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>基础知识列表</title>
+      <link>http://localhost:1313/docs/switch/basic_knowledge/</link>
+      <pubDate>Wed, 01 May 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/switch/basic_knowledge/</guid>
+      <description>使用 ZIGGO-SWITCH/ZIGGO-DEVICE 的基础知识列表</description>
+    </item>
+    <item>
+      <title>准备清单</title>
+      <link>http://localhost:1313/docs/switch/require/</link>
+      <pubDate>Wed, 01 May 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/switch/require/</guid>
+      <description>ZIGGO 软硬件准备清单</description>
+    </item>
+    <item>
+      <title>How to contribute</title>
+      <link>http://localhost:1313/docs/switch/contributing/</link>
+      <pubDate>Wed, 01 May 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/switch/contributing/</guid>
+      <description>How to report a bug or contribute to ZIGGO&amp;rsquo;s code</description>
+    </item>
+    <item>
+      <title>基础知识列表</title>
+      <link>http://localhost:1313/docs/device/basic_knowledge/</link>
+      <pubDate>Wed, 01 May 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/device/basic_knowledge/</guid>
+      <description>使用 ZIGGO-SWITCH/ZIGGO-DEVICE 的基础知识列表</description>
+    </item>
+    <item>
+      <title>准备清单</title>
+      <link>http://localhost:1313/docs/device/require/</link>
+      <pubDate>Wed, 01 May 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/device/require/</guid>
+      <description>ZIGGO 软硬件准备清单</description>
+    </item>
+    <item>
+      <title>Getting start</title>
+      <link>http://localhost:1313/docs/device/getting-started/</link>
+      <pubDate>Wed, 01 May 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/device/getting-started/</guid>
+      <description>ZIGGO device get start document</description>
+    </item>
+    <item>
+      <title>Hardware Build</title>
+      <link>http://localhost:1313/docs/device/hardware-build/</link>
+      <pubDate>Wed, 01 May 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/device/hardware-build/</guid>
+      <description>How to build the Caas Device Hardware step by step.</description>
+    </item>
+    <item>
+      <title>CNC脚本使用指南</title>
+      <link>http://localhost:1313/docs/device/cnc_manual/</link>
+      <pubDate>Wed, 01 May 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/device/cnc_manual/</guid>
+      <description>使用CNC脚本运行ZIGGO系统的7步指南</description>
+    </item>
+    <item>
+      <title>How to contribute</title>
+      <link>http://localhost:1313/docs/device/contributing/</link>
+      <pubDate>Wed, 01 May 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/device/contributing/</guid>
+      <description>How to report a bug or contribute to ZIGGO&amp;rsquo;s code</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Docs to enable CaaS Switches&rsquo; time synchronization logic and set up TSN GCL (gate control list), switch forwarding rules (including to dual-DMA).">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/device/testbed/">
+  <meta property="og:site_name" content="ZIGGO BOOK">
+  <meta property="og:title" content="TestBed搭建流程">
+  <meta property="og:description" content="Docs to enable CaaS Switches’ time synchronization logic and set up TSN GCL (gate control list), switch forwarding rules (including to dual-DMA).">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2024-05-01T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-05-01T00:00:00+00:00">
+    <meta property="article:tag" content="ZIGGO-SWITCH">
+    <meta property="article:tag" content="ZIGGO">
+    <meta property="article:tag" content="Markdown">
+    <meta property="og:image" content="http://localhost:1313/docs/device/testbed/featured.jpg">
+<title>TestBed搭建流程 | ZIGGO BOOK</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="canonical" href="http://localhost:1313/docs/device/testbed/">
+<link rel="stylesheet" href="/book.min.309b7ed028807cdb68d8d61e26d609f48369c098dbf5e4d8c0dcf4cdf49feafc.css" integrity="sha256-MJt&#43;0CiAfNto2NYeJtYJ9INpwJjb9eTYwNz0zfSf6vw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.af43789cc07a0b1ae7d3d8f9fdea4a5de96e162eb464aa66c620338e07d88a13.js" integrity="sha256-r0N4nMB6Cxrn09j5/epKXeluFi60ZKpmxiAzjgfYihM=" crossorigin="anonymous"></script>
+
+  
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>ZIGGO BOOK</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/tsnperf/" class="">ZIGGO TSNPerf</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/tsnperf/principle/" class="">TSNPerf 设计原理</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/tsnperf/configuration/" class="">TSNPerf 使用指南</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/tsnperf/manual/" class="">TSNPerf 检测内容及使用表</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/tsnperf/report/" class="">某品牌交换机报告</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/" class="">ZIGGO Switch</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/basic_knowledge/" class="">基础知识列表</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/require/" class="">准备清单</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/system-design/" class="">System Design</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/hardware-build/" class="">Hardware Build</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/software-build/" class="">Software Build</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/contributing/" class="">How to contribute</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/" class="">ZIGGO Device</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/basic_knowledge/" class="">基础知识列表</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/require/" class="">准备清单</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/getting-started/" class="">Getting start</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/system-design/" class="">System Design</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/hardware-build/" class="">Hardware Build</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/software-build/" class="">Software Build</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/ziggo_device_manual/" class="">ZIGGO Device使用手册</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/cnc_manual/" class="">CNC脚本使用指南</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/testbed/" class="active">TestBed搭建流程</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/contributing/" class="">How to contribute</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>TestBed搭建流程</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#目录">目录</a></li>
+    <li><a href="#testbed简单介绍">TestBed简单介绍</a></li>
+    <li><a href="#互联互通测试项目介绍">互联互通测试项目介绍</a>
+      <ul>
+        <li><a href="#1-基准测试">1. 基准测试</a></li>
+        <li><a href="#2-门控能力">2. 门控能力</a></li>
+        <li><a href="#3-带宽保证">3. 带宽保证</a></li>
+        <li><a href="#4-门控精度">4. 门控精度</a></li>
+      </ul>
+    </li>
+    <li><a href="#设备参数设置与部署">设备参数设置与部署</a></li>
+    <li><a href="#testbed运行流程">TestBed运行流程</a>
+      <ul>
+        <li><a href="#准备工作">准备工作</a></li>
+        <li><a href="#基准测试">基准测试</a></li>
+        <li><a href="#门控能力">门控能力</a></li>
+        <li><a href="#带宽保证">带宽保证</a></li>
+        <li><a href="#门控精度">门控精度</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="testbed搭建流程">
+  TestBed搭建流程
+  <a class="anchor" href="#testbed%e6%90%ad%e5%bb%ba%e6%b5%81%e7%a8%8b">#</a>
+</h1>
+<h2 id="目录">
+  目录
+  <a class="anchor" href="#%e7%9b%ae%e5%bd%95">#</a>
+</h2>
+<ul>
+<li><a href="#testbed%e6%90%ad%e5%bb%ba%e6%b5%81%e7%a8%8b">TestBed搭建流程</a>
+<ul>
+<li><a href="#%e7%9b%ae%e5%bd%95">目录</a></li>
+<li><a href="#testbed%e7%ae%80%e5%8d%95%e4%bb%8b%e7%bb%8d">TestBed简单介绍</a></li>
+<li><a href="#%e4%ba%92%e8%81%94%e4%ba%92%e9%80%9a%e6%b5%8b%e8%af%95%e9%a1%b9%e7%9b%ae%e4%bb%8b%e7%bb%8d">互联互通测试项目介绍</a>
+<ul>
+<li><a href="#1-%e5%9f%ba%e5%87%86%e6%b5%8b%e8%af%95">1. 基准测试</a></li>
+<li><a href="#2-%e9%97%a8%e6%8e%a7%e8%83%bd%e5%8a%9b">2. 门控能力</a></li>
+<li><a href="#3-%e5%b8%a6%e5%ae%bd%e4%bf%9d%e8%af%81">3. 带宽保证</a></li>
+<li><a href="#4-%e9%97%a8%e6%8e%a7%e7%b2%be%e5%ba%a6">4. 门控精度</a></li>
+</ul>
+</li>
+<li><a href="#%e8%ae%be%e5%a4%87%e5%8f%82%e6%95%b0%e8%ae%be%e7%bd%ae%e4%b8%8e%e9%83%a8%e7%bd%b2">设备参数设置与部署</a></li>
+<li><a href="#testbed%e8%bf%90%e8%a1%8c%e6%b5%81%e7%a8%8b">TestBed运行流程</a>
+<ul>
+<li><a href="#%e5%87%86%e5%a4%87%e5%b7%a5%e4%bd%9c">准备工作</a>
+<ul>
+<li><a href="#%e6%8e%a7%e5%88%b6%e8%84%9a%e6%9c%ac%e5%87%86%e5%a4%87">控制脚本准备</a></li>
+<li><a href="#%e8%83%8c%e6%99%af%e6%b5%81%e9%87%8f%e5%8f%91%e9%80%81">背景流量发送</a></li>
+</ul>
+</li>
+<li><a href="#%e5%9f%ba%e5%87%86%e6%b5%8b%e8%af%95">基准测试</a></li>
+<li><a href="#%e9%97%a8%e6%8e%a7%e8%83%bd%e5%8a%9b">门控能力</a></li>
+<li><a href="#%e5%b8%a6%e5%ae%bd%e4%bf%9d%e8%af%81">带宽保证</a></li>
+<li><a href="#%e9%97%a8%e6%8e%a7%e7%b2%be%e5%ba%a6">门控精度</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="testbed简单介绍">
+  TestBed简单介绍
+  <a class="anchor" href="#testbed%e7%ae%80%e5%8d%95%e4%bb%8b%e7%bb%8d">#</a>
+</h2>
+<p>我们内部对自己研发的CaaS-Switch进行了互联互通测试，采用的网络拓扑如下所示。</p>
+<p><img src="./topo.PNG" alt="topo" /></p>
+<p>本Demo需要4个FPGA开发板（2个TSNPerf、2个CaaS-Switch）和1台普通PC。如果条件有限/考虑简化拓扑，可以删去一个CaaS-Switch。PC负责发送背景流量，路径为黑色箭头；左侧TSNPerf负责发送测试流量（关键流量），路径为红色箭头。</p>
+<p>所有测试项目的流程大致可以分为两个阶段：</p>
+<ol>
+<li>
+<p>时间同步：启动时间同步，保证TSNPerf、CaaS-Switch在一个时钟域下。</p>
+<p>注：时间同步程序运行在TSNPerf、CaaS-Switch的系统中。</p>
+</li>
+<li>
+<p>发送测试流量：根据schedule.json文件，TSNPerf进行测试流量发送。</p>
+</li>
+</ol>
+<h2 id="互联互通测试项目介绍">
+  互联互通测试项目介绍
+  <a class="anchor" href="#%e4%ba%92%e8%81%94%e4%ba%92%e9%80%9a%e6%b5%8b%e8%af%95%e9%a1%b9%e7%9b%ae%e4%bb%8b%e7%bb%8d">#</a>
+</h2>
+<h3 id="1-基准测试">
+  1. 基准测试
+  <a class="anchor" href="#1-%e5%9f%ba%e5%87%86%e6%b5%8b%e8%af%95">#</a>
+</h3>
+<ul>
+<li>目的：测试无背景流量情况下，高优先级流量的两跳端到端延迟、丢包率、抖动，作为比较基准。</li>
+<li>预期：延迟符合规划，抖动较低（100ns左右）。</li>
+</ul>
+<h3 id="2-门控能力">
+  2. 门控能力
+  <a class="anchor" href="#2-%e9%97%a8%e6%8e%a7%e8%83%bd%e5%8a%9b">#</a>
+</h3>
+<ul>
+<li>目的：测试通用情况下流量调度效果，和两个交换机的门控对接能力。</li>
+<li>方案：
+背景流量（VLAN priority = 0）打到线速，每个调度周期预留长度为 3 的时隙给高优先级流量，
+<ol>
+<li>每个周期定时发送 4 个数据包长度为 1500Byte 的高优先级（VLAN priority = 1）测试流量，记录端到端平均延迟、抖动、丢包率、到达顺序</li>
+<li>每个周期定时发送 8 个数据包长度为 1500Byte 的高优先级（VLAN priority = 1）测试流量，记录是否每个周期通过且仅 n 个包</li>
+</ol>
+</li>
+<li>预期：
+<ol>
+<li>延迟、抖动、丢包率和基准一致</li>
+<li>每个周期定时发送 4 个数据包时，丢包率为0</li>
+<li>每个周期定时发送 8 个数据包时，每个周期通过且仅通过 5 个包（每8个包丢3个，因为每个时隙里恰好可以把第五个包发出去，余下三个包丢掉），丢包率为37.5%</li>
+</ol>
+</li>
+</ul>
+<h3 id="3-带宽保证">
+  3. 带宽保证
+  <a class="anchor" href="#3-%e5%b8%a6%e5%ae%bd%e4%bf%9d%e8%af%81">#</a>
+</h3>
+<ul>
+<li>目的：测试交换机能够进行带宽预留，且两个交换机优先级映射、运行 cycle 和 offset 基本一致。</li>
+<li>方案：
+背景流量（VLAN priority = 0）打到线速（1Gbps），配置交换机预留 50% 时隙给高优先级流量（VLAN priority = 1），其余 50% 只允许低优先级流量，
+<ol>
+<li>测试流量高优先级（VLAN priority = 1）情况下打到线速（经测试，每个周期[33ms]连续发送2752个1500B的包，基本达到1000Mbps），记录端到端平均延迟、抖动、丢包率、到达顺序</li>
+<li>测试流量高优先级（VLAN priority = 1）情况下打到50%线速（每个周期[33ms]连续发送1376个1500B的包），记录端到端平均延迟、抖动、丢包率、到达顺序</li>
+</ol>
+</li>
+<li>预期：
+<ol>
+<li>高优先级测试流量100%线速：延迟、抖动和基准一致，丢包率 50% 左右</li>
+<li>高优先级测试流量50%线速：延迟、抖动和基准一致，0丢包率</li>
+</ol>
+</li>
+</ul>
+<h3 id="4-门控精度">
+  4. 门控精度
+  <a class="anchor" href="#4-%e9%97%a8%e6%8e%a7%e7%b2%be%e5%ba%a6">#</a>
+</h3>
+<ul>
+<li>目的：测试门控时隙长度的设置精度</li>
+<li>方案：(n=1,2,4,8,&hellip;)
+<ol>
+<li>每个调度周期预留长度为 1 的时隙给高优先级流量</li>
+<li>每个周期发送 n 个数据包长度为1/n*1500Byte的高优先级（VLAN priority = 1）测试流量，记录是否每个周期通过 n 个包
+<ol>
+<li>n=1,</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>预期：
+<ol>
+<li>n=1,2,4,8 情况下都能每个周期通过且仅通过 n 个包</li>
+</ol>
+</li>
+</ul>
+<blockquote>
+<p>如果您按照下文的配置使用我们开源的ZIGGO交换机和TSNPerf，则您可以在上面四个测试中得到和预期相类似的效果。如果出现了任何问题，欢迎在github上提出issue。</p>
+</blockquote>
+<h2 id="设备参数设置与部署">
+  设备参数设置与部署
+  <a class="anchor" href="#%e8%ae%be%e5%a4%87%e5%8f%82%e6%95%b0%e8%ae%be%e7%bd%ae%e4%b8%8e%e9%83%a8%e7%bd%b2">#</a>
+</h2>
+<p>Switch软硬件代码在仓库 <a href="https://github.com/Horacehxw/Ziggo-CaaS-Switch">ZIGGO-Caas-Switch</a> 中，使用主分支即可。</p>
+<p>TSNPerf的软硬件代码在本仓库。</p>
+<blockquote>
+<p>注意：带宽能力测试中的TSNPerf需要使用offline_analyze分支，门控精度测试中的TSNPerf需要使用packet_resize分支【用于自定义测试包大小】。测试中请勿忘记切换分支。</p>
+</blockquote>
+<p>所有设备的IP、MAC和ID如下所示，与本文档后面提供的JSON配置文件对应：</p>
+<p><img src="./topo_config.png" alt="topo config" /></p>
+<p>对应的config文件可见<code>config.json</code></p>
+<h2 id="testbed运行流程">
+  TestBed运行流程
+  <a class="anchor" href="#testbed%e8%bf%90%e8%a1%8c%e6%b5%81%e7%a8%8b">#</a>
+</h2>
+<h3 id="准备工作">
+  准备工作
+  <a class="anchor" href="#%e5%87%86%e5%a4%87%e5%b7%a5%e4%bd%9c">#</a>
+</h3>
+<h4 id="控制脚本准备">
+  控制脚本准备
+  <a class="anchor" href="#%e6%8e%a7%e5%88%b6%e8%84%9a%e6%9c%ac%e5%87%86%e5%a4%87">#</a>
+</h4>
+<p>可以参考 <a href="/device/cnc_manual/">CNC-User-Manual</a></p>
+<h4 id="背景流量发送">
+  背景流量发送
+  <a class="anchor" href="#%e8%83%8c%e6%99%af%e6%b5%81%e9%87%8f%e5%8f%91%e9%80%81">#</a>
+</h4>
+<p>可以直接在Linux PC中运行<code>send.py</code>脚本。（需要安装scapy,tcpreplay）</p>
+<h3 id="基准测试">
+  基准测试
+  <a class="anchor" href="#%e5%9f%ba%e5%87%86%e6%b5%8b%e8%af%95">#</a>
+</h3>
+<p>Switch、TSNPerf 的软硬件都使用主分支。</p>
+<p>测试步骤：</p>
+<ol>
+<li>修改batch.mjs修改正确的配置文件名</li>
+<li>./batch.mjs pull（注意分支正确）</li>
+<li>./batch.mjs distribute
+Device每次发送4个数据包，每个Switch都预留了3个时隙，将以下两个配置文件下发即可：
+<code>base/d3s2-baseline-3t-config.json</code>，
+<code>base/d3s2-baseline-3t-schedule-base.json</code></li>
+<li>./batch.mjs launch （包括了时间同步和数据包发送）</li>
+<li>./batch.mjs collect</li>
+</ol>
+<h3 id="门控能力">
+  门控能力
+  <a class="anchor" href="#%e9%97%a8%e6%8e%a7%e8%83%bd%e5%8a%9b">#</a>
+</h3>
+<p>Switch、TSNPerf 的软硬件都使用主分支。</p>
+<ol>
+<li>让背景流量Device发包（基准测试不需要发送背景流量）</li>
+<li>修改batch.mjs修改正确的配置文件名</li>
+<li>./batch.mjs pull（注意分支正确）</li>
+<li>./batch.mjs distribute
+Device1每次发送4个数据包，每个Switch都预留了3个时隙，将以下两个配置文件下发即可：
+<code>gate/d3s2-baseline-3t-config.json</code>，
+<code>gate/d3s2-baseline-3t-schedule-gate.json</code></li>
+<li>./batch.mjs launch</li>
+<li>./batch.mjs collect</li>
+<li>将上述的schedule.json中的Device发包个数从4改为8，再从上述步骤4重新测试，修改后的schedule.json如下所示</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;link&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;from&#34;</span>: <span style="color:#ae81ff">3</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;to&#34;</span>: <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;from_port&#34;</span>: <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#ae81ff">7</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;schedule&#34;</span>: [
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;period&#34;</span>: <span style="color:#ae81ff">2048</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;start&#34;</span>: <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;end&#34;</span>: <span style="color:#ae81ff">8</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;job_id&#34;</span>: <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;flow_id&#34;</span>: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>}<span style="color:#960050;background-color:#1e0010">,</span>
+</span></span></code></pre></div><h3 id="带宽保证">
+  带宽保证
+  <a class="anchor" href="#%e5%b8%a6%e5%ae%bd%e4%bf%9d%e8%af%81">#</a>
+</h3>
+<p>Switch代码使用主分支，TSNPerf代码使用offline_analyze分支。</p>
+<p>测试步骤：</p>
+<ol>
+<li>
+<p>让背景流量Device发包（基准测试不需要发送背景流量）</p>
+</li>
+<li>
+<p>修改batch.mjs修改正确的配置文件名</p>
+</li>
+<li>
+<p>./batch.mjs pull（注意分支正确）</p>
+</li>
+<li>
+<p>./batch.mjs distribute
+Device1每次发送1376个数据包，每个Switch都预留了1024个时隙，将以下两个配置文件下发即可：
+<code>bandwidth/d3s2-baseline-50%t-config.json</code>，
+<code>bandwidth/d3s2-baseline-50%t-schedule.json</code></p>
+</li>
+<li>
+<p>./batch.mjs launch</p>
+</li>
+<li>
+<p>使用离线分析</p>
+</li>
+<li>
+<p>将上述的schedule.json中的Device发包个数从1376改为2752，再从上述步骤4重新测试，修改后的schedule.json如下所示</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;link&#34;</span>,
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">&#34;from&#34;</span>: <span style="color:#ae81ff">3</span>,
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">&#34;to&#34;</span>: <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">&#34;from_port&#34;</span>: <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#ae81ff">7</span>,
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">&#34;schedule&#34;</span>: [
+</span></span><span style="display:flex;"><span>     {
+</span></span><span style="display:flex;"><span>         <span style="color:#f92672">&#34;period&#34;</span>: <span style="color:#ae81ff">2048</span>,
+</span></span><span style="display:flex;"><span>         <span style="color:#f92672">&#34;start&#34;</span>: <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>         <span style="color:#f92672">&#34;end&#34;</span>: <span style="color:#ae81ff">2752</span>,
+</span></span><span style="display:flex;"><span>         <span style="color:#f92672">&#34;job_id&#34;</span>: <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>         <span style="color:#f92672">&#34;flow_id&#34;</span>: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>     }
+</span></span><span style="display:flex;"><span> ]
+</span></span><span style="display:flex;"><span>}<span style="color:#960050;background-color:#1e0010">,</span>
+</span></span></code></pre></div></li>
+</ol>
+<h3 id="门控精度">
+  门控精度
+  <a class="anchor" href="#%e9%97%a8%e6%8e%a7%e7%b2%be%e5%ba%a6">#</a>
+</h3>
+<p>Switch代码使用主分支，TSNPerf代码使用packet_resize分支。</p>
+<ol>
+<li>
+<p>修改batch.mjs修改正确的配置文件名</p>
+</li>
+<li>
+<p>./batch.mjs pull（注意分支正确）</p>
+</li>
+<li>
+<p>./batch.mjs distribute
+Device1每次发送1个1500B的数据包，每个Switch都预留了1个时隙，将以下两个配置文件下发即可：
+<code>accuracy/d3s2-baseline-1t-config.json</code>，
+<code>accuracy/d3s2-baseline-1t-schedule.json</code></p>
+</li>
+<li>
+<p>./batch.mjs launch</p>
+</li>
+<li>
+<p>./batch.mjs collect</p>
+</li>
+<li>
+<p>将上述的schedule.json中的Device发包个数从1分别改为2,4,8，包长度分别改为750, 375和187，再从上述步骤4重新测试，发包个数修改为2后的schedule.json如下所示</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;link&#34;</span>,
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">&#34;from&#34;</span>: <span style="color:#ae81ff">3</span>,
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">&#34;to&#34;</span>: <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">&#34;from_port&#34;</span>: <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#ae81ff">7</span>,
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">&#34;schedule&#34;</span>: [
+</span></span><span style="display:flex;"><span>     {
+</span></span><span style="display:flex;"><span>         <span style="color:#f92672">&#34;period&#34;</span>: <span style="color:#ae81ff">2048</span>,
+</span></span><span style="display:flex;"><span>         <span style="color:#f92672">&#34;start&#34;</span>: <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>         <span style="color:#f92672">&#34;end&#34;</span>: <span style="color:#ae81ff">2</span>, 
+</span></span><span style="display:flex;"><span>         <span style="color:#f92672">&#34;pkt_size&#34;</span>: <span style="color:#ae81ff">750</span>, <span style="color:#75715e">// 1500/2 = 750 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>         <span style="color:#f92672">&#34;job_id&#34;</span>: <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>         <span style="color:#f92672">&#34;flow_id&#34;</span>: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>     }
+</span></span><span style="display:flex;"><span> ]
+</span></span><span style="display:flex;"><span>}<span style="color:#960050;background-color:#1e0010">,</span>
+</span></span></code></pre></div></li>
+</ol>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#目录">目录</a></li>
+    <li><a href="#testbed简单介绍">TestBed简单介绍</a></li>
+    <li><a href="#互联互通测试项目介绍">互联互通测试项目介绍</a>
+      <ul>
+        <li><a href="#1-基准测试">1. 基准测试</a></li>
+        <li><a href="#2-门控能力">2. 门控能力</a></li>
+        <li><a href="#3-带宽保证">3. 带宽保证</a></li>
+        <li><a href="#4-门控精度">4. 门控精度</a></li>
+      </ul>
+    </li>
+    <li><a href="#设备参数设置与部署">设备参数设置与部署</a></li>
+    <li><a href="#testbed运行流程">TestBed运行流程</a>
+      <ul>
+        <li><a href="#准备工作">准备工作</a></li>
+        <li><a href="#基准测试">基准测试</a></li>
+        <li><a href="#门控能力">门控能力</a></li>
+        <li><a href="#带宽保证">带宽保证</a></li>
+        <li><a href="#门控精度">门控精度</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

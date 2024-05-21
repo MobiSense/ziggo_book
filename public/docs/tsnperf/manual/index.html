@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="时间同步测试，流量整形测试，网络配置测试">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/tsnperf/manual/">
+  <meta property="og:site_name" content="ZIGGO BOOK">
+  <meta property="og:title" content="TSNPerf 检测内容及使用表">
+  <meta property="og:description" content="时间同步测试，流量整形测试，网络配置测试">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2024-05-01T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-05-01T00:00:00+00:00">
+    <meta property="article:tag" content="TSNPerf">
+    <meta property="article:tag" content="Test Case">
+    <meta property="article:tag" content="Markdown">
+    <meta property="og:image" content="http://localhost:1313/docs/tsnperf/manual/featured.jpg">
+<title>TSNPerf 检测内容及使用表 | ZIGGO BOOK</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="canonical" href="http://localhost:1313/docs/tsnperf/manual/">
+<link rel="stylesheet" href="/book.min.309b7ed028807cdb68d8d61e26d609f48369c098dbf5e4d8c0dcf4cdf49feafc.css" integrity="sha256-MJt&#43;0CiAfNto2NYeJtYJ9INpwJjb9eTYwNz0zfSf6vw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.af43789cc07a0b1ae7d3d8f9fdea4a5de96e162eb464aa66c620338e07d88a13.js" integrity="sha256-r0N4nMB6Cxrn09j5/epKXeluFi60ZKpmxiAzjgfYihM=" crossorigin="anonymous"></script>
+
+  
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>ZIGGO BOOK</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/tsnperf/" class="">ZIGGO TSNPerf</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/tsnperf/principle/" class="">TSNPerf 设计原理</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/tsnperf/configuration/" class="">TSNPerf 使用指南</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/tsnperf/manual/" class="active">TSNPerf 检测内容及使用表</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/tsnperf/report/" class="">某品牌交换机报告</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/" class="">ZIGGO Switch</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/basic_knowledge/" class="">基础知识列表</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/require/" class="">准备清单</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/system-design/" class="">System Design</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/hardware-build/" class="">Hardware Build</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/software-build/" class="">Software Build</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/switch/contributing/" class="">How to contribute</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/" class="">ZIGGO Device</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/basic_knowledge/" class="">基础知识列表</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/require/" class="">准备清单</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/getting-started/" class="">Getting start</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/system-design/" class="">System Design</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/hardware-build/" class="">Hardware Build</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/software-build/" class="">Software Build</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/ziggo_device_manual/" class="">ZIGGO Device使用手册</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/cnc_manual/" class="">CNC脚本使用指南</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/testbed/" class="">TestBed搭建流程</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/device/contributing/" class="">How to contribute</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>TSNPerf 检测内容及使用表</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#流量整形测试">流量整形测试</a>
+      <ul>
+        <li><a href="#基准测试">基准测试</a></li>
+        <li><a href="#门控能力">门控能力</a></li>
+        <li><a href="#门控精度">门控精度</a></li>
+        <li><a href="#带宽保障">带宽保障</a></li>
+        <li><a href="#视频流量测试">视频流量测试</a></li>
+      </ul>
+    </li>
+    <li><a href="#超参数汇总">超参数汇总</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="tsnperf-检测内容及使用表">
+  TSNPerf 检测内容及使用表
+  <a class="anchor" href="#tsnperf-%e6%a3%80%e6%b5%8b%e5%86%85%e5%ae%b9%e5%8f%8a%e4%bd%bf%e7%94%a8%e8%a1%a8">#</a>
+</h1>
+<h2 id="流量整形测试">
+  流量整形测试
+  <a class="anchor" href="#%e6%b5%81%e9%87%8f%e6%95%b4%e5%bd%a2%e6%b5%8b%e8%af%95">#</a>
+</h2>
+<p>本节将介绍使用TSNPerf测试待测设备流量整形功能的方法。本章节中的测试参数均为参考配置，使用者可根据实际需求修改参数。</p>
+<h3 id="基准测试">
+  基准测试
+  <a class="anchor" href="#%e5%9f%ba%e5%87%86%e6%b5%8b%e8%af%95">#</a>
+</h3>
+<p><strong>目的：</strong> 测试 <strong>无</strong> 背景流量情况下，高优先级流量经过一跳交换机（待测设备）的端到端延迟、抖动和丢包率。</p>
+<p><strong>方案：</strong>
+使用如下拓扑，按照配置文档中的介绍发送关键数据包，记录关键数据包的端到端时延、抖动和丢包率。</p>
+<p><img src="./qbv-basictest.png" alt="alt text" /></p>
+<p>下面给出TSNPerf程序的参考参数配置：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mode:                   <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>tx-mode:                <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>verbose:                true
+</span></span><span style="display:flex;"><span>use-ziggo-analysis:     false
+</span></span><span style="display:flex;"><span>pcap-filename:          <span style="color:#e6db74">&#34;/home/i210/launchtimedemo/captured_10w_1500Byte.pcap&#34;</span>
+</span></span><span style="display:flex;"><span>interface:              <span style="color:#e6db74">&#34;enp1s0&#34;</span>
+</span></span><span style="display:flex;"><span>smac:                   <span style="color:#e6db74">&#34;00:1b:21:77:ac:ae&#34;</span>
+</span></span><span style="display:flex;"><span>dmac:                   <span style="color:#e6db74">&#34;00:1b:21:76:ae:75&#34;</span>
+</span></span><span style="display:flex;"><span>ethertype:              0xb62c
+</span></span><span style="display:flex;"><span>socket-priority:        <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>vlan-priority:          <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>offset:                 <span style="color:#ae81ff">150000</span>
+</span></span><span style="display:flex;"><span>early-offset:           <span style="color:#ae81ff">300000</span>
+</span></span><span style="display:flex;"><span>use-launchtime:         true
+</span></span><span style="display:flex;"><span>basetime:               1684559640000000100L
+</span></span><span style="display:flex;"><span>packet-size:            <span style="color:#ae81ff">1500</span>
+</span></span><span style="display:flex;"><span>packets-to-send:        <span style="color:#ae81ff">10000</span>
+</span></span><span style="display:flex;"><span>interval:               <span style="color:#ae81ff">1000000</span>
+</span></span><span style="display:flex;"><span>use-udp:                false
+</span></span><span style="display:flex;"><span>sip:                    <span style="color:#e6db74">&#34;192.168.16.10&#34;</span>
+</span></span><span style="display:flex;"><span>dip:                    <span style="color:#e6db74">&#34;192.168.16.11&#34;</span>
+</span></span><span style="display:flex;"><span>sport:                  <span style="color:#ae81ff">10000</span>
+</span></span><span style="display:flex;"><span>dport:                  <span style="color:#ae81ff">10000</span>
+</span></span></code></pre></div><p>该配置中，<code>packet-size</code>可以根据需要改变，推荐可以设置为 64 Byte（最小以太网帧长）、100 Byte、500 Byte、1000 Byte、1500 Byte等。</p>
+<p>每一个关键数据包中，从第26个字节开始的8个字节是数据包的发送时间戳，用tcpdump抓取对应的接收时间戳，进而求得每个数据包的端到端时延。统计发送出的10000个数据包，可以得到平均时延和抖动（方差/标准差），以及丢包率。</p>
+<h3 id="门控能力">
+  门控能力
+  <a class="anchor" href="#%e9%97%a8%e6%8e%a7%e8%83%bd%e5%8a%9b">#</a>
+</h3>
+<p><strong>目的：</strong> 测试<strong>有</strong>背景流量情况下，高优先级流量经过一跳交换机（待测设备）的端到端延迟、抖动和丢包率。</p>
+<p><strong>方案：</strong> 使用如下拓扑进行测试。从Injector向Recorder发送背景流量，同时从Publisher向Recorder发送关键流量，记录关键数据包的端到端时延、抖动和丢包率。</p>
+<p><img src="./qbv-withbackground.png" alt="alt text" /></p>
+<p>为了全面测试待测设备地门控能力，可以调整Injector向网络中注入的背景流量带宽，以千兆网络为例，可以分别检查背景流量为 250 Mbps、500 Mbps、750 Mbps、1000 Mbps的情况下，关键数据包的时延抖动。</p>
+<p>TSNPerf程序的配置参数可参考上一小节。如果待测设备功能正常，则测试结果应与<strong>基准测试</strong>中得到的结果一致。</p>
+<h3 id="门控精度">
+  门控精度
+  <a class="anchor" href="#%e9%97%a8%e6%8e%a7%e7%b2%be%e5%ba%a6">#</a>
+</h3>
+<p><strong>目的：</strong> 测试交换机门控的精度，即能否通过预期数量和大小的以太网帧</p>
+<p><strong>方案：</strong> 每个周期预留16384ns的门控给关键流量，理论上每个周期可以通过2个1500Byte的以太网帧。</p>
+<p>下面给出TSNPerf程序的参考参数配置：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mode:                   <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>tx-mode:                <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>verbose:                true
+</span></span><span style="display:flex;"><span>use-ziggo-analysis:     false
+</span></span><span style="display:flex;"><span>pcap-filename:          <span style="color:#e6db74">&#34;/home/i210/launchtimedemo/captured_10w_1500Byte.pcap&#34;</span>
+</span></span><span style="display:flex;"><span>interface:              <span style="color:#e6db74">&#34;enp1s0&#34;</span>
+</span></span><span style="display:flex;"><span>smac:                   <span style="color:#e6db74">&#34;00:1b:21:77:ac:ae&#34;</span>
+</span></span><span style="display:flex;"><span>dmac:                   <span style="color:#e6db74">&#34;00:1b:21:76:ae:75&#34;</span>
+</span></span><span style="display:flex;"><span>ethertype:              0xb62c
+</span></span><span style="display:flex;"><span>socket-priority:        <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>vlan-priority:          <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>offset:                 <span style="color:#ae81ff">150000</span>
+</span></span><span style="display:flex;"><span>early-offset:           <span style="color:#ae81ff">300000</span>
+</span></span><span style="display:flex;"><span>use-launchtime:         false
+</span></span><span style="display:flex;"><span>basetime:               1684559640000000100L
+</span></span><span style="display:flex;"><span>packet-size:            <span style="color:#ae81ff">1500</span>
+</span></span><span style="display:flex;"><span>packets-to-send:        <span style="color:#ae81ff">100000</span>
+</span></span><span style="display:flex;"><span>interval:               <span style="color:#ae81ff">1000000</span>
+</span></span><span style="display:flex;"><span>use-udp:                false
+</span></span><span style="display:flex;"><span>sip:                    <span style="color:#e6db74">&#34;192.168.16.10&#34;</span>
+</span></span><span style="display:flex;"><span>dip:                    <span style="color:#e6db74">&#34;192.168.16.11&#34;</span>
+</span></span><span style="display:flex;"><span>sport:                  <span style="color:#ae81ff">10000</span>
+</span></span><span style="display:flex;"><span>dport:                  <span style="color:#ae81ff">10000</span>
+</span></span></code></pre></div><p>Publisher向Recorder打满关键流量，Recorder处统计接收到的关键数据包的时间戳。预期每个周期（1毫秒）可以接收到两个关键数据包。</p>
+<p>另外，还可以在不同的拓扑下，更细粒度地验证待测设备的门控精度。在下图拓扑上，以千兆以太网、1500Byte测试包为例，我们配置 DUT1 在周期的 0~16us 打开关键流量门控，DUT2 在周期的 15~31us 打开关键流量门控吗。期望，关键数据包能够不丢包地通过网络设备，并且端到端时延与门控全开时的结果一致。</p>
+<p><img src="qbv-2hop.png" alt="·" /></p>
+<h3 id="带宽保障">
+  带宽保障
+  <a class="anchor" href="#%e5%b8%a6%e5%ae%bd%e4%bf%9d%e9%9a%9c">#</a>
+</h3>
+<p><strong>目的：</strong> 测试待测交换机是否可以为关键流量预留固定的带宽</p>
+<p><strong>方案：</strong></p>
+<ol>
+<li>配置待测交换机的门控，为关键数据预留25%、50%、75%的带宽。</li>
+<li>从Injector处向Recorder打满背景流量。</li>
+<li>用TSNPerf，从Publisher向Recorder发送关键流量，配置参数可参考上一小节。</li>
+<li>Recorder处用tcpdump/wireshark记录带宽使用情况。以千兆带宽为例，预期关键数据会分别占用 250Mbps、500Mbps、750Mbps 的带宽。</li>
+</ol>
+<h3 id="视频流量测试">
+  视频流量测试
+  <a class="anchor" href="#%e8%a7%86%e9%a2%91%e6%b5%81%e9%87%8f%e6%b5%8b%e8%af%95">#</a>
+</h3>
+<p><strong>目的：</strong> 测试以太网帧大小不同的视频流量经过一跳交换机的端延迟、抖动和丢包率</p>
+<p><strong>方案：</strong> 测试拓扑参考<strong>基准测试</strong>章节。准备好一个视频流量的pcap文件<code>H264.pcap</code>，TSNPerf程序的参数配置如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mode:                   <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>tx-mode:                <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>verbose:                true
+</span></span><span style="display:flex;"><span>use-ziggo-analysis:     false
+</span></span><span style="display:flex;"><span>pcap-filename:          <span style="color:#e6db74">&#34;/home/i210/launchtimedemo/H264.pcap&#34;</span>
+</span></span><span style="display:flex;"><span>interface:              <span style="color:#e6db74">&#34;enp1s0&#34;</span>
+</span></span><span style="display:flex;"><span>smac:                   <span style="color:#e6db74">&#34;00:1b:21:77:ac:ae&#34;</span>
+</span></span><span style="display:flex;"><span>dmac:                   <span style="color:#e6db74">&#34;00:1b:21:76:ae:75&#34;</span>
+</span></span><span style="display:flex;"><span>ethertype:              0xb62c
+</span></span><span style="display:flex;"><span>socket-priority:        <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>vlan-priority:          <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>offset:                 <span style="color:#ae81ff">150000</span>
+</span></span><span style="display:flex;"><span>early-offset:           <span style="color:#ae81ff">300000</span>
+</span></span><span style="display:flex;"><span>use-launchtime:         true
+</span></span><span style="display:flex;"><span>basetime:               1684559640000000100L
+</span></span><span style="display:flex;"><span>packet-size:            <span style="color:#ae81ff">1500</span>
+</span></span><span style="display:flex;"><span>packets-to-send:        <span style="color:#ae81ff">10000</span>
+</span></span><span style="display:flex;"><span>interval:               <span style="color:#ae81ff">1000000</span>
+</span></span><span style="display:flex;"><span>use-udp:                true
+</span></span><span style="display:flex;"><span>sip:                    <span style="color:#e6db74">&#34;192.168.16.10&#34;</span>
+</span></span><span style="display:flex;"><span>dip:                    <span style="color:#e6db74">&#34;192.168.16.11&#34;</span>
+</span></span><span style="display:flex;"><span>sport:                  <span style="color:#ae81ff">10000</span>
+</span></span><span style="display:flex;"><span>dport:                  <span style="color:#ae81ff">10000</span>
+</span></span></code></pre></div><p>如果待测交换机是存储转发（store-and-forward）模式的，则预期每个数据包的端到端时延会因包的大小而有所不同。如果待测交换机是直通转发（cut-through）模式的，则预期数据包的端到端时延抖动是很小的。</p>
+<h2 id="超参数汇总">
+  超参数汇总
+  <a class="anchor" href="#%e8%b6%85%e5%8f%82%e6%95%b0%e6%b1%87%e6%80%bb">#</a>
+</h2>
+<p>除了上文中给的TSNPerf程序配置，还有一些参数在测试用例中经常需要根据需求改动，现将之罗列于下：</p>
+<ul>
+<li>packet-size：该参数设置了测试包的大小，用于验证待测设备转发不同数据包的能力。推荐的配置有：64 Byte（最小以太网帧长）、100 Byte、500 Byte、1000 Byte、1500 Byte等。</li>
+<li>背景流量大小：该参数设置了网络中的背景流量大小，用于验证待测设备能否保障关键流量的低延迟、低抖动传输。可以根据实际网络带宽的大小，配置背景流量分别占用 0%、25%、50%、75%、100% 的网络带宽。</li>
+<li>拓扑：拓扑决定了关键流量在网络中的传输路径。在不同拓扑上测试可以更加全面地验证待测设备的门控能力、门控精度。本文限于篇幅，仅使用了 一跳测试拓扑 和 两跳测试拓扑，使用者可以根据需要，改变测试拓扑。</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#流量整形测试">流量整形测试</a>
+      <ul>
+        <li><a href="#基准测试">基准测试</a></li>
+        <li><a href="#门控能力">门控能力</a></li>
+        <li><a href="#门控精度">门控精度</a></li>
+        <li><a href="#带宽保障">带宽保障</a></li>
+        <li><a href="#视频流量测试">视频流量测试</a></li>
+      </ul>
+    </li>
+    <li><a href="#超参数汇总">超参数汇总</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
