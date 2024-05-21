@@ -69,7 +69,6 @@ The results reveal that the Brand A TSN switch provides high-priority resource r
 but its GCL accuracy is low, failing to meet the requirements of the IEEE 802.1Qbv protocol.
 
 ![GCL Capability](./figs/gclcapability.png "GCL Capability")
-
 ![Bandwidth Guarantee](./figs/bwguarantee.png "Bandwidth Guarantee")
 
 <img src="./figs/gclcapability.png" alt="GCL Capability" style="zoom:49%;" />  <img src="./figs/bwguarantee.png" alt="Bandwidth Guarantee" style="zoom:49%;" />
