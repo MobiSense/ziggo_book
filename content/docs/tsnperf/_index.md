@@ -1,6 +1,6 @@
 ---
 title: ZIGGO TSNPerf
-weight: 600
+weight: 300
 ---
 <div align="center">
 
@@ -59,7 +59,7 @@ Accurate timestamp (up to 8ns), time synchronization accuracy and protocol consi
 
 ## Getting Started
 
-Please refer to TSNPerf [documents](/ziggo_book/tsnperf/configuration/) to get prepared.
+Please refer to TSNPerf [documents](/ziggo_book/docs/tsnperf/configuration/) to get prepared.
 
 ## Test Case
 
@@ -75,7 +75,7 @@ For more details of this test case, please refer to the [test report](http://tns
 
 ## License and Citation
 
-ZIGGO is released under a [MIT license](LICENSE.txt). 
+ZIGGO is released under a [MIT license](). 
 
 Please consider citing our papers if the project helps your research with the following BibTex:
 

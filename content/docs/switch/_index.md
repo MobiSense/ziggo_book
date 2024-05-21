@@ -75,13 +75,13 @@ The left side of the picture is the ZYNQ development board we use, and the right
 
 Getting started with ZIGGO-CaaS-Switch/ZIGGO-Device is a ***pretty hard*** task. Users/developers need to have sufficient basic knowledge and be prepare to for a long periond of learning and debugging.
 
-Please refer to [basic_knowledge.md](/ziggo_book/switch/basic_knowledge/) to check if you have ability to use ZIGGO competently. 
+Please refer to [basic_knowledge.md](/ziggo_book/docs/switch/basic_knowledge/) to check if you have ability to use ZIGGO competently. 
 
 ## Getting Started
 
-Please refer to [required.md](/ziggo_book/switch/require/)  to  get prepared.
+Please refer to [required.md](/ziggo_book/docs/switch/require/)  to  get prepared.
 
-Please refer to [hardware-build.md](/ziggo_book/switch/require/) for the build hardware for ZIGGO Evaluation Toolkit and [software-build.md](/ziggo_book/switch/software-build/) to run time synchronization logic and set up TSN GCL .
+Please refer to [hardware-build.md](/ziggo_book/docs/switch/hardware-build/) for the build hardware for ZIGGO Evaluation Toolkit and [software-build.md](/ziggo_book/docs/switch/software-build/) to run time synchronization logic and set up TSN GCL .
 
 ## System Design
 
@@ -89,7 +89,7 @@ ZIGGO is implemented on ZYNQ-7000 SoC and exploits ZYNQ's both hardware and soft
 
 ![framework](figs/framework.jpg)
 
-We also provide more in-depth [documentation](/ziggo_book/switch/system-design/) explaining specific design principles for ZIGGO CaaS Switch.
+We also provide more in-depth [documentation](/ziggo_book/docs/switch/system-design/) explaining specific design principles for ZIGGO CaaS Switch.
 
 ## Demo APP Tutorial
 
@@ -148,6 +148,6 @@ Please consider citing our papers if the project helps your research with the fo
 
 ## Contributing
 
-Please see the [guide](/ziggo_book/switch/contributing/) for information on how to ask for help or contribute to the development of ZIGGO!
+Please see the [guide](/ziggo_book/docs/switch/contributing/) for information on how to ask for help or contribute to the development of ZIGGO!
 
 > The development team will only answer questions on github issues and reject other forms of questions.

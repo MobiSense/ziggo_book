@@ -45,11 +45,11 @@ This is the document for the ZIGGO Device. (We also offer [ZIGGO-CaaS-Switch](ht
 
 The construction of the ZIGGO Open Platform consists of three levels: network device, management tools, and a Demo App:
 
-- The software and hardware projects, along with the development board startup [tutorial](/ziggo_book/device/getting-started/), provide instructions for setting up an individual network device.
+- The software and hardware projects, along with the development board startup [tutorial](/ziggo_book/docs/device/getting-started/), provide instructions for setting up an individual network device.
 
-- The [CNC User Manual](docs/cnc-manual.md) and [Device User Manual](/ziggo_book/device/getting-started/) cover system configuration and management tools.
+- The [CNC User Manual](docs/cnc-manual.md) and [Device User Manual](/ziggo_book/docs/device/getting-started/) cover system configuration and management tools.
 
-- Lastly, we offer a comprehensive [Demo App building tutorial](/ziggo_book/device/testbed/) that instructs how to
+- Lastly, we offer a comprehensive [Demo App building tutorial](/ziggo_book/docs/device/testbed/) that instructs how to
   collaboratively build a complete and functional Demo using network devices and
   management tools.
 
@@ -79,13 +79,13 @@ The left side of the picture is the ZYNQ development board we use, and the right
 
 Getting started with ZIGGO-CaaS-Switch/ZIGGO-Device is a ***pretty hard*** task. Users/developers need to have sufficient basic knowledge and be prepare to for a long periond of learning and debugging.
 
-Please refer to [basic_knowledge.md](/ziggo_book/device/basic_knowledge/) to check if you have ability to use ZIGGO competently. 
+Please refer to [basic_knowledge.md](/ziggo_book/docs/device/basic_knowledge/) to check if you have ability to use ZIGGO competently. 
 
 ## Getting Started
 
-Please refer to [required.md](/ziggo_book/device/require/)  to  get prepared.
+Please refer to [required.md](/ziggo_book/docs/device/require/)  to  get prepared.
 
-After that, please refer to [getting_started.md](/ziggo_book/device/getting-started/) for the build and run a single ZIGGO Device.
+After that, please refer to [getting_started.md](/ziggo_book/docs/device/getting-started/) for the build and run a single ZIGGO Device.
 
 ## System Design
 
@@ -93,11 +93,11 @@ ZIGGO is implemented on ZYNQ-7000 SoC and exploits ZYNQ's both hardware and soft
 
 ![framework](figs/framework.jpg)
 
-We also provide more in-depth [documentation](/ziggo_book/device/system-design/) explaining specific design principles for ZIGGO Device.
+We also provide more in-depth [documentation](/ziggo_book/docs/device/system-design/) explaining specific design principles for ZIGGO Device.
 
 ## Demo APP Tutorial
 
-We also provide a [testbed build document](/ziggo_book/device/testbed/) that allows you to build a real-time Ethernet system using the ZIGGO swtich and Device. 
+We also provide a [testbed build document](/ziggo_book/docs/device/testbed/) that allows you to build a real-time Ethernet system using the ZIGGO swtich and Device. 
 
 Through this platform, we can measure the `delay` and `jitter` of TSN time-critcial traffic, the switch's `gating capability`, `bandwidth guarantee` and `gating accuracy`. 
 
@@ -147,6 +147,6 @@ Please consider citing our papers if the project helps your research with the fo
 
 ## Contributing
 
-Please see the [guide](/ziggo_book/device/contributing/) for information on how to ask for help or contribute to the development of ZIGGO!
+Please see the [guide](/ziggo_book/docs/device/contributing/) for information on how to ask for help or contribute to the development of ZIGGO!
 
 > The development team will only answer questions on github issues and reject other forms of questions.
