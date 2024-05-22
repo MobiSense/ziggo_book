@@ -18,7 +18,7 @@
 <link rel="canonical" href="http://localhost:1313/docs/switch/">
 <link rel="stylesheet" href="/book.min.309b7ed028807cdb68d8d61e26d609f48369c098dbf5e4d8c0dcf4cdf49feafc.css" integrity="sha256-MJt&#43;0CiAfNto2NYeJtYJ9INpwJjb9eTYwNz0zfSf6vw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.af43789cc07a0b1ae7d3d8f9fdea4a5de96e162eb464aa66c620338e07d88a13.js" integrity="sha256-r0N4nMB6Cxrn09j5/epKXeluFi60ZKpmxiAzjgfYihM=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.b0112c4b5e903fd709c0acd5394563fa04a191d9d8e67d2835a2bb38d2350127.js" integrity="sha256-sBEsS16QP9cJwKzVOUVj&#43;gShkdnY5n0oNaK7ONI1ASc=" crossorigin="anonymous"></script>
 
   
 
@@ -38,7 +38,7 @@ https://github.com/alex-shpak/hugo-book
         
   <nav>
 <h2 class="book-brand">
-  <a class="flex align-center" href="/"><span>ZIGGO BOOK</span>
+  <a class="flex align-center" href="/"><img src="/logo.png" alt="Logo" /><span>ZIGGO BOOK</span>
   </a>
 </h2>
 
@@ -431,7 +431,27 @@ https://github.com/alex-shpak/hugo-book
   
   <aside class="hidden clearfix">
     
-  
+  <div style="margin: 50px; display:flex; justify-content:center; gap: 25px;">
+    <a href="https://github.com/MobiSense/ziggo_book" style="padding: 10px 10px;
+	background-color: rgb(0, 0, 0); /* 设置按钮背景色为橙色 */
+	color: white; /* 设置按钮文字颜色为白色 */
+	text-decoration: none; /* 去除链接的下划线 */
+	border: 3px solid rgb(0, 0, 0);
+	border-radius: 5px; /* 设置按钮的边角为圆角 */
+	font-size: 14px; /* 设置文字大小 */
+	text-align: center; /* 按钮内文字居中显示 */
+	display: inline-block; /* 使链接的布局表现为块级元素 */">GitHub</a>
+    <a href="https://mobisense.github.io/ziggo_homepage/" style="padding: 10px 10px;
+	background-color: rgb(0, 0, 0); /* 设置按钮背景色为橙色 */
+	color: white; /* 设置按钮文字颜色为白色 */
+	text-decoration: none; /* 去除链接的下划线 */
+	border: 3px solid rgb(0, 0, 0);
+	border-radius: 5px; /* 设置按钮的边角为圆角 */
+	font-size: 14px; /* 设置文字大小 */
+	text-align: center; /* 按钮内文字居中显示 */
+	display: inline-block; /* 使链接的布局表现为块级元素 */">Home</a>
+</div>
+
 <nav id="TableOfContents">
   <ul>
     <li><a href="#table-of-contents">Table of Contents</a></li>
@@ -542,32 +562,32 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#read-before-start">#</a>
 </h2>
 <p>Getting started with ZIGGO-CaaS-Switch/ZIGGO-Device is a <em><strong>pretty hard</strong></em> task. Users/developers need to have sufficient basic knowledge and be prepare to for a long periond of learning and debugging.</p>
-<p>Please refer to <a href="/ZIGGO_WEB/switch/basic_knowledge/">basic_knowledge.md</a> to check if you have ability to use ZIGGO competently.</p>
+<p>Please refer to <a href="/ziggo_book/docs/switch/basic_knowledge/">basic_knowledge.md</a> to check if you have ability to use ZIGGO competently.</p>
 <h2 id="getting-started">
   Getting Started
   <a class="anchor" href="#getting-started">#</a>
 </h2>
-<p>Please refer to <a href="/ZIGGO_WEB/switch/require/">required.md</a>  to  get prepared.</p>
-<p>Please refer to <a href="/ZIGGO_WEB/switch/require/">hardware-build.md</a> for the build hardware for ZIGGO Evaluation Toolkit and <a href="/ZIGGO_WEB/switch/software-build/">software-build.md</a> to run time synchronization logic and set up TSN GCL .</p>
+<p>Please refer to <a href="/ziggo_book/docs/switch/require/">required.md</a>  to  get prepared.</p>
+<p>Please refer to <a href="/ziggo_book/docs/switch/hardware-build/">hardware-build.md</a> for the build hardware for ZIGGO Evaluation Toolkit and <a href="/ziggo_book/docs/switch/software-build/">software-build.md</a> to run time synchronization logic and set up TSN GCL .</p>
 <h2 id="system-design">
   System Design
   <a class="anchor" href="#system-design">#</a>
 </h2>
 <p>ZIGGO is implemented on ZYNQ-7000 SoC and exploits ZYNQ&rsquo;s both hardware and software programmability.</p>
 <p><img src="figs/framework.jpg" alt="framework" /></p>
-<p>We also provide more in-depth <a href="/ZIGGO_WEB/switch/system-design/">documentation</a> explaining specific design principles for ZIGGO CaaS Switch.</p>
+<p>We also provide more in-depth <a href="/ziggo_book/docs/switch/system-design/">documentation</a> explaining specific design principles for ZIGGO CaaS Switch.</p>
 <h2 id="demo-app-tutorial">
   Demo APP Tutorial
   <a class="anchor" href="#demo-app-tutorial">#</a>
 </h2>
-<p>We also provide a <a href="https://github.com/Mobisense/Ziggo-Device/blob/main/docs/testbed.md">testbed build document</a>(in ZIGGO Device) that allows you to build a real-time Ethernet system using the ZIGGO swtich and ZIGGO Device.</p>
+<p>We also provide a <a href="/ziggo_book/docs/device/testbed/">testbed build document</a>(in ZIGGO Device) that allows you to build a real-time Ethernet system using the ZIGGO swtich and ZIGGO Device.</p>
 <p>Through this platform, we can measure the <code>delay</code> and <code>jitter</code> of TSN time-critcial traffic, the switch&rsquo;s <code>gating capability</code>, <code>bandwidth guarantee</code> and <code>gating accuracy</code>.</p>
 <p>Replacing ZIGGO CaaS switches with commercial TSN switches can also test its above capabilities.</p>
 <h2 id="license-and-citation">
   License and Citation
   <a class="anchor" href="#license-and-citation">#</a>
 </h2>
-<p>ZIGGO is released under a <a href="[LICENSE.txt]%28https://github.com/MobiSense/Ziggo-Switch/blob/main/LICENSE.txt%29">MIT license</a>.</p>
+<p>ZIGGO is released under a <a href="https://github.com/MobiSense/Ziggo-CaaS-Switch/blob/main/LICENSE.txt">MIT license</a>.</p>
 <p>Please consider citing our papers if the project helps your research with the following BibTex:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bibtex" data-lang="bibtex"><span style="display:flex;"><span><span style="color:#a6e22e">@inproceedings</span>{caas,
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">author</span>=<span style="color:#e6db74">{Yang, Zheng and Zhao, Yi and Dang, Fan and He, Xiaowu and Wu, Jiahang and Cao, Hao and Wang, Zeyu and Liu, Yunhao}</span>,
@@ -620,7 +640,7 @@ https://github.com/alex-shpak/hugo-book
   Contributing
   <a class="anchor" href="#contributing">#</a>
 </h2>
-<p>Please see the <a href="/ZIGGO_WEB/switch/contributing/">guide</a> for information on how to ask for help or contribute to the development of ZIGGO!</p>
+<p>Please see the <a href="/ziggo_book/docs/switch/contributing/">guide</a> for information on how to ask for help or contribute to the development of ZIGGO!</p>
 <blockquote>
 <p>The development team will only answer questions on github issues and reject other forms of questions.</p>
 </blockquote>
@@ -635,6 +655,13 @@ https://github.com/alex-shpak/hugo-book
 
 
 
+  <div>
+    <a class="flex align-center" href="https://github.com/Mobisense/ziggo_book///tree/main//content/docs/switch/_index.md" target="_blank" rel="noopener">
+      <img src="/svg/edit.svg" class="book-icon" alt="" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
 
 </div>
 
@@ -644,7 +671,20 @@ https://github.com/alex-shpak/hugo-book
 
 
  
-        
+        <footer id="mu-footer" role="contentinfo" style="	height: 160px;
+clear: both;
+color: #000000;
+text-align: center;
+padding-top: 100px;">
+    <div class="container">
+        <div class="col-sm-12">
+            <div>
+                <p> Room 211, District 11, East Main Building, Tsinghua University, Haidian District, Beijing, China, 100084 | </p>
+                <p> &copy 2021 <span class="ziggo-font">ZIGGO</span>, TNS, School of Software, Tsinghua University . All rights reserved. </p>
+            </div>
+        </div>
+    </div>
+</footer>
       </footer>
 
       
@@ -662,7 +702,27 @@ https://github.com/alex-shpak/hugo-book
     <aside class="book-toc">
       <div class="book-toc-content">
         
-  
+  <div style="margin: 50px; display:flex; justify-content:center; gap: 25px;">
+    <a href="https://github.com/MobiSense/ziggo_book" style="padding: 10px 10px;
+	background-color: rgb(0, 0, 0); /* 设置按钮背景色为橙色 */
+	color: white; /* 设置按钮文字颜色为白色 */
+	text-decoration: none; /* 去除链接的下划线 */
+	border: 3px solid rgb(0, 0, 0);
+	border-radius: 5px; /* 设置按钮的边角为圆角 */
+	font-size: 14px; /* 设置文字大小 */
+	text-align: center; /* 按钮内文字居中显示 */
+	display: inline-block; /* 使链接的布局表现为块级元素 */">GitHub</a>
+    <a href="https://mobisense.github.io/ziggo_homepage/" style="padding: 10px 10px;
+	background-color: rgb(0, 0, 0); /* 设置按钮背景色为橙色 */
+	color: white; /* 设置按钮文字颜色为白色 */
+	text-decoration: none; /* 去除链接的下划线 */
+	border: 3px solid rgb(0, 0, 0);
+	border-radius: 5px; /* 设置按钮的边角为圆角 */
+	font-size: 14px; /* 设置文字大小 */
+	text-align: center; /* 按钮内文字居中显示 */
+	display: inline-block; /* 使链接的布局表现为块级元素 */">Home</a>
+</div>
+
 <nav id="TableOfContents">
   <ul>
     <li><a href="#table-of-contents">Table of Contents</a></li>

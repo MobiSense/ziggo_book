@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Docs on ZIGGO BOOK</title>
+    <title>ZIGGO BOOK</title>
     <link>http://localhost:1313/docs/</link>
-    <description>Recent content in Docs on ZIGGO BOOK</description>
+    <description>Recent content on ZIGGO BOOK</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate></lastBuildDate>
