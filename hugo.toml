@@ -2,3 +2,18 @@ baseURL = 'https://example.org/'
 languageCode = 'en-us'
 title = 'ZIGGO BOOK'
 theme = "hugo-book"
+
+[params]
+    # Set source repository location.
+    # Used for 'Last Modified' and 'Edit this page' links.
+    BookRepo = 'https://github.com/Mobisense/ziggo_book/'
+
+    # Enable 'Edit this page' links for 'doc' page type.
+    # Disabled by default. Uncomment to enable. Requires 'BookRepo' param.
+    # Path must point to the site directory.
+    BookEditPath = '/tree/main/'
+
+    # (Optional, default January 2, 2006) Configure the date format used on the pages
+    # - In git information
+    # - In blog posts
+    BookDateFormat = 'Jan 2, 2006'
