@@ -1,7 +1,3 @@
-# Welcome to ZIGGO BOOK!
+# Welcome to ZIGGO Platform Tutorial!
 
-## 汉堡王
-
-## 
-
-## 
+ZIGGO is a flexible, standard-compliant, and control-function-virtualized TSN switch platform ready for industrial control, automotive electronics, and other time-sensitive applications.
