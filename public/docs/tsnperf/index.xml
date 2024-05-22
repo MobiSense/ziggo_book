@@ -11,7 +11,7 @@
     <item>
       <title>TSNPerf 设计原理</title>
       <link>http://localhost:1313/docs/tsnperf/principle/</link>
-      <pubDate>Wed, 01 May 2024 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/docs/tsnperf/principle/</guid>
       <description>TSNPerf 使用网卡硬件时间戳功能达到纳秒级抖动</description>
     </item>

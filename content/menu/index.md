@@ -5,3 +5,6 @@
 
   <!-- - [3rd]({{< relref "/docs/example/collapsed/3rd-level" >}})
     - [4th]({{< relref "/docs/example/collapsed/3rd-level/4th-level" >}}) -->
++++
+headless = true
++++

@@ -1,7 +1,7 @@
 ---
 title: TSNPerf 设计原理
 summary: TSNPerf 使用网卡硬件时间戳功能达到纳秒级抖动
-date: 2024-05-01
+post: 2024-05-01
 authors:
   - admin
 tags:

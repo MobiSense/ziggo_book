@@ -18,7 +18,7 @@
 <link rel="canonical" href="http://localhost:1313/docs/device/">
 <link rel="stylesheet" href="/book.min.309b7ed028807cdb68d8d61e26d609f48369c098dbf5e4d8c0dcf4cdf49feafc.css" integrity="sha256-MJt&#43;0CiAfNto2NYeJtYJ9INpwJjb9eTYwNz0zfSf6vw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.af43789cc07a0b1ae7d3d8f9fdea4a5de96e162eb464aa66c620338e07d88a13.js" integrity="sha256-r0N4nMB6Cxrn09j5/epKXeluFi60ZKpmxiAzjgfYihM=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.b0112c4b5e903fd709c0acd5394563fa04a191d9d8e67d2835a2bb38d2350127.js" integrity="sha256-sBEsS16QP9cJwKzVOUVj&#43;gShkdnY5n0oNaK7ONI1ASc=" crossorigin="anonymous"></script>
 
   
 
@@ -38,7 +38,7 @@ https://github.com/alex-shpak/hugo-book
         
   <nav>
 <h2 class="book-brand">
-  <a class="flex align-center" href="/"><span>ZIGGO BOOK</span>
+  <a class="flex align-center" href="/"><img src="/logo.png" alt="Logo" /><span>ZIGGO BOOK</span>
   </a>
 </h2>
 
@@ -502,13 +502,13 @@ https://github.com/alex-shpak/hugo-book
 <p>The construction of the ZIGGO Open Platform consists of three levels: network device, management tools, and a Demo App:</p>
 <ul>
 <li>
-<p>The software and hardware projects, along with the development board startup <a href="/ZIGGO_WEB/device/getting-started/">tutorial</a>, provide instructions for setting up an individual network device.</p>
+<p>The software and hardware projects, along with the development board startup <a href="/ziggo_book/docs/device/getting-started/">tutorial</a>, provide instructions for setting up an individual network device.</p>
 </li>
 <li>
-<p>The <a href="docs/cnc-manual.md">CNC User Manual</a> and <a href="/ZIGGO_WEB/device/getting-started/">Device User Manual</a> cover system configuration and management tools.</p>
+<p>The <a href="/ziggo_book/docs/device/cnc_manual/">CNC User Manual</a> and <a href="/ziggo_book/docs/device/ziggo_device_manual/">Device User Manual</a> cover system configuration and management tools.</p>
 </li>
 <li>
-<p>Lastly, we offer a comprehensive <a href="/ZIGGO_WEB/device/testbed/">Demo App building tutorial</a> that instructs how to
+<p>Lastly, we offer a comprehensive <a href="/ziggo_book/docs/device/testbed/">Demo App building tutorial</a> that instructs how to
 collaboratively build a complete and functional Demo using network devices and
 management tools.</p>
 </li>
@@ -548,25 +548,25 @@ management tools.</p>
   <a class="anchor" href="#read-before-start">#</a>
 </h2>
 <p>Getting started with ZIGGO-CaaS-Switch/ZIGGO-Device is a <em><strong>pretty hard</strong></em> task. Users/developers need to have sufficient basic knowledge and be prepare to for a long periond of learning and debugging.</p>
-<p>Please refer to <a href="/ZIGGO_WEB/device/basic_knowledge/">basic_knowledge.md</a> to check if you have ability to use ZIGGO competently.</p>
+<p>Please refer to <a href="/ziggo_book/docs/device/basic_knowledge/">basic_knowledge.md</a> to check if you have ability to use ZIGGO competently.</p>
 <h2 id="getting-started">
   Getting Started
   <a class="anchor" href="#getting-started">#</a>
 </h2>
-<p>Please refer to <a href="/ZIGGO_WEB/device/require/">required.md</a>  to  get prepared.</p>
-<p>After that, please refer to <a href="/ZIGGO_WEB/device/getting-started/">getting_started.md</a> for the build and run a single ZIGGO Device.</p>
+<p>Please refer to <a href="/ziggo_book/docs/device/require/">required.md</a>  to  get prepared.</p>
+<p>After that, please refer to <a href="/ziggo_book/docs/device/getting-started/">getting_started.md</a> for the build and run a single ZIGGO Device.</p>
 <h2 id="system-design">
   System Design
   <a class="anchor" href="#system-design">#</a>
 </h2>
 <p>ZIGGO is implemented on ZYNQ-7000 SoC and exploits ZYNQ&rsquo;s both hardware and software programmability.</p>
 <p><img src="figs/framework.jpg" alt="framework" /></p>
-<p>We also provide more in-depth <a href="/ZIGGO_WEB/device/system-design/">documentation</a> explaining specific design principles for ZIGGO Device.</p>
+<p>We also provide more in-depth <a href="/ziggo_book/docs/device/system-design/">documentation</a> explaining specific design principles for ZIGGO Device.</p>
 <h2 id="demo-app-tutorial">
   Demo APP Tutorial
   <a class="anchor" href="#demo-app-tutorial">#</a>
 </h2>
-<p>We also provide a <a href="/ZIGGO_WEB/device/testbed/">testbed build document</a> that allows you to build a real-time Ethernet system using the ZIGGO swtich and Device.</p>
+<p>We also provide a <a href="/ziggo_book/docs/device/testbed/">testbed build document</a> that allows you to build a real-time Ethernet system using the ZIGGO swtich and Device.</p>
 <p>Through this platform, we can measure the <code>delay</code> and <code>jitter</code> of TSN time-critcial traffic, the switch&rsquo;s <code>gating capability</code>, <code>bandwidth guarantee</code> and <code>gating accuracy</code>.</p>
 <p>Replacing ZIGGO CaaS switches with commercial TSN switches can also test its above capabilities.</p>
 <h2 id="license-and-citation">
@@ -615,7 +615,7 @@ management tools.</p>
   Contributing
   <a class="anchor" href="#contributing">#</a>
 </h2>
-<p>Please see the <a href="/ZIGGO_WEB/device/contributing/">guide</a> for information on how to ask for help or contribute to the development of ZIGGO!</p>
+<p>Please see the <a href="/ziggo_book/docs/device/contributing/">guide</a> for information on how to ask for help or contribute to the development of ZIGGO!</p>
 <blockquote>
 <p>The development team will only answer questions on github issues and reject other forms of questions.</p>
 </blockquote>
@@ -629,6 +629,13 @@ management tools.</p>
 
 
 
+
+  <div>
+    <a class="flex align-center" href="https://github.com/Mobisense/ziggo_book///tree/main//content/docs/device/_index.md" target="_blank" rel="noopener">
+      <img src="/svg/edit.svg" class="book-icon" alt="" />
+      <span>Edit this page</span>
+    </a>
+  </div>
 
 
 </div>

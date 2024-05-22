@@ -2,3 +2,29 @@ baseURL = 'https://example.org/'
 languageCode = 'en-us'
 title = 'ZIGGO BOOK'
 theme = "hugo-book"
+
+[params]
+    # Set source repository location.
+    # Used for 'Last Modified' and 'Edit this page' links.
+    BookRepo = 'https://github.com/Mobisense/ziggo_book/'
+
+    # Enable 'Edit this page' links for 'doc' page type.
+    # Disabled by default. Uncomment to enable. Requires 'BookRepo' param.
+    # Path must point to the site directory.
+    BookEditPath = '/tree/main/'
+
+    # (Optional, default January 2, 2006) Configure the date format used on the pages
+    # - In git information
+    # - In blog posts
+    BookDateFormat = 'Jan 2, 2006'
+
+    # (Optional, default none) Set the path to a logo for the book. If the logo is
+    # /static/logo.png then the path would be 'logo.png'
+    BookLogo = 'logo.png'
+
+    # Specifies commit portion of the link to the page's last modified commit hash for 'doc' page
+    # type.
+    # Required if 'BookRepo' param is set.
+    # Value used to construct a URL consisting of BookRepo/BookCommitPath/<commit-hash>
+    # Github uses 'commit', Bitbucket uses 'commits'
+    BookCommitPath = 'commit'
