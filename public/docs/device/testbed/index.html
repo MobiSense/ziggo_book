@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us" dir="ltr">
+<html lang="en" dir="ltr">
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,9 +8,9 @@
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/device/testbed/">
   <meta property="og:site_name" content="ZIGGO BOOK">
-  <meta property="og:title" content="TestBed搭建流程">
+  <meta property="og:title" content="TestBed Setup Process">
   <meta property="og:description" content="Docs to enable CaaS Switches’ time synchronization logic and set up TSN GCL (gate control list), switch forwarding rules (including to dual-DMA).">
-  <meta property="og:locale" content="en_us">
+  <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
     <meta property="article:published_time" content="2024-05-01T00:00:00+00:00">
@@ -19,13 +19,14 @@
     <meta property="article:tag" content="ZIGGO">
     <meta property="article:tag" content="Markdown">
     <meta property="og:image" content="http://localhost:1313/docs/device/testbed/featured.jpg">
-<title>TestBed搭建流程 | ZIGGO BOOK</title>
+<title>TestBed Setup Process | ZIGGO BOOK</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
 <link rel="canonical" href="http://localhost:1313/docs/device/testbed/">
+  <link rel="alternate" hreflang="zh" href="http://localhost:1313/zh/docs/device/testbed/" title="TestBed搭建流程">
 <link rel="stylesheet" href="/book.min.309b7ed028807cdb68d8d61e26d609f48369c098dbf5e4d8c0dcf4cdf49feafc.css" integrity="sha256-MJt&#43;0CiAfNto2NYeJtYJ9INpwJjb9eTYwNz0zfSf6vw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.d42a9f0f8e9f13283003ae80953807b8c059101d557307e6df7621d96cbc10d9.js" integrity="sha256-1CqfD46fEygwA66AlTgHuMBZEB1Vcwfm33Yh2Wy8ENk=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.25adf4b46535969cec76b2b6ce985074f311eaeb438cc5c9e4b8f1ed2e562a8e.js" integrity="sha256-Ja30tGU1lpzsdrK2zphQdPMR6utDjMXJ5Ljx7S5WKo4=" crossorigin="anonymous"></script>
 
   
 
@@ -58,6 +59,41 @@ https://github.com/alex-shpak/hugo-book
 
 
 
+  
+
+
+
+  
+    
+  
+
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/translate.svg" class="book-icon" alt="Languages" />
+        English
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://localhost:1313/zh/docs/device/testbed/">
+          Chinese
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
 
 
 
@@ -81,7 +117,10 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/tsnperf/" class="">ZIGGO TSNPerf</a>
+    <input type="checkbox" id="section-f7037f1d8c98cfd6af893e54a7a7c84a" class="toggle"  />
+    <label for="section-f7037f1d8c98cfd6af893e54a7a7c84a" class="flex justify-between">
+      <a href="/docs/tsnperf/" class="">ZIGGO TSNPerf</a>
+    </label>
   
 
           
@@ -107,7 +146,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/tsnperf/configuration/" class="">TSNPerf 使用指南</a>
+    <a href="/docs/tsnperf/configuration/" class="">TSNPerf User Guide</a>
   
 
         </li>
@@ -133,7 +172,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/tsnperf/report/" class="">某品牌交换机报告</a>
+    <a href="/docs/tsnperf/report/" class="">Report for Brand A Switch</a>
   
 
         </li>
@@ -151,7 +190,10 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/switch/" class="">ZIGGO Switch</a>
+    <input type="checkbox" id="section-d43c4f20a039dd2c08c63c6629ffaedf" class="toggle"  />
+    <label for="section-d43c4f20a039dd2c08c63c6629ffaedf" class="flex justify-between">
+      <a href="/docs/switch/" class="">ZIGGO Switch</a>
+    </label>
   
 
           
@@ -164,7 +206,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/switch/basic_knowledge/" class="">基础知识列表</a>
+    <a href="/docs/switch/basic_knowledge/" class="">List of Basic Knowledge</a>
   
 
         </li>
@@ -177,7 +219,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/switch/require/" class="">准备清单</a>
+    <a href="/docs/switch/require/" class="">Preparation Checklist</a>
   
 
         </li>
@@ -247,7 +289,10 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/device/" class="">ZIGGO Device</a>
+    <input type="checkbox" id="section-9944d1fadd4ce8adc7644b141d205c6b" class="toggle" checked />
+    <label for="section-9944d1fadd4ce8adc7644b141d205c6b" class="flex justify-between">
+      <a href="/docs/device/" class="">ZIGGO Device</a>
+    </label>
   
 
           
@@ -260,7 +305,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/device/basic_knowledge/" class="">基础知识列表</a>
+    <a href="/docs/device/basic_knowledge/" class="">List of Basic Knowledge</a>
   
 
         </li>
@@ -273,7 +318,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/device/require/" class="">准备清单</a>
+    <a href="/docs/device/require/" class="">Preparation Checklist</a>
   
 
         </li>
@@ -338,7 +383,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/device/ziggo_device_manual/" class="">ZIGGO Device使用手册</a>
+    <a href="/docs/device/ziggo_device_manual/" class="">ZIGGO Device Manual</a>
   
 
         </li>
@@ -351,7 +396,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/device/cnc_manual/" class="">CNC脚本使用指南</a>
+    <a href="/docs/device/cnc_manual/" class="">CNC Script Usage Guide</a>
   
 
         </li>
@@ -364,7 +409,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/device/testbed/" class="active">TestBed搭建流程</a>
+    <a href="/docs/device/testbed/" class="active">TestBed Setup Process</a>
   
 
         </li>
@@ -424,7 +469,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>TestBed搭建流程</strong>
+  <strong>TestBed Setup Process</strong>
 
   <label for="toc-control">
     
@@ -460,24 +505,24 @@ https://github.com/alex-shpak/hugo-book
 
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#目录">目录</a></li>
-    <li><a href="#testbed简单介绍">TestBed简单介绍</a></li>
-    <li><a href="#互联互通测试项目介绍">互联互通测试项目介绍</a>
+    <li><a href="#table-of-contents">Table of Contents</a></li>
+    <li><a href="#introduction-to-testbed">Introduction to TestBed</a></li>
+    <li><a href="#interconnectivity-testing-project-introduction">Interconnectivity Testing Project Introduction</a>
       <ul>
-        <li><a href="#1-基准测试">1. 基准测试</a></li>
-        <li><a href="#2-门控能力">2. 门控能力</a></li>
-        <li><a href="#3-带宽保证">3. 带宽保证</a></li>
-        <li><a href="#4-门控精度">4. 门控精度</a></li>
+        <li><a href="#1-benchmark-testing">1. Benchmark Testing</a></li>
+        <li><a href="#2-gate-control-capabilities">2. Gate Control Capabilities</a></li>
+        <li><a href="#3-bandwidth-assurance">3. Bandwidth Assurance</a></li>
+        <li><a href="#4-gate-control-precision">4. Gate Control Precision</a></li>
       </ul>
     </li>
-    <li><a href="#设备参数设置与部署">设备参数设置与部署</a></li>
-    <li><a href="#testbed运行流程">TestBed运行流程</a>
+    <li><a href="#device-parameter-settings-and-deployment">Device Parameter Settings and Deployment</a></li>
+    <li><a href="#testbed-operation-process">TestBed Operation Process</a>
       <ul>
-        <li><a href="#准备工作">准备工作</a></li>
-        <li><a href="#基准测试">基准测试</a></li>
-        <li><a href="#门控能力">门控能力</a></li>
-        <li><a href="#带宽保证">带宽保证</a></li>
-        <li><a href="#门控精度">门控精度</a></li>
+        <li><a href="#preparation">Preparation</a></li>
+        <li><a href="#benchmark-testing">Benchmark Testing</a></li>
+        <li><a href="#gate-control-capabilities">Gate Control Capabilities</a></li>
+        <li><a href="#bandwidth-assurance">Bandwidth Assurance</a></li>
+        <li><a href="#gate-control-precision">Gate Control Precision</a></li>
       </ul>
     </li>
   </ul>
@@ -492,202 +537,219 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"><h1 id="testbed搭建流程">
-  TestBed搭建流程
-  <a class="anchor" href="#testbed%e6%90%ad%e5%bb%ba%e6%b5%81%e7%a8%8b">#</a>
+  <article class="markdown book-article"><h1 id="testbed-setup-process">
+  TestBed Setup Process
+  <a class="anchor" href="#testbed-setup-process">#</a>
 </h1>
-<h2 id="目录">
-  目录
-  <a class="anchor" href="#%e7%9b%ae%e5%bd%95">#</a>
+<h2 id="table-of-contents">
+  Table of Contents
+  <a class="anchor" href="#table-of-contents">#</a>
 </h2>
 <ul>
-<li><a href="#testbed%e6%90%ad%e5%bb%ba%e6%b5%81%e7%a8%8b">TestBed搭建流程</a>
+<li><a href="#testbed-setup-process">TestBed Setup Process</a>
 <ul>
-<li><a href="#%e7%9b%ae%e5%bd%95">目录</a></li>
-<li><a href="#testbed%e7%ae%80%e5%8d%95%e4%bb%8b%e7%bb%8d">TestBed简单介绍</a></li>
-<li><a href="#%e4%ba%92%e8%81%94%e4%ba%92%e9%80%9a%e6%b5%8b%e8%af%95%e9%a1%b9%e7%9b%ae%e4%bb%8b%e7%bb%8d">互联互通测试项目介绍</a>
+<li><a href="#table-of-contents">Table of Contents</a></li>
+<li><a href="#introduction-to-testbed">Introduction to TestBed</a></li>
+<li><a href="#interconnectivity-testing-project-introduction">Interconnectivity Testing Project Introduction</a>
 <ul>
-<li><a href="#1-%e5%9f%ba%e5%87%86%e6%b5%8b%e8%af%95">1. 基准测试</a></li>
-<li><a href="#2-%e9%97%a8%e6%8e%a7%e8%83%bd%e5%8a%9b">2. 门控能力</a></li>
-<li><a href="#3-%e5%b8%a6%e5%ae%bd%e4%bf%9d%e8%af%81">3. 带宽保证</a></li>
-<li><a href="#4-%e9%97%a8%e6%8e%a7%e7%b2%be%e5%ba%a6">4. 门控精度</a></li>
+<li><a href="#1-benchmark-testing">1. Benchmark Testing</a></li>
+<li><a href="#2-gate-control-capabilities">2. Gate Control Capabilities</a></li>
+<li><a href="#3-bandwidth-assurance">3. Bandwidth Assurance</a></li>
+<li><a href="#4-gate-control-precision">4. Gate Control Precision</a></li>
 </ul>
 </li>
-<li><a href="#%e8%ae%be%e5%a4%87%e5%8f%82%e6%95%b0%e8%ae%be%e7%bd%ae%e4%b8%8e%e9%83%a8%e7%bd%b2">设备参数设置与部署</a></li>
-<li><a href="#testbed%e8%bf%90%e8%a1%8c%e6%b5%81%e7%a8%8b">TestBed运行流程</a>
+<li><a href="#device-parameter-settings-and-deployment">Device Parameter Settings and Deployment</a></li>
+<li><a href="#testbed-operation-process">TestBed Operation Process</a>
 <ul>
-<li><a href="#%e5%87%86%e5%a4%87%e5%b7%a5%e4%bd%9c">准备工作</a>
+<li><a href="#preparation">Preparation</a>
 <ul>
-<li><a href="#%e6%8e%a7%e5%88%b6%e8%84%9a%e6%9c%ac%e5%87%86%e5%a4%87">控制脚本准备</a></li>
-<li><a href="#%e8%83%8c%e6%99%af%e6%b5%81%e9%87%8f%e5%8f%91%e9%80%81">背景流量发送</a></li>
+<li><a href="#control-script-preparation">Control Script Preparation</a></li>
+<li><a href="#background-traffic-sending">Background Traffic Sending</a></li>
 </ul>
 </li>
-<li><a href="#%e5%9f%ba%e5%87%86%e6%b5%8b%e8%af%95">基准测试</a></li>
-<li><a href="#%e9%97%a8%e6%8e%a7%e8%83%bd%e5%8a%9b">门控能力</a></li>
-<li><a href="#%e5%b8%a6%e5%ae%bd%e4%bf%9d%e8%af%81">带宽保证</a></li>
-<li><a href="#%e9%97%a8%e6%8e%a7%e7%b2%be%e5%ba%a6">门控精度</a></li>
-</ul>
-</li>
+<li><a href="#benchmark-testing">Benchmark Testing</a></li>
+<li><a href="#gate-control-capabilities">Gate Control Capabilities</a></li>
+<li><a href="#bandwidth-assurance">Bandwidth Assurance</a></li>
+<li><a href="#gate-control-precision">Gate Control Precision</a></li>
 </ul>
 </li>
 </ul>
-<h2 id="testbed简单介绍">
-  TestBed简单介绍
-  <a class="anchor" href="#testbed%e7%ae%80%e5%8d%95%e4%bb%8b%e7%bb%8d">#</a>
+</li>
+</ul>
+<h2 id="introduction-to-testbed">
+  Introduction to TestBed
+  <a class="anchor" href="#introduction-to-testbed">#</a>
 </h2>
-<p>我们内部对自己研发的CaaS-Switch进行了互联互通测试，采用的网络拓扑如下所示。</p>
+<p>We have conducted interconnectivity tests on our internally developed CaaS-Switch, using the following network topology.</p>
 <p><img src="./topo.PNG" alt="topo" /></p>
-<p>本Demo需要4个FPGA开发板（2个TSNPerf、2个CaaS-Switch）和1台普通PC。如果条件有限/考虑简化拓扑，可以删去一个CaaS-Switch。PC负责发送背景流量，路径为黑色箭头；左侧TSNPerf负责发送测试流量（关键流量），路径为红色箭头。</p>
-<p>所有测试项目的流程大致可以分为两个阶段：</p>
+<p>This demo requires 4 FPGA development boards (2 TSNPerf, 2 CaaS-Switch) and 1 standard PC. If resources are limited or a simplified topology is considered, one CaaS-Switch can be omitted. The PC is responsible for sending background traffic, indicated by black arrows; the left TSNPerf sends test traffic (critical traffic), indicated by red arrows.</p>
+<p>All test projects generally follow two phases:</p>
 <ol>
 <li>
-<p>时间同步：启动时间同步，保证TSNPerf、CaaS-Switch在一个时钟域下。</p>
-<p>注：时间同步程序运行在TSNPerf、CaaS-Switch的系统中。</p>
+<p>Time Synchronization: Start time synchronization to ensure TSNPerf and CaaS-Switch are under the same clock domain.</p>
+<p>Note: The time synchronization program runs on the TSNPerf and CaaS-Switch systems.</p>
 </li>
 <li>
-<p>发送测试流量：根据schedule.json文件，TSNPerf进行测试流量发送。</p>
+<p>Sending Test Traffic: According to the schedule.json file, TSNPerf sends test traffic.</p>
 </li>
 </ol>
-<h2 id="互联互通测试项目介绍">
-  互联互通测试项目介绍
-  <a class="anchor" href="#%e4%ba%92%e8%81%94%e4%ba%92%e9%80%9a%e6%b5%8b%e8%af%95%e9%a1%b9%e7%9b%ae%e4%bb%8b%e7%bb%8d">#</a>
+<h2 id="interconnectivity-testing-project-introduction">
+  Interconnectivity Testing Project Introduction
+  <a class="anchor" href="#interconnectivity-testing-project-introduction">#</a>
 </h2>
-<h3 id="1-基准测试">
-  1. 基准测试
-  <a class="anchor" href="#1-%e5%9f%ba%e5%87%86%e6%b5%8b%e8%af%95">#</a>
+<h3 id="1-benchmark-testing">
+  1. Benchmark Testing
+  <a class="anchor" href="#1-benchmark-testing">#</a>
 </h3>
 <ul>
-<li>目的：测试无背景流量情况下，高优先级流量的两跳端到端延迟、丢包率、抖动，作为比较基准。</li>
-<li>预期：延迟符合规划，抖动较低（100ns左右）。</li>
+<li>Objective: Test the end-to-end delay, packet loss rate, and jitter of high-priority traffic without background traffic as a comparative baseline.</li>
+<li>Expectation: Delay meets the plan, and jitter is low (around 100ns).</li>
 </ul>
-<h3 id="2-门控能力">
-  2. 门控能力
-  <a class="anchor" href="#2-%e9%97%a8%e6%8e%a7%e8%83%bd%e5%8a%9b">#</a>
+<h3 id="2-gate-control-capabilities">
+  2. Gate Control Capabilities
+  <a class="anchor" href="#2-gate-control-capabilities">#</a>
 </h3>
 <ul>
-<li>目的：测试通用情况下流量调度效果，和两个交换机的门控对接能力。</li>
-<li>方案：
-背景流量（VLAN priority = 0）打到线速，每个调度周期预留长度为 3 的时隙给高优先级流量，
-<ol>
-<li>每个周期定时发送 4 个数据包长度为 1500Byte 的高优先级（VLAN priority = 1）测试流量，记录端到端平均延迟、抖动、丢包率、到达顺序</li>
-<li>每个周期定时发送 8 个数据包长度为 1500Byte 的高优先级（VLAN priority = 1）测试流量，记录是否每个周期通过且仅 n 个包</li>
-</ol>
-</li>
-<li>预期：
-<ol>
-<li>延迟、抖动、丢包率和基准一致</li>
-<li>每个周期定时发送 4 个数据包时，丢包率为0</li>
-<li>每个周期定时发送 8 个数据包时，每个周期通过且仅通过 5 个包（每8个包丢3个，因为每个时隙里恰好可以把第五个包发出去，余下三个包丢掉），丢包率为37.5%</li>
-</ol>
-</li>
+<li>Objective: Test the effect of traffic scheduling under general conditions, and the gate control capabilities between two switches.</li>
+<li>Approach:
+<ul>
+<li>Background traffic (VLAN priority = 0) is set to line speed, reserving a slot of length 3 for high-priority traffic in each scheduling period.</li>
 </ul>
-<h3 id="3-带宽保证">
-  3. 带宽保证
-  <a class="anchor" href="#3-%e5%b8%a6%e5%ae%bd%e4%bf%9d%e8%af%81">#</a>
-</h3>
-<ul>
-<li>目的：测试交换机能够进行带宽预留，且两个交换机优先级映射、运行 cycle 和 offset 基本一致。</li>
-<li>方案：
-背景流量（VLAN priority = 0）打到线速（1Gbps），配置交换机预留 50% 时隙给高优先级流量（VLAN priority = 1），其余 50% 只允许低优先级流量，
 <ol>
-<li>测试流量高优先级（VLAN priority = 1）情况下打到线速（经测试，每个周期[33ms]连续发送2752个1500B的包，基本达到1000Mbps），记录端到端平均延迟、抖动、丢包率、到达顺序</li>
-<li>测试流量高优先级（VLAN priority = 1）情况下打到50%线速（每个周期[33ms]连续发送1376个1500B的包），记录端到端平均延迟、抖动、丢包率、到达顺序</li>
+<li>Send 4 packets of high-priority (VLAN priority = 1) test traffic each cycle, each packet 1500Bytes, recording end-to-end average delay, jitter, packet loss rate, and arrival order.</li>
+<li>Send 8 packets of high-priority (VLAN priority = 1) test traffic each cycle, recording if only n packets pass each cycle.</li>
 </ol>
 </li>
-<li>预期：
+<li>Expectations:
 <ol>
-<li>高优先级测试流量100%线速：延迟、抖动和基准一致，丢包率 50% 左右</li>
-<li>高优先级测试流量50%线速：延迟、抖动和基准一致，0丢包率</li>
+<li>Delay, jitter, and packet loss rate consistent with the baseline.</li>
+<li>When sending 4 packets per cycle, packet loss rate is 0.</li>
+<li>When sending 8 packets per cycle, only 5 packets pass each cycle (every 8 packets drop 3, as exactly the fifth packet can be sent out in each slot, the remaining three packets are dropped), packet loss rate is 37.5%.</li>
 </ol>
 </li>
 </ul>
-<h3 id="4-门控精度">
-  4. 门控精度
-  <a class="anchor" href="#4-%e9%97%a8%e6%8e%a7%e7%b2%be%e5%ba%a6">#</a>
+<h3 id="3-bandwidth-assurance">
+  3. Bandwidth Assurance
+  <a class="anchor" href="#3-bandwidth-assurance">#</a>
 </h3>
 <ul>
-<li>目的：测试门控时隙长度的设置精度</li>
-<li>方案：(n=1,2,4,8,&hellip;)
+<li>Objective: Test the switch&rsquo;s ability to reserve bandwidth and that the priority mapping, operation cycle, and offset of the two switches are essentially consistent.</li>
+<li>Approach:
+<ul>
+<li>Background traffic (VLAN priority = 0) is set to line speed (1Gbps), configuring the switch to reserve 50% of the slot for high-priority traffic (VLAN priority = 1), the other 50% only allows low-priority traffic.</li>
+</ul>
 <ol>
-<li>每个调度周期预留长度为 1 的时隙给高优先级流量</li>
-<li>每个周期发送 n 个数据包长度为1/n*1500Byte的高优先级（VLAN priority = 1）测试流量，记录是否每个周期通过 n 个包
+<li>High-priority (VLAN priority = 1) test traffic is set to line speed (tests show that sending 2752 packets of 1500B each cycle [33ms] nearly reaches 1000Mbps), recording end-to-end average delay, jitter, packet loss rate, and arrival order.</li>
+<li>High-priority (VLAN priority = 1) test traffic is set to 50% line speed (sending 1376 packets of 1500B each cycle [33ms]), recording end-to-end average delay, jitter, packet loss rate, and arrival order.</li>
+</ol>
+</li>
+<li>Expectations:
 <ol>
+<li>High-priority test traffic at 100% line speed: Delay and jitter consistent with the baseline, packet loss rate around 50%.
+2.</li>
+</ol>
+</li>
+</ul>
+<p>High-priority test traffic at 50% line speed: Delay and jitter consistent with the baseline, 0 packet loss rate.</p>
+<h3 id="4-gate-control-precision">
+  4. Gate Control Precision
+  <a class="anchor" href="#4-gate-control-precision">#</a>
+</h3>
+<ul>
+<li>Objective: Test the setting precision of gate control slot length.</li>
+<li>Approach: (n=1,2,4,8,&hellip;)
+<ol>
+<li>Reserve a slot of length 1 for high-priority traffic each scheduling period.</li>
+<li>Send n packets of high-priority (VLAN priority = 1) test traffic each cycle, each packet length of 1/n*1500Byte, recording if n packets pass each cycle.
+<ul>
 <li>n=1,</li>
-</ol>
+</ul>
 </li>
 </ol>
 </li>
-<li>预期：
+<li>Expectations:
 <ol>
-<li>n=1,2,4,8 情况下都能每个周期通过且仅通过 n 个包</li>
+<li>In cases n=1,2,4,8, all packets pass each cycle.</li>
 </ol>
 </li>
 </ul>
 <blockquote>
-<p>如果您按照下文的配置使用我们开源的ZIGGO交换机和TSNPerf，则您可以在上面四个测试中得到和预期相类似的效果。如果出现了任何问题，欢迎在github上提出issue。</p>
+<p>If you use our open-source ZIGGO switch and TSNPerf as configured below, you can achieve effects similar to the expected outcomes in the four tests above. If any issues arise, feel free to raise an issue on GitHub.</p>
 </blockquote>
-<h2 id="设备参数设置与部署">
-  设备参数设置与部署
-  <a class="anchor" href="#%e8%ae%be%e5%a4%87%e5%8f%82%e6%95%b0%e8%ae%be%e7%bd%ae%e4%b8%8e%e9%83%a8%e7%bd%b2">#</a>
+<h2 id="device-parameter-settings-and-deployment">
+  Device Parameter Settings and Deployment
+  <a class="anchor" href="#device-parameter-settings-and-deployment">#</a>
 </h2>
-<p>Switch软硬件代码在仓库 <a href="https://github.com/Horacehxw/Ziggo-CaaS-Switch">ZIGGO-Caas-Switch</a> 中，使用主分支即可。</p>
-<p>TSNPerf的软硬件代码在本仓库。</p>
+<p>Switch software and hardware code is available in the repository <a href="https://github.com/Horacehxw/Ziggo-CaaS-Switch">ZIGGO-Caas-Switch</a>, use the main branch.</p>
+<p>TSNPerf&rsquo;s software and hardware code are in this repository.</p>
 <blockquote>
-<p>注意：带宽能力测试中的TSNPerf需要使用offline_analyze分支，门控精度测试中的TSNPerf需要使用packet_resize分支【用于自定义测试包大小】。测试中请勿忘记切换分支。</p>
+<p>Note: For bandwidth capability testing, TSNPerf must use the offline_analyze branch; for gate control precision testing, TSNPerf must use the packet_resize branch [for customizing test packet size]. Do not forget to switch branches during testing.</p>
 </blockquote>
-<p>所有设备的IP、MAC和ID如下所示，与本文档后面提供的JSON配置文件对应：</p>
+<p>All devices&rsquo; IP, MAC, and ID are shown below, corresponding to the JSON configuration file provided later:</p>
 <p><img src="./topo_config.png" alt="topo config" /></p>
-<p>对应的config文件可见<code>config.json</code></p>
-<h2 id="testbed运行流程">
-  TestBed运行流程
-  <a class="anchor" href="#testbed%e8%bf%90%e8%a1%8c%e6%b5%81%e7%a8%8b">#</a>
+<p>The corresponding config file can be seen in <code>config.json</code>.</p>
+<h2 id="testbed-operation-process">
+  TestBed Operation Process
+  <a class="anchor" href="#testbed-operation-process">#</a>
 </h2>
-<h3 id="准备工作">
-  准备工作
-  <a class="anchor" href="#%e5%87%86%e5%a4%87%e5%b7%a5%e4%bd%9c">#</a>
+<h3 id="preparation">
+  Preparation
+  <a class="anchor" href="#preparation">#</a>
 </h3>
-<h4 id="控制脚本准备">
-  控制脚本准备
-  <a class="anchor" href="#%e6%8e%a7%e5%88%b6%e8%84%9a%e6%9c%ac%e5%87%86%e5%a4%87">#</a>
+<h4 id="control-script-preparation">
+  Control Script Preparation
+  <a class="anchor" href="#control-script-preparation">#</a>
 </h4>
-<p>可以参考 <a href="/ziggo_book/docs/device/cnc_manual/">CNC-User-Manual</a></p>
-<h4 id="背景流量发送">
-  背景流量发送
-  <a class="anchor" href="#%e8%83%8c%e6%99%af%e6%b5%81%e9%87%8f%e5%8f%91%e9%80%81">#</a>
+<p>Refer to <a href="/ziggo_book/docs/device/cnc_manual/">CNC-User-Manual</a></p>
+<h4 id="background-traffic-sending">
+  Background Traffic Sending
+  <a class="anchor" href="#background-traffic-sending">#</a>
 </h4>
-<p>可以直接在Linux PC中运行<code>send.py</code>脚本。（需要安装scapy,tcpreplay）</p>
-<h3 id="基准测试">
-  基准测试
-  <a class="anchor" href="#%e5%9f%ba%e5%87%86%e6%b5%8b%e8%af%95">#</a>
+<p>Can be directly executed on a Linux PC using the <code>send.py</code> script (requires installing scapy, tcpreplay).</p>
+<h3 id="benchmark-testing">
+  Benchmark Testing
+  <a class="anchor" href="#benchmark-testing">#</a>
 </h3>
-<p>Switch、TSNPerf 的软硬件都使用主分支。</p>
-<p>测试步骤：</p>
+<p>Switch and TSNPerf both use the main branch.</p>
+<p>Testing Steps:</p>
 <ol>
-<li>修改batch.mjs修改正确的配置文件名</li>
-<li>./batch.mjs pull（注意分支正确）</li>
-<li>./batch.mjs distribute
-Device每次发送4个数据包，每个Switch都预留了3个时隙，将以下两个配置文件下发即可：
-<code>base/d3s2-baseline-3t-config.json</code>，
-<code>base/d3s2-baseline-3t-schedule-base.json</code></li>
-<li>./batch.mjs launch （包括了时间同步和数据包发送）</li>
-<li>./batch.mjs collect</li>
+<li>Modify batch.mjs to the correct configuration file name.</li>
+<li>./batch.mjs pull (ensure correct branch).</li>
+<li>./batch.mjs distribute:
+<ul>
+<li>Each Device sends 4 packets, each Switch reserves 3 slots, distribute the following two configuration files:
+<ul>
+<li><code>base/d3s2-baseline-3t-config.json</code>,</li>
+<li><code>base/d3s2-baseline-3t-schedule-base.json</code>.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>./batch.mjs launch (includes time synchronization and packet sending).</li>
+<li>./batch.mjs collect.</li>
 </ol>
-<h3 id="门控能力">
-  门控能力
-  <a class="anchor" href="#%e9%97%a8%e6%8e%a7%e8%83%bd%e5%8a%9b">#</a>
+<h3 id="gate-control-capabilities">
+  Gate Control Capabilities
+  <a class="anchor" href="#gate-control-capabilities">#</a>
 </h3>
-<p>Switch、TSNPerf 的软硬件都使用主分支。</p>
+<p>Switch and TSNPerf both use the main branch.</p>
 <ol>
-<li>让背景流量Device发包（基准测试不需要发送背景流量）</li>
-<li>修改batch.mjs修改正确的配置文件名</li>
-<li>./batch.mjs pull（注意分支正确）</li>
-<li>./batch.mjs distribute
-Device1每次发送4个数据包，每个Switch都预留了3个时隙，将以下两个配置文件下发即可：
-<code>gate/d3s2-baseline-3t-config.json</code>，
-<code>gate/d3s2-baseline-3t-schedule-gate.json</code></li>
-<li>./batch.mjs launch</li>
-<li>./batch.mjs collect</li>
-<li>将上述的schedule.json中的Device发包个数从4改为8，再从上述步骤4重新测试，修改后的schedule.json如下所示</li>
+<li>Enable background traffic Device to send packets (not required for benchmark testing).</li>
+<li>Modify batch.mjs to the correct configuration file name.</li>
+<li>./batch.mjs pull (ensure correct branch).</li>
+<li>./batch.mjs distribute:
+<ul>
+<li>Device1 sends 4 packets each time, each Switch reserves 3 slots, distribute the following two configuration files:
+<ul>
+<li><code>gate/d3s2-baseline-3t-config.json</code>,</li>
+<li><code>gate/d3s2-baseline-3t-schedule-gate.json</code>.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>./batch.mjs launch.</li>
+<li>./batch.mjs collect.</li>
+<li>Modify the schedule.json in the above to change the number of packets sent by Device from 4 to 8, then retest from step 4 above, the modified schedule.json is shown below:</li>
 </ol>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;link&#34;</span>,
@@ -705,36 +767,44 @@ Device1每次发送4个数据包，每个Switch都预留了3个时隙，将以�
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    ]
 </span></span><span style="display:flex;"><span>}<span style="color:#960050;background-color:#1e0010">,</span>
-</span></span></code></pre></div><h3 id="带宽保证">
-  带宽保证
-  <a class="anchor" href="#%e5%b8%a6%e5%ae%bd%e4%bf%9d%e8%af%81">#</a>
+</span></span></code></pre></div><h3 id="bandwidth-assurance">
+  Bandwidth Assurance
+  <a class="anchor" href="#bandwidth-assurance">#</a>
 </h3>
-<p>Switch代码使用主分支，TSNPerf代码使用offline_analyze分支。</p>
-<p>测试步骤：</p>
+<p>Switch uses the main branch, TSNPerf uses the offline_analyze branch.</p>
+<p>Testing Steps:</p>
 <ol>
 <li>
-<p>让背景流量Device发包（基准测试不需要发送背景流量）</p>
+<p>Enable background traffic Device to send packets (not required for benchmark testing).</p>
 </li>
 <li>
-<p>修改batch.mjs修改正确的配置文件名</p>
+<p>Modify batch.mjs to the correct configuration file name.</p>
 </li>
 <li>
-<p>./batch.mjs pull（注意分支正确）</p>
+<p>./batch.mjs pull (ensure correct branch).</p>
 </li>
 <li>
-<p>./batch.mjs distribute
-Device1每次发送1376个数据包，每个Switch都预留了1024个时隙，将以下两个配置文件下发即可：
-<code>bandwidth/d3s2-baseline-50%t-config.json</code>，
-<code>bandwidth/d3s2-baseline-50%t-schedule.json</code></p>
+<p>./batch.mjs distribute:</p>
+<ul>
+<li>Device1 sends 1376 packets each time, each Switch reserves 1024 slots, distribute the following two configuration files:
+<ul>
+<li><code>bandwidth/d3s2-baseline-50%t-config.json</code>,</li>
+<li><code>bandwidth/d3s2-baseline-50%t-schedule.json</code>.</li>
+</ul>
+</li>
+</ul>
 </li>
 <li>
-<p>./batch.mjs launch</p>
+<p>./batch.mjs launch.</p>
 </li>
 <li>
-<p>使用离线分析</p>
+<p>Use offline analysis.</p>
 </li>
 <li>
-<p>将上述的schedule.json中的Device发包个数从1376改为2752，再从上述步骤4重新测试，修改后的schedule.json如下所示</p>
+<p>Modify the schedule.json in the above to change the number of packets sent by Device from 1376 to 2752, then retest from</p>
+</li>
+</ol>
+<p>step 4 above, the modified schedule.json is shown below:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span> <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;link&#34;</span>,
 </span></span><span style="display:flex;"><span> <span style="color:#f92672">&#34;from&#34;</span>: <span style="color:#ae81ff">3</span>,
@@ -751,34 +821,37 @@ Device1每次发送1376个数据包，每个Switch都预留了1024个时隙，�
 </span></span><span style="display:flex;"><span>     }
 </span></span><span style="display:flex;"><span> ]
 </span></span><span style="display:flex;"><span>}<span style="color:#960050;background-color:#1e0010">,</span>
-</span></span></code></pre></div></li>
-</ol>
-<h3 id="门控精度">
-  门控精度
-  <a class="anchor" href="#%e9%97%a8%e6%8e%a7%e7%b2%be%e5%ba%a6">#</a>
+</span></span></code></pre></div><h3 id="gate-control-precision">
+  Gate Control Precision
+  <a class="anchor" href="#gate-control-precision">#</a>
 </h3>
-<p>Switch代码使用主分支，TSNPerf代码使用packet_resize分支。</p>
+<p>Switch uses the main branch, TSNPerf uses the packet_resize branch.</p>
 <ol>
 <li>
-<p>修改batch.mjs修改正确的配置文件名</p>
+<p>Modify batch.mjs to the correct configuration file name.</p>
 </li>
 <li>
-<p>./batch.mjs pull（注意分支正确）</p>
+<p>./batch.mjs pull (ensure correct branch).</p>
 </li>
 <li>
-<p>./batch.mjs distribute
-Device1每次发送1个1500B的数据包，每个Switch都预留了1个时隙，将以下两个配置文件下发即可：
-<code>accuracy/d3s2-baseline-1t-config.json</code>，
-<code>accuracy/d3s2-baseline-1t-schedule.json</code></p>
+<p>./batch.mjs distribute:</p>
+<ul>
+<li>Device1 sends 1 packet of 1500B each time, each Switch reserves 1 slot, distribute the following two configuration files:
+<ul>
+<li><code>accuracy/d3s2-baseline-1t-config.json</code>,</li>
+<li><code>accuracy/d3s2-baseline-1t-schedule.json</code>.</li>
+</ul>
+</li>
+</ul>
 </li>
 <li>
-<p>./batch.mjs launch</p>
+<p>./batch.mjs launch.</p>
 </li>
 <li>
-<p>./batch.mjs collect</p>
+<p>./batch.mjs collect.</p>
 </li>
 <li>
-<p>将上述的schedule.json中的Device发包个数从1分别改为2,4,8，包长度分别改为750, 375和187，再从上述步骤4重新测试，发包个数修改为2后的schedule.json如下所示</p>
+<p>Modify the schedule.json in the above to change the number of packets sent by Device from 1 to 2, 4, 8 respectively, and the packet size to 750, 375, and 187 respectively, then retest from step 4 above, the modified schedule.json for sending 2 packets is shown below:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span> <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;link&#34;</span>,
 </span></span><span style="display:flex;"><span> <span style="color:#f92672">&#34;from&#34;</span>: <span style="color:#ae81ff">3</span>,
@@ -879,24 +952,24 @@ padding-top: 100px;">
 
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#目录">目录</a></li>
-    <li><a href="#testbed简单介绍">TestBed简单介绍</a></li>
-    <li><a href="#互联互通测试项目介绍">互联互通测试项目介绍</a>
+    <li><a href="#table-of-contents">Table of Contents</a></li>
+    <li><a href="#introduction-to-testbed">Introduction to TestBed</a></li>
+    <li><a href="#interconnectivity-testing-project-introduction">Interconnectivity Testing Project Introduction</a>
       <ul>
-        <li><a href="#1-基准测试">1. 基准测试</a></li>
-        <li><a href="#2-门控能力">2. 门控能力</a></li>
-        <li><a href="#3-带宽保证">3. 带宽保证</a></li>
-        <li><a href="#4-门控精度">4. 门控精度</a></li>
+        <li><a href="#1-benchmark-testing">1. Benchmark Testing</a></li>
+        <li><a href="#2-gate-control-capabilities">2. Gate Control Capabilities</a></li>
+        <li><a href="#3-bandwidth-assurance">3. Bandwidth Assurance</a></li>
+        <li><a href="#4-gate-control-precision">4. Gate Control Precision</a></li>
       </ul>
     </li>
-    <li><a href="#设备参数设置与部署">设备参数设置与部署</a></li>
-    <li><a href="#testbed运行流程">TestBed运行流程</a>
+    <li><a href="#device-parameter-settings-and-deployment">Device Parameter Settings and Deployment</a></li>
+    <li><a href="#testbed-operation-process">TestBed Operation Process</a>
       <ul>
-        <li><a href="#准备工作">准备工作</a></li>
-        <li><a href="#基准测试">基准测试</a></li>
-        <li><a href="#门控能力">门控能力</a></li>
-        <li><a href="#带宽保证">带宽保证</a></li>
-        <li><a href="#门控精度">门控精度</a></li>
+        <li><a href="#preparation">Preparation</a></li>
+        <li><a href="#benchmark-testing">Benchmark Testing</a></li>
+        <li><a href="#gate-control-capabilities">Gate Control Capabilities</a></li>
+        <li><a href="#bandwidth-assurance">Bandwidth Assurance</a></li>
+        <li><a href="#gate-control-precision">Gate Control Precision</a></li>
       </ul>
     </li>
   </ul>

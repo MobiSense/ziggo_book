@@ -2,7 +2,17 @@ baseURL = 'https://example.org/'
 languageCode = 'en-us'
 title = 'ZIGGO BOOK'
 theme = "hugo-book"
+collapsibleMenu = true
+[languages]
+[languages.en]
+  languageName = 'English'
+  contentDir = 'content.en'
+  weight = 1
 
+[languages.zh]
+  languageName = 'Chinese'
+  contentDir = 'content.zh'
+  weight = 2
 [params]
     # Set source repository location.
     # Used for 'Last Modified' and 'Edit this page' links.

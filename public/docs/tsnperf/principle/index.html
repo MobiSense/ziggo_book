@@ -1,29 +1,30 @@
 <!DOCTYPE html>
-<html lang="en-us" dir="ltr">
+<html lang="en" dir="ltr">
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="TSNPerf 使用网卡硬件时间戳功能达到纳秒级抖动">
+<meta name="description" content="TSNPerf uses network card hardware timestamp features to achieve nanosecond-level jitter">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/tsnperf/principle/">
   <meta property="og:site_name" content="ZIGGO BOOK">
-  <meta property="og:title" content="TSNPerf 设计原理">
-  <meta property="og:description" content="TSNPerf 使用网卡硬件时间戳功能达到纳秒级抖动">
-  <meta property="og:locale" content="en_us">
+  <meta property="og:title" content="TSNPerf Design Principles">
+  <meta property="og:description" content="TSNPerf uses network card hardware timestamp features to achieve nanosecond-level jitter">
+  <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
     <meta property="article:tag" content="TSNPerf">
     <meta property="article:tag" content="ZIGGO">
     <meta property="article:tag" content="Markdown">
     <meta property="og:image" content="http://localhost:1313/docs/tsnperf/principle/featured.png">
-<title>TSNPerf 设计原理 | ZIGGO BOOK</title>
+<title>TSNPerf Design Principles | ZIGGO BOOK</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
 <link rel="canonical" href="http://localhost:1313/docs/tsnperf/principle/">
+  <link rel="alternate" hreflang="zh" href="http://localhost:1313/zh/docs/tsnperf/principle/" title="TSNPerf 设计原理">
 <link rel="stylesheet" href="/book.min.309b7ed028807cdb68d8d61e26d609f48369c098dbf5e4d8c0dcf4cdf49feafc.css" integrity="sha256-MJt&#43;0CiAfNto2NYeJtYJ9INpwJjb9eTYwNz0zfSf6vw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.d42a9f0f8e9f13283003ae80953807b8c059101d557307e6df7621d96cbc10d9.js" integrity="sha256-1CqfD46fEygwA66AlTgHuMBZEB1Vcwfm33Yh2Wy8ENk=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.25adf4b46535969cec76b2b6ce985074f311eaeb438cc5c9e4b8f1ed2e562a8e.js" integrity="sha256-Ja30tGU1lpzsdrK2zphQdPMR6utDjMXJ5Ljx7S5WKo4=" crossorigin="anonymous"></script>
 
   
 
@@ -56,6 +57,41 @@ https://github.com/alex-shpak/hugo-book
 
 
 
+  
+
+
+
+  
+    
+  
+
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/translate.svg" class="book-icon" alt="Languages" />
+        English
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://localhost:1313/zh/docs/tsnperf/principle/">
+          Chinese
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
 
 
 
@@ -79,7 +115,10 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/tsnperf/" class="">ZIGGO TSNPerf</a>
+    <input type="checkbox" id="section-f7037f1d8c98cfd6af893e54a7a7c84a" class="toggle" checked />
+    <label for="section-f7037f1d8c98cfd6af893e54a7a7c84a" class="flex justify-between">
+      <a href="/docs/tsnperf/" class="">ZIGGO TSNPerf</a>
+    </label>
   
 
           
@@ -92,7 +131,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/tsnperf/principle/" class="active">TSNPerf 设计原理</a>
+    <a href="/docs/tsnperf/principle/" class="active">TSNPerf Design Principles</a>
   
 
         </li>
@@ -105,7 +144,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/tsnperf/configuration/" class="">TSNPerf 使用指南</a>
+    <a href="/docs/tsnperf/configuration/" class="">TSNPerf User Guide</a>
   
 
         </li>
@@ -118,7 +157,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/tsnperf/manual/" class="">TSNPerf 检测内容及使用表</a>
+    <a href="/docs/tsnperf/manual/" class="">TSNPerf Test Content and Usage Table</a>
   
 
         </li>
@@ -131,7 +170,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/tsnperf/report/" class="">某品牌交换机报告</a>
+    <a href="/docs/tsnperf/report/" class="">Report for Brand A Switch</a>
   
 
         </li>
@@ -149,7 +188,10 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/switch/" class="">ZIGGO Switch</a>
+    <input type="checkbox" id="section-d43c4f20a039dd2c08c63c6629ffaedf" class="toggle"  />
+    <label for="section-d43c4f20a039dd2c08c63c6629ffaedf" class="flex justify-between">
+      <a href="/docs/switch/" class="">ZIGGO Switch</a>
+    </label>
   
 
           
@@ -162,7 +204,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/switch/basic_knowledge/" class="">基础知识列表</a>
+    <a href="/docs/switch/basic_knowledge/" class="">List of Basic Knowledge</a>
   
 
         </li>
@@ -175,7 +217,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/switch/require/" class="">准备清单</a>
+    <a href="/docs/switch/require/" class="">Preparation Checklist</a>
   
 
         </li>
@@ -245,7 +287,10 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/device/" class="">ZIGGO Device</a>
+    <input type="checkbox" id="section-9944d1fadd4ce8adc7644b141d205c6b" class="toggle"  />
+    <label for="section-9944d1fadd4ce8adc7644b141d205c6b" class="flex justify-between">
+      <a href="/docs/device/" class="">ZIGGO Device</a>
+    </label>
   
 
           
@@ -258,7 +303,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/device/basic_knowledge/" class="">基础知识列表</a>
+    <a href="/docs/device/basic_knowledge/" class="">List of Basic Knowledge</a>
   
 
         </li>
@@ -271,7 +316,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/device/require/" class="">准备清单</a>
+    <a href="/docs/device/require/" class="">Preparation Checklist</a>
   
 
         </li>
@@ -336,7 +381,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/device/ziggo_device_manual/" class="">ZIGGO Device使用手册</a>
+    <a href="/docs/device/ziggo_device_manual/" class="">ZIGGO Device Manual</a>
   
 
         </li>
@@ -349,7 +394,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/device/cnc_manual/" class="">CNC脚本使用指南</a>
+    <a href="/docs/device/cnc_manual/" class="">CNC Script Usage Guide</a>
   
 
         </li>
@@ -362,7 +407,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/device/testbed/" class="">TestBed搭建流程</a>
+    <a href="/docs/device/testbed/" class="">TestBed Setup Process</a>
   
 
         </li>
@@ -422,7 +467,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>TSNPerf 设计原理</strong>
+  <strong>TSNPerf Design Principles</strong>
 
   <label for="toc-control">
     
@@ -458,9 +503,9 @@ https://github.com/alex-shpak/hugo-book
 
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#现有方案的局限">现有方案的局限</a></li>
-    <li><a href="#解决方案">解决方案</a></li>
-    <li><a href="#性能验证">性能验证</a></li>
+    <li><a href="#limitations-of-existing-solutions">Limitations of Existing Solutions</a></li>
+    <li><a href="#solution">Solution</a></li>
+    <li><a href="#performance-validation">Performance Validation</a></li>
   </ul>
 </nav>
 
@@ -473,56 +518,55 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"><h1 id="tsnperf-设计原理">
-  TSNPerf 设计原理
-  <a class="anchor" href="#tsnperf-%e8%ae%be%e8%ae%a1%e5%8e%9f%e7%90%86">#</a>
+  <article class="markdown book-article"><h1 id="tsnperf-design-principles">
+  TSNPerf Design Principles
+  <a class="anchor" href="#tsnperf-design-principles">#</a>
 </h1>
-<h2 id="现有方案的局限">
-  现有方案的局限
-  <a class="anchor" href="#%e7%8e%b0%e6%9c%89%e6%96%b9%e6%a1%88%e7%9a%84%e5%b1%80%e9%99%90">#</a>
+<h2 id="limitations-of-existing-solutions">
+  Limitations of Existing Solutions
+  <a class="anchor" href="#limitations-of-existing-solutions">#</a>
 </h2>
-<p>TSNPerf是一款专为时间敏感网络（Time-Sensitive Networking, TSN）设计的性能评测工具。它提供了全面的TSN网络性能评测功能，能够帮助网络工程师和研究人员深入了解并验证TSN网络设备的性能特征。为此，TSNPerf需要能够精准地向网络中发送关键数据包，以测试设备的时间同步性能和流量整形能力。然而，Linux操作系统提供的<code>send()</code>函数只能达到微秒级的发包精度，难以满足TSNPerf对高精度发包的要求。</p>
-<p>为了直观地展示<code>send()</code>函数的发包精度限制，我们进行了一项测试。在测试中，我们使用<code>send()</code>函数以1毫秒为设定间隔，连续发送了10000个数据包。然后，我们记录了每两个相邻数据包之间的实际时间间隔，并计算了它们与预期的1毫秒间隔之间的误差。结果显示，即使没有任何背景进程/流量的干扰，相邻数据包的间隔任然达到了<em><strong>最高14微秒</strong></em>左右。接下来我们分析该现象的原因。</p>
-<p>如下图所示，在 
+<p>TSNPerf is a performance evaluation tool specifically designed for Time-Sensitive Networking (TSN). It provides comprehensive performance evaluation capabilities for TSN networks, helping network engineers and researchers to deeply understand and verify the performance characteristics of TSN network devices. For this purpose, TSNPerf needs to be able to precisely send critical packets into the network to test the devices&rsquo; time synchronization performance and traffic shaping capabilities. However, the <code>send()</code> function provided by the Linux operating system can only achieve microsecond-level packet sending precision, which is insufficient for TSNPerf&rsquo;s high-precision requirements.</p>
+<p>To visually demonstrate the packet sending precision limitations of the <code>send()</code> function, we conducted a test. In this test, we used the <code>send()</code> function to continuously send 10,000 packets at a set interval of 1 millisecond. We then recorded the actual time intervals between each pair of adjacent packets and calculated the deviation from the expected 1 millisecond interval. The results showed that even without any background processes/traffic interference, the intervals between adjacent packets still reached up to <em><strong>approximately 14 microseconds</strong></em>. We next analyze the cause of this phenomenon.</p>
+<p>As shown in the diagram below, at time 
 <link rel="stylesheet" href="/katex/katex.min.css" />
 <script defer src="/katex/katex.min.js"></script>
 <script defer src="/katex/auto-render.min.js" onload="renderMathInElement(document.body);"></script><span class="optional">
   \( t_0 \)
 </span>
- 时刻，程序调用 <code>send()</code> 函数向网络发送数据包，但实际上，数据包在 <span class="optional">
+, the program calls the <code>send()</code> function to send a packet to the network, but in reality, the packet is not sent until time <span class="optional">
   \( t_1 \)
 </span>
- 时刻才会被发送到网络中去。这是因为，操作系统的网络协议栈需要花费一定的时间处理该数据包。我们将 <span class="optional">
+. This is because the operating system&rsquo;s network stack requires time to process the packet. We refer to the delay from <span class="optional">
   \( t_1-t_0 \)
 </span>
- 称之为网络栈的处理时延，这个时延通常在微秒级别。</p>
-<p><img src="./principle_basic.png" alt="" title="Linux网络栈处理时延"/></p>
-<h2 id="解决方案">
-  解决方案
-  <a class="anchor" href="#%e8%a7%a3%e5%86%b3%e6%96%b9%e6%a1%88">#</a>
+ as the network stack&rsquo;s processing delay, which is typically on the order of microseconds.</p>
+<p><img src="./principle_basic.png" alt="" title="Linux Network Stack Processing Delay"/></p>
+<h2 id="solution">
+  Solution
+  <a class="anchor" href="#solution">#</a>
 </h2>
-<p>Intel 的 I210 / I225 / I226 网卡，提供了 LaunchTime 功能，可以精准地控制数据包离开网口的时间（理论精度在 32 纳秒级别）。</p>
-<p><img src="./principle_advanced.png" alt="" title="LaunchTime原理"/></p>
-<p>利用 LaunchTime，可以提高数据包的发送精度。如上图所示，对于一个需要在 <span class="optional">
+<p>Intel&rsquo;s I210 / I225 / I226 network cards provide the LaunchTime feature, which allows precise control over the timing of packets leaving the network interface (theoretical precision at the 32-nanosecond level).</p>
+<p><img src="./principle_advanced.png" alt="" title="LaunchTime Principle"/></p>
+<p>Using LaunchTime, we can enhance the precision of packet transmission. As shown in the diagram above, for a packet that needs to be sent at time <span class="optional">
   \( t_0 \)
 </span>
- 时刻发出的数据包，我们预留一段时间给网络栈的处理流程，提前在 <span class="optional">
+, we reserve a period for the network stack&rsquo;s processing and call the <code>send()</code> function ahead of time at <span class="optional">
   \( t_2 \)
 </span>
- 时刻就调用 <code>send()</code> 函数，保证数据包在 <span class="optional">
+ to ensure the packet is waiting in the network card&rsquo;s output queue before <span class="optional">
   \( t_0 \)
 </span>
- 前就在网卡的出队列口等待，LaunchTime 会在 <span class="optional">
+. LaunchTime then opens the output queue gate at <span class="optional">
   \( t_0 \)
 </span>
- 时刻打开出队列的门，将数据包发出。</p>
-<h2 id="性能验证">
-  性能验证
-  <a class="anchor" href="#%e6%80%a7%e8%83%bd%e9%aa%8c%e8%af%81">#</a>
+ to send the packet.</p>
+<h2 id="performance-validation">
+  Performance Validation
+  <a class="anchor" href="#performance-validation">#</a>
 </h2>
-<p>类似地，我们开启 LaunchTime 功能，以1毫秒为设定间隔连续发送10000个数据包，记录每两个相邻数据包之间的实际时间间隔与1毫秒之间的误差。
-结果如下图所示，所有数据包的发送时间误差不超过100纳秒，达到了TSNPerf对发包精度的要求</p>
-<p><img src="./principle_advanced_performance.png" alt="LaunchTime实验结果" title="LaunchTime实验结果"/></p>
+<p>Similarly, with the LaunchTime feature enabled, we continuously sent 10,000 packets at a set interval of 1 millisecond and recorded the actual intervals between each pair of packets along with the deviation from 1 millisecond. As shown in the results below, the sending time errors of all packets did not exceed 100 nanoseconds, meeting TSNPerf&rsquo;s precision requirements for packet transmission.</p>
+<p><img src="./principle_advanced_performance.png" alt="LaunchTime Experimental Results" title="LaunchTime Experimental Results"/></p>
 </article>
  
       
@@ -604,9 +648,9 @@ padding-top: 100px;">
 
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#现有方案的局限">现有方案的局限</a></li>
-    <li><a href="#解决方案">解决方案</a></li>
-    <li><a href="#性能验证">性能验证</a></li>
+    <li><a href="#limitations-of-existing-solutions">Limitations of Existing Solutions</a></li>
+    <li><a href="#solution">Solution</a></li>
+    <li><a href="#performance-validation">Performance Validation</a></li>
   </ul>
 </nav>
 
