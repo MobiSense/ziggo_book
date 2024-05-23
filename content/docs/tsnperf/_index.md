@@ -9,10 +9,11 @@ weight: 300
 </div>
 
 <h3 align="center">
-    <a href="http://tns.thss.tsinghua.edu.cn/ziggo/">Project Page</a> |
+    <a href="https://mobisense.github.io/ziggo_homepage/">Project Page</a> |
     <a href="https://ieeexplore.ieee.org/document/10228980">Paper</a> |
-    <a href="https://github.com/Horacehxw/Ziggo-CaaS-Switch">ZIGGO-CaaS-Switch</a> |
-    <a href="https://github.com/Horacehxw/Ziggo-Evaluation-Toolkit">ZIGGO-Device</a>
+    <a href="https://github.com/MobiSense/Ziggo-TSNPerf">ZIGGO-TSNPerf</a> |
+    <a href="https://github.com/Mobisense/Ziggo-CaaS-Switch">ZIGGO-Switch</a> |
+    <a href="https://github.com/MobiSense/Ziggo-Device">ZIGGO-Device</a>
 </h3>
 
 ![](figs/banner.jpg)
@@ -78,7 +79,7 @@ For more details of this test case, please refer to the [test report](http://tns
 
 ## License and Citation
 
-ZIGGO is released under a [MIT license](). 
+ZIGGO is released under a [MIT license](https://github.com/MobiSense/Ziggo-TSNPerf/blob/main/LICENSE.txt). 
 
 Please consider citing our papers if the project helps your research with the following BibTex:
 
@@ -107,7 +108,7 @@ Please consider citing our papers if the project helps your research with the fo
 
 ## Contributing
 
-Please see the guide for information on how to ask for help or contribute to the development of ZIGGO!
+Please see the [guide](https://github.com/MobiSense/Ziggo-TSNPerf/blob/main/docs/contributing.md) for information on how to ask for help or contribute to the development of ZIGGO!
 
 > The development team will only answer questions on github issues and reject other forms of questions.
 

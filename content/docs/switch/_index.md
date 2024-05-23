@@ -9,10 +9,11 @@ weight: 600
 </div>
 
 <h3 align="center">
-    <a href="http://tns.thss.tsinghua.edu.cn/ziggo/">Project Page</a> |
+    <a href="https://mobisense.github.io/ziggo_homepage/">Project Page</a> |
     <a href="https://ieeexplore.ieee.org/document/10228980">Paper</a> |
-    <a href="https://github.com/Horacehxw/Ziggo-CaaS-Switch">ZIGGO-CaaS-Switch</a> |
-    <a href="https://github.com/Horacehxw/Ziggo-Evaluation-Toolkit">ZIGGO-Device</a>
+    <a href="https://github.com/MobiSense/Ziggo-TSNPerf">ZIGGO-TSNPerf</a> |
+    <a href="https://github.com/Mobisense/Ziggo-CaaS-Switch">ZIGGO-Switch</a> |
+    <a href="https://github.com/MobiSense/Ziggo-Device">ZIGGO-Device</a>
 </h3>
 
 </h3>
