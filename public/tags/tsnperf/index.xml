@@ -5,25 +5,25 @@
     <link>http://localhost:1313/tags/tsnperf/</link>
     <description>Recent content in TSNPerf on ZIGGO BOOK</description>
     <generator>Hugo</generator>
-    <language>en-us</language>
+    <language>en</language>
     <lastBuildDate>Wed, 01 May 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/tsnperf/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>基础知识列表</title>
+      <title>List of Basic Knowledge</title>
       <link>http://localhost:1313/docs/switch/basic_knowledge/</link>
       <pubDate>Wed, 01 May 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/docs/switch/basic_knowledge/</guid>
       <description>使用 ZIGGO-SWITCH/ZIGGO-DEVICE 的基础知识列表</description>
     </item>
     <item>
-      <title>TSNPerf 设计原理</title>
+      <title>TSNPerf Design Principles</title>
       <link>http://localhost:1313/docs/tsnperf/principle/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/docs/tsnperf/principle/</guid>
-      <description>TSNPerf 使用网卡硬件时间戳功能达到纳秒级抖动</description>
+      <description>TSNPerf uses network card hardware timestamp features to achieve nanosecond-level jitter</description>
     </item>
     <item>
-      <title>准备清单</title>
+      <title>Preparation Checklist</title>
       <link>http://localhost:1313/docs/switch/require/</link>
       <pubDate>Wed, 01 May 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/docs/switch/require/</guid>
@@ -37,21 +37,21 @@
       <description>How to report a bug or contribute to ZIGGO&amp;rsquo;s code</description>
     </item>
     <item>
-      <title>TSNPerf 使用指南</title>
+      <title>TSNPerf User Guide</title>
       <link>http://localhost:1313/docs/tsnperf/configuration/</link>
       <pubDate>Wed, 01 May 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/docs/tsnperf/configuration/</guid>
       <description>TSNPerf 硬件准备 系统准备 和 测试程序使用</description>
     </item>
     <item>
-      <title>基础知识列表</title>
+      <title>List of Basic Knowledge</title>
       <link>http://localhost:1313/docs/device/basic_knowledge/</link>
       <pubDate>Wed, 01 May 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/docs/device/basic_knowledge/</guid>
       <description>使用 ZIGGO-SWITCH/ZIGGO-DEVICE 的基础知识列表</description>
     </item>
     <item>
-      <title>准备清单</title>
+      <title>Preparation Checklist</title>
       <link>http://localhost:1313/docs/device/require/</link>
       <pubDate>Wed, 01 May 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/docs/device/require/</guid>
@@ -65,11 +65,11 @@
       <description>How to build the Caas Device Hardware step by step.</description>
     </item>
     <item>
-      <title>TSNPerf 检测内容及使用表</title>
+      <title>TSNPerf Test Content and Usage Table</title>
       <link>http://localhost:1313/docs/tsnperf/manual/</link>
       <pubDate>Wed, 01 May 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/docs/tsnperf/manual/</guid>
-      <description>时间同步测试，流量整形测试，网络配置测试</description>
+      <description>Time synchronization testing, traffic shaping testing, network configuration testing</description>
     </item>
     <item>
       <title>How to contribute</title>
@@ -79,7 +79,7 @@
       <description>How to report a bug or contribute to ZIGGO&amp;rsquo;s code</description>
     </item>
     <item>
-      <title>某品牌交换机报告</title>
+      <title>Report for Brand A Switch</title>
       <link>http://localhost:1313/docs/tsnperf/report/</link>
       <pubDate>Wed, 01 May 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/docs/tsnperf/report/</guid>

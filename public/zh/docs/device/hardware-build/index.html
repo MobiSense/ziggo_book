@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="如何逐步构建 Caas Device 硬件">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/zh/docs/device/hardware-build/">
+  <meta property="og:site_name" content="ZIGGO BOOK">
+  <meta property="og:title" content="硬件构建">
+  <meta property="og:description" content="如何逐步构建 Caas Device 硬件">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2024-05-01T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-05-01T00:00:00+00:00">
+    <meta property="article:tag" content="TSNPerf">
+    <meta property="article:tag" content="ZIGGO-Device">
+    <meta property="article:tag" content="Basic">
+    <meta property="og:image" content="http://localhost:1313/zh/docs/device/hardware-build/featured.jpg">
+<title>硬件构建 | ZIGGO BOOK</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="canonical" href="http://localhost:1313/zh/docs/device/hardware-build/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1313/docs/device/hardware-build/" title="Hardware Build">
+<link rel="stylesheet" href="/book.min.309b7ed028807cdb68d8d61e26d609f48369c098dbf5e4d8c0dcf4cdf49feafc.css" integrity="sha256-MJt&#43;0CiAfNto2NYeJtYJ9INpwJjb9eTYwNz0zfSf6vw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/zh.search.min.b77e601a6a6485877260bb76047048cc0366d24bc7803048aae12ec20e97c250.js" integrity="sha256-t35gGmpkhYdyYLt2BHBIzANm0kvHgDBIquEuwg6XwlA=" crossorigin="anonymous"></script>
+
+  
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/zh/"><img src="/logo.png" alt="Logo" /><span>ZIGGO BOOK</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="搜索" aria-label="搜索" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+    
+  
+
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/translate.svg" class="book-icon" alt="Languages" />
+        Chinese
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://localhost:1313/docs/device/hardware-build/">
+          English
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f7037f1d8c98cfd6af893e54a7a7c84a" class="toggle"  />
+    <label for="section-f7037f1d8c98cfd6af893e54a7a7c84a" class="flex justify-between">
+      <a href="/zh/docs/tsnperf/" class="">ZIGGO TSNPerf</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/tsnperf/principle/" class="">TSNPerf 设计原理</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/tsnperf/configuration/" class="">TSNPerf 使用指南</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/tsnperf/manual/" class="">TSNPerf 检测内容及使用表</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/tsnperf/report/" class="">某品牌交换机报告</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d43c4f20a039dd2c08c63c6629ffaedf" class="toggle"  />
+    <label for="section-d43c4f20a039dd2c08c63c6629ffaedf" class="flex justify-between">
+      <a href="/zh/docs/switch/" class="">ZIGGO Switch</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/switch/basic_knowledge/" class="">基础知识列表</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/switch/require/" class="">准备清单</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/switch/system-design/" class="">System Design</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/switch/hardware-build/" class="">Hardware Build</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/switch/software-build/" class="">Software Build</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/switch/contributing/" class="">How to contribute</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9944d1fadd4ce8adc7644b141d205c6b" class="toggle" checked />
+    <label for="section-9944d1fadd4ce8adc7644b141d205c6b" class="flex justify-between">
+      <a href="/zh/docs/device/" class="">ZIGGO Device</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/device/basic_knowledge/" class="">基础知识列表</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/device/require/" class="">准备清单</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/device/getting-started/" class="">快速入门</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/device/system-design/" class="">系统设计</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/device/hardware-build/" class="active">硬件构建</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/device/software-build/" class="">软件构建</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/device/ziggo_device_manual/" class="">ZIGGO Device使用手册</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/device/cnc_manual/" class="">CNC脚本使用指南</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/device/testbed/" class="">TestBed搭建流程</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/device/contributing/" class="">如何贡献</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>硬件构建</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  <div style="margin-top:10px; margin-bottom:40px; display:flex; justify-content:center; gap: 25px;">
+    <a href="https://github.com/MobiSense/ziggo_book" style="padding: 10px 10px;
+	background-color: rgb(0, 0, 0); /* 设置按钮背景色为橙色 */
+	color: white; /* 设置按钮文字颜色为白色 */
+	text-decoration: none; /* 去除链接的下划线 */
+	border: 3px solid rgb(0, 0, 0);
+	border-radius: 5px; /* 设置按钮的边角为圆角 */
+	font-size: 14px; /* 设置文字大小 */
+	text-align: center; /* 按钮内文字居中显示 */
+	display: inline-block; /* 使链接的布局表现为块级元素 */">GitHub</a>
+    <a href="https://mobisense.github.io/ziggo_homepage/" style="padding: 10px 10px;
+	background-color: rgb(0, 0, 0); /* 设置按钮背景色为橙色 */
+	color: white; /* 设置按钮文字颜色为白色 */
+	text-decoration: none; /* 去除链接的下划线 */
+	border: 3px solid rgb(0, 0, 0);
+	border-radius: 5px; /* 设置按钮的边角为圆角 */
+	font-size: 14px; /* 设置文字大小 */
+	text-align: center; /* 按钮内文字居中显示 */
+	display: inline-block; /* 使链接的布局表现为块级元素 */">Home</a>
+</div>
+
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#开始前">开始前</a></li>
+    <li><a href="#目录">目录</a></li>
+    <li><a href="#安装-vivado">安装 Vivado</a></li>
+    <li><a href="#vivado-项目构建">Vivado 项目构建</a></li>
+    <li><a href="#petalinux">Petalinux</a>
+      <ul>
+        <li><a href="#1-安装-ubuntu-操作系统">1. 安装 Ubuntu 操作系统</a></li>
+        <li><a href="#2-预先下载-petalinux-相关镜像文件">2. 预先下载 PetaLinux 相关镜像文件</a></li>
+        <li><a href="#3-激活-petalinux-环境">3. 激活 PetaLinux 环境</a></li>
+        <li><a href="#4-创建-petalinux-项目">4. 创建 PetaLinux 项目</a></li>
+        <li><a href="#5-petalinux-配置">5. PetaLinux 配置</a></li>
+        <li><a href="#6-sd-卡分区和文件复制">6. SD 卡分区和文件复制</a></li>
+      </ul>
+    </li>
+    <li><a href="#启动开发板并登录">启动开发板并登录</a>
+      <ul>
+        <li><a href="#1-启动开发板">1. 启动开发板</a></li>
+        <li><a href="#2-初始化-ps">2. 初始化 PS</a></li>
+        <li><a href="#3-连接到互联网">3. 连接到互联网</a></li>
+        <li><a href="#4-运行软件">4. 运行软件</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="硬件构建">
+  硬件构建
+  <a class="anchor" href="#%e7%a1%ac%e4%bb%b6%e6%9e%84%e5%bb%ba">#</a>
+</h1>
+<h2 id="开始前">
+  开始前
+  <a class="anchor" href="#%e5%bc%80%e5%a7%8b%e5%89%8d">#</a>
+</h2>
+<p>如果您只想让开发板运行而不进行修改，并且使用我们提供的硬件文件，可以直接跳到步骤 <a href="#6-sd-card-partition-and-copy-file">SD 卡分区和文件复制</a>。</p>
+<h2 id="目录">
+  目录
+  <a class="anchor" href="#%e7%9b%ae%e5%bd%95">#</a>
+</h2>
+<ul>
+<li><a href="#%e7%a1%ac%e4%bb%b6%e6%9e%84%e5%bb%ba">硬件构建</a>
+<ul>
+<li><a href="#%e5%bc%80%e5%a7%8b%e5%89%8d">开始前</a></li>
+<li><a href="#%e7%9b%ae%e5%bd%95">目录</a></li>
+<li><a href="#%e5%ae%89%e8%a3%85-vivado">安装 Vivado</a></li>
+<li><a href="#vivado-%e9%a1%b9%e7%9b%ae%e6%9e%84%e5%bb%ba">Vivado 项目构建</a></li>
+<li><a href="#petalinux">Petalinux</a>
+<ul>
+<li><a href="#1-%e5%ae%89%e8%a3%85-ubuntu-%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f">1. 安装 Ubuntu 操作系统</a></li>
+<li><a href="#2-%e9%a2%84%e5%85%88%e4%b8%8b%e8%bd%bd-petalinux-%e7%9b%b8%e5%85%b3%e9%95%9c%e5%83%8f%e6%96%87%e4%bb%b6">2. 预先下载 PetaLinux 相关镜像文件</a></li>
+<li><a href="#3-%e6%bf%80%e6%b4%bb-petalinux-%e7%8e%af%e5%a2%83">3. 激活 PetaLinux 环境</a></li>
+<li><a href="#4-%e5%88%9b%e5%bb%ba-petalinux-%e9%a1%b9%e7%9b%ae">4. 创建 PetaLinux 项目</a></li>
+<li><a href="#5-petalinux-%e9%85%8d%e7%bd%ae">5. PetaLinux 配置</a></li>
+<li><a href="#6-sd-%e5%8d%a1%e5%88%86%e5%8c%ba%e5%92%8c%e6%96%87%e4%bb%b6%e5%a4%8d%e5%88%b6">6. SD 卡分区和文件复制</a>
+<ul>
+<li><a href="#%e6%96%87%e4%bb%b6%e4%b8%8b%e8%bd%bd">文件下载</a></li>
+<li><a href="#sd-%e5%8d%a1%e5%88%86%e5%8c%ba">SD 卡分区</a></li>
+<li><a href="#%e5%a4%8d%e5%88%b6%e6%96%87%e4%bb%b6%e5%88%b0-sd-%e5%8d%a1">复制文件到 SD 卡</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%e5%90%af%e5%8a%a8%e5%bc%80%e5%8f%91%e6%9d%bf%e5%b9%b6%e7%99%bb%e5%bd%95">启动开发板并登录</a>
+<ul>
+<li><a href="#1-%e5%90%af%e5%8a%a8%e5%bc%80%e5%8f%91%e6%9d%bf">1. 启动开发板</a></li>
+<li><a href="#2-%e5%88%9d%e5%a7%8b%e5%8c%96-ps">2. 初始化 PS</a></li>
+<li><a href="#3-%e8%bf%9e%e6%8e%a5%e5%88%b0%e4%ba%92%e8%81%94%e7%bd%91">3. 连接到互联网</a></li>
+<li><a href="#4-%e8%bf%90%e8%a1%8c%e8%bd%af%e4%bb%b6">4. 运行软件</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="安装-vivado">
+  安装 Vivado
+  <a class="anchor" href="#%e5%ae%89%e8%a3%85-vivado">#</a>
+</h2>
+<p>您可以在 <a href="https://www.xilinx.com/products/design-tools/vivado.html">这里</a> 下载 Vivado。</p>
+<p>我们使用的是 Vivado 2020.1 版本（注意：需要统一版本，否则运行可能会出现问题）。</p>
+<h2 id="vivado-项目构建">
+  Vivado 项目构建
+  <a class="anchor" href="#vivado-%e9%a1%b9%e7%9b%ae%e6%9e%84%e5%bb%ba">#</a>
+</h2>
+<ol>
+<li>克隆硬件部分的 git 仓库。</li>
+<li>打开 Vivado 并在 Tcl 控制台中输入命令 <code>cd Project_Dir</code> 和 <code>source ./tsn_device.tcl</code>。命令执行后，Vivado 将自动打开创建的项目。此时，我们将先关闭 Vivado 并将项目所在文件夹重命名为 <code>Work_Dir</code>，以便 git 可以正确忽略该目录，然后进入 <code>Work_Dir</code>，双击 <code>.xpr</code> 文件再次打开项目。</li>
+</ol>
+<p><img src="./vivado_tcl_console.png" alt="" /></p>
+<p><img src="./vivado_workdir.png" alt="" /></p>
+<ol start="3">
+<li>点击 <code>Generate Bitstream</code></li>
+</ol>
+<p><img src="./vivado_bitstream.png" alt="" /></p>
+<ol start="4">
+<li>
+<p>导出 xsa 文件。在 Vivado 中，选择 File Export Export Hardware。平台类型选择 Fixed。输出选择 include bitstream。点击 Finish 导出 xsa 文件。</p>
+<p>导出的 xsa 文件路径：<code>Work_Dir/tns+tsn_device.xsa</code></p>
+</li>
+</ol>
+<h2 id="petalinux">
+  Petalinux
+  <a class="anchor" href="#petalinux">#</a>
+</h2>
+<h3 id="1-安装-ubuntu-操作系统">
+  1. 安装 Ubuntu 操作系统
+  <a class="anchor" href="#1-%e5%ae%89%e8%a3%85-ubuntu-%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f">#</a>
+</h3>
+<p>以下编译过程均在虚拟机中完成。</p>
+<p>我们推荐使用以下配置：</p>
+<pre tabindex="0"><code>虚拟机版本：VMware Workstation 16 Pro
+Ubuntu 版本：ubuntu-16.04.3-desktop-amd64.iso
+</code></pre><h3 id="2-预先下载-petalinux-相关镜像文件">
+  2. 预先下载 PetaLinux 相关镜像文件
+  <a class="anchor" href="#2-%e9%a2%84%e5%85%88%e4%b8%8b%e8%bd%bd-petalinux-%e7%9b%b8%e5%85%b3%e9%95%9c%e5%83%8f%e6%96%87%e4%bb%b6">#</a>
+</h3>
+<p>进入网站：https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools/archive.html</p>
+<p>选择 2020.1 找到 <code>PetaLinux Tools sstate-cache artifacts</code> 并下载 <code>sstate_arm_2020.1</code> 和 <code>downloads</code>，并将下载的文件保存在虚拟机的指定目录（本文档中的目录设置为 /home/alinx/data/）</p>
+<p>​    <img src="./download_petalinux.png" alt="" /></p>
+<h3 id="3-激活-petalinux-环境">
+  3. 激活 PetaLinux 环境
+  <a class="anchor" href="#3-%e6%bf%80%e6%b4%bb-petalinux-%e7%8e%af%e5%a2%83">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>source /opt/pkg/petalinux/settings.sh
+</span></span></code></pre></div><p>​    每次启动终端时自动激活 PetaLinux 环境。</p>
+<h3 id="4-创建-petalinux-项目">
+  4. 创建 PetaLinux 项目
+  <a class="anchor" href="#4-%e5%88%9b%e5%bb%ba-petalinux-%e9%a1%b9%e7%9b%ae">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>petalinux-create --type project --template zynq --name &lt;project_name&gt;
+</span></span><span style="display:flex;"><span>cd &lt;project_name&gt;
+</span></span></code></pre></div><h3 id="5-petalinux-配置">
+  5. PetaLinux 配置
+  <a class="anchor" href="#5-petalinux-%e9%85%8d%e7%bd%ae">#</a>
+</h3>
+<ol>
+<li>导入硬件配置</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>petalinux-config --get-hw-description &lt;PATH-TO-XSA Directory&gt;
+</span></span></code></pre></div><p>然后您将进入 menuconfig 页面，按照以下配置：</p>
+<pre tabindex="0"><code>Subsystem AUTO Hardware Settings
+-&gt; Ethernet Settings  
+  -&gt; [*] Randomise MAC address
+
+Image Packaging Configurations 
+-&gt; Root filesystem type 
+  -&gt; [*] EXT4 (SD/eMMC/SATA/USB)
+
+Yocto Settings (Use downloaded image)
+-&gt; Local sstate feeds settings: /home/alinx/data/sstate_arm_2020.1/arm
+-&gt; Add pre-mirror url: file:///home/alinx/data/downloads
+</code></pre><ol start="2">
+<li>制作 <code>Kernel Module</code></li>
+</ol>
+<p>​    制作一个名为 &ldquo;<code>dma proxy</code>&rdquo; 的模块：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>petalinux-create -t modules -n dma-proxy --enable
+</span></span></code></pre></div><p>​    替换 dma-proxy 文件夹：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>rm -rf project-spec/meta-user/recipes-modules/*
+</span></span></code></pre></div><p>下载我们的 dma-proxy（从 <a href="https://cloud.tsinghua.edu.cn/f/85cfd8e8174e4689b79b/">这里</a>）并解压到 <code>project-spec/meta-user/recipes-modules/</code> 目录中。</p>
+<ol start="3">
+<li>配置内核</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>petalinux-config -c kernel
+</span></span></code></pre></div><p>进入 <code>menuconfig</code> 页面，进行以下配置：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Device Drivers 
+</span></span><span style="display:flex;"><span>-&gt; Userspace I/O drivers 
+</span></span><span style="display:flex;"><span>  -&gt; <span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Userspace I/O platform driver with generic IRQ handling 
+</span></span><span style="display:flex;"><span>  -&gt; <span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Userspace platform driver with generic irq and dynamic memory 
+</span></span><span style="display:flex;"><span>  -&gt; <span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Xilinx AI Engine driverDevice Drivers 
+</span></span><span style="display:flex;"><span>-&gt; Dma Engine Support  
+</span></span><span style="display:flex;"><span>  -&gt; <span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Xilinx DMA Engines
+</span></span><span style="display:flex;"><span>-&gt; Network device support    
+</span></span><span style="display:flex;"><span>  -&gt; Ethernet driver support        
+</span></span><span style="display:flex;"><span>    -&gt; <span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Cadence devices        
+</span></span><span style="display:flex;"><span>    -&gt; <span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Cadence MACB/GEM support
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>General setup 
+</span></span><span style="display:flex;"><span>-&gt; Preemption Model    
+</span></span><span style="display:flex;"><span>  -&gt; <span style="color:#f92672">(</span>X<span style="color:#f92672">)</span> No Forced Preemption <span style="color:#f92672">(</span>Server<span style="color:#f92672">)</span>
+</span></span></code></pre></div><ol start="4">
+<li>配置 rootfs</li>
+</ol>
+<p>编辑文件 <code>project-spec/meta-user/conf/user-rootfsconfig</code>，并<em><strong>添加</strong></em>以下配置：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>CONFIG_sudo
+</span></span><span style="display:flex;"><span>CONFIG_sudo-dev
+</span></span><span style="display:flex;"><span>CONFIG_dnf
+</span></span><span style="display:flex;"><span>CONFIG_packagegroup-core-buildessential
+</span></span><span style="display:flex;"><span>CONFIG_packagegroup-core-buildessential-dev
+</span></span><span style="display:flex;"><span>CONFIG_packagegroup-self-hosted
+</span></span><span style="display:flex;"><span>CONFIG_packagegroup-self-hosted-dev
+</span></span><span style="display:flex;"><span>CONFIG_packagegroup-self-hosted-sdk-dev
+</span></span><span style="display:flex;"><span>CONFIG_packagegroup-self-hosted-sdk
+</span></span><span style="display:flex;"><span>CONFIG_python3
+</span></span><span style="display:flex;"><span>CONFIG_autoconf
+</span></span><span style="display:flex;"><span>CONFIG_autoconf-dev
+</span></span><span style="display:flex;"><span>CONFIG_automake
+</span></span><span style="display:flex;"><span>CONFIG_automake-dev
+</span></span><span style="display:flex;"><span>CONFIG_bison
+</span></span><span style="display:flex;"><span>CONFIG_bison-dev
+</span></span><span style="display:flex;"><span>CONFIG_flex
+</span></span><span style="display:flex;"><span>CONFIG_flex-dev
+</span></span><span style="display:flex;"><span>CONFIG_make
+</span></span><span style="display:flex;"><span>CONFIG_make-dev
+</span></span><span style="display:flex;"><span>CONFIG_python
+</span></span><span style="display:flex;"><span>CONFIG_libtool
+</span></span><span style="display:flex;"><span>CONFIG_libtool-dev
+</span></span><span style="display:flex;"><span>CONFIG_sqlite3
+</span></span><span style="display:flex;"><span>CONFIG_cmake
+</span></span><span style="display:flex;"><span>CONFIG_util-linux
+</span></span><span style="display:flex;"><span>CONFIG_net-tools
+</span></span></code></pre></div><p>保存并退出。</p>
+<p>输入：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>petalinux-config -c rootfs
+</span></span></code></pre></div><p>然后您将进入 menuconfig 页面，按照以下配置：</p>
+<pre tabindex="0"><code>Image Features 
+-&gt; [*] package management   
+  -&gt; (http://petalinux.xilinx.com/sswreleases/rel-v2020/feeds/zc702-zynq7/) Package feed url.
+user packages
+-&gt; SELECT ALL
+</code></pre><ol start="5">
+<li>编译设备树</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>petalinux-build -c device-tree
+</span></span></code></pre></div><ol start="6">
+<li>修改设备树</li>
+</ol>
+<p>生成的设备树位于 <code>components/plnx_workspace/device-tree/device-tree/pl.dtsi</code> 目录，我们需要基于该文件进行修改以满足我们的一些外设需求。修改后的文件存储在 <code>project-spec/meta-user/recipes-bsp/device-tree/files/system-user.dtsi</code> 目录中。</p>
+<blockquote>
+<p>注意：在 <code>//&gt;&gt;&gt;</code> 和 <code>//&lt;&lt;&lt;</code> 之间是注释中添加的内容。</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#f92672">/</span>include<span style="color:#f92672">/</span> <span style="color:#e6db74">&#34;system-conf.dtsi&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">/</span> {
+</span></span><span style="display:flex;"><span>        amba_pl: amba_pl {
+</span></span><span style="display:flex;"><span>                dma_proxy {  
+</span></span><span style="display:flex;"><span>            compatible <span style="color:#f92672">=</span><span style="color:#e6db74">&#34;xlnx,dma_proxy&#34;</span>;
+</span></span><span style="display:flex;"><span>            dmas <span style="color:#f92672">=</span> <span style="color:#f92672">&lt;&amp;</span>axi_dma_0 <span style="color:#ae81ff">0</span>  <span style="color:#f92672">&amp;</span>axi_dma_0 <span style="color:#ae81ff">1</span><span style="color:#f92672">&gt;</span>;
+</span></span><span style="display:flex;"><span>            dma<span style="color:#f92672">-</span>names <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;dma_proxy_tx&#34;</span>, <span style="color:#e6db74">&#34;dma_proxy_rx&#34;</span>;  
+</span></span><span style="display:flex;"><span>        };
+</span></span><span style="display:flex;"><span>                pkt_gen_controller_0: pkt_gen_controller<span style="color:#960050;background-color:#1e0010">@</span><span style="color:#ae81ff">43</span>c00000 {
+</span></span><span style="display:flex;"><span>                        compatible <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;generic-uio&#34;</span>,<span style="color:#e6db74">&#34;uio&#34;</span>;
+</span></span><span style="display:flex;"><span>                        reg <span style="color:#f92672">=</span> <span style="color:#f92672">&lt;</span><span style="color:#ae81ff">0x43c00000</span> <span style="color:#ae81ff">0x10000</span><span style="color:#f92672">&gt;</span>;
+</span></span><span style="display:flex;"><span>                };
+</span></span><span style="display:flex;"><span>                rtc0: time_sync_uio<span style="color:#960050;background-color:#1e0010">@</span><span style="color:#ae81ff">43</span>c10000 {
+</span></span><span style="display:flex;"><span>                        compatible <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;generic-uio&#34;</span>,<span style="color:#e6db74">&#34;uio&#34;</span>;
+</span></span><span style="display:flex;"><span>                        reg <span style="color:#f92672">=</span> <span style="color:#f92672">&lt;</span><span style="color:#ae81ff">0x43c10000</span> <span style="color:#ae81ff">0x10000</span><span style="color:#f92672">&gt;</span>;
+</span></span><span style="display:flex;"><span>                };
+</span></span><span style="display:flex;"><span>        };
+</span></span><span style="display:flex;"><span>        chosen{
+</span></span><span style="display:flex;"><span>                        bootargs <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;console=ttyPS0,115200 earlyprintk cma=256M uio_pdrv_genirq.of_id=generic-uio root=/dev/mmcblk0p2 rw rootwait&#34;</span>;
+</span></span><span style="display:flex;"><span>      stdout
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;serial0:115200n8&#34;</span>;
+</span></span><span style="display:flex;"><span>        };
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&amp;</span>gem1 {
+</span></span><span style="display:flex;"><span>    local<span style="color:#f92672">-</span>mac<span style="color:#f92672">-</span>address <span style="color:#f92672">=</span> [<span style="color:#ae81ff">00</span> <span style="color:#ae81ff">00</span> <span style="color:#ae81ff">00</span> <span style="color:#ae81ff">00</span> <span style="color:#ae81ff">02</span> <span style="color:#ae81ff">01</span>];
+</span></span><span style="display:flex;"><span>    phy<span style="color:#f92672">-</span>mode <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;gmii&#34;</span>;
+</span></span><span style="display:flex;"><span>    fixed<span style="color:#f92672">-</span>link {
+</span></span><span style="display:flex;"><span>        speed <span style="color:#f92672">=</span> <span style="color:#f92672">&lt;</span><span style="color:#ae81ff">1000</span><span style="color:#f92672">&gt;</span>;
+</span></span><span style="display:flex;"><span>        full<span style="color:#f92672">-</span>duplex;
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><ol start="7">
+<li>编译</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>petalinux-build
+</span></span></code></pre></div><ol start="8">
+<li>打包</li>
+</ol>
+<p>在这里，您需要将 Vivado 生成的比特流文件复制到虚拟机。（您可以将比特流文件导出到您想要的位置）。</p>
+<p><img src="./export_bitstream.png" alt="" /></p>
+<p>然后：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd images/linux
+</span></span><span style="display:flex;"><span>petalinux-package --boot --fsbl zynq_fsbl.elf --fpga &lt;FPGA bitstream path&gt; --u-boot --force
+</span></span></code></pre></div><p>之后，您可以得到 4 个关键文件：<code>BOOT.BIN</code>、<code>boot.scr</code>、<code>image.ub</code>、<code>rootfs.tar.gz</code></p>
+<h3 id="6-sd-卡分区和文件复制">
+  6. SD 卡分区和文件复制
+  <a class="anchor" href="#6-sd-%e5%8d%a1%e5%88%86%e5%8c%ba%e5%92%8c%e6%96%87%e4%bb%b6%e5%a4%8d%e5%88%b6">#</a>
+</h3>
+<h4 id="文件下载">
+  文件下载
+  <a class="anchor" href="#%e6%96%87%e4%bb%b6%e4%b8%8b%e8%bd%bd">#</a>
+</h4>
+<p>从 <a href="https://cloud.tsinghua.edu.cn/d/0bbc00543e5b4b82a6ea/">这个</a>公共链接或从前述步骤下载以下文件：</p>
+<ul>
+<li>BOOT.BIN</li>
+<li>boot.scr</li>
+<li>image.ub</li>
+<li>rootfs.tar.gz</li>
+</ul>
+<h4 id="sd-卡分区">
+  SD 卡分区
+  <a class="anchor" href="#sd-%e5%8d%a1%e5%88%86%e5%8c%ba">#</a>
+</h4>
+<p>为了启动 TSNPerf，您需要一个大于 32GiB 存储容量的 micro SD 卡。然后使用：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt-get install gparted
+</span></span><span style="display:flex;"><span>sudo gparted
+</span></span></code></pre></div><p>将其分为以下两个分区：</p>
+<ul>
+<li>
+<p>BOOT：存储来自 petalinux 的启动文件</p>
+<p>前置空闲空间（MiB）：4</p>
+<p>新大小（MiB）：500</p>
+<p>文件系统：fat32</p>
+<p>标签：BOOT</p>
+</li>
+<li>
+<p>ROOTFS：存储 debian 系统 rootfs</p>
+<p>前置空闲空间（MiB）：0</p>
+<p>后置空闲空间（MiB）：0</p>
+<p>文件系统：ext4</p>
+<p>标签：ROOTFS</p>
+</li>
+</ul>
+<h4 id="复制文件到-sd-卡">
+  复制文件到 SD 卡
+  <a class="anchor" href="#%e5%a4%8d%e5%88%b6%e6%96%87%e4%bb%b6%e5%88%b0-sd-%e5%8d%a1">#</a>
+</h4>
+<p>挂载 SD 卡：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo mount /dev/sda1 /media/alinx/BOOT/
+</span></span><span style="display:flex;"><span>sudo mount /dev/sda2 /media/alinx/ROOTFS/
+</span></span></code></pre></div><p>删除原始文件：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo rm -rf /media/alinx/BOOT/* /media/alinx/ROOTFS/*
+</span></span></code></pre></div><p>复制文件：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo cp BOOT.BIN boot.scr image.ub /media/alinx/BOOT
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo tar -zxvf rootfs.tar.gz -C /media/alinx/ROOTFS
+</span></span><span style="display:flex;"><span>sudo cp -r ~/init_os.sh /media/alinx/ROOTFS/home/root/init_os.sh 
+</span></span><span style="display:flex;"><span>sync
+</span></span><span style="display:flex;"><span>sudo chown root:root /media/alinx/ROOTFS
+</span></span><span style="display:flex;"><span>sudo chmod <span style="color:#ae81ff">755</span> /media/alinx/ROOTFS
+</span></span></code></pre></div><h2 id="启动开发板并登录">
+  启动开发板并登录
+  <a class="anchor" href="#%e5%90%af%e5%8a%a8%e5%bc%80%e5%8f%91%e6%9d%bf%e5%b9%b6%e7%99%bb%e5%bd%95">#</a>
+</h2>
+<h3 id="1-启动开发板">
+  1. 启动开发板
+  <a class="anchor" href="#1-%e5%90%af%e5%8a%a8%e5%bc%80%e5%8f%91%e6%9d%bf">#</a>
+</h3>
+<p>将 SD 卡插入 FPGA 板，将开关切换到 SD 卡启动模式。</p>
+<p><img src="./FPGA_boot_mode_switch.png" alt="SD 启动" /></p>
+<h3 id="2-初始化-ps">
+  2. 初始化 PS
+  <a class="anchor" href="#2-%e5%88%9d%e5%a7%8b%e5%8c%96-ps">#</a>
+</h3>
+<p>插入 SD 卡，设置 AX7021 板从 SD 启动，打开电源。</p>
+<p>将 PC 连接到开发板的 UART 端口。我们推荐使用 MobaXterm 连接串行端口。将速度设置为 115200，流控制设置为 None。</p>
+<p><img src="./moba_serial.png" alt="MobaXterm" /></p>
+<p>默认用户名和密码如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">用户名：</span><span style="color:#e6db74">&#34;root&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">密码：</span><span style="color:#e6db74">&#34;root&#34;</span>
+</span></span></code></pre></div><p>执行初始化脚本设置 Linux 环境。(<code>hardware/init_os.sh</code>)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sh init_os.sh
+</span></span></code></pre></div><p>您可以自由配置主机名、IP 地址和 MAC 地址等，并可根据需要修改脚本。</p>
+<h3 id="3-连接到互联网">
+  3. 连接到互联网
+  <a class="anchor" href="#3-%e8%bf%9e%e6%8e%a5%e5%88%b0%e4%ba%92%e8%81%94%e7%bd%91">#</a>
+</h3>
+<p>将 PC 的网络端口连接到设备的 <strong>PS</strong> 网络端口（ETH0）。</p>
+<p>将 PC 的相应端口设置为与设备在同一子网内（即 192.168.137.x）。</p>
+<p>之后，您可以通过 <code>ssh</code> 连接到设备，并复制所需的软件文件。</p>
+<h3 id="4-运行软件">
+  4. 运行软件
+  <a class="anchor" href="#4-%e8%bf%90%e8%a1%8c%e8%bd%af%e4%bb%b6">#</a>
+</h3>
+<p>请参阅此仓库的软件部分了解进一步的说明。</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/Mobisense/ziggo_book///tree/main//content/docs/device/hardware-build/index.md" target="_blank" rel="noopener">
+      <img src="/svg/edit.svg" class="book-icon" alt="" />
+      <span>编辑本页</span>
+    </a>
+  </div>
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        <footer id="mu-footer" role="contentinfo" style="	height: 160px;
+clear: both;
+color: #000000;
+text-align: center;
+padding-top: 100px;">
+    <div class="container">
+        <div class="col-sm-12">
+            <div>
+                <p> Room 211, District 11, East Main Building, Tsinghua University, Haidian District, Beijing, China, 100084 | </p>
+                <p> &copy 2021 <span class="ziggo-font">ZIGGO</span>, TNS, School of Software, Tsinghua University . All rights reserved. </p>
+            </div>
+        </div>
+    </div>
+</footer>
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  <div style="margin-top:10px; margin-bottom:40px; display:flex; justify-content:center; gap: 25px;">
+    <a href="https://github.com/MobiSense/ziggo_book" style="padding: 10px 10px;
+	background-color: rgb(0, 0, 0); /* 设置按钮背景色为橙色 */
+	color: white; /* 设置按钮文字颜色为白色 */
+	text-decoration: none; /* 去除链接的下划线 */
+	border: 3px solid rgb(0, 0, 0);
+	border-radius: 5px; /* 设置按钮的边角为圆角 */
+	font-size: 14px; /* 设置文字大小 */
+	text-align: center; /* 按钮内文字居中显示 */
+	display: inline-block; /* 使链接的布局表现为块级元素 */">GitHub</a>
+    <a href="https://mobisense.github.io/ziggo_homepage/" style="padding: 10px 10px;
+	background-color: rgb(0, 0, 0); /* 设置按钮背景色为橙色 */
+	color: white; /* 设置按钮文字颜色为白色 */
+	text-decoration: none; /* 去除链接的下划线 */
+	border: 3px solid rgb(0, 0, 0);
+	border-radius: 5px; /* 设置按钮的边角为圆角 */
+	font-size: 14px; /* 设置文字大小 */
+	text-align: center; /* 按钮内文字居中显示 */
+	display: inline-block; /* 使链接的布局表现为块级元素 */">Home</a>
+</div>
+
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#开始前">开始前</a></li>
+    <li><a href="#目录">目录</a></li>
+    <li><a href="#安装-vivado">安装 Vivado</a></li>
+    <li><a href="#vivado-项目构建">Vivado 项目构建</a></li>
+    <li><a href="#petalinux">Petalinux</a>
+      <ul>
+        <li><a href="#1-安装-ubuntu-操作系统">1. 安装 Ubuntu 操作系统</a></li>
+        <li><a href="#2-预先下载-petalinux-相关镜像文件">2. 预先下载 PetaLinux 相关镜像文件</a></li>
+        <li><a href="#3-激活-petalinux-环境">3. 激活 PetaLinux 环境</a></li>
+        <li><a href="#4-创建-petalinux-项目">4. 创建 PetaLinux 项目</a></li>
+        <li><a href="#5-petalinux-配置">5. PetaLinux 配置</a></li>
+        <li><a href="#6-sd-卡分区和文件复制">6. SD 卡分区和文件复制</a></li>
+      </ul>
+    </li>
+    <li><a href="#启动开发板并登录">启动开发板并登录</a>
+      <ul>
+        <li><a href="#1-启动开发板">1. 启动开发板</a></li>
+        <li><a href="#2-初始化-ps">2. 初始化 PS</a></li>
+        <li><a href="#3-连接到互联网">3. 连接到互联网</a></li>
+        <li><a href="#4-运行软件">4. 运行软件</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

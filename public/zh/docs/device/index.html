@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ZIGGO Device: 一种灵活且符合标准的TSN性能评估工具包#目录#ZIGGO Device: 一种灵活且符合标准的TSN性能评估工具包 目录 简介 ZIGGO 开放平台 演示 功能 开始前阅读 快速入门 系统设计 演示应用教程 许可和引用 待办事项 贡献 简介#ZIGGO 是一个 灵活、符合标准 且 控制功能虚拟化 的 TSN 交换机平台，适用于工业控制、汽车电子及其他时间敏感应用。
+这是 ZIGGO Device 的文档。（我们还提供符合 IEEE 802.1 TSN 标准的 ZIGGO-CaaS-Switch。）我们的设备支持测试所有符合标准的交换机。
+ZIGGO 开放平台#ZIGGO 开放平台的构建包括三个层次：网络设备、管理工具和演示应用：
+软件和硬件项目以及开发板启动教程提供了设置单个网络设备的说明。
+CNC 用户手册和设备用户手册涵盖了系统配置和管理工具。
+最后，我们提供了一个全面的演示应用构建教程，指导如何使用网络设备和管理工具协作构建一个完整且功能齐全的演示应用。
+演示#我们提供了 TSN 交换机的演示视频。视频展示了 ZIGGO-CaaS-Switch 相较于普通交换机的优越性能。
+图片左侧是我们使用的 ZYNQ 开发板，右侧是我们构建的 TSN 显示板。
+点击图片观看视频！或者点击这里。
+功能#ZIGGO 支持同时传输 信息技术（IT） 和 操作技术（OT） 数据流量，并提供 QoS 保证。">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/zh/docs/device/">
+  <meta property="og:site_name" content="ZIGGO BOOK">
+  <meta property="og:title" content="ZIGGO Device">
+  <meta property="og:description" content="ZIGGO Device: 一种灵活且符合标准的TSN性能评估工具包#目录#ZIGGO Device: 一种灵活且符合标准的TSN性能评估工具包 目录 简介 ZIGGO 开放平台 演示 功能 开始前阅读 快速入门 系统设计 演示应用教程 许可和引用 待办事项 贡献 简介#ZIGGO 是一个 灵活、符合标准 且 控制功能虚拟化 的 TSN 交换机平台，适用于工业控制、汽车电子及其他时间敏感应用。
+这是 ZIGGO Device 的文档。（我们还提供符合 IEEE 802.1 TSN 标准的 ZIGGO-CaaS-Switch。）我们的设备支持测试所有符合标准的交换机。
+ZIGGO 开放平台#ZIGGO 开放平台的构建包括三个层次：网络设备、管理工具和演示应用：
+软件和硬件项目以及开发板启动教程提供了设置单个网络设备的说明。
+CNC 用户手册和设备用户手册涵盖了系统配置和管理工具。
+最后，我们提供了一个全面的演示应用构建教程，指导如何使用网络设备和管理工具协作构建一个完整且功能齐全的演示应用。
+演示#我们提供了 TSN 交换机的演示视频。视频展示了 ZIGGO-CaaS-Switch 相较于普通交换机的优越性能。
+图片左侧是我们使用的 ZYNQ 开发板，右侧是我们构建的 TSN 显示板。
+点击图片观看视频！或者点击这里。
+功能#ZIGGO 支持同时传输 信息技术（IT） 和 操作技术（OT） 数据流量，并提供 QoS 保证。">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="website">
+<title>ZIGGO Device | ZIGGO BOOK</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="canonical" href="http://localhost:1313/zh/docs/device/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1313/docs/device/" title="ZIGGO Device">
+<link rel="stylesheet" href="/book.min.309b7ed028807cdb68d8d61e26d609f48369c098dbf5e4d8c0dcf4cdf49feafc.css" integrity="sha256-MJt&#43;0CiAfNto2NYeJtYJ9INpwJjb9eTYwNz0zfSf6vw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/zh.search.min.b77e601a6a6485877260bb76047048cc0366d24bc7803048aae12ec20e97c250.js" integrity="sha256-t35gGmpkhYdyYLt2BHBIzANm0kvHgDBIquEuwg6XwlA=" crossorigin="anonymous"></script>
+
+  
+
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/zh/docs/device/index.xml" title="ZIGGO BOOK" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/zh/"><img src="/logo.png" alt="Logo" /><span>ZIGGO BOOK</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="搜索" aria-label="搜索" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+    
+  
+
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/translate.svg" class="book-icon" alt="Languages" />
+        Chinese
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://localhost:1313/docs/device/">
+          English
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f7037f1d8c98cfd6af893e54a7a7c84a" class="toggle"  />
+    <label for="section-f7037f1d8c98cfd6af893e54a7a7c84a" class="flex justify-between">
+      <a href="/zh/docs/tsnperf/" class="">ZIGGO TSNPerf</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/tsnperf/principle/" class="">TSNPerf 设计原理</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/tsnperf/configuration/" class="">TSNPerf 使用指南</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/tsnperf/manual/" class="">TSNPerf 检测内容及使用表</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/tsnperf/report/" class="">某品牌交换机报告</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d43c4f20a039dd2c08c63c6629ffaedf" class="toggle"  />
+    <label for="section-d43c4f20a039dd2c08c63c6629ffaedf" class="flex justify-between">
+      <a href="/zh/docs/switch/" class="">ZIGGO Switch</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/switch/basic_knowledge/" class="">基础知识列表</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/switch/require/" class="">准备清单</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/switch/system-design/" class="">系统设计</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/switch/hardware-build/" class="">硬件构建</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/switch/software-build/" class="">软件构建</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/switch/contributing/" class="">如何贡献</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9944d1fadd4ce8adc7644b141d205c6b" class="toggle" checked />
+    <label for="section-9944d1fadd4ce8adc7644b141d205c6b" class="flex justify-between">
+      <a href="/zh/docs/device/" class="active">ZIGGO Device</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/device/basic_knowledge/" class="">基础知识列表</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/device/require/" class="">准备清单</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/device/getting-started/" class="">快速入门</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/device/system-design/" class="">系统设计</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/device/hardware-build/" class="">硬件构建</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/device/software-build/" class="">软件构建</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/device/ziggo_device_manual/" class="">ZIGGO Device使用手册</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/device/cnc_manual/" class="">CNC脚本使用指南</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/device/testbed/" class="">TestBed搭建流程</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/device/contributing/" class="">如何贡献</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>ZIGGO Device</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  <div style="margin-top:10px; margin-bottom:40px; display:flex; justify-content:center; gap: 25px;">
+    <a href="https://github.com/MobiSense/ziggo_book" style="padding: 10px 10px;
+	background-color: rgb(0, 0, 0); /* 设置按钮背景色为橙色 */
+	color: white; /* 设置按钮文字颜色为白色 */
+	text-decoration: none; /* 去除链接的下划线 */
+	border: 3px solid rgb(0, 0, 0);
+	border-radius: 5px; /* 设置按钮的边角为圆角 */
+	font-size: 14px; /* 设置文字大小 */
+	text-align: center; /* 按钮内文字居中显示 */
+	display: inline-block; /* 使链接的布局表现为块级元素 */">GitHub</a>
+    <a href="https://mobisense.github.io/ziggo_homepage/" style="padding: 10px 10px;
+	background-color: rgb(0, 0, 0); /* 设置按钮背景色为橙色 */
+	color: white; /* 设置按钮文字颜色为白色 */
+	text-decoration: none; /* 去除链接的下划线 */
+	border: 3px solid rgb(0, 0, 0);
+	border-radius: 5px; /* 设置按钮的边角为圆角 */
+	font-size: 14px; /* 设置文字大小 */
+	text-align: center; /* 按钮内文字居中显示 */
+	display: inline-block; /* 使链接的布局表现为块级元素 */">Home</a>
+</div>
+
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#目录">目录</a></li>
+    <li><a href="#简介">简介</a></li>
+    <li><a href="#ziggo-开放平台">ZIGGO 开放平台</a></li>
+    <li><a href="#演示">演示</a></li>
+    <li><a href="#功能">功能</a></li>
+    <li><a href="#开始前阅读">开始前阅读</a></li>
+    <li><a href="#快速入门">快速入门</a></li>
+    <li><a href="#系统设计">系统设计</a></li>
+    <li><a href="#演示应用教程">演示应用教程</a></li>
+    <li><a href="#许可和引用">许可和引用</a></li>
+    <li><a href="#待办事项">待办事项</a></li>
+    <li><a href="#贡献">贡献</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><!-- raw HTML omitted -->
+<h1 id="ziggo-device-一种灵活且符合标准的tsn性能评估工具包">
+  ZIGGO Device: 一种灵活且符合标准的TSN性能评估工具包
+  <a class="anchor" href="#ziggo-device-%e4%b8%80%e7%a7%8d%e7%81%b5%e6%b4%bb%e4%b8%94%e7%ac%a6%e5%90%88%e6%a0%87%e5%87%86%e7%9a%84tsn%e6%80%a7%e8%83%bd%e8%af%84%e4%bc%b0%e5%b7%a5%e5%85%b7%e5%8c%85">#</a>
+</h1>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p><img src="figs/banner.jpg" alt="" /></p>
+<h2 id="目录">
+  目录
+  <a class="anchor" href="#%e7%9b%ae%e5%bd%95">#</a>
+</h2>
+<ul>
+<li><a href="#ziggo-device-%e4%b8%80%e7%a7%8d%e7%81%b5%e6%b4%bb%e4%b8%94%e7%ac%a6%e5%90%88%e6%a0%87%e5%87%86%e7%9a%84tsn%e6%80%a7%e8%83%bd%e8%af%84%e4%bc%b0%e5%b7%a5%e5%85%b7%e5%8c%85">ZIGGO Device: 一种灵活且符合标准的TSN性能评估工具包</a>
+<ul>
+<li><a href="#%e7%9b%ae%e5%bd%95">目录</a></li>
+<li><a href="#%e7%ae%80%e4%bb%8b">简介</a></li>
+<li><a href="#ziggo-%e5%bc%80%e6%94%be%e5%b9%b3%e5%8f%b0">ZIGGO 开放平台</a></li>
+<li><a href="#%e6%bc%94%e7%a4%ba">演示</a></li>
+<li><a href="#%e5%8a%9f%e8%83%bd">功能</a></li>
+<li><a href="#%e5%bc%80%e5%a7%8b%e5%89%8d%e9%98%85%e8%af%bb">开始前阅读</a></li>
+<li><a href="#%e5%bf%ab%e9%80%9f%e5%85%a5%e9%97%a8">快速入门</a></li>
+<li><a href="#%e7%b3%bb%e7%bb%9f%e8%ae%be%e8%ae%a1">系统设计</a></li>
+<li><a href="#%e6%bc%94%e7%a4%ba%e5%ba%94%e7%94%a8%e6%95%99%e7%a8%8b">演示应用教程</a></li>
+<li><a href="#%e8%ae%b8%e5%8f%af%e5%92%8c%e5%bc%95%e7%94%a8">许可和引用</a></li>
+<li><a href="#%e5%be%85%e5%8a%9e%e4%ba%8b%e9%a1%b9">待办事项</a></li>
+<li><a href="#%e8%b4%a1%e7%8c%ae">贡献</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="简介">
+  简介
+  <a class="anchor" href="#%e7%ae%80%e4%bb%8b">#</a>
+</h2>
+<p>ZIGGO 是一个 <code>灵活</code>、<code>符合标准</code> 且 <code>控制功能虚拟化</code> 的 TSN 交换机平台，适用于<strong>工业控制</strong>、<strong>汽车电子</strong>及其他<strong>时间敏感应用</strong>。</p>
+<p>这是 ZIGGO Device 的文档。（我们还提供符合 IEEE 802.1 TSN 标准的 <a href="https://github.com/Mobisense/Ziggo-CaaS-Switch">ZIGGO-CaaS-Switch</a>。）我们的设备支持测试所有符合标准的交换机。</p>
+<h2 id="ziggo-开放平台">
+  ZIGGO 开放平台
+  <a class="anchor" href="#ziggo-%e5%bc%80%e6%94%be%e5%b9%b3%e5%8f%b0">#</a>
+</h2>
+<p><img src="./demo-app.png" alt="" /></p>
+<p>ZIGGO 开放平台的构建包括三个层次：网络设备、管理工具和演示应用：</p>
+<ul>
+<li>
+<p>软件和硬件项目以及开发板启动<a href="/ziggo_book/zh/docs/device/getting-started/">教程</a>提供了设置单个网络设备的说明。</p>
+</li>
+<li>
+<p><a href="/ziggo_book/zh/docs/device/cnc_manual/">CNC 用户手册</a>和<a href="/ziggo_book/zh/docs/device/ziggo_device_manual/">设备用户手册</a>涵盖了系统配置和管理工具。</p>
+</li>
+<li>
+<p>最后，我们提供了一个全面的<a href="/ziggo_book/zh/docs/device/testbed/">演示应用构建教程</a>，指导如何使用网络设备和管理工具协作构建一个完整且功能齐全的演示应用。</p>
+</li>
+</ul>
+<h2 id="演示">
+  演示
+  <a class="anchor" href="#%e6%bc%94%e7%a4%ba">#</a>
+</h2>
+<p>我们提供了 TSN 交换机的演示视频。视频展示了 <code>ZIGGO-CaaS-Switch</code> 相较于普通交换机的优越性能。</p>
+<p>图片左侧是我们使用的 ZYNQ 开发板，右侧是我们构建的 TSN 显示板。</p>
+<p><a href="https://cloud.tsinghua.edu.cn/f/b307da6840d84e5f9ff1/"><img src="figs/testbed.jpg" alt="观看视频" /></a></p>
+<blockquote>
+<p>点击图片观看视频！或者点击<a href="https://cloud.tsinghua.edu.cn/f/b307da6840d84e5f9ff1/">这里</a>。</p>
+</blockquote>
+<h2 id="功能">
+  功能
+  <a class="anchor" href="#%e5%8a%9f%e8%83%bd">#</a>
+</h2>
+<ul>
+<li>
+<p>ZIGGO 支持同时传输 <code>信息技术（IT）</code> 和 <code>操作技术（OT）</code> 数据流量，并提供 QoS 保证。</p>
+</li>
+<li>
+<p>ZIGGO 符合 IEEE 标准 <code>802.1AS</code>、<code>Qav</code>、<code>Qbv</code> 和 <code>Qcc</code>。</p>
+</li>
+<li>
+<p>ZIGGO 提供 <code>实时</code> 和 <code>确定性</code> 以太网传输</p>
+<ul>
+<li>ZIGGO 实现 <strong>零丢包</strong>、<strong>微秒级延迟</strong> 和 <strong>纳秒级抖动门控能力</strong>。</li>
+<li>ZIGGO 保证 <strong>千兆吞吐量</strong>。</li>
+<li>ZIGGO 提供适用于 <strong>所有以太网帧大小</strong> 的门控精度。</li>
+</ul>
+</li>
+</ul>
+<h2 id="开始前阅读">
+  开始前阅读
+  <a class="anchor" href="#%e5%bc%80%e5%a7%8b%e5%89%8d%e9%98%85%e8%af%bb">#</a>
+</h2>
+<p>开始使用 ZIGGO-CaaS-Switch/ZIGGO-Device 是一个<em><strong>相当困难</strong></em>的任务。用户/开发者需要具备足够的基础知识，并准备好进行长时间的学习和调试。</p>
+<p>请参考 <a href="/ziggo_book/zh/docs/device/basic_knowledge/">basic_knowledge.md</a> 以检查您是否有能力胜任 ZIGGO。</p>
+<h2 id="快速入门">
+  快速入门
+  <a class="anchor" href="#%e5%bf%ab%e9%80%9f%e5%85%a5%e9%97%a8">#</a>
+</h2>
+<p>请参考 <a href="/ziggo_book/zh/docs/device/require/">required.md</a> 进行准备。</p>
+<p>之后，请参考 <a href="/ziggo_book/zh/docs/device/getting-started/">getting_started.md</a> 以构建并运行单个 ZIGGO Device。</p>
+<h2 id="系统设计">
+  系统设计
+  <a class="anchor" href="#%e7%b3%bb%e7%bb%9f%e8%ae%be%e8%ae%a1">#</a>
+</h2>
+<p>ZIGGO 实现于 ZYNQ-7000 SoC 上，并利用 ZYNQ 的硬件和软件可编程性。</p>
+<p><img src="figs/framework.jpg" alt="框架" /></p>
+<p>我们还提供了更深入的<a href="/ziggo_book/zh/docs/device/system-design/">文档</a>，解释 ZIGGO Device 的具体设计原则。</p>
+<h2 id="演示应用教程">
+  演示应用教程
+  <a class="anchor" href="#%e6%bc%94%e7%a4%ba%e5%ba%94%e7%94%a8%e6%95%99%e7%a8%8b">#</a>
+</h2>
+<p>我们还提供了一个<a href="/ziggo_book/zh/docs/device/testbed/">测试平台构建文档</a>，允许您使用 ZIGGO 交换机和设备构建实时以太网系统。</p>
+<p>通过该平台，我们可以测量 TSN 时间关键流量的 <code>延迟</code> 和 <code>抖动</code>、交换机的 <code>门控能力</code>、<code>带宽保证</code> 和 <code>门控精度</code>。</p>
+<p>用商业 TSN 交换机替换 ZIGGO CaaS 交换机也可以测试其上述能力。</p>
+<h2 id="许可和引用">
+  许可和引用
+  <a class="anchor" href="#%e8%ae%b8%e5%8f%af%e5%92%8c%e5%bc%95%e7%94%a8">#</a>
+</h2>
+<p>ZIGGO 根据 <a href="https://github.com/MobiSense/Ziggo-Device/blob/main/LICENSE.txt">MIT 许可</a> 发布。</p>
+<p>如果该项目对您的研究有帮助，请考虑引用我们的论文，BibTex 如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bibtex" data-lang="bibtex"><span style="display:flex;"><span><span style="color:#a6e22e">@inproceedings</span>{caas,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">author</span>=<span style="color:#e6db74">{Yang, Zheng and Zhao, Yi and Dang, Fan and He, Xiaowu and Wu, Jiahang and Cao, Hao and Wang, Zeyu and Liu, Yunhao}</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">booktitle</span>=<span style="color:#e6db74">{IEEE INFOCOM 2023 - IEEE Conference on Computer Communications}</span>, 
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">title</span>=<span style="color:#e6db74">{CaaS: Enabling Control-as-a-Service for Time-Sensitive Networking}</span>, 
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">year</span>=<span style="color:#e6db74">{2023}</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">pages</span>=<span style="color:#e6db74">{1-10}</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">doi</span>=<span style="color:#e6db74">{10.1109/INFOCOM53939.2023.10228980}</span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bibtex" data-lang="bibtex"><span style="display:flex;"><span><span style="color:#a6e22e">@inproceedings</span>{etsn,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">author</span>=<span style="color:#e6db74">{Zhao, Yi and Yang, Zheng and He, Xiaowu and Wu, Jiahang and Cao, Hao and Dong, Liang and Dang, Fan and Liu, Yunhao}</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">booktitle</span>=<span style="color:#e6db74">{IEEE ICDCS 2022 - IEEE International Conference on Distributed Computing Systems}</span>, 
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">title</span>=<span style="color:#e6db74">{E-TSN: Enabling Event-triggered Critical Traffic in Time-Sensitive Networking for Industrial Applications}</span>, 
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">year</span>=<span style="color:#e6db74">{2022}</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">volume</span>=<span style="color:#e6db74">{}</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">number</span>=<span style="color:#e6db74">{}</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">pages</span>=<span style="color:#e6db74">{691-701}</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">doi</span>=<span style="color:#e6db74">{10.1109/ICDCS54860.2022.00072}</span>}
+</span></span></code></pre></div><h2 id="待办事项">
+  待办事项
+  <a class="anchor" href="#%e5%be%85%e5%8a%9e%e4%ba%8b%e9%a1%b9">#</a>
+</h2>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> ZIGGO CaaS Switch 发布</li>
+<li><input checked="" disabled="" type="checkbox"> ZIGGO Device 发布</li>
+<li><input checked="" disabled="" type="checkbox"> ZIGGO Device 源代码</li>
+<li><input checked="" disabled="" type="checkbox"> 搭建测试平台教程</li>
+<li><input disabled="" type="checkbox"> TSN 测试用例</li>
+</ul>
+<blockquote>
+<p>我们将在教程中扩展每个测试到多个测试用例，以涵盖不同的边缘情况并全面测试 TSN 交换机的性能。</p>
+</blockquote>
+<ul>
+<li><input disabled="" type="checkbox"> 支持设备列表</li>
+</ul>
+<blockquote>
+<p>目前，我们仅测试了自己的 Ziggo 交换机，并正在测试其他商业交换机（如华为、H3C 和 NXP）。我们预计将来维护一个测试结果列表。</p>
+</blockquote>
+<h2 id="贡献">
+  贡献
+  <a class="anchor" href="#%e8%b4%a1%e7%8c%ae">#</a>
+</h2>
+<p>请参阅<a href="/ziggo_book/zh/docs/device/contributing/">指南</a>，了解如何寻求帮助或为 ZIGGO 的开发做出贡献！</p>
+<blockquote>
+<p>开发团队只会回答 GitHub 问题上的问题，拒绝其他形式的提问。</p>
+</blockquote>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/Mobisense/ziggo_book///tree/main//content/docs/device/_index.md" target="_blank" rel="noopener">
+      <img src="/svg/edit.svg" class="book-icon" alt="" />
+      <span>编辑本页</span>
+    </a>
+  </div>
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        <footer id="mu-footer" role="contentinfo" style="	height: 160px;
+clear: both;
+color: #000000;
+text-align: center;
+padding-top: 100px;">
+    <div class="container">
+        <div class="col-sm-12">
+            <div>
+                <p> Room 211, District 11, East Main Building, Tsinghua University, Haidian District, Beijing, China, 100084 | </p>
+                <p> &copy 2021 <span class="ziggo-font">ZIGGO</span>, TNS, School of Software, Tsinghua University . All rights reserved. </p>
+            </div>
+        </div>
+    </div>
+</footer>
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  <div style="margin-top:10px; margin-bottom:40px; display:flex; justify-content:center; gap: 25px;">
+    <a href="https://github.com/MobiSense/ziggo_book" style="padding: 10px 10px;
+	background-color: rgb(0, 0, 0); /* 设置按钮背景色为橙色 */
+	color: white; /* 设置按钮文字颜色为白色 */
+	text-decoration: none; /* 去除链接的下划线 */
+	border: 3px solid rgb(0, 0, 0);
+	border-radius: 5px; /* 设置按钮的边角为圆角 */
+	font-size: 14px; /* 设置文字大小 */
+	text-align: center; /* 按钮内文字居中显示 */
+	display: inline-block; /* 使链接的布局表现为块级元素 */">GitHub</a>
+    <a href="https://mobisense.github.io/ziggo_homepage/" style="padding: 10px 10px;
+	background-color: rgb(0, 0, 0); /* 设置按钮背景色为橙色 */
+	color: white; /* 设置按钮文字颜色为白色 */
+	text-decoration: none; /* 去除链接的下划线 */
+	border: 3px solid rgb(0, 0, 0);
+	border-radius: 5px; /* 设置按钮的边角为圆角 */
+	font-size: 14px; /* 设置文字大小 */
+	text-align: center; /* 按钮内文字居中显示 */
+	display: inline-block; /* 使链接的布局表现为块级元素 */">Home</a>
+</div>
+
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#目录">目录</a></li>
+    <li><a href="#简介">简介</a></li>
+    <li><a href="#ziggo-开放平台">ZIGGO 开放平台</a></li>
+    <li><a href="#演示">演示</a></li>
+    <li><a href="#功能">功能</a></li>
+    <li><a href="#开始前阅读">开始前阅读</a></li>
+    <li><a href="#快速入门">快速入门</a></li>
+    <li><a href="#系统设计">系统设计</a></li>
+    <li><a href="#演示应用教程">演示应用教程</a></li>
+    <li><a href="#许可和引用">许可和引用</a></li>
+    <li><a href="#待办事项">待办事项</a></li>
+    <li><a href="#贡献">贡献</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

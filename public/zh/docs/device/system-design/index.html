@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ZIGGO 实现于 ZYNQ-7000 SoC 上，利用 ZYNQ 的硬件和软件可编程性。">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/zh/docs/device/system-design/">
+  <meta property="og:site_name" content="ZIGGO BOOK">
+  <meta property="og:title" content="系统设计">
+  <meta property="og:description" content="ZIGGO 实现于 ZYNQ-7000 SoC 上，利用 ZYNQ 的硬件和软件可编程性。">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2024-05-01T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-05-01T00:00:00+00:00">
+    <meta property="article:tag" content="ZIGGO-Device">
+    <meta property="article:tag" content="ZIGGO">
+    <meta property="article:tag" content="Markdown">
+    <meta property="og:image" content="http://localhost:1313/zh/docs/device/system-design/featured.jpg">
+<title>系统设计 | ZIGGO BOOK</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="canonical" href="http://localhost:1313/zh/docs/device/system-design/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1313/docs/device/system-design/" title="System Design">
+<link rel="stylesheet" href="/book.min.309b7ed028807cdb68d8d61e26d609f48369c098dbf5e4d8c0dcf4cdf49feafc.css" integrity="sha256-MJt&#43;0CiAfNto2NYeJtYJ9INpwJjb9eTYwNz0zfSf6vw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/zh.search.min.b77e601a6a6485877260bb76047048cc0366d24bc7803048aae12ec20e97c250.js" integrity="sha256-t35gGmpkhYdyYLt2BHBIzANm0kvHgDBIquEuwg6XwlA=" crossorigin="anonymous"></script>
+
+  
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/zh/"><img src="/logo.png" alt="Logo" /><span>ZIGGO BOOK</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="搜索" aria-label="搜索" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+    
+  
+
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/translate.svg" class="book-icon" alt="Languages" />
+        Chinese
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://localhost:1313/docs/device/system-design/">
+          English
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f7037f1d8c98cfd6af893e54a7a7c84a" class="toggle"  />
+    <label for="section-f7037f1d8c98cfd6af893e54a7a7c84a" class="flex justify-between">
+      <a href="/zh/docs/tsnperf/" class="">ZIGGO TSNPerf</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/tsnperf/principle/" class="">TSNPerf 设计原理</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/tsnperf/configuration/" class="">TSNPerf 使用指南</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/tsnperf/manual/" class="">TSNPerf 检测内容及使用表</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/tsnperf/report/" class="">某品牌交换机报告</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d43c4f20a039dd2c08c63c6629ffaedf" class="toggle"  />
+    <label for="section-d43c4f20a039dd2c08c63c6629ffaedf" class="flex justify-between">
+      <a href="/zh/docs/switch/" class="">ZIGGO Switch</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/switch/basic_knowledge/" class="">基础知识列表</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/switch/require/" class="">准备清单</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/switch/system-design/" class="">System Design</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/switch/hardware-build/" class="">Hardware Build</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/switch/software-build/" class="">Software Build</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/switch/contributing/" class="">How to contribute</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9944d1fadd4ce8adc7644b141d205c6b" class="toggle" checked />
+    <label for="section-9944d1fadd4ce8adc7644b141d205c6b" class="flex justify-between">
+      <a href="/zh/docs/device/" class="">ZIGGO Device</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/device/basic_knowledge/" class="">基础知识列表</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/device/require/" class="">准备清单</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/device/getting-started/" class="">快速入门</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/device/system-design/" class="active">系统设计</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/device/hardware-build/" class="">硬件构建</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/device/software-build/" class="">软件构建</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/device/ziggo_device_manual/" class="">ZIGGO Device使用手册</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/device/cnc_manual/" class="">CNC脚本使用指南</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/device/testbed/" class="">TestBed搭建流程</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/device/contributing/" class="">如何贡献</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>系统设计</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  <div style="margin-top:10px; margin-bottom:40px; display:flex; justify-content:center; gap: 25px;">
+    <a href="https://github.com/MobiSense/ziggo_book" style="padding: 10px 10px;
+	background-color: rgb(0, 0, 0); /* 设置按钮背景色为橙色 */
+	color: white; /* 设置按钮文字颜色为白色 */
+	text-decoration: none; /* 去除链接的下划线 */
+	border: 3px solid rgb(0, 0, 0);
+	border-radius: 5px; /* 设置按钮的边角为圆角 */
+	font-size: 14px; /* 设置文字大小 */
+	text-align: center; /* 按钮内文字居中显示 */
+	display: inline-block; /* 使链接的布局表现为块级元素 */">GitHub</a>
+    <a href="https://mobisense.github.io/ziggo_homepage/" style="padding: 10px 10px;
+	background-color: rgb(0, 0, 0); /* 设置按钮背景色为橙色 */
+	color: white; /* 设置按钮文字颜色为白色 */
+	text-decoration: none; /* 去除链接的下划线 */
+	border: 3px solid rgb(0, 0, 0);
+	border-radius: 5px; /* 设置按钮的边角为圆角 */
+	font-size: 14px; /* 设置文字大小 */
+	text-align: center; /* 按钮内文字居中显示 */
+	display: inline-block; /* 使链接的布局表现为块级元素 */">Home</a>
+</div>
+
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#目录">目录</a></li>
+    <li><a href="#评估方法">评估方法</a></li>
+    <li><a href="#测试数据帧数据结构">测试数据帧数据结构</a></li>
+    <li><a href="#模块设计">模块设计</a>
+      <ul>
+        <li><a href="#软件和硬件寄存器的对应关系">软件和硬件寄存器的对应关系</a></li>
+        <li><a href="#离线分析和设计">离线分析和设计</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="系统设计">
+  系统设计
+  <a class="anchor" href="#%e7%b3%bb%e7%bb%9f%e8%ae%be%e8%ae%a1">#</a>
+</h1>
+<p>ZIGGO 实现于 ZYNQ-7000 SoC 上，利用 ZYNQ 的硬件和软件可编程性。</p>
+<p><img src="./framework.jpg" alt="framework" /></p>
+<h2 id="目录">
+  目录
+  <a class="anchor" href="#%e7%9b%ae%e5%bd%95">#</a>
+</h2>
+<ul>
+<li><a href="#%e7%b3%bb%e7%bb%9f%e8%ae%be%e8%ae%a1">系统设计</a>
+<ul>
+<li><a href="#%e7%9b%ae%e5%bd%95">目录</a></li>
+<li><a href="#%e8%af%84%e4%bc%b0%e6%96%b9%e6%b3%95">评估方法</a></li>
+<li><a href="#%e6%b5%8b%e8%af%95%e6%95%b0%e6%8d%ae%e5%b8%a7%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84">测试数据帧数据结构</a></li>
+<li><a href="#%e6%a8%a1%e5%9d%97%e8%ae%be%e8%ae%a1">模块设计</a>
+<ul>
+<li><a href="#%e8%bd%af%e4%bb%b6%e5%92%8c%e7%a1%ac%e4%bb%b6%e5%af%84%e5%ad%98%e5%99%a8%e7%9a%84%e5%af%b9%e5%ba%94%e5%85%b3%e7%b3%bb">软件和硬件寄存器的对应关系</a></li>
+<li><a href="#%e7%a6%bb%e7%ba%bf%e5%88%86%e6%9e%90%e5%92%8c%e8%ae%be%e8%ae%a1">离线分析和设计</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="评估方法">
+  评估方法
+  <a class="anchor" href="#%e8%af%84%e4%bc%b0%e6%96%b9%e6%b3%95">#</a>
+</h2>
+<p>ZIGGO 评估工具包用于发送和接收测试数据帧，以确保 <code>准确的延迟计算</code>。</p>
+<p>为了实现这一准确性，工具包需要与 TSN 交换机 <strong>同步时间</strong> 并在测试数据帧中记录一个 <strong>全局硬件时间戳</strong>。</p>
+<p>如下图所示，在具有 
+<link rel="stylesheet" href="/katex/katex.min.css" />
+<script defer src="/katex/katex.min.js"></script>
+<script defer src="/katex/auto-render.min.js" onload="renderMathInElement(document.body);"></script><span class="optional">
+  \( n \)
+</span>
+ 个网络节点的数据流链路中，节点 <span class="optional">
+  \( 1 \)
+</span>
+ 作为源节点发送测试数据帧，节点 <span class="optional">
+  \( n \)
+</span>
+ 作为目的节点接收测试数据帧，所有中间节点（节点 <span class="optional">
+  \( 2 \)
+</span>
+ 到节点 <span class="optional">
+  \( n-1 \)
+</span>
+）都是 TSN 交换机。</p>
+<p>当测试数据帧从源节点发送时，硬件会记录帧发送时的时间戳 <span class="optional">
+  \( t^&#43; \)
+</span>
+ 并将其写入数据帧中。最后，当数据帧到达目的节点时，目的节点记录帧进入该节点时的时间戳 <span class="optional">
+  \( t^- \)
+</span>
+。通过计算 <span class="optional">
+  \( t^--t^&#43; \)
+</span>
+，我们可以确定数据帧的端到端延迟。</p>
+<p><img src="./device_test_demo.png" alt="device_test_demo" /></p>
+<blockquote>
+<p>在本文档中，<span class="optional">
+  \( t^{dir} \)
+</span>
+ 用于表示数据帧进入和离开硬件的时间戳。这里，&ldquo;dir&rdquo; 表示数据帧进入或离开节点的方向，&quot;+&quot; 表示数据帧离开节点，&quot;−&quot; 表示数据帧进入节点。</p>
+</blockquote>
+<h2 id="测试数据帧数据结构">
+  测试数据帧数据结构
+  <a class="anchor" href="#%e6%b5%8b%e8%af%95%e6%95%b0%e6%8d%ae%e5%b8%a7%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84">#</a>
+</h2>
+<p>为了分析复杂网络拓扑上每个数据帧的端到端延迟，我们对以太网帧结构中数据段的内容制定了具体的指南。时间敏感网络测试数据帧的结构如下表所示。</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>字节长度</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>目的地址</td>
+<td>6</td>
+<td>目的节点 MAC 地址</td>
+</tr>
+<tr>
+<td>源地址</td>
+<td>6</td>
+<td>源节点 MAC 地址</td>
+</tr>
+<tr>
+<td>VLAN 标签</td>
+<td>4</td>
+<td>分为四个字段：VLAN 数据帧类型（0x8100）、优先级、规范格式指示符和 VLAN 编号</td>
+</tr>
+<tr>
+<td>数据帧类型</td>
+<td>2</td>
+<td>用于识别测试数据帧，设置为 0x66ab</td>
+</tr>
+<tr>
+<td>保留位</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="optional">
+  \( t^&#43; \)
+</span>
+（发送时间戳）</td>
+<td>8</td>
+<td>从源节点发送时的时间戳</td>
+</tr>
+<tr>
+<td><span class="optional">
+  \( t^- \)
+</span>
+（接收时间戳）</td>
+<td>8</td>
+<td>在目的节点接收时的时间戳</td>
+</tr>
+<tr>
+<td>数据流 ID（SEQ_ID）</td>
+<td>2</td>
+<td>每个数据流的唯一标识符</td>
+</tr>
+<tr>
+<td>数据帧 ID（PKT_ID）</td>
+<td>4</td>
+<td>每个数据流中数据帧的序列号，从 0 开始</td>
+</tr>
+</tbody>
+</table>
+<h2 id="模块设计">
+  模块设计
+  <a class="anchor" href="#%e6%a8%a1%e5%9d%97%e8%ae%be%e8%ae%a1">#</a>
+</h2>
+<p>ZIGGO 评估工具包的整体模块设计如下图所示。工具包使用的时间同步模块与交换机的设计几乎相同，图中未详细描述时间同步相关模块。</p>
+<p>PS 部分的配置模块（<code>software/pkt_gen_main.cpp</code>）通过使用 UIO 驱动程序和 AXI4-Lite 接口与数据帧生成模块通信，将测试数据帧的传输规则发送到数据帧生成模块（具体来说，<code>hardware/IP_repo/pkt_gen_controller_v1.1/pkt_gen_controller_1.1/hdl/pkt_gen_controller_v1_1.v</code> 负责配置，<code>hardwire/HDL/axi_packet_generator.v</code> 负责生成和传输数据帧）的相关寄存器中，并以全局同步时间为参考进行计时。</p>
+<p>时间戳标记模块（<code>hardwire/HDL/hw_timestamp/tsu/tsu_axis_tx.v</code> 和 <code>hardwire/HDL/hw_timestamp/tsu/tsu_axis_rx.v</code>）位于 Ziggo 评估工具包的发送和接收端口，用于记录发送和接收数据帧的硬件时间戳。</p>
+<p>接收到的数据帧最终通过 DMA 通道上传到 PS 部分进行统计分析（在 <code>software/pkt_gen_control/pkt_gen.c</code> 中的 <code>process_critical_frame</code> 函数中处理）。</p>
+<p><img src="./device_arch.png" alt="device_arch" /></p>
+<p>最大帧传输周期（<code>pkt_gen_main.cpp</code> 中的 superperiod 参数）是指从工具包发送数据流的周期的上限。在这个最大帧传输周期内，数据帧生成模块为所有数据流分配最多 32 个时间槽。每个时间槽用于在指定的传输时间发送相应数据流的所有数据帧。</p>
+<p>如图所示，评估工具包发送两种类型的数据流：传输周期为 2𝑇 的流 𝐹1 和传输周期为 4𝑇 的流 𝐹2。评估工具包的最大帧传输周期为 6𝑇。在这种情况下，数据帧生成模块在最大帧传输周期内设置了 5 个时间槽，并根据指定的时间槽顺序发送测试数据帧。</p>
+<p><img src="./example_pkt_gen_period.png" alt="example_pkt_gen_period" /></p>
+<p>用户可以配置 Ziggo 评估工具包生成多个数据流，每个数据流的配置参数如下，在 <code>pkt_gen.h</code> 头文件的注释中提供了清晰的解释：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#75715e">// pkt_gen_app\pkt_gen_control\pkt_gen.h
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @brief 设置 pkt 生成槽对象
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @param slot_id 0~31，表示 pkt_gen IP 核中的一个槽
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *      重要提示：每个 slot id 的 tx_offset 应该是单调递增的
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @param seq_id 唯一标识数据流的序列 ID
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *              为了进一步利用此字段，它可能是 {job_id: 8bit, flow_id: 8bit}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @param pkt_number 一次发送的数据包数量，应该是 1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @param pkt_id_start pkt_id 的起始值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @param pkt_id_update 下一个 pkt_id 的更新值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @param tx_offset 周期内的传输时间，以 ns 为单位
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @param src_mac 6 字节数组
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @param dest_mac 6 字节数组
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @return int 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">set_pkt_gen_slot</span> (<span style="color:#66d9ef">int</span> slot_id, <span style="color:#66d9ef">uint16_t</span> seq_id, <span style="color:#66d9ef">uint16_t</span> pkt_number, <span style="color:#66d9ef">uint32_t</span> pkt_id_start, 
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">uint32_t</span> pkt_id_update, <span style="color:#66d9ef">int64_t</span> tx_offset, <span style="color:#66d9ef">uint8_t</span> <span style="color:#f92672">*</span>src_mac, <span style="color:#66d9ef">uint8_t</span> <span style="color:#f92672">*</span>dest_mac);
+</span></span></code></pre></div><p>时间戳标记模块将在 MAC 控制器传输数据帧之前将当前同步时钟的时间戳写入传出的数据帧。当 PL（可编程逻辑）中的 MAC 控制器从物理链路接收帧中的第一个数据位时，时间戳标记模块会记录当前同步时钟的时间戳。随后在数据包接收过程中将此时间戳写入数据帧，并交给 PS（处理系统）部分的统计分析模块进行进一步分析和处理。</p>
+<h3 id="软件和硬件寄存器的对应关系">
+  软件和硬件寄存器的对应关系
+  <a class="anchor" href="#%e8%bd%af%e4%bb%b6%e5%92%8c%e7%a1%ac%e4%bb%b6%e5%af%84%e5%ad%98%e5%99%a8%e7%9a%84%e5%af%b9%e5%ba%94%e5%85%b3%e7%b3%bb">#</a>
+</h3>
+<p>时间同步方面的对应关系与 Ziggo TSN 交换机相同。</p>
+<p>在本节中，我们将主要关注与数据帧传输配置相关的对应关系。软件寄存器的</p>
+<p>地址可以在 <code>software/pkt_gen_control/pkt_gen.c</code> 中找到。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#75715e">// 定义全局寄存器地址
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#define GLOBAL_PERIOD_NS    0x00000000
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define GLOBAL_OFFSET_NS    0x00000008
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define SEQ_VALID           0x00000010
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define SEQ_ENABLE_VLAN     0x00000014
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define WRITE_LOCK          0x00000018
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 定义写入锁定值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#define NOT_WRITING     0x00000001
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define WRITING         0x00000000
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 定义序列的地址指针
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#define SEQ_CONTENT     0x0000001c
+</span></span></span></code></pre></div><p>硬件寄存器位于 <code>tsn_device\IP_repo\pkt_gen_controller_v1.1\pkt_gen_controller_1.1\hdl\pkt_gen_controller_v1_1_S00_AXI.v</code>。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (slv_reg_wren)
+</span></span><span style="display:flex;"><span>      begin
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">case</span> ( axi_awaddr[ADDR_LSB<span style="color:#f92672">+</span>OPT_MEM_ADDR_BITS:ADDR_LSB] )
+</span></span><span style="display:flex;"><span>          <span style="color:#ae81ff">9</span><span style="color:#960050;background-color:#1e0010">&#39;</span>h000:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> ( byte_index <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; byte_index <span style="color:#f92672">&lt;=</span> (C_S_AXI_DATA_WIDTH<span style="color:#f92672">/</span><span style="color:#ae81ff">8</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>; byte_index <span style="color:#f92672">=</span> byte_index<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span> )
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">if</span> ( S_AXI_WSTRB[byte_index] <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> ) begin
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// 根据写入选通信号启用相应的字节
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#75715e">// 从寄存器 0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                slv_reg0[(byte_index<span style="color:#f92672">*</span><span style="color:#ae81ff">8</span>) <span style="color:#f92672">+:</span> <span style="color:#ae81ff">8</span>] <span style="color:#f92672">&lt;=</span> S_AXI_WDATA[(byte_index<span style="color:#f92672">*</span><span style="color:#ae81ff">8</span>) <span style="color:#f92672">+:</span> <span style="color:#ae81ff">8</span>];
+</span></span><span style="display:flex;"><span>              end  
+</span></span><span style="display:flex;"><span>          <span style="color:#ae81ff">9</span><span style="color:#960050;background-color:#1e0010">&#39;</span>h001:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> ( byte_index <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; byte_index <span style="color:#f92672">&lt;=</span> (C_S_AXI_DATA_WIDTH<span style="color:#f92672">/</span><span style="color:#ae81ff">8</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>; byte_index <span style="color:#f92672">=</span> byte_index<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span> )
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">if</span> ( S_AXI_WSTRB[byte_index] <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> ) begin
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// 根据写入选通信号启用相应的字节
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#75715e">// 从寄存器 1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                slv_reg1[(byte_index<span style="color:#f92672">*</span><span style="color:#ae81ff">8</span>) <span style="color:#f92672">+:</span> <span style="color:#ae81ff">8</span>] <span style="color:#f92672">&lt;=</span> S_AXI_WDATA[(byte_index<span style="color:#f92672">*</span><span style="color:#ae81ff">8</span>) <span style="color:#f92672">+:</span> <span style="color:#ae81ff">8</span>];
+</span></span><span style="display:flex;"><span>              end  
+</span></span><span style="display:flex;"><span>          <span style="color:#ae81ff">9</span><span style="color:#960050;background-color:#1e0010">&#39;</span>h002:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> ( byte_index <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; byte_index <span style="color:#f92672">&lt;=</span> (C_S_AXI_DATA_WIDTH<span style="color:#f92672">/</span><span style="color:#ae81ff">8</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>; byte_index <span style="color:#f92672">=</span> byte_index<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span> )
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">if</span> ( S_AXI_WSTRB[byte_index] <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> ) begin
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// 根据写入选通信号启用相应的字节
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#75715e">// 从寄存器 2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                slv_reg2[(byte_index<span style="color:#f92672">*</span><span style="color:#ae81ff">8</span>) <span style="color:#f92672">+:</span> <span style="color:#ae81ff">8</span>] <span style="color:#f92672">&lt;=</span> S_AXI_WDATA[(byte_index<span style="color:#f92672">*</span><span style="color:#ae81ff">8</span>) <span style="color:#f92672">+:</span> <span style="color:#ae81ff">8</span>];
+</span></span><span style="display:flex;"><span>              end  
+</span></span><span style="display:flex;"><span>...
+</span></span></code></pre></div><p>在这种情况下，以 &ldquo;slv_reg&rdquo; 开头的硬件寄存器每个都是 32 位宽，并且它们的地址间隔为 4 字节。因此，例如，如果软件级地址是 <span class="optional">
+  \( 0x00000018 \)
+</span>
+，您需要将此地址除以 4，结果是 <span class="optional">
+  \( 24/4 = 6 \)
+</span>
+。因此，此地址对应于硬件模块中的硬件寄存器 &ldquo;<code>slv_reg6</code>&quot;。这有助于建立软件和硬件寄存器之间的对应关系。</p>
+<h3 id="离线分析和设计">
+  离线分析和设计
+  <a class="anchor" href="#%e7%a6%bb%e7%ba%bf%e5%88%86%e6%9e%90%e5%92%8c%e8%ae%be%e8%ae%a1">#</a>
+</h3>
+<p>在工具包的 <code>offline_analyze</code> 分支中，我们通过将数据包从工具包转发到功能强大的台式计算机进行数据包捕获和分析。这种方法确保即使在千兆位速率下也不会丢包，并且硬件更改相对较少。</p>
+<p>一种修改是，在从工具包传输数据帧时不会在数据帧中添加时间戳。这可以在 <code>HDL/trimode_mac/simple_mac_no_shared.v</code> 文件中看到，其中 &ldquo;tsu_axis_tx&rdquo; 部分被注释掉。</p>
+<p>另一种修改是更改 &ldquo;frame_type&rdquo; 以改变数据帧的方向。以前，PTP 帧和测试数据帧都通过时间同步 DMA 上传到 PS 部分，IT 流量上传到 PS_ETH。这将流量分为两个方向（&ldquo;axis_switch_1_2&rdquo;）。现在，它被分为三个方向（&ldquo;axis_switch_1_3&rdquo;）。对于离线分析，只需要将 PTP 帧传输到 PS，而测试数据帧需要分离并从 ETH2 发送出去。这需要对流量进行更精细的分离。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">// 分离 IT 帧、PTP 帧和关键帧
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>axis_switch_1_3 <span style="color:#a6e22e">axis_switch_1_3_inst</span> (
+</span></span><span style="display:flex;"><span>    .aclk(rx_fifo_clock),                    <span style="color:#75715e">// 输入时钟
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .aresetn(rx_fifo_resetn),              <span style="color:#75715e">// 输入复位信号
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .s_axis_tvalid(rx_axis_fifo_tvalid_8),  <span style="color:#75715e">// 输入数据有效信号
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .s_axis_tready(rx_axis_fifo_tready_8),  <span style="color:#75715e">// 输出数据准备信号
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .s_axis_tdata(rx_axis_fifo_tdata_8),    <span style="color:#75715e">// 输入数据
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .s_axis_tlast(rx_axis_fifo_tlast_8),    <span style="color:#75715e">// 输入数据结束信号
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .s_axis_tdest(frame_type),    <span style="color:#75715e">// 输入数据目的地址
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .m_axis_tvalid({rx_axis_it_fifo_tvalid, rx_axis_ptp_fifo_tvalid, tx_axis_fifo_legacy_tvalid[<span style="color:#ae81ff">1</span>]}),  <span style="color:#75715e">// 输出数据有效信号
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .m_axis_tready({rx_axis_it_fifo_tready, rx_axis_ptp_fifo_tready, tx_axis_fifo_legacy_tready[<span style="color:#ae81ff">1</span>]}),  <span style="color:#75715e">// 输入数据准备信号
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .m_axis_tdata({rx_axis_it_fifo_tdata, rx_axis_ptp_fifo_tdata, tx_axis_fifo_legacy_tdata[<span style="color:#ae81ff">1</span>]}),    <span style="color:#75715e">// 输出数据
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .m_axis_tlast({rx_axis_it_fifo_tlast, rx_axis_ptp_fifo_tlast, tx_axis_fifo_legacy_tlast[<span style="color:#ae81ff">1</span>]}),    <span style="color:#75715e">// 输出数据结束信号
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .m_axis_tdest(),    <span style="color:#75715e">// 输出数据目的地址
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .s_decode_err()    <span style="color:#75715e">// 输出解码错误信号
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>);
+</span></span></code></pre></div><p><code>tx_axis_fifo_legacy_tdata[1]</code> 表示从 ETH2 发送。</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/Mobisense/ziggo_book///tree/main//content/docs/device/system-design/index.md" target="_blank" rel="noopener">
+      <img src="/svg/edit.svg" class="book-icon" alt="" />
+      <span>编辑本页</span>
+    </a>
+  </div>
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        <footer id="mu-footer" role="contentinfo" style="	height: 160px;
+clear: both;
+color: #000000;
+text-align: center;
+padding-top: 100px;">
+    <div class="container">
+        <div class="col-sm-12">
+            <div>
+                <p> Room 211, District 11, East Main Building, Tsinghua University, Haidian District, Beijing, China, 100084 | </p>
+                <p> &copy 2021 <span class="ziggo-font">ZIGGO</span>, TNS, School of Software, Tsinghua University . All rights reserved. </p>
+            </div>
+        </div>
+    </div>
+</footer>
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  <div style="margin-top:10px; margin-bottom:40px; display:flex; justify-content:center; gap: 25px;">
+    <a href="https://github.com/MobiSense/ziggo_book" style="padding: 10px 10px;
+	background-color: rgb(0, 0, 0); /* 设置按钮背景色为橙色 */
+	color: white; /* 设置按钮文字颜色为白色 */
+	text-decoration: none; /* 去除链接的下划线 */
+	border: 3px solid rgb(0, 0, 0);
+	border-radius: 5px; /* 设置按钮的边角为圆角 */
+	font-size: 14px; /* 设置文字大小 */
+	text-align: center; /* 按钮内文字居中显示 */
+	display: inline-block; /* 使链接的布局表现为块级元素 */">GitHub</a>
+    <a href="https://mobisense.github.io/ziggo_homepage/" style="padding: 10px 10px;
+	background-color: rgb(0, 0, 0); /* 设置按钮背景色为橙色 */
+	color: white; /* 设置按钮文字颜色为白色 */
+	text-decoration: none; /* 去除链接的下划线 */
+	border: 3px solid rgb(0, 0, 0);
+	border-radius: 5px; /* 设置按钮的边角为圆角 */
+	font-size: 14px; /* 设置文字大小 */
+	text-align: center; /* 按钮内文字居中显示 */
+	display: inline-block; /* 使链接的布局表现为块级元素 */">Home</a>
+</div>
+
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#目录">目录</a></li>
+    <li><a href="#评估方法">评估方法</a></li>
+    <li><a href="#测试数据帧数据结构">测试数据帧数据结构</a></li>
+    <li><a href="#模块设计">模块设计</a>
+      <ul>
+        <li><a href="#软件和硬件寄存器的对应关系">软件和硬件寄存器的对应关系</a></li>
+        <li><a href="#离线分析和设计">离线分析和设计</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

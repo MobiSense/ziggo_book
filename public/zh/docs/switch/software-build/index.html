@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="启用 CaaS 交换机的时间同步逻辑并设置 TSN GCL（门控列表）、交换机转发规则（包括到双 DMA）的文档。">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/zh/docs/switch/software-build/">
+  <meta property="og:site_name" content="ZIGGO BOOK">
+  <meta property="og:title" content="软件构建">
+  <meta property="og:description" content="启用 CaaS 交换机的时间同步逻辑并设置 TSN GCL（门控列表）、交换机转发规则（包括到双 DMA）的文档。">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2024-05-01T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-05-01T00:00:00+00:00">
+    <meta property="article:tag" content="ZIGGO-SWITCH">
+    <meta property="article:tag" content="ZIGGO">
+    <meta property="article:tag" content="Markdown">
+    <meta property="og:image" content="http://localhost:1313/zh/docs/switch/software-build/featured.jpg">
+<title>软件构建 | ZIGGO BOOK</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="canonical" href="http://localhost:1313/zh/docs/switch/software-build/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1313/docs/switch/software-build/" title="Software Build">
+<link rel="stylesheet" href="/book.min.309b7ed028807cdb68d8d61e26d609f48369c098dbf5e4d8c0dcf4cdf49feafc.css" integrity="sha256-MJt&#43;0CiAfNto2NYeJtYJ9INpwJjb9eTYwNz0zfSf6vw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/zh.search.min.b77e601a6a6485877260bb76047048cc0366d24bc7803048aae12ec20e97c250.js" integrity="sha256-t35gGmpkhYdyYLt2BHBIzANm0kvHgDBIquEuwg6XwlA=" crossorigin="anonymous"></script>
+
+  
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/zh/"><img src="/logo.png" alt="Logo" /><span>ZIGGO BOOK</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="搜索" aria-label="搜索" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+    
+  
+
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/translate.svg" class="book-icon" alt="Languages" />
+        Chinese
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://localhost:1313/docs/switch/software-build/">
+          English
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f7037f1d8c98cfd6af893e54a7a7c84a" class="toggle"  />
+    <label for="section-f7037f1d8c98cfd6af893e54a7a7c84a" class="flex justify-between">
+      <a href="/zh/docs/tsnperf/" class="">ZIGGO TSNPerf</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/tsnperf/principle/" class="">TSNPerf 设计原理</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/tsnperf/configuration/" class="">TSNPerf 使用指南</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/tsnperf/manual/" class="">TSNPerf 检测内容及使用表</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/tsnperf/report/" class="">某品牌交换机报告</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d43c4f20a039dd2c08c63c6629ffaedf" class="toggle" checked />
+    <label for="section-d43c4f20a039dd2c08c63c6629ffaedf" class="flex justify-between">
+      <a href="/zh/docs/switch/" class="">ZIGGO Switch</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/switch/basic_knowledge/" class="">基础知识列表</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/switch/require/" class="">准备清单</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/switch/system-design/" class="">系统设计</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/switch/hardware-build/" class="">硬件构建</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/switch/software-build/" class="active">软件构建</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/switch/contributing/" class="">如何贡献</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9944d1fadd4ce8adc7644b141d205c6b" class="toggle"  />
+    <label for="section-9944d1fadd4ce8adc7644b141d205c6b" class="flex justify-between">
+      <a href="/zh/docs/device/" class="">ZIGGO Device</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/device/basic_knowledge/" class="">基础知识列表</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/device/require/" class="">准备清单</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/device/getting-started/" class="">快速入门</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/device/system-design/" class="">系统设计</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/device/hardware-build/" class="">硬件构建</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/device/software-build/" class="">软件构建</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/device/ziggo_device_manual/" class="">ZIGGO Device使用手册</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/device/cnc_manual/" class="">CNC脚本使用指南</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/device/testbed/" class="">TestBed搭建流程</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/device/contributing/" class="">如何贡献</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>软件构建</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  <div style="margin-top:10px; margin-bottom:40px; display:flex; justify-content:center; gap: 25px;">
+    <a href="https://github.com/MobiSense/ziggo_book" style="padding: 10px 10px;
+	background-color: rgb(0, 0, 0); /* 设置按钮背景色为橙色 */
+	color: white; /* 设置按钮文字颜色为白色 */
+	text-decoration: none; /* 去除链接的下划线 */
+	border: 3px solid rgb(0, 0, 0);
+	border-radius: 5px; /* 设置按钮的边角为圆角 */
+	font-size: 14px; /* 设置文字大小 */
+	text-align: center; /* 按钮内文字居中显示 */
+	display: inline-block; /* 使链接的布局表现为块级元素 */">GitHub</a>
+    <a href="https://mobisense.github.io/ziggo_homepage/" style="padding: 10px 10px;
+	background-color: rgb(0, 0, 0); /* 设置按钮背景色为橙色 */
+	color: white; /* 设置按钮文字颜色为白色 */
+	text-decoration: none; /* 去除链接的下划线 */
+	border: 3px solid rgb(0, 0, 0);
+	border-radius: 5px; /* 设置按钮的边角为圆角 */
+	font-size: 14px; /* 设置文字大小 */
+	text-align: center; /* 按钮内文字居中显示 */
+	display: inline-block; /* 使链接的布局表现为块级元素 */">Home</a>
+</div>
+
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#构建">构建</a></li>
+    <li><a href="#配置">配置</a></li>
+    <li><a href="#运行">运行</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="软件构建">
+  软件构建
+  <a class="anchor" href="#%e8%bd%af%e4%bb%b6%e6%9e%84%e5%bb%ba">#</a>
+</h1>
+<p>此仓库包含启用 CaaS 交换机时间同步逻辑和设置 TSN GCL（门控列表）、交换机转发规则（包括到双 DMA）的源代码。</p>
+<h2 id="构建">
+  构建
+  <a class="anchor" href="#%e6%9e%84%e5%bb%ba">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir build
+</span></span><span style="display:flex;"><span>cd build
+</span></span><span style="display:flex;"><span>cmake ..
+</span></span><span style="display:flex;"><span>make
+</span></span></code></pre></div><p>成功构建后，将有两个可执行文件：&ldquo;time_sync_app&rdquo; 和 &ldquo;switch_config&rdquo;。</p>
+<h2 id="配置">
+  配置
+  <a class="anchor" href="#%e9%85%8d%e7%bd%ae">#</a>
+</h2>
+<p>&ldquo;config&rdquo; 目录包含拓扑和 TSN/CaaS 调度结果。</p>
+<p>本文档以以下拓扑为例给出示例配置：</p>
+<p><img src="./example_topology.png" alt="拓扑" /></p>
+<ul>
+<li>
+<p>***-config.json: 主要描述网络的拓扑结构，包括每个节点的类型（设备或交换机）、MAC 地址、PTP 端口状态和其他节点信息、拓扑信息和 MAC 转发表。示例如下（注意文件中的注释仅用于说明，实际使用中不应包含这些注释）：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;nodes&#34;</span>: [ <span style="color:#75715e">// 用于描述网络中每个节点的信息
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#ae81ff">10</span>, <span style="color:#75715e">// 节点 ID，对应下文的 &#34;src&#34; 和 &#34;dst&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;switch&#34;</span>, <span style="color:#75715e">// 节点类型，分为 &#34;switch&#34; 和 &#34;device&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#f92672">&#34;mac&#34;</span>: <span style="color:#e6db74">&#34;00:0a:35:00:00:10&#34;</span>, <span style="color:#75715e">// 节点的物理 MAC 地址
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#f92672">&#34;ptp_ports&#34;</span>: [
+</span></span><span style="display:flex;"><span>                <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#ae81ff">3</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>            ] <span style="color:#75715e">// 节点的 PTP 端口状态
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#75715e">// 五元组表示 [local, ETH1, ETH2, ETH3, ETH4] 的时钟状态
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#75715e">// 数字含义：（0：MASTER，1：SLAVE，2：PASSIVE，3：DISABLED）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#75715e">// 如果 local 为 1，则表示该节点是主时钟节点；
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#75715e">// 如果 local 为 0，则表示该节点是从时钟节点。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        },
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#ae81ff">14</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;device&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;mac&#34;</span>: <span style="color:#e6db74">&#34;00:0a:35:00:00:14&#34;</span>
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#ae81ff">15</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;device&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;mac&#34;</span>: <span style="color:#e6db74">&#34;00:0a:35:00:00:15&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;links&#34;</span>: [  <span style="color:#75715e">// 拓扑信息，由每个链路组成，每个链路是一个有向边
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#ae81ff">0</span>, <span style="color:#75715e">// 链路 ID
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#f92672">&#34;src&#34;</span>: <span style="color:#ae81ff">14</span>, <span style="color:#75715e">// 链路的源节点 ID
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#f92672">&#34;src_port&#34;</span>: <span style="color:#ae81ff">0</span>, <span style="color:#75715e">// 源节点的端口号
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                           <span style="color:#75715e">// 端口 0,1,2,3 分别对应实际的 ETH1,2,3,4
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#f92672">&#34;dst&#34;</span>: <span style="color:#ae81ff">10</span>, <span style="color:#75715e">// 链路的目标节点 ID
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#f92672">&#34;dst_port&#34;</span>: <span style="color:#ae81ff">0</span> <span style="color:#75715e">// 目标节点的端口号
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        },
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;src&#34;</span>: <span style="color:#ae81ff">10</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;src_port&#34;</span>: <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;dst&#34;</span>: <span style="color:#ae81ff">14</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;dst_port&#34;</span>: <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#ae81ff">2</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;src&#34;</span>: <span style="color:#ae81ff">10</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;src_port&#34;</span>: <span style="color:#ae81ff">2</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;dst&#34;</span>: <span style="color:#ae81ff">15</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;dst_port&#34;</span>: <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#ae81ff">3</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;src&#34;</span>: <span style="color:#ae81ff">15</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;src_port&#34;</span>: <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;dst&#34;</span>: <span style="color:#ae81ff">10</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;dst_port&#34;</span>: <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;fwd&#34;</span>: [ <span style="color:#75715e">// 转发表，可以由 CNC 中的调度算法生成
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// 在转发表中将自己发送给自己的规则中，端口为 4（caas）/ 5（适用于新硬件的 PS ETH）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;src&#34;</span>: <span style="color:#ae81ff">10</span>, <span style="color:#75715e">// 当前节点 ID
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#f92672">&#34;dst&#34;</span>: <span style="color:#ae81ff">14</span>, <span style="color:#75715e">// 输出端口号
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#ae81ff">0</span>, <span style="color:#75715e">// 表项 ID
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#f92672">&#34;src_port&#34;</span>: <span style="color:#ae81ff">0</span> <span style="color:#75715e">// 目标节点 ID
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        },
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;src&#34;</span>: <span style="color:#ae81ff">14</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;dst&#34;</span>: <span style="color:#ae81ff">10</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;src_port&#34;</span>: <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;src&#34;</span>: <span style="color:#ae81ff">10</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;dst&#34;</span>: <span style="color:#ae81ff">15</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#ae81ff">2</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;src_port&#34;</span>: <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;src&#34;</span>: <span style="color:#ae81ff">15</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;dst&#34;</span>: <span style="color:#ae81ff">10</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#ae81ff">3</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;src_port&#34;</span>: <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>如果使用主时钟选择算法，则仅节点配置不同，其余相同。新增的 <code>externalPortConfigurationEnabled</code> 和 <code>system_identity</code> 字段为可选项，如下示例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;nodes&#34;</span>: [
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;switch&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;mac&#34;</span>: <span style="color:#e6db74">&#34;00:00:00:00:02:01&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;ptp_ports&#34;</span>: [<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>], 
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;externalPortConfigurationEnabled&#34;</span>: <span style="color:#ae81ff">1</span>, <span style="color:#75715e">// 1：手动配置主从关系，0：通过主时钟选择算法配置主从关系，如果未写此项，默认值为 0，即通过主时钟选择配置主从关系
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#f92672">&#34;system_identity&#34;</span>: { <span style="color:#75715e">// 时钟节点的时钟参数，用于主时钟选择算法中的比较，如果未写此项，默认配置如下
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#f92672">&#34;priority1&#34;</span>: <span style="color:#ae81ff">254</span>, <span style="color:#75715e">// 第一优先级
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#f92672">&#34;clockClass&#34;</span>: <span style="color:#ae81ff">248</span>, <span style="color:#75715e">// 时钟级别
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#f92672">&#34;clockAccuracy&#34;</span>: <span style="color:#ae81ff">254</span>, <span style="color:#75715e">// 时钟精度
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#f92672">&#34;offsetScaledLogVariance&#34;</span>: <span style="color:#ae81ff">17258</span>, <span style="color:#75715e">// 时钟方差
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#f92672">&#34;priority2&#34;</span>: <span style="color:#ae81ff">247</span>, <span style="color:#75715e">// 第二优先级
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#f92672">&#34;clock_identity&#34;</span>: [<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>] <span style="color:#75715e">// 时钟标识符，不同的时钟应具有不同的参数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;links&#34;</span>: [
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;fwd&#34;</span>: [
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+<li>
+<p>***-schedule.json: 调度文件，包含每条链路的调度时间间隔和每个 CaaS 交换机的计算时间间隔。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>[
+</span></span><span style="display:flex;"><span>    {<span style="color:#75715e">// 需要列出所有交换机，以便软件识别配置信息
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;switch&#34;</span>,  <span style="color:#75715e">// 节点类型，分为 &#34;switch&#34; 和 &#34;device&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#ae81ff">10</span>, <span style="color:#75715e">// 节点 ID，对应下文的 &#34;src&#34; 和 &#34;dst&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#f92672">&#34;mac&#34;</span>: <span style="color:#e6db74">&#34;00:0a:35:00:00:10&#34;</span>, <span style="color:#75715e">// 节点的物理 MAC 地址
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#f92672">&#34;schedule&#34;</span>: [
+</span></span><span style="display:flex;"><span>        ] <span style="color:#75715e">// 可以为空，不使用
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;link&#34;</span>, <span style="color:#75715e">// 类型为 link，用于描述调度信息
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#f92672">&#34;from&#34;</span>: <span style="color:#ae81ff">14</span>, <span style="color:#75715e">// 链路的源节点 ID
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#f92672">&#34;to&#34;</span>: <span style="color:#ae81ff">10</span>, <span style="color:#75715e">// 链路的目标节点 ID
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#f92672">&#34;from_port&#34;</span>: <span style="color:#ae81ff">0</span>, <span style="color:#75715e">// 输出端口号
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#ae81ff">3</span>, 
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;schedule&#34;</span>: [ <span style="color:#75715e">// 调度信息
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;period&#34;</span>: <span style="color:#ae81ff">2048</span>, <span style="color:#75715e">// 调度周期
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#f92672">&#34;start&#34;</span>: <span style="color:#ae81ff">0</span>, <span style="color:#75715e">// 相对于整个周期的开始时间
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#f92672">&#34;end&#34;</span>: <span style="color:#ae81ff">5</span>, <span style="color:#75715e">// 相对于整个周期的结束时间
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#f92672">&#34;job_id&#34;</span>: <span style="color:#ae81ff">0</span>, <span style="color:#75715e">// CaaS 中的作业 ID，如果不需要，可以省略
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#f92672">&#34;flow_id&#34;</span>: <span style="color:#ae81ff">0</span> <span style="color:#75715e">// 数据流 ID
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            }
+</span></span><span style="display:flex;"><span>        ]
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;link&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;from&#34;</span>: <span style="color:#ae81ff">10</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;to&#34;</span>: <span style="color:#ae81ff">15</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;from_port&#34;</span>: <span style="color:#ae81ff">2</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;schedule&#34;</span>: [
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;period&#34;</span>: <span style="color:#ae81ff">2048</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;start&#34;</span>: <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;end&#34;</span>: <span style="color:#ae81ff">6</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;job_id&#34;</span>: <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;flow_id&#34;</span>: <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;pkt_size&#34;</span>: <span style="color:#ae81ff">1500</span> <span style="color:#75715e">// 数据包长度，如果未写，默认值为 1500B，此项仅存在于从设备到交换机的路径上
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            }
+</span></span><span style="display:flex;"><span>        ]
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div></li>
+</ul>
+<h2 id="运行">
+  运行
+  <a class="anchor" href="#%e8%bf%90%e8%a1%8c">#</a>
+</h2>
+<ul>
+<li>将拓扑和调度文件复制到构建目录：</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cp <span style="color:#f92672">[</span>拓扑名称<span style="color:#f92672">]</span>-config.json build/config.json
+</span></span><span style="display:flex;"><span>cp <span style="color:#f92672">[</span>拓扑名称<span style="color:#f92672">]</span>-schedule.json build/schedule.json
+</span></span></code></pre></div><ul>
+<li>根据配置启动时间同步并初始化 GCL 和 MAC 转发表（建议将时间同步程序运行在一个核心上（使用 <code>taskset -c 1</code> 命令），以防止由于时间同步导致的内核错误和崩溃）：</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>taskset -c <span style="color:#ae81ff">1</span> ./time_sync
+</span></span></code></pre></div><ul>
+<li>日志输出级别分为 WARN、INFO 和 TRACE 三种类型。默认日志输出级别为 TRACE（最全面的输出信息，包括 DEBUG 日志）。可以使用 -l 参数设置日志输出级别：</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>taskset -c <span style="color:#ae81ff">1</span> ./time_sync -l w <span style="color:#75715e">#</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> WARN 级别
+</span></span><span style="display:flex;"><span>taskset -c <span style="color:#ae81ff">1</span> ./time_sync -l i <span style="color:#75715e"># INFO 级别</span>
+</span></span><span style="display:flex;"><span>taskset -c <span style="color:#ae81ff">1</span> ./time_sync -l t <span style="color:#75715e"># TRACE 级别</span>
+</span></span></code></pre></div><p><em>注意：时间同步逻辑应无限期运行，因为节点应该不断与其邻居同步。</em></p>
+<ul>
+<li>更新 GCL 和交换机转发规则：</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./switch_config
+</span></span></code></pre></div></article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/Mobisense/ziggo_book///tree/main//content/docs/switch/software-build/index.md" target="_blank" rel="noopener">
+      <img src="/svg/edit.svg" class="book-icon" alt="" />
+      <span>编辑本页</span>
+    </a>
+  </div>
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        <footer id="mu-footer" role="contentinfo" style="	height: 160px;
+clear: both;
+color: #000000;
+text-align: center;
+padding-top: 100px;">
+    <div class="container">
+        <div class="col-sm-12">
+            <div>
+                <p> Room 211, District 11, East Main Building, Tsinghua University, Haidian District, Beijing, China, 100084 | </p>
+                <p> &copy 2021 <span class="ziggo-font">ZIGGO</span>, TNS, School of Software, Tsinghua University . All rights reserved. </p>
+            </div>
+        </div>
+    </div>
+</footer>
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  <div style="margin-top:10px; margin-bottom:40px; display:flex; justify-content:center; gap: 25px;">
+    <a href="https://github.com/MobiSense/ziggo_book" style="padding: 10px 10px;
+	background-color: rgb(0, 0, 0); /* 设置按钮背景色为橙色 */
+	color: white; /* 设置按钮文字颜色为白色 */
+	text-decoration: none; /* 去除链接的下划线 */
+	border: 3px solid rgb(0, 0, 0);
+	border-radius: 5px; /* 设置按钮的边角为圆角 */
+	font-size: 14px; /* 设置文字大小 */
+	text-align: center; /* 按钮内文字居中显示 */
+	display: inline-block; /* 使链接的布局表现为块级元素 */">GitHub</a>
+    <a href="https://mobisense.github.io/ziggo_homepage/" style="padding: 10px 10px;
+	background-color: rgb(0, 0, 0); /* 设置按钮背景色为橙色 */
+	color: white; /* 设置按钮文字颜色为白色 */
+	text-decoration: none; /* 去除链接的下划线 */
+	border: 3px solid rgb(0, 0, 0);
+	border-radius: 5px; /* 设置按钮的边角为圆角 */
+	font-size: 14px; /* 设置文字大小 */
+	text-align: center; /* 按钮内文字居中显示 */
+	display: inline-block; /* 使链接的布局表现为块级元素 */">Home</a>
+</div>
+
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#构建">构建</a></li>
+    <li><a href="#配置">配置</a></li>
+    <li><a href="#运行">运行</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

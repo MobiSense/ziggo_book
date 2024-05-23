@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="使用CNC脚本运行ZIGGO系统的7步指南">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/zh/docs/device/cnc_manual/">
+  <meta property="og:site_name" content="ZIGGO BOOK">
+  <meta property="og:title" content="CNC脚本使用指南">
+  <meta property="og:description" content="使用CNC脚本运行ZIGGO系统的7步指南">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2024-05-01T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-05-01T00:00:00+00:00">
+    <meta property="article:tag" content="CNC">
+    <meta property="article:tag" content="ZIGGO-Device">
+    <meta property="article:tag" content="Basic">
+    <meta property="og:image" content="http://localhost:1313/zh/docs/device/cnc_manual/featured.jpg">
+<title>CNC脚本使用指南 | ZIGGO BOOK</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="canonical" href="http://localhost:1313/zh/docs/device/cnc_manual/">
+  <link rel="alternate" hreflang="en" href="http://localhost:1313/docs/device/cnc_manual/" title="CNC Script Usage Guide">
+<link rel="stylesheet" href="/book.min.309b7ed028807cdb68d8d61e26d609f48369c098dbf5e4d8c0dcf4cdf49feafc.css" integrity="sha256-MJt&#43;0CiAfNto2NYeJtYJ9INpwJjb9eTYwNz0zfSf6vw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/zh.search.min.b77e601a6a6485877260bb76047048cc0366d24bc7803048aae12ec20e97c250.js" integrity="sha256-t35gGmpkhYdyYLt2BHBIzANm0kvHgDBIquEuwg6XwlA=" crossorigin="anonymous"></script>
+
+  
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/zh/"><img src="/logo.png" alt="Logo" /><span>ZIGGO BOOK</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="搜索" aria-label="搜索" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+  
+
+
+
+  
+    
+  
+
+
+  
+
+
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
+        <img src="/svg/translate.svg" class="book-icon" alt="Languages" />
+        Chinese
+      </a>
+    </label>
+
+    <ul>
+      
+      <li>
+        <a href="http://localhost:1313/docs/device/cnc_manual/">
+          English
+        </a>
+      </li>
+      
+    </ul>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f7037f1d8c98cfd6af893e54a7a7c84a" class="toggle"  />
+    <label for="section-f7037f1d8c98cfd6af893e54a7a7c84a" class="flex justify-between">
+      <a href="/zh/docs/tsnperf/" class="">ZIGGO TSNPerf</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/tsnperf/principle/" class="">TSNPerf 设计原理</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/tsnperf/configuration/" class="">TSNPerf 使用指南</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/tsnperf/manual/" class="">TSNPerf 检测内容及使用表</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/tsnperf/report/" class="">某品牌交换机报告</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d43c4f20a039dd2c08c63c6629ffaedf" class="toggle"  />
+    <label for="section-d43c4f20a039dd2c08c63c6629ffaedf" class="flex justify-between">
+      <a href="/zh/docs/switch/" class="">ZIGGO Switch</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/switch/basic_knowledge/" class="">基础知识列表</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/switch/require/" class="">准备清单</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/switch/system-design/" class="">系统设计</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/switch/hardware-build/" class="">硬件构建</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/switch/software-build/" class="">Software Build</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/switch/contributing/" class="">How to contribute</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9944d1fadd4ce8adc7644b141d205c6b" class="toggle" checked />
+    <label for="section-9944d1fadd4ce8adc7644b141d205c6b" class="flex justify-between">
+      <a href="/zh/docs/device/" class="">ZIGGO Device</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/device/basic_knowledge/" class="">基础知识列表</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/device/require/" class="">准备清单</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/device/getting-started/" class="">快速入门</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/device/system-design/" class="">系统设计</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/device/hardware-build/" class="">硬件构建</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/device/software-build/" class="">软件构建</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/device/ziggo_device_manual/" class="">ZIGGO Device使用手册</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/device/cnc_manual/" class="active">CNC脚本使用指南</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/device/testbed/" class="">TestBed搭建流程</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/zh/docs/device/contributing/" class="">如何贡献</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>CNC脚本使用指南</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  <div style="margin-top:10px; margin-bottom:40px; display:flex; justify-content:center; gap: 25px;">
+    <a href="https://github.com/MobiSense/ziggo_book" style="padding: 10px 10px;
+	background-color: rgb(0, 0, 0); /* 设置按钮背景色为橙色 */
+	color: white; /* 设置按钮文字颜色为白色 */
+	text-decoration: none; /* 去除链接的下划线 */
+	border: 3px solid rgb(0, 0, 0);
+	border-radius: 5px; /* 设置按钮的边角为圆角 */
+	font-size: 14px; /* 设置文字大小 */
+	text-align: center; /* 按钮内文字居中显示 */
+	display: inline-block; /* 使链接的布局表现为块级元素 */">GitHub</a>
+    <a href="https://mobisense.github.io/ziggo_homepage/" style="padding: 10px 10px;
+	background-color: rgb(0, 0, 0); /* 设置按钮背景色为橙色 */
+	color: white; /* 设置按钮文字颜色为白色 */
+	text-decoration: none; /* 去除链接的下划线 */
+	border: 3px solid rgb(0, 0, 0);
+	border-radius: 5px; /* 设置按钮的边角为圆角 */
+	font-size: 14px; /* 设置文字大小 */
+	text-align: center; /* 按钮内文字居中显示 */
+	display: inline-block; /* 使链接的布局表现为块级元素 */">Home</a>
+</div>
+
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-运行脚本前在batchmjs中要配置好以下变量">1. 运行脚本前，在batch.mjs中要配置好以下变量：</a></li>
+    <li><a href="#2-下载好switch和tsnperf的软件代码">2. 下载好Switch和TSNPerf的软件代码</a></li>
+    <li><a href="#3-拉取最新的软件代码并同步到远程板子上">3. 拉取最新的软件代码并同步到远程板子上</a></li>
+    <li><a href="#4-使远程所有板子编译代码">4. 使远程所有板子编译代码</a></li>
+    <li><a href="#5-将配置文件下发到所有板子上">5. 将配置文件下发到所有板子上</a></li>
+    <li><a href="#6-开始启动所有板子的程序">6. 开始启动所有板子的程序</a></li>
+    <li><a href="#7-收集延迟和抖动的统计信息">7. 收集延迟和抖动的统计信息</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="cnc脚本使用指南">
+  CNC脚本使用指南
+  <a class="anchor" href="#cnc%e8%84%9a%e6%9c%ac%e4%bd%bf%e7%94%a8%e6%8c%87%e5%8d%97">#</a>
+</h1>
+<h2 id="1-运行脚本前在batchmjs中要配置好以下变量">
+  1. 运行脚本前，在batch.mjs中要配置好以下变量：
+  <a class="anchor" href="#1-%e8%bf%90%e8%a1%8c%e8%84%9a%e6%9c%ac%e5%89%8d%e5%9c%a8batchmjs%e4%b8%ad%e8%a6%81%e9%85%8d%e7%bd%ae%e5%a5%bd%e4%bb%a5%e4%b8%8b%e5%8f%98%e9%87%8f">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// IP address format: 192.168.137.*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 测试数据
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">conf_default</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&lt;需要执行的配置名称&gt;&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 时钟主节点
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">master</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">40</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">hosts</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">device</span><span style="color:#f92672">:</span> [<span style="color:#ae81ff">43</span>, <span style="color:#ae81ff">44</span>],
+</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">switch</span><span style="color:#f92672">:</span> [<span style="color:#ae81ff">40</span>, <span style="color:#ae81ff">41</span>],
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>安装好需要的依赖：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo npm install -g zx@4.3.0
+</span></span><span style="display:flex;"><span>pip install -r requirements.txt
+</span></span><span style="display:flex;"><span>npm install
+</span></span></code></pre></div><p>配置好环境变量，在.bashrc中加入：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export PYTHONPATH<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/home/&lt;用户名&gt;/scripts&#34;</span>
+</span></span></code></pre></div><h2 id="2-下载好switch和tsnperf的软件代码">
+  2. 下载好Switch和TSNPerf的软件代码
+  <a class="anchor" href="#2-%e4%b8%8b%e8%bd%bd%e5%a5%bdswitch%e5%92%8ctsnperf%e7%9a%84%e8%bd%af%e4%bb%b6%e4%bb%a3%e7%a0%81">#</a>
+</h2>
+<blockquote>
+<p>（记得提前配置好树莓派和所有板子之间的ssh public key，方便免密登录）</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./batch.mjs clone
+</span></span></code></pre></div><h2 id="3-拉取最新的软件代码并同步到远程板子上">
+  3. 拉取最新的软件代码并同步到远程板子上
+  <a class="anchor" href="#3-%e6%8b%89%e5%8f%96%e6%9c%80%e6%96%b0%e7%9a%84%e8%bd%af%e4%bb%b6%e4%bb%a3%e7%a0%81%e5%b9%b6%e5%90%8c%e6%ad%a5%e5%88%b0%e8%bf%9c%e7%a8%8b%e6%9d%bf%e5%ad%90%e4%b8%8a">#</a>
+</h2>
+<blockquote>
+<p>默认时master分支，如果需要指定分支，需要修改batch.mjs文件中的pull()函数，具体参考注释的部分</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// pull all the latest code
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">pull</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">async</span> () =&gt; {
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">cd</span>(<span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">homedir</span>()<span style="color:#e6db74">}</span><span style="color:#e6db74">/repos`</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 如果需要指定分支，类似下面指定qbv-test分支的操作
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// await $`cd pkt_gen_app; git stash; git checkout qbv-test; git pull origin qbv-test; cd ..`
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// await $`cd time_sync_app; git stash; git checkout qbv-test; git pull origin qbv-test; cd ..`
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">await</span> Promise.<span style="color:#a6e22e">all</span>(<span style="color:#a6e22e">hosts</span>.<span style="color:#a6e22e">all</span>.<span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">host</span> =&gt; {
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">type</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">hosts</span>.<span style="color:#a6e22e">device</span>.<span style="color:#a6e22e">includes</span>(<span style="color:#a6e22e">host</span>) <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;device&#39;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;switch&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">type</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;device&#39;</span>) {
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">$</span><span style="color:#e6db74">`rsync -avPh </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">homedir</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/repos/pkt_gen_app root@192.168.137.</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">host</span><span style="color:#e6db74">}</span><span style="color:#e6db74">:~/`</span>
+</span></span><span style="display:flex;"><span>   } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">type</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;switch&#39;</span>) {
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">$</span><span style="color:#e6db74">`rsync -avPh </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">homedir</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/repos/time_sync_app root@192.168.137.</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">host</span><span style="color:#e6db74">}</span><span style="color:#e6db74">:~/;`</span>
+</span></span><span style="display:flex;"><span>   }
+</span></span><span style="display:flex;"><span>}))
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>同步到所有板子上：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./batch.mjs pull
+</span></span></code></pre></div><h2 id="4-使远程所有板子编译代码">
+  4. 使远程所有板子编译代码
+  <a class="anchor" href="#4-%e4%bd%bf%e8%bf%9c%e7%a8%8b%e6%89%80%e6%9c%89%e6%9d%bf%e5%ad%90%e7%bc%96%e8%af%91%e4%bb%a3%e7%a0%81">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./batch.mjs build
+</span></span></code></pre></div><h2 id="5-将配置文件下发到所有板子上">
+  5. 将配置文件下发到所有板子上
+  <a class="anchor" href="#5-%e5%b0%86%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6%e4%b8%8b%e5%8f%91%e5%88%b0%e6%89%80%e6%9c%89%e6%9d%bf%e5%ad%90%e4%b8%8a">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./batch.mjs distribute
+</span></span></code></pre></div><h2 id="6-开始启动所有板子的程序">
+  6. 开始启动所有板子的程序
+  <a class="anchor" href="#6-%e5%bc%80%e5%a7%8b%e5%90%af%e5%8a%a8%e6%89%80%e6%9c%89%e6%9d%bf%e5%ad%90%e7%9a%84%e7%a8%8b%e5%ba%8f">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./batch.mjs launch
+</span></span></code></pre></div><h2 id="7-收集延迟和抖动的统计信息">
+  7. 收集延迟和抖动的统计信息
+  <a class="anchor" href="#7-%e6%94%b6%e9%9b%86%e5%bb%b6%e8%bf%9f%e5%92%8c%e6%8a%96%e5%8a%a8%e7%9a%84%e7%bb%9f%e8%ae%a1%e4%bf%a1%e6%81%af">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./batch.mjs collect
+</span></span></code></pre></div></article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/Mobisense/ziggo_book///tree/main//content/docs/device/cnc_manual/index.md" target="_blank" rel="noopener">
+      <img src="/svg/edit.svg" class="book-icon" alt="" />
+      <span>编辑本页</span>
+    </a>
+  </div>
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        <footer id="mu-footer" role="contentinfo" style="	height: 160px;
+clear: both;
+color: #000000;
+text-align: center;
+padding-top: 100px;">
+    <div class="container">
+        <div class="col-sm-12">
+            <div>
+                <p> Room 211, District 11, East Main Building, Tsinghua University, Haidian District, Beijing, China, 100084 | </p>
+                <p> &copy 2021 <span class="ziggo-font">ZIGGO</span>, TNS, School of Software, Tsinghua University . All rights reserved. </p>
+            </div>
+        </div>
+    </div>
+</footer>
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  <div style="margin-top:10px; margin-bottom:40px; display:flex; justify-content:center; gap: 25px;">
+    <a href="https://github.com/MobiSense/ziggo_book" style="padding: 10px 10px;
+	background-color: rgb(0, 0, 0); /* 设置按钮背景色为橙色 */
+	color: white; /* 设置按钮文字颜色为白色 */
+	text-decoration: none; /* 去除链接的下划线 */
+	border: 3px solid rgb(0, 0, 0);
+	border-radius: 5px; /* 设置按钮的边角为圆角 */
+	font-size: 14px; /* 设置文字大小 */
+	text-align: center; /* 按钮内文字居中显示 */
+	display: inline-block; /* 使链接的布局表现为块级元素 */">GitHub</a>
+    <a href="https://mobisense.github.io/ziggo_homepage/" style="padding: 10px 10px;
+	background-color: rgb(0, 0, 0); /* 设置按钮背景色为橙色 */
+	color: white; /* 设置按钮文字颜色为白色 */
+	text-decoration: none; /* 去除链接的下划线 */
+	border: 3px solid rgb(0, 0, 0);
+	border-radius: 5px; /* 设置按钮的边角为圆角 */
+	font-size: 14px; /* 设置文字大小 */
+	text-align: center; /* 按钮内文字居中显示 */
+	display: inline-block; /* 使链接的布局表现为块级元素 */">Home</a>
+</div>
+
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-运行脚本前在batchmjs中要配置好以下变量">1. 运行脚本前，在batch.mjs中要配置好以下变量：</a></li>
+    <li><a href="#2-下载好switch和tsnperf的软件代码">2. 下载好Switch和TSNPerf的软件代码</a></li>
+    <li><a href="#3-拉取最新的软件代码并同步到远程板子上">3. 拉取最新的软件代码并同步到远程板子上</a></li>
+    <li><a href="#4-使远程所有板子编译代码">4. 使远程所有板子编译代码</a></li>
+    <li><a href="#5-将配置文件下发到所有板子上">5. 将配置文件下发到所有板子上</a></li>
+    <li><a href="#6-开始启动所有板子的程序">6. 开始启动所有板子的程序</a></li>
+    <li><a href="#7-收集延迟和抖动的统计信息">7. 收集延迟和抖动的统计信息</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
