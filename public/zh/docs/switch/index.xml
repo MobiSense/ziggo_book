@@ -23,32 +23,32 @@
       <description>ZIGGO 软硬件准备清单</description>
     </item>
     <item>
-      <title>System Design</title>
+      <title>系统设计</title>
       <link>http://localhost:1313/zh/docs/switch/system-design/</link>
       <pubDate>Wed, 01 May 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/zh/docs/switch/system-design/</guid>
-      <description>Docs to enable CaaS Switches&amp;rsquo; time synchronization logic and set up TSN GCL (gate control list), switch forwarding rules (including to dual-DMA).</description>
+      <description>启用 CaaS 交换机的时间同步逻辑并设置TSN GCL（门控列表）、交换机转发规则（包括到双DMA）的文档。</description>
     </item>
     <item>
-      <title>Hardware Build</title>
+      <title>硬件构建</title>
       <link>http://localhost:1313/zh/docs/switch/hardware-build/</link>
       <pubDate>Wed, 01 May 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/zh/docs/switch/hardware-build/</guid>
-      <description>Hardware:FPGA bitstream &amp;amp; Petalinux system rootfs for TSN Evaluation Toolkit</description>
+      <description>硬件：用于 TSN 评估工具包的 FPGA 比特流和 Petalinux 系统 rootfs</description>
     </item>
     <item>
-      <title>Software Build</title>
+      <title>软件构建</title>
       <link>http://localhost:1313/zh/docs/switch/software-build/</link>
       <pubDate>Wed, 01 May 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/zh/docs/switch/software-build/</guid>
-      <description>Docs to enable CaaS Switches&amp;rsquo; time synchronization logic and set up TSN GCL (gate control list), switch forwarding rules (including to dual-DMA).</description>
+      <description>启用 CaaS 交换机的时间同步逻辑并设置 TSN GCL（门控列表）、交换机转发规则（包括到双 DMA）的文档。</description>
     </item>
     <item>
-      <title>How to contribute</title>
+      <title>如何贡献</title>
       <link>http://localhost:1313/zh/docs/switch/contributing/</link>
       <pubDate>Wed, 01 May 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/zh/docs/switch/contributing/</guid>
-      <description>How to report a bug or contribute to ZIGGO&amp;rsquo;s code</description>
+      <description>如何报告 ZIGGO 的错误或贡献代码</description>
     </item>
   </channel>
 </rss>

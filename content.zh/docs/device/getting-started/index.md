@@ -1,6 +1,6 @@
 ---
-title: Getting start
-summary: ZIGGO device get start document 
+title: 快速入门
+summary: ZIGGO Device 快速入门文档
 date: 2024-05-01
 authors:
   - admin
@@ -11,43 +11,43 @@ image:
   
 weight: 982
 ---
-# Getting start
-## Table of Content
+# 快速入门
+## 目录
 
-- [Getting start](#getting-start)
-  - [Table of Content](#table-of-content)
-  - [Folder Structure](#folder-structure)
-  - [Introduction to git branches](#introduction-to-git-branches)
-  - [Building and Starting the TSNPerf](#building-and-starting-the-tsnperf)
+- [快速入门](#快速入门)
+  - [目录](#目录)
+  - [文件结构](#文件结构)
+  - [Git 分支介绍](#git-分支介绍)
+  - [构建和启动 TSNPerf](#构建和启动-tsnperf)
 
 
-## Folder Structure
+## 文件结构
 
 ```bash
 .
-├── docs                     //documents for ZIGGO
-├── figs                     //figures for docs
-├── hardware                //hareware code, for PL part(pkt_gen, time sync in FPGA)
-├── readme.md                  //readme for whole project
-├── software                //software code, for ps part(pkt_gen, time sync)
-└── testbed-build           //code for building testbed
+├── docs                     // ZIGGO 的文档
+├── figs                     // 文档的图表
+├── hardware                 // 硬件代码，PL 部分（pkt_gen，FPGA 中的时间同步）
+├── readme.md                // 整个项目的自述文件
+├── software                 // 软件代码，PS 部分（pkt_gen，时间同步）
+└── testbed-build            // 构建测试平台的代码
 ```
 
-## Introduction to git branches
+## Git 分支介绍
 
-| Branch Name     | Basic Function | Packet Resize | Online Analyze | Offline Analyze |
-|:---------------:|:--------------:|:-------------:|:--------------:|:---------------:|
-| main            | √              |               | √              |                 |
-| packet_resize   | √              | √             | √              |                 |
-| offline_analyze | √              |               |                | √               |
+| 分支名称        | 基本功能  | 包大小调整 | 在线分析 | 离线分析  |
+|:---------------:|:---------:|:----------:|:--------:|:---------:|
+| main            | √         |            | √        |           |
+| packet_resize   | √         | √          | √        |           |
+| offline_analyze | √         |            |          | √         |
 
-The branches of TSNPerf submitted this time can be divided into three categories. But the main branch is inconvenient to use in two ways. In order to solve the above two limitations, we have also submitted two patch branches.
+此次提交的 TSNPerf 分支可分为三类。但 main 分支在两个方面不便使用。为了解决上述两种限制，我们还提交了两个补丁分支。
 
-* The `main` branch contains basic time synchronization and pkt_gen functions, as well as online analysis functions. However, its limitation is that it can only send Ethernet of MTU (1500B) size, and due to the limited performance of the zynq development board, online analysis may cause packet loss.
-* `packet_resize` branch can send Ethernet frames of any size (64B-1500B).
-* `offline_analyse` branch can forward the data packets to the PC for offline analysis to avoid packet loss. 
+* `main` 分支包含基本的时间同步和 pkt_gen 功能，以及在线分析功能。然而，其限制是只能发送 MTU（1500B）大小的以太网，且由于 zynq 开发板性能有限，在线分析可能会导致丢包。
+* `packet_resize` 分支可以发送任意大小的以太网帧（64B-1500B）。
+* `offline_analyze` 分支可以将数据包转发到 PC 进行离线分析，以避免丢包。
 
-> Note1: When switch to 'packet_resize' branch, you also need to modify the `software/config/flow.json` 
+> 注意1：切换到 'packet_resize' 分支时，还需要修改 `software/config/flow.json` 
 > 
 > ```
 > {
@@ -57,14 +57,14 @@ The branches of TSNPerf submitted this time can be divided into three categories
 >         "dst": 2,
 >         "period": 2048,
 >         "MD": 1024,
->         "packet_size": 750 // add this attribute 
+>         "packet_size": 750 // 添加此属性 
 >  },
 > ```
 
-> Note2: When switch to 'offline_anaylze' branch, you need to link device to anthor PC (linux) by wire in ETH1.
+> 注意2：切换到 'offline_analyze' 分支时，需要通过网线将设备连接到另一台 PC（Linux），使用 ETH1 接口。
 
-## Building and Starting the TSNPerf
+## 构建和启动 TSNPerf
 
-[Set up the FPGA board and initialize PS system](/ziggo_book/docs/device/hardware-build/)
+[设置 FPGA 板并初始化 PS 系统](/ziggo_book/zh/docs/device/hardware-build/)
 
-[Compile software code, run the time synchronization & pkt _gen_app](/ziggo_book/docs/device/software-build/)
+[编译软件代码，运行时间同步和 pkt_gen_app](/ziggo_book/zh/docs/device/software-build/)

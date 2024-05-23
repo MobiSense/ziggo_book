@@ -3,15 +3,25 @@
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="ZIGGO TSNPerf: A flexible, comprehensive and user-friendly TSN evaluation toolkit.#Table of Contents#ZIGGO TSNPerf: A flexible, comprehensive and user-friendly TSN evaluation toolkit. Table of Contents Introduction Features Getting Started Test Case License and Citation Contributing Acknowledgement Introduction#ZIGGO is a flexible, standard-compliant, and control-function-virtualized TSN switch platform ready for industrial control, automotive electronics, and other time-sensitive applications.
-This is the document for the ZIGGO TSNPerf. ZIGGO TSNPerf is a flexible, comprehensive and user-friendly TSN evaluation toolkit.">
+<meta name="description" content="ZIGGO TSNPerf: 一个灵活、全面且用户友好的 TSN 评估工具包#目录#ZIGGO TSNPerf: 一个灵活、全面且用户友好的 TSN 评估工具包 目录 简介 特点 入门 测试案例 许可证和引用 贡献 致谢 简介#ZIGGO 是一个灵活、符合标准和控制功能虚拟化的 TSN 交换机平台，适用于工业控制、汽车电子和其他时间敏感的应用。
+这是 ZIGGO TSNPerf 的文档。ZIGGO TSNPerf 是一个灵活、全面且用户友好的 TSN 评估工具包。它提供协议合规性评估和网络性能评估。下图说明了 ZIGGO TSNPerf 和 iPerf3 之间的相似性和差异。
+特点#ZIGGO TSNPerf 提供协议合规性评估和网络性能评估。它是一个全方位的软硬件集成解决方案，包括
+时间同步测试： 精确的时间戳（高达 8ns），时间同步精度和协议一致性分析
+流量整形测试： (1) 关键流量的精确重放和记录，以及 (2) GCL 能力、带宽保证和 GCL 精度测试
+网络配置测试： (1) Qcc 配置能力和数据模型一致性分析，以及 (2) TSN 流量自动调度和结果验证
+入门#请参考 TSNPerf 文档 以获取准备信息。">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/zh/docs/tsnperf/">
   <meta property="og:site_name" content="ZIGGO BOOK">
   <meta property="og:title" content="ZIGGO TSNPerf">
-  <meta property="og:description" content="ZIGGO TSNPerf: A flexible, comprehensive and user-friendly TSN evaluation toolkit.#Table of Contents#ZIGGO TSNPerf: A flexible, comprehensive and user-friendly TSN evaluation toolkit. Table of Contents Introduction Features Getting Started Test Case License and Citation Contributing Acknowledgement Introduction#ZIGGO is a flexible, standard-compliant, and control-function-virtualized TSN switch platform ready for industrial control, automotive electronics, and other time-sensitive applications.
-This is the document for the ZIGGO TSNPerf. ZIGGO TSNPerf is a flexible, comprehensive and user-friendly TSN evaluation toolkit.">
+  <meta property="og:description" content="ZIGGO TSNPerf: 一个灵活、全面且用户友好的 TSN 评估工具包#目录#ZIGGO TSNPerf: 一个灵活、全面且用户友好的 TSN 评估工具包 目录 简介 特点 入门 测试案例 许可证和引用 贡献 致谢 简介#ZIGGO 是一个灵活、符合标准和控制功能虚拟化的 TSN 交换机平台，适用于工业控制、汽车电子和其他时间敏感的应用。
+这是 ZIGGO TSNPerf 的文档。ZIGGO TSNPerf 是一个灵活、全面且用户友好的 TSN 评估工具包。它提供协议合规性评估和网络性能评估。下图说明了 ZIGGO TSNPerf 和 iPerf3 之间的相似性和差异。
+特点#ZIGGO TSNPerf 提供协议合规性评估和网络性能评估。它是一个全方位的软硬件集成解决方案，包括
+时间同步测试： 精确的时间戳（高达 8ns），时间同步精度和协议一致性分析
+流量整形测试： (1) 关键流量的精确重放和记录，以及 (2) GCL 能力、带宽保证和 GCL 精度测试
+网络配置测试： (1) Qcc 配置能力和数据模型一致性分析，以及 (2) TSN 流量自动调度和结果验证
+入门#请参考 TSNPerf 文档 以获取准备信息。">
   <meta property="og:locale" content="zh">
   <meta property="og:type" content="website">
 <title>ZIGGO TSNPerf | ZIGGO BOOK</title>
@@ -21,7 +31,7 @@ This is the document for the ZIGGO TSNPerf. ZIGGO TSNPerf is a flexible, compreh
   <link rel="alternate" hreflang="en" href="http://localhost:1313/docs/tsnperf/" title="ZIGGO TSNPerf">
 <link rel="stylesheet" href="/book.min.309b7ed028807cdb68d8d61e26d609f48369c098dbf5e4d8c0dcf4cdf49feafc.css" integrity="sha256-MJt&#43;0CiAfNto2NYeJtYJ9INpwJjb9eTYwNz0zfSf6vw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/zh.search.min.0a35798c78c016e2b218365660d9a17cabc3941c772e735cffb8ebd0a1bcbd84.js" integrity="sha256-CjV5jHjAFuKyGDZWYNmhfKvDlBx3LnNc/7jr0KG8vYQ=" crossorigin="anonymous"></script>
+  <script defer src="/zh.search.min.b77e601a6a6485877260bb76047048cc0366d24bc7803048aae12ec20e97c250.js" integrity="sha256-t35gGmpkhYdyYLt2BHBIzANm0kvHgDBIquEuwg6XwlA=" crossorigin="anonymous"></script>
 
   
 
@@ -228,7 +238,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/zh/docs/switch/system-design/" class="">System Design</a>
+    <a href="/zh/docs/switch/system-design/" class="">系统设计</a>
   
 
         </li>
@@ -241,7 +251,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/zh/docs/switch/hardware-build/" class="">Hardware Build</a>
+    <a href="/zh/docs/switch/hardware-build/" class="">硬件构建</a>
   
 
         </li>
@@ -254,7 +264,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/zh/docs/switch/software-build/" class="">Software Build</a>
+    <a href="/zh/docs/switch/software-build/" class="">软件构建</a>
   
 
         </li>
@@ -267,7 +277,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/zh/docs/switch/contributing/" class="">How to contribute</a>
+    <a href="/zh/docs/switch/contributing/" class="">如何贡献</a>
   
 
         </li>
@@ -327,7 +337,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/zh/docs/device/getting-started/" class="">Getting start</a>
+    <a href="/zh/docs/device/getting-started/" class="">快速入门</a>
   
 
         </li>
@@ -340,7 +350,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/zh/docs/device/system-design/" class="">System Design</a>
+    <a href="/zh/docs/device/system-design/" class="">系统设计</a>
   
 
         </li>
@@ -353,7 +363,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/zh/docs/device/hardware-build/" class="">Hardware Build</a>
+    <a href="/zh/docs/device/hardware-build/" class="">硬件构建</a>
   
 
         </li>
@@ -366,7 +376,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/zh/docs/device/software-build/" class="">Software Build</a>
+    <a href="/zh/docs/device/software-build/" class="">软件构建</a>
   
 
         </li>
@@ -418,7 +428,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/zh/docs/device/contributing/" class="">How to contribute</a>
+    <a href="/zh/docs/device/contributing/" class="">如何贡献</a>
   
 
         </li>
@@ -478,7 +488,7 @@ https://github.com/alex-shpak/hugo-book
   
   <aside class="hidden clearfix">
     
-  <div style="margin: 50px; display:flex; justify-content:center; gap: 25px;">
+  <div style="margin-top:10px; margin-bottom:40px; display:flex; justify-content:center; gap: 25px;">
     <a href="https://github.com/MobiSense/ziggo_book" style="padding: 10px 10px;
 	background-color: rgb(0, 0, 0); /* 设置按钮背景色为橙色 */
 	color: white; /* 设置按钮文字颜色为白色 */
@@ -501,14 +511,14 @@ https://github.com/alex-shpak/hugo-book
 
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#table-of-contents">Table of Contents</a></li>
-    <li><a href="#introduction">Introduction</a></li>
-    <li><a href="#features">Features</a></li>
-    <li><a href="#getting-started">Getting Started</a></li>
-    <li><a href="#test-case">Test Case</a></li>
-    <li><a href="#license-and-citation">License and Citation</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#acknowledgement">Acknowledgement</a></li>
+    <li><a href="#目录">目录</a></li>
+    <li><a href="#简介">简介</a></li>
+    <li><a href="#特点">特点</a></li>
+    <li><a href="#入门">入门</a></li>
+    <li><a href="#测试案例">测试案例</a></li>
+    <li><a href="#许可证和引用">许可证和引用</a></li>
+    <li><a href="#贡献">贡献</a></li>
+    <li><a href="#致谢">致谢</a></li>
   </ul>
 </nav>
 
@@ -522,87 +532,80 @@ https://github.com/alex-shpak/hugo-book
       
       
   <article class="markdown book-article"><!-- raw HTML omitted -->
-<h1 id="ziggo-tsnperf-aflexiblecomprehensive-and-user-friendlytsn-evaluation-toolkit">
-  ZIGGO TSNPerf: A flexible, comprehensive and user-friendly TSN evaluation toolkit.
-  <a class="anchor" href="#ziggo-tsnperf-aflexiblecomprehensive-and-user-friendlytsn-evaluation-toolkit">#</a>
+<h1 id="ziggo-tsnperf-一个灵活全面且用户友好的-tsn-评估工具包">
+  ZIGGO TSNPerf: 一个灵活、全面且用户友好的 TSN 评估工具包
+  <a class="anchor" href="#ziggo-tsnperf-%e4%b8%80%e4%b8%aa%e7%81%b5%e6%b4%bb%e5%85%a8%e9%9d%a2%e4%b8%94%e7%94%a8%e6%88%b7%e5%8f%8b%e5%a5%bd%e7%9a%84-tsn-%e8%af%84%e4%bc%b0%e5%b7%a5%e5%85%b7%e5%8c%85">#</a>
 </h1>
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 <p><img src="figs/banner.jpg" alt="" /></p>
-<h2 id="table-of-contents">
-  Table of Contents
-  <a class="anchor" href="#table-of-contents">#</a>
+<h2 id="目录">
+  目录
+  <a class="anchor" href="#%e7%9b%ae%e5%bd%95">#</a>
 </h2>
 <ul>
-<li><a href="#ziggo-tsnperf-aflexiblecomprehensive-and-user-friendlytsn-evaluation-toolkit">ZIGGO TSNPerf: A flexible, comprehensive and user-friendly TSN evaluation toolkit.</a>
+<li><a href="#ziggo-tsnperf-%e4%b8%80%e4%b8%aa%e7%81%b5%e6%b4%bb%e5%85%a8%e9%9d%a2%e4%b8%94%e7%94%a8%e6%88%b7%e5%8f%8b%e5%a5%bd%e7%9a%84-tsn-%e8%af%84%e4%bc%b0%e5%b7%a5%e5%85%b7%e5%8c%85">ZIGGO TSNPerf: 一个灵活、全面且用户友好的 TSN 评估工具包</a>
 <ul>
-<li><a href="#table-of-contents">Table of Contents</a></li>
-<li><a href="#introduction">Introduction</a></li>
-<li><a href="#features">Features</a></li>
-<li><a href="#getting-started">Getting Started</a></li>
-<li><a href="#test-case">Test Case</a></li>
-<li><a href="#license-and-citation">License and Citation</a></li>
-<li><a href="#contributing">Contributing</a></li>
-<li><a href="#acknowledgement">Acknowledgement</a></li>
+<li><a href="#%e7%9b%ae%e5%bd%95">目录</a></li>
+<li><a href="#%e7%ae%80%e4%bb%8b">简介</a></li>
+<li><a href="#%e7%89%b9%e7%82%b9">特点</a></li>
+<li><a href="#%e5%85%a5%e9%97%a8">入门</a></li>
+<li><a href="#%e6%b5%8b%e8%af%95%e6%a1%88%e4%be%8b">测试案例</a></li>
+<li><a href="#%e8%ae%b8%e5%8f%af%e8%af%81%e5%92%8c%e5%bc%95%e7%94%a8">许可证和引用</a></li>
+<li><a href="#%e8%b4%a1%e7%8c%ae">贡献</a></li>
+<li><a href="#%e8%87%b4%e8%b0%a2">致谢</a></li>
 </ul>
 </li>
 </ul>
-<h2 id="introduction">
-  Introduction
-  <a class="anchor" href="#introduction">#</a>
+<h2 id="简介">
+  简介
+  <a class="anchor" href="#%e7%ae%80%e4%bb%8b">#</a>
 </h2>
-<p>ZIGGO is a <code>flexible</code>, <code>standard-compliant</code>, and <code>control-function-virtualized</code> TSN switch platform ready for <strong>industrial control</strong>, <strong>automotive electronics</strong>, and other <strong>time-sensitive applications</strong>.</p>
-<p>This is the document for the ZIGGO TSNPerf.
-ZIGGO TSNPerf is a flexible, comprehensive and user-friendly TSN evaluation toolkit.
-It provides protocol compliance assesment and network performance evaluation.
-The following figure illustrates the similarities and differences between ZIGGO TSNPerf and iPerf3.</p>
-<p><img src="./figs/vsiperf.png" alt="TSNPerf versus iPerf3" /></p>
-<h2 id="features">
-  Features
-  <a class="anchor" href="#features">#</a>
+<p>ZIGGO 是一个<code>灵活</code>、<code>符合标准</code>和<code>控制功能虚拟化</code>的 TSN 交换机平台，适用于<strong>工业控制</strong>、<strong>汽车电子</strong>和其他<strong>时间敏感的应用</strong>。</p>
+<p>这是 ZIGGO TSNPerf 的文档。ZIGGO TSNPerf 是一个灵活、全面且用户友好的 TSN 评估工具包。它提供协议合规性评估和网络性能评估。下图说明了 ZIGGO TSNPerf 和 iPerf3 之间的相似性和差异。</p>
+<p><img src="./figs/vsiperf.png" alt="TSNPerf vs iPerf3" /></p>
+<h2 id="特点">
+  特点
+  <a class="anchor" href="#%e7%89%b9%e7%82%b9">#</a>
 </h2>
-<p>ZIGGO TSNPerf provides protocol compliance assesment and network performance evaluation.
-It is an all-round hardware-software integrated solution, including</p>
+<p>ZIGGO TSNPerf 提供协议合规性评估和网络性能评估。它是一个全方位的软硬件集成解决方案，包括</p>
 <ul>
 <li>
-<p><strong>Time synchronization test:</strong>
-Accurate timestamp (up to 8ns), time synchronization accuracy and protocol consistency analysis</p>
+<p><strong>时间同步测试：</strong>
+精确的时间戳（高达 8ns），时间同步精度和协议一致性分析</p>
 </li>
 <li>
-<p><strong>Traffic shaping test:</strong>
-(1) Precise replay and recording of critical traffic, and
-(2) GCL capability, bandwidth guarantee and GCL accuracy testing</p>
+<p><strong>流量整形测试：</strong>
+(1) 关键流量的精确重放和记录，以及
+(2) GCL 能力、带宽保证和 GCL 精度测试</p>
 </li>
 <li>
-<p><strong>Network Configuration Testing:</strong>
-(1) Qcc configuration capability and data model consistency analysis, and
-(2) TSN traffic automatic scheduling and results verification</p>
+<p><strong>网络配置测试：</strong>
+(1) Qcc 配置能力和数据模型一致性分析，以及
+(2) TSN 流量自动调度和结果验证</p>
 </li>
 </ul>
-<h2 id="getting-started">
-  Getting Started
-  <a class="anchor" href="#getting-started">#</a>
+<h2 id="入门">
+  入门
+  <a class="anchor" href="#%e5%85%a5%e9%97%a8">#</a>
 </h2>
-<p>Please refer to TSNPerf <a href="/ziggo_book/docs/tsnperf/configuration/">documents</a> to get prepared.</p>
-<h2 id="test-case">
-  Test Case
-  <a class="anchor" href="#test-case">#</a>
+<p>请参考 TSNPerf <a href="/ziggo_book/zh/docs/tsnperf/configuration/">文档</a> 以获取准备信息。</p>
+<h2 id="测试案例">
+  测试案例
+  <a class="anchor" href="#%e6%b5%8b%e8%af%95%e6%a1%88%e4%be%8b">#</a>
 </h2>
-<p>We exploit ZIGGO TSNPerf to conduct a comprehensive test on a Brand A TSN switch.
-The following figures show the test results for GCL capability, bandwidth guarantee, and GCL accuracy for the Brand A switch.
-The results reveal that the Brand A TSN switch provides high-priority resource reservation (i.e., gating capability) and bandwidth guarantees for critical traffic,
-but its GCL accuracy is low, failing to meet the requirements of the IEEE 802.1Qbv protocol.</p>
-<p><img src="./figs/gclcapability.png" alt="GCL Capability" title="GCL Capability"/>
-<img src="./figs/bwguarantee.png" alt="Bandwidth Guarantee" title="Bandwidth Guarantee"/></p>
+<p>我们利用 ZIGGO TSNPerf 对品牌 A 的 TSN 交换机进行了全面测试。下图显示了品牌 A 交换机的 GCL 能力、带宽保证和 GCL 精度的测试结果。结果显示，品牌 A TSN 交换机为关键流量提供了高优先级资源保留（即门控能力）和带宽保证，但其 GCL 精度较低，未能满足 IEEE 802.1Qbv 协议的要求。</p>
+<p><img src="./figs/gclcapability.png" alt="GCL 能力" title="GCL 能力"/>
+<img src="./figs/bwguarantee.png" alt="带宽保证" title="带宽保证"/></p>
 <p><!-- raw HTML omitted -->  <!-- raw HTML omitted -->
-<img src="./figs/gclaccuracy.png" alt="GCL Accuracy" title="GCL Accuracy"/></p>
-<p>For more details of this test case, please refer to the <a href="http://tns.thss.tsinghua.edu.cn/ziggo/data/switch_report.pdf">test report</a>.</p>
-<h2 id="license-and-citation">
-  License and Citation
-  <a class="anchor" href="#license-and-citation">#</a>
+<img src="./figs/gclaccuracy.png" alt="GCL 精度" title="GCL 精度"/></p>
+<p>有关此测试案例的更多详细信息，请参考 <a href="http://tns.thss.tsinghua.edu.cn/ziggo/data/switch_report.pdf">测试报告</a>。</p>
+<h2 id="许可证和引用">
+  许可证和引用
+  <a class="anchor" href="#%e8%ae%b8%e5%8f%af%e8%af%81%e5%92%8c%e5%bc%95%e7%94%a8">#</a>
 </h2>
-<p>ZIGGO is released under a <a href="">MIT license</a>.</p>
-<p>Please consider citing our papers if the project helps your research with the following BibTex:</p>
+<p>ZIGGO 根据 <a href="">MIT 许可证</a> 发布。</p>
+<p>如果该项目对您的研究有所帮助，请考虑引用我们的论文，以下是 BibTex 格式：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bibtex" data-lang="bibtex"><span style="display:flex;"><span><span style="color:#a6e22e">@inproceedings</span>{caas,
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">author</span>=<span style="color:#e6db74">{Yang, Zheng and Zhao, Yi and Dang, Fan and He, Xiaowu and Wu, Jiahang and Cao, Hao and Wang, Zeyu and Liu, Yunhao}</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">booktitle</span>=<span style="color:#e6db74">{IEEE INFOCOM 2023 - IEEE Conference on Computer Communications}</span>,
@@ -620,19 +623,19 @@ but its GCL accuracy is low, failing to meet the requirements of the IEEE 802.1Q
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">number</span>=<span style="color:#e6db74">{}</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">pages</span>=<span style="color:#e6db74">{691-701}</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">doi</span>=<span style="color:#e6db74">{10.1109/ICDCS54860.2022.00072}</span>}
-</span></span></code></pre></div><h2 id="contributing">
-  Contributing
-  <a class="anchor" href="#contributing">#</a>
+</span></span></code></pre></div><h2 id="贡献">
+  贡献
+  <a class="anchor" href="#%e8%b4%a1%e7%8c%ae">#</a>
 </h2>
-<p>Please see the guide for information on how to ask for help or contribute to the development of ZIGGO!</p>
+<p>请参阅指南，了解如何寻求帮助或为 ZIGGO 的开发做出贡献！</p>
 <blockquote>
-<p>The development team will only answer questions on github issues and reject other forms of questions.</p>
+<p>开发团队只会回答 GitHub 问题上的问题，拒绝其他形式的提问。</p>
 </blockquote>
-<h2 id="acknowledgement">
-  Acknowledgement
-  <a class="anchor" href="#acknowledgement">#</a>
+<h2 id="致谢">
+  致谢
+  <a class="anchor" href="#%e8%87%b4%e8%b0%a2">#</a>
 </h2>
-<p>This project references parts of the Intel <a href="https://github.com/intel/iotg_tsn_ref_sw">iotg</a> repository.</p>
+<p>本项目参考了英特尔 <a href="https://github.com/intel/iotg_tsn_ref_sw">iotg</a> 仓库的部分内容。</p>
 </article>
  
       
@@ -691,7 +694,7 @@ padding-top: 100px;">
     <aside class="book-toc">
       <div class="book-toc-content">
         
-  <div style="margin: 50px; display:flex; justify-content:center; gap: 25px;">
+  <div style="margin-top:10px; margin-bottom:40px; display:flex; justify-content:center; gap: 25px;">
     <a href="https://github.com/MobiSense/ziggo_book" style="padding: 10px 10px;
 	background-color: rgb(0, 0, 0); /* 设置按钮背景色为橙色 */
 	color: white; /* 设置按钮文字颜色为白色 */
@@ -714,14 +717,14 @@ padding-top: 100px;">
 
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#table-of-contents">Table of Contents</a></li>
-    <li><a href="#introduction">Introduction</a></li>
-    <li><a href="#features">Features</a></li>
-    <li><a href="#getting-started">Getting Started</a></li>
-    <li><a href="#test-case">Test Case</a></li>
-    <li><a href="#license-and-citation">License and Citation</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#acknowledgement">Acknowledgement</a></li>
+    <li><a href="#目录">目录</a></li>
+    <li><a href="#简介">简介</a></li>
+    <li><a href="#特点">特点</a></li>
+    <li><a href="#入门">入门</a></li>
+    <li><a href="#测试案例">测试案例</a></li>
+    <li><a href="#许可证和引用">许可证和引用</a></li>
+    <li><a href="#贡献">贡献</a></li>
+    <li><a href="#致谢">致谢</a></li>
   </ul>
 </nav>
 

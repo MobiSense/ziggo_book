@@ -1,6 +1,6 @@
 ---
 title: ZIGGO Device使用手册
-summary: Docs to enable CaaS Switches' time synchronization logic and set up TSN GCL (gate control list), switch forwarding rules (including to dual-DMA).
+summary: 启用 CaaS 交换机的时间同步逻辑并设置TSN GCL（门控列表）、交换机转发规则（包括到双DMA）的文档。
 date: 2024-05-01
 authors:
   - admin
@@ -14,23 +14,23 @@ weight: 986
 ---
 # ZIGGO Device使用手册
 
-There are two analysis methods for ZIGGO Device:
+ZIGGO Device有两种分析方法：
 
-> Hint: If you want to use offline anaylze, please switch branch to 'offline_anaylze', and you need to link device to anthor PC(linux) by wire.
+> 提示：如果您想使用离线分析，请切换到 'offline_analyze' 分支，并且需要通过网线将设备连接到另一台运行Linux的PC。
 
-One method is to `directly` analyze latency and jitter on the ZIGGO Device. The advantage of this method is that it is convenient and fast. We can directly count the latency and jitter of all received data frames on the Device. However, due to the limited processing power of the development board CPU, when analyzing a large number of data packets (such as sending more than 10 1500B data packets at a time with a cycle of 33ms), packet loss may occur;
+一种方法是 `直接` 在 ZIGGO Device 上分析延迟和抖动。这种方法的优点是方便快捷。我们可以直接在设备上统计所有接收到的数据帧的延迟和抖动。然而，由于开发板 CPU 的处理能力有限，当分析大量数据包（例如每次发送超过10个1500B数据包，周期为33ms）时，可能会出现丢包现象。
 
 ![](./online_analyse.png)
 
-Another method is to use Device to stamp the received packet and forward it from another port to a powerful desktop computer for packet capture analysis. Even if entering the Device at a gigabit rate, there will be no packet loss. The disadvantage is that a separate program needs to be written offline to analyze the delay and jitter of the packet.
+另一种方法是使用设备对接收的数据包进行时间戳标记，并通过另一个端口转发到功能强大的台式计算机进行数据包捕获分析。即使以千兆位速率进入设备，也不会丢包。缺点是需要离线编写单独的程序来分析数据包的延迟和抖动。
 
 ![](./offline_analyse.png)
 
-## ZIGGO Device directly analyzes latency and jitter
+## ZIGGO Device直接分析延迟和抖动
 
-During the operation of the  `time sync` program, after receiving the test data frame, the program will save the delay information of the data frame in the package under the `build/packet_log.csv` file, save the batch statistics of latency and jitter in the critical directory under the build directory at the same time in the `build/critical_log.csv`.
+在 `time sync` 程序运行期间，接收到测试数据帧后，程序会将数据帧的延迟信息保存在 `build/packet_log.csv` 文件中，同时将延迟和抖动的批量统计信息保存在 `build/critical_log.csv` 文件中。
 
-Example of `packet_log.csv`:
+`packet_log.csv` 示例：
 
 ```
 Seq ID, Pkt ID, TX timestamp, RX timestamp, Latency
@@ -46,7 +46,7 @@ Seq ID, Pkt ID, TX timestamp, RX timestamp, Latency
 0101, 9, 12750708655, 12750734904, 26249
 ```
 
-Example of `critical_ log.csv`, where Latency Variance is the variance of Latency:
+`critical_log.csv` 示例，其中延迟方差是延迟的方差：
 
 ```
 Seq ID, Received Number, Max pkt_id, Min pkt_id, Loss Rate, Latency Mean, Latency Variance
@@ -62,29 +62,29 @@ Seq ID, Received Number, Max pkt_id, Min pkt_id, Loss Rate, Latency Mean, Latenc
 0101, 1000, 9000, 9999, 0.000000,  26205, 7361
 ```
 
-You can display the content of the header and the last 5 lines using the following command:
+您可以使用以下命令显示标题和最后5行的内容：
 
 ```bash
 cat critical.log | head -n1
 cat critical.log | tail -n5
 ```
 
-## Offline analysis of latency and jitter
+## 离线分析延迟和抖动
 
-If conducting offline analysis, it is important to note that the hardware used is located at `offline_analyze` branch. This version will stamp the key data with a receive timestamp and forward it from ETH2. We need to use a PC equipped with a Linux system to capture packets for analysis.
+如果进行离线分析，需要注意使用的硬件位于 `offline_analyze` 分支。此版本会将关键数据标记为接收时间戳，并从 ETH2 转发。我们需要使用一台装有 Linux 系统的 PC 来捕获数据包进行分析。
 
-Example of packet capture command:
+数据包捕获命令示例：
 
 ```bash
 sudo tcpdump -i enx207bd272812b ether src 00:0a:35:00:00:14 -n -B 100000 -w packets.pcapng
 ```
 
-`Enx207bd272812b` is the name of the network card, which can be obtained through ifconfig. `Src` is used to specify that the captured packet comes from a certain MAC address. `-B` is used to specify the buffer size. If packet loss needs to be set to a larger size, you can check the information output after packet capture to see if Dropped by kernel: is 0. If it is not 0, it indicates that there is packet loss in the kernel. `-W` specifies the path to save the file.
+`Enx207bd272812b` 是网卡名称，可以通过 ifconfig 获取。`Src` 用于指定捕获的数据包来自某个 MAC 地址。`-B` 用于指定缓冲区大小。如果需要设置更大的缓冲区大小以避免丢包，可以查看数据包捕获后的输出信息，查看 Dropped by kernel 是否为 0。如果不是 0，则表示内核中存在丢包。`-W` 指定文件的保存路径。
 
-Code for analyzing programs is `analyze_packet.py`
+用于分析程序的代码是 `analyze_packet.py`
 
 ```bash
-python .\analyze_packet.py [capture file path] --step [interval]
+python ./analyze_packet.py [capture file path] --step [interval]
 ```
 
-At the same time, a packet will be generated in the current directory (`packet_log.csv` and `critical_log.csv`).
+同时，将在当前目录生成一个数据包（`packet_log.csv` 和 `critical_log.csv`）。

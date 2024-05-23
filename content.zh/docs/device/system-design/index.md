@@ -1,6 +1,6 @@
 ---
-title: System Design
-summary: ZIGGO is implemented on ZYNQ-7000 SoC and exploits ZYNQ's both hardware and software programmability. 
+title: 系统设计
+summary: ZIGGO 实现于 ZYNQ-7000 SoC 上，利用 ZYNQ 的硬件和软件可编程性。
 date: 2024-05-01
 authors:
   - admin
@@ -12,119 +12,121 @@ image:
   
 weight: 983
 ---
-# System Design
+# 系统设计
 
-ZIGGO is implemented on ZYNQ-7000 SoC and exploits ZYNQ's both hardware and software programmability. 
+ZIGGO 实现于 ZYNQ-7000 SoC 上，利用 ZYNQ 的硬件和软件可编程性。
 
 ![framework](./framework.jpg)
 
-## Table of Content
+## 目录
 
-- [System Design](#system-design)
-  - [Table of Content](#table-of-content)
-  - [Evaluation Method](#evaluation-method)
-  - [Test data frame data structure](#test-data-frame-data-structure)
-  - [Module Design](#module-design)
-    - [Correspondence between software and hardware registers](#correspondence-between-software-and-hardware-registers)
-    - [Offline Analysis and Design](#offline-analysis-and-design)
+- [系统设计](#系统设计)
+  - [目录](#目录)
+  - [评估方法](#评估方法)
+  - [测试数据帧数据结构](#测试数据帧数据结构)
+  - [模块设计](#模块设计)
+    - [软件和硬件寄存器的对应关系](#软件和硬件寄存器的对应关系)
+    - [离线分析和设计](#离线分析和设计)
 
-## Evaluation Method
+## 评估方法
 
-The ZIGGO Evaluation Toolkit is used to send and receive test data frames for the purpose of ensuring `accurate delay calculations`. 
+ZIGGO 评估工具包用于发送和接收测试数据帧，以确保 `准确的延迟计算`。
 
-To achieve this accuracy, the toolkit needs to **synchronize its time** with the TSN switch and record a **global hardware timestamp** in the test data frames. 
+为了实现这一准确性，工具包需要与 TSN 交换机 **同步时间** 并在测试数据帧中记录一个 **全局硬件时间戳**。
 
-As shown in the diagram below, in a data flow link with {{< katex display=false class="optional" >}} n {{< /katex >}} network nodes, Node {{< katex display=false class="optional" >}} 1 {{< /katex >}} serves as the source node to send test data frames, Node {{< katex display=false class="optional" >}} n {{< /katex >}} acts as the destination node to receive test data frames, and all the intermediate nodes (Node {{< katex display=false class="optional" >}} 2 {{< /katex >}} to Node {{< katex display=false class="optional" >}} n-1 {{< /katex >}}) are TSN switches. 
+如下图所示，在具有 {{< katex display=false class="optional" >}} n {{< /katex >}} 个网络节点的数据流链路中，节点 {{< katex display=false class="optional" >}} 1 {{< /katex >}} 作为源节点发送测试数据帧，节点 {{< katex display=false class="optional" >}} n {{< /katex >}} 作为目的节点接收测试数据帧，所有中间节点（节点 {{< katex display=false class="optional" >}} 2 {{< /katex >}} 到节点 {{< katex display=false class="optional" >}} n-1 {{< /katex >}}）都是 TSN 交换机。
 
-When a test data frame is sent from the source node, the hardware records the timestamp {{< katex display=false class="optional" >}} t^+ {{< /katex >}} of when the frame was sent in the data frame. Finally, when the data frame arrives at the destination node, the destination node records the timestamp {{< katex display=false class="optional" >}} t^- {{< /katex >}} of when the frame entered that node. By calculating {{< katex display=false class="optional" >}} t^--t^+ {{< /katex >}}, we can determine the end-to-end latency of the data frame.
+当测试数据帧从源节点发送时，硬件会记录帧发送时的时间戳 {{< katex display=false class="optional" >}} t^+ {{< /katex >}} 并将其写入数据帧中。最后，当数据帧到达目的节点时，目的节点记录帧进入该节点时的时间戳 {{< katex display=false class="optional" >}} t^- {{< /katex >}}。通过计算 {{< katex display=false class="optional" >}} t^--t^+ {{< /katex >}}，我们可以确定数据帧的端到端延迟。
 
 ![device_test_demo](./device_test_demo.png)
 
-> In this doc, {{< katex display=false class="optional" >}} t^{dir} {{< /katex >}} is used to represent the timestamp of data frames entering and leaving the hardware. Here, "dir" represents the direction of data frames entering or leaving the nodes, with " + " indicating data frames leaving the node and " − " indicating data frames entering the node. 
+> 在本文档中，{{< katex display=false class="optional" >}} t^{dir} {{< /katex >}} 用于表示数据帧进入和离开硬件的时间戳。这里，"dir" 表示数据帧进入或离开节点的方向，"+" 表示数据帧离开节点，"−" 表示数据帧进入节点。
 
-## Test data frame data structure
+## 测试数据帧数据结构
 
-In order to analyze the end-to-end latency of each data frame on complex network topologies, we have established specific guidelines for the content of data segments in the Ethernet frame structure. The structure of time-sensitive networking test data frames is as shown in the following table.
+为了分析复杂网络拓扑上每个数据帧的端到端延迟，我们对以太网帧结构中数据段的内容制定了具体的指南。时间敏感网络测试数据帧的结构如下表所示。
 
-| ield                    | Byte Length | Description                                                                                                    |
-| ----------------------- | ----------- | -------------------------------------------------------------------------------------------------------------- |
-| Destination Address     | 6           | Destination node MAC address                                                                                   |
-| Source Address          | 6           | Source node MAC address                                                                                        |
-| VLAN Tag                | 4           | Divided into four fields: VLAN Data Frame Type (0x8100), Priority, Canonical Format Indicator, and VLAN Number |
-| Data Frame Type         | 2           | Used to identify test data frames, set to 0x66ab                                                               |
-| Reserved Bits           | 2           |                                                                                                                |
-| {{< katex display=false class="optional" >}} t^+ {{< /katex >}} (TX Timestamp)  | 8           | Timestamp when transmitted from the source node                                                                |
-| {{< katex display=false class="optional" >}} t^- {{< /katex >}} (RX Timestamp)  | 8           | Timestamp when received by the destination node                                                                |
-| Data Stream ID (SEQ_ID) | 2           | Unique identifier for each data stream                                                                         |
-| Data Frame ID (PKT_ID)  | 4           | Sequence number of data frames within each data stream, starting from 0                                        |
+| 字段                    | 字节长度 | 描述                                                                                                    |
+| ----------------------- | -------- | ------------------------------------------------------------------------------------------------------- |
+| 目的地址                | 6        | 目的节点 MAC 地址                                                                                       |
+| 源地址                  | 6        | 源节点 MAC 地址                                                                                         |
+| VLAN 标签               | 4        | 分为四个字段：VLAN 数据帧类型（0x8100）、优先级、规范格式指示符和 VLAN 编号                              |
+| 数据帧类型              | 2        | 用于识别测试数据帧，设置为 0x66ab                                                                        |
+| 保留位                  | 2        |                                                                                                         |
+| {{< katex display=false class="optional" >}} t^+ {{< /katex >}}（发送时间戳） | 8        | 从源节点发送时的时间戳                                                                                  |
+| {{< katex display=false class="optional" >}} t^- {{< /katex >}}（接收时间戳） | 8        | 在目的节点接收时的时间戳                                                                                 |
+| 数据流 ID（SEQ_ID）     | 2        | 每个数据流的唯一标识符                                                                                   |
+| 数据帧 ID（PKT_ID）     | 4        | 每个数据流中数据帧的序列号，从 0 开始                                                                   |
 
-## Module Design
+## 模块设计
 
-The overall module design for ZIGGO Evaluation Toolkit is depicted in the following diagram. The Time Synchronization module used by the Toolkit shares a design that is nearly identical to the Switch, and the diagram does not provide extensive details on the time synchronization-related modules.
+ZIGGO 评估工具包的整体模块设计如下图所示。工具包使用的时间同步模块与交换机的设计几乎相同，图中未详细描述时间同步相关模块。
 
-The configuration module in the PS section (`software/pkt_gen_main.cpp`) communicates with the Data Frame Generation module by using the UIO driver and AXI4-Lite interface to send the transmission rules for the test data frames to relevant registers in the Data Frame Generation module (specifically, `hardware/IP_repo/pkt_gen_controller_v1.1/pkt_gen_controller_1.1/hdl/pkt_gen_controller_v1_1.v` is responsible for configuration, and `hardwire/HDL/axi_packet_generator.v` is responsible for generating and transmitting the data frames) using the global synchronized time as a reference for timing.
+PS 部分的配置模块（`software/pkt_gen_main.cpp`）通过使用 UIO 驱动程序和 AXI4-Lite 接口与数据帧生成模块通信，将测试数据帧的传输规则发送到数据帧生成模块（具体来说，`hardware/IP_repo/pkt_gen_controller_v1.1/pkt_gen_controller_1.1/hdl/pkt_gen_controller_v1_1.v` 负责配置，`hardwire/HDL/axi_packet_generator.v` 负责生成和传输数据帧）的相关寄存器中，并以全局同步时间为参考进行计时。
 
-The Timestamp Marking module (`hardwire/HDL/hw_timestamp/tsu/tsu_axis_tx.v` and     `hardwire/HDL/hw_timestamp/tsu/tsu_axis_rx.v`) is located at the send and receive ports of the Ziggo-Evaluation-Toolkit. It is used to record the hardware timestamps of sent and received data frames within the test data frames.
+时间戳标记模块（`hardwire/HDL/hw_timestamp/tsu/tsu_axis_tx.v` 和 `hardwire/HDL/hw_timestamp/tsu/tsu_axis_rx.v`）位于 Ziggo 评估工具包的发送和接收端口，用于记录发送和接收数据帧的硬件时间戳。
 
-The received data frames are ultimately uploaded to the PS section via a DMA channel (in our design, we currently use a time-synchronized DMA channel for transmitting test data frames) for statistical analysis (handled in the `process_critical_frame` function in `software/pkt_gen_control/pkt_gen.c`).
+接收到的数据帧最终通过 DMA 通道上传到 PS 部分进行统计分析（在 `software/pkt_gen_control/pkt_gen.c` 中的 `process_critical_frame` 函数中处理）。
 
 ![device_arch](./device_arch.png)
 
-The maximum frame transmission period (superperiod parameter in `pkt_gen_main.cpp`) refers to the upper limit on the periodicity for sending data streams from the toolkit. Within this maximum frame transmission period, the Data Frame Generation module allocates a maximum of 32 time slots for all data streams. Each time slot is used to send all the data frames for the corresponding data stream at the specified transmission time.
+最大帧传输周期（`pkt_gen_main.cpp` 中的 superperiod 参数）是指从工具包发送数据流的周期的上限。在这个最大帧传输周期内，数据帧生成模块为所有数据流分配最多 32 个时间槽。每个时间槽用于在指定的传输时间发送相应数据流的所有数据帧。
 
-As illustrated in the diagram, the evaluation toolkit sends two types of data streams: Stream 𝐹1 with a transmission period of 2𝑇 and Stream 𝐹2 with a transmission period of 4𝑇. The maximum frame transmission period for the evaluation toolkit is 6𝑇. In this scenario, the Data Frame Generation module sets up 5 time slots within the maximum frame transmission period and sends test data frames in sequential order according to the specified time slots.
+如图所示，评估工具包发送两种类型的数据流：传输周期为 2𝑇 的流 𝐹1 和传输周期为 4𝑇 的流 𝐹2。评估工具包的最大帧传输周期为 6𝑇。在这种情况下，数据帧生成模块在最大帧传输周期内设置了 5 个时间槽，并根据指定的时间槽顺序发送测试数据帧。
 
 ![example_pkt_gen_period](./example_pkt_gen_period.png)
 
-Users can configure the Ziggo-Evaluation-Toolkit to generate multiple data streams, and the configuration parameters for each data stream are as follows, with clear explanations provided in the comments of the `pkt_gen.h` header file:
+用户可以配置 Ziggo 评估工具包生成多个数据流，每个数据流的配置参数如下，在 `pkt_gen.h` 头文件的注释中提供了清晰的解释：
 
 ```C++
 // pkt_gen_app\pkt_gen_control\pkt_gen.h
 
 /**
- * @brief Set the pkt gen slot object
+ * @brief 设置 pkt 生成槽对象
  * 
- * @param slot_id 0~31, indicate a slot in pkt_gen IP core
- *      IMPORTANT: tx_offset for each slot id should be monotonic increasing
- * @param seq_id sequence ID that uniquely identify a stream
- *              To further utilize this field, it may be {job_id: 8bit, flow_id: 8bit}
- * @param pkt_number number of packets in one sent, should be 1
- * @param pkt_id_start start of pkt_id
- * @param pkt_id_update update of next pkt_id
- * @param tx_offset transmission time inside a period, in ns
- * @param src_mac 6Byte array
- * @param dest_mac 6Byte array
+ * @param slot_id 0~31，表示 pkt_gen IP 核中的一个槽
+ *      重要提示：每个 slot id 的 tx_offset 应该是单调递增的
+ * @param seq_id 唯一标识数据流的序列 ID
+ *              为了进一步利用此字段，它可能是 {job_id: 8bit, flow_id: 8bit}
+ * @param pkt_number 一次发送的数据包数量，应该是 1
+ * @param pkt_id_start pkt_id 的起始值
+ * @param pkt_id_update 下一个 pkt_id 的更新值
+ * @param tx_offset 周期内的传输时间，以 ns 为单位
+ * @param src_mac 6 字节数组
+ * @param dest_mac 6 字节数组
  * @return int 
  */
 int set_pkt_gen_slot (int slot_id, uint16_t seq_id, uint16_t pkt_number, uint32_t pkt_id_start, 
         uint32_t pkt_id_update, int64_t tx_offset, uint8_t *src_mac, uint8_t *dest_mac);
 ```
 
-The Timestamp Marking Module will write the timestamp of the current synchronized clock into the outgoing data frame just before it is transmitted by the MAC controller of the toolkit. When the MAC controller in the PL (Programmable Logic) receives the first bit of data in the frame from the physical link, the Timestamp Marking Module records the timestamp of the current synchronized clock. It subsequently writes this timestamp into the data frame during the packet reception process and hands it over to the statistical analysis module in the PS (Processing System) section for further analysis and processing.
+时间戳标记模块将在 MAC 控制器传输数据帧之前将当前同步时钟的时间戳写入传出的数据帧。当 PL（可编程逻辑）中的 MAC 控制器从物理链路接收帧中的第一个数据位时，时间戳标记模块会记录当前同步时钟的时间戳。随后在数据包接收过程中将此时间戳写入数据帧，并交给 PS（处理系统）部分的统计分析模块进行进一步分析和处理。
 
-### Correspondence between software and hardware registers
+### 软件和硬件寄存器的对应关系
 
-The correspondence in terms of time synchronization is the same as in the Ziggo TSN Switch. 
+时间同步方面的对应关系与 Ziggo TSN 交换机相同。
 
-In this section, we will primarily focus on the correspondence related to data frame transmission configuration. The software registers' addresses can be found in `software/pkt_gen_control/pkt_gen.c`.
+在本节中，我们将主要关注与数据帧传输配置相关的对应关系。软件寄存器的
+
+地址可以在 `software/pkt_gen_control/pkt_gen.c` 中找到。
 
 ```C++
-// define global register address
+// 定义全局寄存器地址
 #define GLOBAL_PERIOD_NS    0x00000000
 #define GLOBAL_OFFSET_NS    0x00000008
 #define SEQ_VALID           0x00000010
 #define SEQ_ENABLE_VLAN     0x00000014
 #define WRITE_LOCK          0x00000018
 
-// define write lock value
+// 定义写入锁定值
 #define NOT_WRITING     0x00000001
 #define WRITING         0x00000000
 
-// define address pointer for sequences
+// 定义序列的地址指针
 #define SEQ_CONTENT     0x0000001c
 ```
 
-The hardware registers are located in `tsn_device\IP_repo\pkt_gen_controller_v1.1\pkt_gen_controller_1.1\hdl\pkt_gen_controller_v1_1_S00_AXI.v`.
+硬件寄存器位于 `tsn_device\IP_repo\pkt_gen_controller_v1.1\pkt_gen_controller_1.1\hdl\pkt_gen_controller_v1_1_S00_AXI.v`。
 
 ```c++
 if (slv_reg_wren)
@@ -133,54 +135,54 @@ if (slv_reg_wren)
           9'h000:
             for ( byte_index = 0; byte_index <= (C_S_AXI_DATA_WIDTH/8)-1; byte_index = byte_index+1 )
               if ( S_AXI_WSTRB[byte_index] == 1 ) begin
-                // Respective byte enables are asserted as per write strobes 
-                // Slave register 0
+                // 根据写入选通信号启用相应的字节
+                // 从寄存器 0
                 slv_reg0[(byte_index*8) +: 8] <= S_AXI_WDATA[(byte_index*8) +: 8];
               end  
           9'h001:
             for ( byte_index = 0; byte_index <= (C_S_AXI_DATA_WIDTH/8)-1; byte_index = byte_index+1 )
               if ( S_AXI_WSTRB[byte_index] == 1 ) begin
-                // Respective byte enables are asserted as per write strobes 
-                // Slave register 1
+                // 根据写入选通信号启用相应的字节
+                // 从寄存器 1
                 slv_reg1[(byte_index*8) +: 8] <= S_AXI_WDATA[(byte_index*8) +: 8];
               end  
           9'h002:
             for ( byte_index = 0; byte_index <= (C_S_AXI_DATA_WIDTH/8)-1; byte_index = byte_index+1 )
               if ( S_AXI_WSTRB[byte_index] == 1 ) begin
-                // Respective byte enables are asserted as per write strobes 
-                // Slave register 2
+                // 根据写入选通信号启用相应的字节
+                // 从寄存器 2
                 slv_reg2[(byte_index*8) +: 8] <= S_AXI_WDATA[(byte_index*8) +: 8];
               end  
 ...
 ```
 
-In this context, the hardware registers with names starting with "slv_reg" are each 32 bits wide, and their addresses are spaced by 4 bytes. So, for example, if the software-level address is {{< katex display=false class="optional" >}} 0x00000018 {{< /katex >}}, you need to divide this address by 4, which results in {{< katex display=false class="optional" >}} 24/4 = 6 {{< /katex >}}. Therefore, this address corresponds to the hardware register "`slv_reg6`" in the hardware module. This helps establish the correspondence between software and hardware registers.
+在这种情况下，以 "slv_reg" 开头的硬件寄存器每个都是 32 位宽，并且它们的地址间隔为 4 字节。因此，例如，如果软件级地址是 {{< katex display=false class="optional" >}} 0x00000018 {{< /katex >}}，您需要将此地址除以 4，结果是 {{< katex display=false class="optional" >}} 24/4 = 6 {{< /katex >}}。因此，此地址对应于硬件模块中的硬件寄存器 "`slv_reg6`"。这有助于建立软件和硬件寄存器之间的对应关系。
 
-### Offline Analysis and Design
+### 离线分析和设计
 
-In the `offline_analyze` branch of the Toolkit, we perform packet capture and analysis by forwarding packets from the Toolkit to a powerful desktop computer after the timestamps the incoming packets. This method ensures that even at gigabit speeds, no packets are dropped, and there are relatively minor hardware changes.
+在工具包的 `offline_analyze` 分支中，我们通过将数据包从工具包转发到功能强大的台式计算机进行数据包捕获和分析。这种方法确保即使在千兆位速率下也不会丢包，并且硬件更改相对较少。
 
-One aspect of the modification is that timestamps are not added to the data frames when they are transmitted from the toolkit. This can be seen in the `HDL/trimode_mac/simple_mac_no_shared.v` file where the "tsu_axis_tx" section is commented out.
+一种修改是，在从工具包传输数据帧时不会在数据帧中添加时间戳。这可以在 `HDL/trimode_mac/simple_mac_no_shared.v` 文件中看到，其中 "tsu_axis_tx" 部分被注释掉。
 
-Another aspect is the modification of the "frame_type" to change the direction of data frames. Previously, both PTP frames and test data frames were uploaded to the PS section via time-synchronized DMA, with IT traffic uploaded to PS_ETH. This split the traffic into two directions ("axis_switch_1_2"). Now, it has been split into three directions ("axis_switch_1_3"). For offline analysis, only PTP frames need to be transferred to the PS, while test data frames need to be separated and sent out from ETH2. This requires a finer-grained separation of traffic.
+另一种修改是更改 "frame_type" 以改变数据帧的方向。以前，PTP 帧和测试数据帧都通过时间同步 DMA 上传到 PS 部分，IT 流量上传到 PS_ETH。这将流量分为两个方向（"axis_switch_1_2"）。现在，它被分为三个方向（"axis_switch_1_3"）。对于离线分析，只需要将 PTP 帧传输到 PS，而测试数据帧需要分离并从 ETH2 发送出去。这需要对流量进行更精细的分离。
 
 ```c++
- // separate IT frames, ptp frames and critical frames
+// 分离 IT 帧、PTP 帧和关键帧
 axis_switch_1_3 axis_switch_1_3_inst (
-    .aclk(rx_fifo_clock),                    // input wire aclk
-    .aresetn(rx_fifo_resetn),              // input wire aresetn
-    .s_axis_tvalid(rx_axis_fifo_tvalid_8),  // input wire [0 : 0] s_axis_tvalid
-    .s_axis_tready(rx_axis_fifo_tready_8),  // output wire [0 : 0] s_axis_tready
-    .s_axis_tdata(rx_axis_fifo_tdata_8),    // input wire [7 : 0] s_axis_tdata
-    .s_axis_tlast(rx_axis_fifo_tlast_8),    // input wire [0 : 0] s_axis_tlast
-    .s_axis_tdest(frame_type),    // input wire [1 : 0] s_axis_tdest
-    .m_axis_tvalid({rx_axis_it_fifo_tvalid, rx_axis_ptp_fifo_tvalid, tx_axis_fifo_legacy_tvalid[1]}),  // output wire [2 : 0] m_axis_tvalid
-    .m_axis_tready({rx_axis_it_fifo_tready, rx_axis_ptp_fifo_tready, tx_axis_fifo_legacy_tready[1]}),  // input wire [2 : 0] m_axis_tready
-    .m_axis_tdata({rx_axis_it_fifo_tdata, rx_axis_ptp_fifo_tdata, tx_axis_fifo_legacy_tdata[1]}),    // output wire [23 : 0] m_axis_tdata
-    .m_axis_tlast({rx_axis_it_fifo_tlast, rx_axis_ptp_fifo_tlast, tx_axis_fifo_legacy_tlast[1]}),    // output wire [2 : 0] m_axis_tlast
-    .m_axis_tdest(),    // output wire [5 : 0] m_axis_tdest
-    .s_decode_err()    // output wire [0 : 0] s_decode_err
+    .aclk(rx_fifo_clock),                    // 输入时钟
+    .aresetn(rx_fifo_resetn),              // 输入复位信号
+    .s_axis_tvalid(rx_axis_fifo_tvalid_8),  // 输入数据有效信号
+    .s_axis_tready(rx_axis_fifo_tready_8),  // 输出数据准备信号
+    .s_axis_tdata(rx_axis_fifo_tdata_8),    // 输入数据
+    .s_axis_tlast(rx_axis_fifo_tlast_8),    // 输入数据结束信号
+    .s_axis_tdest(frame_type),    // 输入数据目的地址
+    .m_axis_tvalid({rx_axis_it_fifo_tvalid, rx_axis_ptp_fifo_tvalid, tx_axis_fifo_legacy_tvalid[1]}),  // 输出数据有效信号
+    .m_axis_tready({rx_axis_it_fifo_tready, rx_axis_ptp_fifo_tready, tx_axis_fifo_legacy_tready[1]}),  // 输入数据准备信号
+    .m_axis_tdata({rx_axis_it_fifo_tdata, rx_axis_ptp_fifo_tdata, tx_axis_fifo_legacy_tdata[1]}),    // 输出数据
+    .m_axis_tlast({rx_axis_it_fifo_tlast, rx_axis_ptp_fifo_tlast, tx_axis_fifo_legacy_tlast[1]}),    // 输出数据结束信号
+    .m_axis_tdest(),    // 输出数据目的地址
+    .s_decode_err()    // 输出解码错误信号
 );
 ```
 
-The `tx_axis_fifo_legacy_tdata[1]` indicates sending from ETH2.
+`tx_axis_fifo_legacy_tdata[1]` 表示从 ETH2 发送。

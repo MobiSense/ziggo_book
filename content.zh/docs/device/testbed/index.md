@@ -94,7 +94,7 @@ weight: 990
 
 ## 设备参数设置与部署
 
-Switch软硬件代码在仓库 [ZIGGO-Caas-Switch](https://github.com/Horacehxw/Ziggo-CaaS-Switch) 中，使用主分支即可。
+Switch软硬件代码在仓库 [ZIGGO-Caas-Switch](https://github.com/mobisense/Ziggo-CaaS-Switch) 中，使用主分支即可。
 
 TSNPerf的软硬件代码在本仓库。
 

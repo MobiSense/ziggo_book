@@ -12,8 +12,8 @@ weight: 300
 <h3 align="center">
     <a href="http://tns.thss.tsinghua.edu.cn/ziggo/">Project Page</a> |
     <a href="https://ieeexplore.ieee.org/document/10228980">Paper</a> |
-    <a href="https://github.com/Horacehxw/Ziggo-CaaS-Switch">ZIGGO-CaaS-Switch</a> |
-    <a href="https://github.com/Horacehxw/Ziggo-Evaluation-Toolkit">ZIGGO-Device</a>
+    <a href="https://github.com/mobisense/Ziggo-CaaS-Switch">ZIGGO-CaaS-Switch</a> |
+    <a href="https://github.com/mobisense/Ziggo-Evaluation-Toolkit">ZIGGO-Device</a>
 </h3>
 
 ![](figs/banner.jpg)

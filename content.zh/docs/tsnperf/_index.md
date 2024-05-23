@@ -5,83 +5,75 @@ weight: 300
 ---
 <div align="center">
 
-# ZIGGO TSNPerf: A flexible, comprehensive and user-friendly TSN evaluation toolkit.
+# ZIGGO TSNPerf: 一个灵活、全面且用户友好的 TSN 评估工具包
 
 </div>
 
 <h3 align="center">
-    <a href="http://tns.thss.tsinghua.edu.cn/ziggo/">Project Page</a> |
-    <a href="https://ieeexplore.ieee.org/document/10228980">Paper</a> |
-    <a href="https://github.com/Horacehxw/Ziggo-CaaS-Switch">ZIGGO-CaaS-Switch</a> |
-    <a href="https://github.com/Horacehxw/Ziggo-Evaluation-Toolkit">ZIGGO-Device</a>
+    <a href="http://tns.thss.tsinghua.edu.cn/ziggo/">项目页面</a> |
+    <a href="https://ieeexplore.ieee.org/document/10228980">论文</a> |
+    <a href="https://github.com/mobisense/Ziggo-CaaS-Switch">ZIGGO-CaaS-Switch</a> |
+    <a href="https://github.com/mobisense/Ziggo-Evaluation-Toolkit">ZIGGO-Device</a>
 </h3>
 
 ![](figs/banner.jpg)
 
-## Table of Contents
+## 目录
 
-- [ZIGGO TSNPerf: A flexible, comprehensive and user-friendly TSN evaluation toolkit.](#ziggo-tsnperf-aflexiblecomprehensive-and-user-friendlytsn-evaluation-toolkit)
-  - [Table of Contents](#table-of-contents)
-  - [Introduction](#introduction)
-  - [Features](#features)
-  - [Getting Started](#getting-started)
-  - [Test Case](#test-case)
-  - [License and Citation](#license-and-citation)
-  - [Contributing](#contributing)
-  - [Acknowledgement](#acknowledgement)
+- [ZIGGO TSNPerf: 一个灵活、全面且用户友好的 TSN 评估工具包](#ziggo-tsnperf-一个灵活全面且用户友好的-tsn-评估工具包)
+  - [目录](#目录)
+  - [简介](#简介)
+  - [特点](#特点)
+  - [入门](#入门)
+  - [测试案例](#测试案例)
+  - [许可证和引用](#许可证和引用)
+  - [贡献](#贡献)
+  - [致谢](#致谢)
 
+## 简介
 
-## Introduction
+ZIGGO 是一个`灵活`、`符合标准`和`控制功能虚拟化`的 TSN 交换机平台，适用于**工业控制**、**汽车电子**和其他**时间敏感的应用**。
 
-ZIGGO is a `flexible`, `standard-compliant`, and `control-function-virtualized` TSN switch platform ready for **industrial control**, **automotive electronics**, and other **time-sensitive applications**.
+这是 ZIGGO TSNPerf 的文档。ZIGGO TSNPerf 是一个灵活、全面且用户友好的 TSN 评估工具包。它提供协议合规性评估和网络性能评估。下图说明了 ZIGGO TSNPerf 和 iPerf3 之间的相似性和差异。
 
-This is the document for the ZIGGO TSNPerf.
-ZIGGO TSNPerf is a flexible, comprehensive and user-friendly TSN evaluation toolkit.
-It provides protocol compliance assesment and network performance evaluation.
-The following figure illustrates the similarities and differences between ZIGGO TSNPerf and iPerf3.
+![TSNPerf vs iPerf3](./figs/vsiperf.png)
 
-![TSNPerf versus iPerf3](./figs/vsiperf.png)
+## 特点
 
-## Features
+ZIGGO TSNPerf 提供协议合规性评估和网络性能评估。它是一个全方位的软硬件集成解决方案，包括
 
-ZIGGO TSNPerf provides protocol compliance assesment and network performance evaluation.
-It is an all-round hardware-software integrated solution, including
+* **时间同步测试：**
+精确的时间戳（高达 8ns），时间同步精度和协议一致性分析
 
-* **Time synchronization test:**
-Accurate timestamp (up to 8ns), time synchronization accuracy and protocol consistency analysis
+* **流量整形测试：**
+(1) 关键流量的精确重放和记录，以及
+(2) GCL 能力、带宽保证和 GCL 精度测试
 
-* **Traffic shaping test:**
-(1) Precise replay and recording of critical traffic, and
-(2) GCL capability, bandwidth guarantee and GCL accuracy testing
+* **网络配置测试：**
+(1) Qcc 配置能力和数据模型一致性分析，以及
+(2) TSN 流量自动调度和结果验证
 
-* **Network Configuration Testing:**
-(1) Qcc configuration capability and data model consistency analysis, and
-(2) TSN traffic automatic scheduling and results verification
+## 入门
 
-## Getting Started
+请参考 TSNPerf [文档](/ziggo_book/zh/docs/tsnperf/configuration/) 以获取准备信息。
 
-Please refer to TSNPerf [documents](/ziggo_book/docs/tsnperf/configuration/) to get prepared.
+## 测试案例
 
-## Test Case
+我们利用 ZIGGO TSNPerf 对品牌 A 的 TSN 交换机进行了全面测试。下图显示了品牌 A 交换机的 GCL 能力、带宽保证和 GCL 精度的测试结果。结果显示，品牌 A TSN 交换机为关键流量提供了高优先级资源保留（即门控能力）和带宽保证，但其 GCL 精度较低，未能满足 IEEE 802.1Qbv 协议的要求。
 
-We exploit ZIGGO TSNPerf to conduct a comprehensive test on a Brand A TSN switch.
-The following figures show the test results for GCL capability, bandwidth guarantee, and GCL accuracy for the Brand A switch.
-The results reveal that the Brand A TSN switch provides high-priority resource reservation (i.e., gating capability) and bandwidth guarantees for critical traffic, 
-but its GCL accuracy is low, failing to meet the requirements of the IEEE 802.1Qbv protocol.
+![GCL 能力](./figs/gclcapability.png "GCL 能力")
+![带宽保证](./figs/bwguarantee.png "带宽保证")
 
-![GCL Capability](./figs/gclcapability.png "GCL Capability")
-![Bandwidth Guarantee](./figs/bwguarantee.png "Bandwidth Guarantee")
+<img src="./figs/gclcapability.png" alt="GCL 能力" style="zoom:49%;" />  <img src="./figs/bwguarantee.png" alt="带宽保证" style="zoom:49%;" />
+![GCL 精度](./figs/gclaccuracy.png "GCL 精度")
 
-<img src="./figs/gclcapability.png" alt="GCL Capability" style="zoom:49%;" />  <img src="./figs/bwguarantee.png" alt="Bandwidth Guarantee" style="zoom:49%;" />
-![GCL Accuracy](./figs/gclaccuracy.png "GCL Accuracy")
+有关此测试案例的更多详细信息，请参考 [测试报告](http://tns.thss.tsinghua.edu.cn/ziggo/data/switch_report.pdf)。
 
-For more details of this test case, please refer to the [test report](http://tns.thss.tsinghua.edu.cn/ziggo/data/switch_report.pdf).
+## 许可证和引用
 
-## License and Citation
+ZIGGO 根据 [MIT 许可证]() 发布。
 
-ZIGGO is released under a [MIT license](). 
-
-Please consider citing our papers if the project helps your research with the following BibTex:
+如果该项目对您的研究有所帮助，请考虑引用我们的论文，以下是 BibTex 格式：
 
 ```bibtex
 @inproceedings{caas,
@@ -106,12 +98,12 @@ Please consider citing our papers if the project helps your research with the fo
   doi={10.1109/ICDCS54860.2022.00072}}
 ```
 
-## Contributing
+## 贡献
 
-Please see the guide for information on how to ask for help or contribute to the development of ZIGGO!
+请参阅指南，了解如何寻求帮助或为 ZIGGO 的开发做出贡献！
 
-> The development team will only answer questions on github issues and reject other forms of questions.
+> 开发团队只会回答 GitHub 问题上的问题，拒绝其他形式的提问。
 
-## Acknowledgement
+## 致谢
 
-This project references parts of the Intel [iotg](https://github.com/intel/iotg_tsn_ref_sw) repository.
+本项目参考了英特尔 [iotg](https://github.com/intel/iotg_tsn_ref_sw) 仓库的部分内容。

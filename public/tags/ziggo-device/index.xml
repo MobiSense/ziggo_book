@@ -9,14 +9,14 @@
     <lastBuildDate>Wed, 01 May 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/ziggo-device/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>基础知识列表</title>
+      <title>List of Basic Knowledge</title>
       <link>http://localhost:1313/docs/switch/basic_knowledge/</link>
       <pubDate>Wed, 01 May 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/docs/switch/basic_knowledge/</guid>
       <description>使用 ZIGGO-SWITCH/ZIGGO-DEVICE 的基础知识列表</description>
     </item>
     <item>
-      <title>准备清单</title>
+      <title>Preparation Checklist</title>
       <link>http://localhost:1313/docs/switch/require/</link>
       <pubDate>Wed, 01 May 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/docs/switch/require/</guid>
@@ -30,14 +30,14 @@
       <description>How to report a bug or contribute to ZIGGO&amp;rsquo;s code</description>
     </item>
     <item>
-      <title>基础知识列表</title>
+      <title>List of Basic Knowledge</title>
       <link>http://localhost:1313/docs/device/basic_knowledge/</link>
       <pubDate>Wed, 01 May 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/docs/device/basic_knowledge/</guid>
       <description>使用 ZIGGO-SWITCH/ZIGGO-DEVICE 的基础知识列表</description>
     </item>
     <item>
-      <title>准备清单</title>
+      <title>Preparation Checklist</title>
       <link>http://localhost:1313/docs/device/require/</link>
       <pubDate>Wed, 01 May 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/docs/device/require/</guid>
@@ -72,14 +72,14 @@
       <description>Docs to enable CaaS Device&amp;rsquo; time synchronization logic and set up pkt gen.</description>
     </item>
     <item>
-      <title>ZIGGO Device使用手册</title>
+      <title>ZIGGO Device Manual</title>
       <link>http://localhost:1313/docs/device/ziggo_device_manual/</link>
       <pubDate>Wed, 01 May 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/docs/device/ziggo_device_manual/</guid>
       <description>Docs to enable CaaS Switches&amp;rsquo; time synchronization logic and set up TSN GCL (gate control list), switch forwarding rules (including to dual-DMA).</description>
     </item>
     <item>
-      <title>CNC脚本使用指南</title>
+      <title>CNC Script Usage Guide</title>
       <link>http://localhost:1313/docs/device/cnc_manual/</link>
       <pubDate>Wed, 01 May 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/docs/device/cnc_manual/</guid>

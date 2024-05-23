@@ -1,6 +1,6 @@
 ---
-title: How to contribute
-summary: How to report a bug or contribute to ZIGGO's code
+title: 如何贡献
+summary: 如何报告错误或为 ZIGGO 的代码做出贡献
 date: 2024-05-01
 authors:
   - admin
@@ -12,26 +12,26 @@ image:
   
 weight: 999
 ---
-# How to contribute
-## Reporting a bug
+# 如何贡献
+## 报告错误
 
-File bugs in the [Github Issue Tracker](https://github.com/Horacehxw/Ziggo-CaaS-Switch/issues). Please follow these guidelines:
+请在 [Github 问题跟踪器](https://github.com/Horacehxw/Ziggo-CaaS-Switch/issues) 中提交错误报告。请遵循以下指南：
 
-- Search existing issues first, make sure yours hasn't already been reported.
-- Consider enabling debug mode so that you can provide as much details as possible when reporting the issue.
-- Stay on topic, but describe the issue in detail so that others can **reproduce** it.
-- **Provide a screenshot** if possible. A screenshot showing the problem is often more useful than a paragraph describing it.
+- 首先搜索现有问题，确保您的问题尚未被报告。
+- 考虑启用调试模式，以便在报告问题时提供尽可能多的详细信息。
+- 保持主题明确，但要详细描述问题，以便其他人可以**重现**它。
+- **提供截图**（如果可能）。展示问题的截图通常比文字描述更有用。
 
-> The development team will only answer questions on github issues and reject other forms of questions.
+> 开发团队只会回答 GitHub 问题上的问题，拒绝其他形式的提问。
 
-## Contributing to ZIGGO's code
+## 为 ZIGGO 的代码做出贡献
 
-If you want to start contributing to the project's code, please follow these guidelines before creating a pull request:
+如果您想开始为项目代码做贡献，请在创建拉取请求之前遵循以下指南：
 
-- The top post of the pull request should contain a full, self-contained explanation of the feature: what it does, how it does it, with examples of usage and screenshots. Also explain why you want to add this - what problem does it solve. Do not simply add a text `Implement feature #4345` , because the information there will most likely be outdated or confusing (multiple discussions and opinions). The pull request needs to be self-contained.
-- Bug fixes are always welcome. 
-- A good way to easily start contributing is to pick and work on a good first issue. We try to make these issues as clear as possible and provide basic info on how the code should be changed, and if something is unclear feel free to ask for more information on the issue.
-- Before adding a new feature, ask about it in the [Github Issue Tracker](https://github.com/Horacehxw/Ziggo-CaaS-Switch/issues) , or check if existing discussions exist to make sure the new functionality is desired.
-- Pull requests that make many changes using an automated tool, like for spell fixing, styling, etc. will not be accepted.
-- Pull requests that address multiple issues will most likely stall and eventually be closed. This is because we might be fine with one of the changes but not with others and untangling that kind of pull request is too much hassle both for maintainers and the person who submitted it. So most of the time someone gives up and the PR gets closed. So please keep the pull request focused on one issue.
-- **Do not mark your reviewer's comments as "resolved"**. If you do that, the comments will be hidden and the reviewer will not know what are the pending issues in the pull request. Only the reviewer should resolve the comments.
+- 拉取请求的顶部帖子应包含功能的完整、自包含的解释：它的作用、实现方式、使用示例和截图。还请解释您为什么要添加此功能——它解决了什么问题。不要简单地添加文本 `实现功能 #4345`，因为那里的信息很可能已经过时或令人困惑（多个讨论和意见）。拉取请求需要是自包含的。
+- 始终欢迎错误修复。
+- 轻松开始贡献的一个好方法是选择并处理一个好的首个问题。我们会尽可能清楚地描述这些问题，并提供有关代码应如何更改的基本信息，如果有任何不清楚的地方，请随时在问题中询问更多信息。
+- 在添加新功能之前，请在 [Github 问题跟踪器](https://github.com/Horacehxw/Ziggo-CaaS-Switch/issues) 中询问，或者查看现有讨论，以确保新功能是所需的。
+- 使用自动工具进行拼写修正、样式等的大量更改的拉取请求将不被接受。
+- 解决多个问题的拉取请求很可能会停滞并最终关闭。这是因为我们可能对其中一个更改满意，但对其他更改不满意，解开这种拉取请求对维护者和提交人来说都是太多的麻烦。因此，大多数情况下，有人会放弃，拉取请求会被关闭。所以请将拉取请求集中在一个问题上。
+- **不要将审阅者的评论标记为“已解决”**。如果您这样做，评论将被隐藏，审阅者将无法知道拉取请求中的待处理问题。只有审阅者应该解决评论。

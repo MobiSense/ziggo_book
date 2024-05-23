@@ -96,7 +96,7 @@ All test projects generally follow two phases:
 
 ## Device Parameter Settings and Deployment
 
-Switch software and hardware code is available in the repository [ZIGGO-Caas-Switch](https://github.com/Horacehxw/Ziggo-CaaS-Switch), use the main branch.
+Switch software and hardware code is available in the repository [ZIGGO-Caas-Switch](https://github.com/mobisense/Ziggo-CaaS-Switch), use the main branch.
 
 TSNPerf's software and hardware code are in this repository.
 

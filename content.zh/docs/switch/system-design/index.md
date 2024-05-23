@@ -1,6 +1,6 @@
 ---
-title: System Design
-summary: Docs to enable CaaS Switches' time synchronization logic and set up TSN GCL (gate control list), switch forwarding rules (including to dual-DMA).
+title: 系统设计
+summary: 启用 CaaS 交换机的时间同步逻辑并设置TSN GCL（门控列表）、交换机转发规则（包括到双DMA）的文档。
 date: 2024-05-01
 authors:
   - admin
@@ -12,72 +12,72 @@ image:
   
 weight: 100
 ---
-# System Design
-The CaaS/TSN Switch is developed based on the ZYNQ platform. The diagram below shows the composition of the ZYNQ chip. ZYNQ mainly consists of a Processing System (PS) and Programmable Logic (PL). The PS and PL mainly communicate with each other through the high-performance Advanced eXtensible Interface (AXI), which is more efficient than using FPGA directly as a peripheral. The PS contains an ARM-based processor suitable for running applications, drivers, and operating systems, while the PL contains FPGA suitable for running low-level hardware logic with high real-time performance requirements.
+# 系统设计
+CaaS/TSN 交换机基于 ZYNQ 平台开发。下图显示了 ZYNQ 芯片的组成。ZYNQ 主要由处理系统（PS）和可编程逻辑（PL）组成。PS 和 PL 主要通过高性能高级可扩展接口（AXI）相互通信，这比直接使用 FPGA 作为外围设备更有效。PS 包含一个适合运行应用程序、驱动程序和操作系统的基于 ARM 的处理器，而 PL 包含适合运行具有高实时性能要求的低级硬件逻辑的 FPGA。
 
 ![](./zynq.png)
 
-For the Switch, the PL part mainly implements:
+对于交换机，PL 部分主要实现：
 
-1. the real-time clock module and timestamp cache module in time synchronization;
-2. the basic forwarding function and traffic control function of the switch.
+1. 时间同步中的实时时钟模块和时间戳缓存模块；
+2. 交换机的基本转发功能和流量控制功能。
 
-The PS part mainly implements:
+PS 部分主要实现：
 
-1. the state machine logic related to time synchronization;
-2. the configuration program of the switch.
+1. 与时间同步相关的状态机逻辑；
+2. 交换机的配置程序。
 
-## Time Synchronization
+## 时间同步
 
-Please refer to the Wikipedia for basic knowledge about [clock synchronization](https://en.wikipedia.org/wiki/Clock_synchronization) .
+请参考维基百科了解关于[时钟同步](https://en.wikipedia.org/wiki/Clock_synchronization)的基本知识。
 
-The TSN switch complies with IEEE 802.1AS standards. It synchronize neighbor clocks in a decentralized manner and achieves clock accuracy in the sub-microsecond range, making it suitable for measurement and control systems. For each pair of connected devices, their time synchronization state machine will measure link delay and update their local RTC (real-time clock) according to Master clock.
+TSN 交换机符合 IEEE 802.1AS 标准。它以去中心化的方式同步邻居时钟，实现亚微秒级的时钟精度，适用于测量和控制系统。对于每对连接的设备，其时间同步状态机将测量链路延迟并根据主时钟更新本地 RTC（实时时钟）。
 
-The overall design of the time synchronization module is shown in the diagram below. The PS mainly consists of time synchronization state machine modules, which mainly run the state machine logic defined in the 802.1AS standard. The PL mainly consists of real-time clock modules and timestamp cache modules, which are mainly responsible for running the real-time clock and recording the time when data frames enter and exit the switch port.
+时间同步模块的总体设计如下图所示。PS 主要由时间同步状态机模块组成，主要运行 802.1AS 标准中定义的状态机逻辑。PL 主要由实时时钟模块和时间戳缓存模块组成，主要负责运行实时时钟并记录数据帧进入和退出交换机端口时的时间。
 
 ![](./time_sync_state_machine.png)
 
-After the data frame enters the PL from the input port of the switch, the timestamp cache module will record and cache the timestamp when the data frame enters the hardware. The switch's exchange module will determine whether the data frame is related to time synchronization. Time synchronization data frames will be forwarded from the PL to the PS for processing through the Direct Memory Access (DMA) channel. In the PS, the time synchronization state machine module needs to obtain the real-time clock information of the underlying PL and the hardware timestamps corresponding to different data frames through the AXI4-Lite interface. When the switch needs to send time synchronization-related data frames, the PS is responsible for encapsulating the sent data frames and then forwarding them to the PL for processing through the DMA channel. Since time synchronization also needs to record the sending time of messages such as Sync and Pdelay_Req, the timestamp cache module will still cache the sending timestamp before the data frame is sent from the output port, so that the PS can use it later.
+当数据帧从交换机的输入端口进入 PL 时，时间戳缓存模块将记录并缓存数据帧进入硬件时的时间戳。交换机的交换模块将确定数据帧是否与时间同步相关。时间同步数据帧将通过直接内存访问（DMA）通道从 PL 转发到 PS 进行处理。在 PS 中，时间同步状态机模块需要通过 AXI4-Lite 接口获取底层 PL 的实时时钟信息和与不同数据帧对应的硬件时间戳。当交换机需要发送与时间同步相关的数据帧时，PS 负责封装发送的数据帧，然后通过 DMA 通道转发到 PL 进行处理。由于时间同步还需要记录 Sync 和 Pdelay_Req 等消息的发送时间，时间戳缓存模块将在数据帧从输出端口发送之前缓存发送时间戳，以便 PS 稍后使用。
 
-## Switch Fabric & Gate Control
+## 交换结构与门控
 
-The overall design of the switch fabric and gate control module is shown in the diagram below. The PS part mainly includes a configuration module, which is used for software-level configuration of the switch's Gate Control List (GCL) and MAC forwarding table; the PL part mainly consists of the switch fabric and the gate control module, which are responsible for port forwarding and real-time control of traffic.
+交换结构与门控模块的总体设计如下图所示。PS 部分主要包括一个配置模块，用于软件级别配置交换机的门控列表（GCL）和 MAC 转发表；PL 部分主要由交换结构和门控模块组成，负责端口转发和流量的实时控制。
 
 ![](./switch_fabric.png)
 
-After the data frame enters the PL from the input port, both ordinary traffic and key traffic will enter the switch fabric. The switch fabric will look up the corresponding output port based on the destination MAC address in the data frame, and then put the data frame into the priority queue in the gate module. The gate control module will control the gate state of each priority queue according to the pre-configured GCL, and then forward the data frame from the corresponding port. In the above process, the gate control module needs to obtain the globally synchronized time from the time synchronization module. The configuration module in the PS part mainly modifies the registers related to GCL (`tsn_drivers\gcl.c`) and MAC forwarding table (`tsn_drivers\switch_rules.c`) through the UIO driver and AXI4-Lite interface, thereby controlling the parameters in the switch fabric and gate module in the PL part.
+当数据帧从输入端口进入 PL 时，普通流量和关键流量都会进入交换结构。交换结构将根据数据帧中的目标 MAC 地址查找相应的输出端口，然后将数据帧放入门控模块中的优先级队列中。门控模块将根据预先配置的 GCL 控制每个优先级队列的门状态，然后从相应的端口转发数据帧。在上述过程中，门控模块需要从时间同步模块获取全局同步时间。PS 部分的配置模块主要通过 UIO 驱动程序和 AXI4-Lite 接口修改与 GCL（`tsn_drivers\gcl.c`）和 MAC 转发表（`tsn_drivers\switch_rules.c`）相关的寄存器，从而控制 PL 部分交换结构和门控模块中的参数。
 
-## Source Code Description
+## 源代码描述
 
-### Time Sync State Machine
+### 时间同步状态机
 
-The main function for time synchronization is located in `time_sync_main_loop.c`. It is implemented based on IEEE 802.1AS 2020 standard. The following table introduces the relationship between the state machine code in the code and the state machine in the standard.
+时间同步的主要功能位于 `time_sync_main_loop.c` 中。它基于 IEEE 802.1AS 2020 标准实现。下表介绍了代码中状态机代码与标准中状态机的对应关系。
 
-| Code Filename (.c/.h)            | Corresponding Section in 802.1AS-2020 |
-| -------------------------------- | ------------------------------------- |
-| site_sync_sync_sm                | 10.2.7 SiteSyncSync                   |
-| port_sync_sync_receive_sm        | 10.2.8 PortSyncSyncReceive            |
-| clock_master_sync_send_sm        | 10.2.9 ClockMasterSyncSend            |
-| clock_master_sync_receive_sm     | 10.2.11 ClockMasterSyncReceive        |
-| port_sync_sync_send_sm           | 10.2.12 PortSyncSyncSend              |
-| clock_slave_sync_sm              | 10.2.13 ClockSlaveSync                |
-| port_announce_information_sm     | 10.3.12 PortAnnounceInformation       |
-| port_state_selection_sm          | 10.3.13 PortStateSelection            |
-| port_announce_information_ext_sm | 10.3.14 PortAnnounceInformationExt    |
-| port_announce_transmit_sm        | 10.3.16 PortAnnounceTransmit          |
-| md_sync_receive_sm               | 11.2.14 MDSyncReceiveSM               |
-| md_sync_send_sm                  | 11.2.15 MDSyncSendSM                  |
-| md_pdelay_req_sm                 | 11.2.19 MDPdelayReq                   |
-| md_pdelay_resp_sm                | 11.2.20 MDPdelayResp                  |
+| 代码文件名 (.c/.h)                  | 对应的 802.1AS-2020 章节 |
+| ----------------------------------- | ----------------------- |
+| site_sync_sync_sm                   | 10.2.7 SiteSyncSync     |
+| port_sync_sync_receive_sm           | 10.2.8 PortSyncSyncReceive |
+| clock_master_sync_send_sm           | 10.2.9 ClockMasterSyncSend |
+| clock_master_sync_receive_sm        | 10.2.11 ClockMasterSyncReceive |
+| port_sync_sync_send_sm              | 10.2.12 PortSyncSyncSend |
+| clock_slave_sync_sm                 | 10.2.13 ClockSlaveSync  |
+| port_announce_information_sm        | 10.3.12 PortAnnounceInformation |
+| port_state_selection_sm             | 10.3.13 PortStateSelection |
+| port_announce_information_ext_sm    | 10.3.14 PortAnnounceInformationExt |
+| port_announce_transmit_sm           | 10.3.16 PortAnnounceTransmit |
+| md_sync_receive_sm                  | 11.2.14 MDSyncReceiveSM |
+| md_sync_send_sm                     | 11.2.15 MDSyncSendSM    |
+| md_pdelay_req_sm                    | 11.2.19 MDPdelayReq     |
+| md_pdelay_resp_sm                   | 11.2.20 MDPdelayResp    |
 
-### UIO addresses
+### UIO 地址
 
-The UIO driver is mainly used to map logical addresses to physical addresses, thereby controlling the registers of modules such as TSU, RTC, GCL, etc. The driver code is located in the `tsn_drivers` folder. The correspondence between the register addresses in the software part and the hardware are described in the header files.
+UIO 驱动程序主要用于将逻辑地址映射到物理地址，从而控制 TSU、RTC、GCL 等模块的寄存器。驱动程序代码位于 `tsn_drivers` 文件夹中。软件部分和硬件寄存器地址之间的对应关系在头文件中描述。
 
-For example, in the `tsn_drivers\rtc.h` file, the address of the RTC module is defined as follows:
+例如，在 `tsn_drivers\rtc.h` 文件中，RTC 模块的地址定义如下：
 
 ```c++
-// define RTC address values
+// 定义 RTC 地址值
 #define RTC_CTRL       0x00000000
 #define RTC_NULL_0x04  0x00000004
 #define RTC_NULL_0x08  0x00000008
@@ -96,52 +96,54 @@ For example, in the `tsn_drivers\rtc.h` file, the address of the RTC module is d
 #define RTC_OFFSET_NS  0x0000003C
 ```
 
-### MAC Forwarding
+### MAC 转发
 
-The MAC address forwarding table configured in the `switch_rules.c/h` file actually operates the registers in swtich datapath and gate control list. These registers are in pairs, the first register represents the network byte order of the last 32 bits of the destination MAC address, and the second register represents the forwarding port.
+`switch_rules.c/h` 文件中配置的 MAC 地址转发表实际上操作了交换机数据路径和门控列表中的寄存器。这些寄存器成对存在，第一个寄存器表示目标 MAC 地址最后 32 位的网络字节顺序，第二个寄存器表示转发端口。
 
-The CaaS switch has 7 ports, of which 4 are external physical ports, and 3 are virtual ports inside the switch connecting PL and PS. The 3 internal virtual ports specifically include:
+CaaS 交换机有 7 个端口，其中 4 个是外部物理端口，3 个是连接 PL 和 PS 的交换机内部虚拟端口。这 3 个内部虚拟端口具体包括：
 
-- Time Synchronization DMA: Used for transferring time synchronization data frames between PS and PL.
-- PS ETH: Used for communication between PL's physical network port and PS's operating system (for example, using an SSH client to remotely log in and access the switch's PS).
-- PLC DMA: Used in CaaS to transfer input and output of control tasks.
+- 时间同步 DMA：用于在 PS 和 PL 之间传输时间同步数据帧。
+- PS ETH：用于 PL 的物理网络端口与 PS 的操作系统之间的通信（例如，使用 SSH 客户端远程登录并访问交换机的 PS）。
+- PLC DMA：用于 CaaS 中传输控制任务的输入和输出。
 
-The following interface is provided to control the switch fabric's forwarding rule:
+以下接口用于控制交换结构的转发规则：
 
 ```c++
 int push_switch_rule(char *mac_addr, int output_port) {
     /* 
-        Push a switch rule to the rule table
-        mac_addr: 6 byte destination mac address.
-        output_port: 0 -> to Port 0
-                    1 -> to Port 1
-                    2 -> to Port 2
-                    3 -> to Port 3
-                    4 -> to PLC DMA
-        The switch rule for PTP frames are fixed in hardware, no need to specify explicitly.
+        将交换规则推送到规则表
+        mac_addr: 6 字节目标 MAC 地址。
+        output_port: 0 -> 到端口 0
+                    1 -> 到端口 1
+                    2 -> 到端口 2
+                    3 -> 到端口 3
+                    4 -> 到 PLC DMA
+        PTP 帧的交换规则在硬件中是固定的，无需显式指定。
     */
    ...
 }
 ```
 
-### Gate Control
+### 门控
 
-TSN critical traffic data frames adopt the standard VLAN data frame format, and the priority is defined in the VLAN tag. VLAN refers to Virtual Local Area Network technology, defined in the 802.1Q standard. As shown in the figure below, the standard VLAN data frame contains a 4-byte VLAN tag, the TPID field represents the VLAN data frame type (`0x8100`), and the priority of critical traffic is defined in the PRI field, with a value range of [0, 7], corresponding to 8 priority queues. The output queue module identifies the priority of data frames based on the VLAN field in the critical data frame, and then places the data frame in the corresponding output port's priority queue waiting for transmission.
+TSN 关键流量数据帧采用标准 VLAN 数据帧格式，优先级在 VLAN 标记中定义。VLAN 是指虚拟局域网技术，定义在 802.1Q 标准中。如下图所示，标准
 
-*Notice: According to the IEEE 802.1Qbv standard, priority = 1 maps to priority 0; priority = 0 maps to priority 1; other priorities map to the corresponding queues. Therefore, normal traffic will default to entering priority queue 1 of the corresponding port.*
+ VLAN 数据帧包含一个 4 字节的 VLAN 标记，TPID 字段表示 VLAN 数据帧类型（`0x8100`），关键流量的优先级定义在 PRI 字段中，值范围为 [0, 7]，对应 8 个优先级队列。输出队列模块根据关键数据帧中的 VLAN 字段识别数据帧的优先级，然后将数据帧放入相应输出端口的优先级队列中等待传输。
 
-The CaaS Switch's gate control module implements the Time Aware Shaper defined by 802.1Qbv, which is used to execute hardware gate scheduling according to the TSN schedule table configured by PS, to ensure the deterministic transmission of critical traffic. 
-Our GCL is represented by 9 bits, with the highest bit representing whether the Guardband is enabled, and the remaining 8 bits representing the gate switches. For example, `9'1_0000_0001` means that the Guardband is enabled, and only the gate switch of the first queue is open.
+*注意：根据 IEEE 802.1Qbv 标准，优先级 = 1 映射到优先级 0；优先级 = 0 映射到优先级 1；其他优先级映射到相应的队列。因此，普通流量默认进入相应端口的优先级队列 1。*
 
-*Notice that the time unit of GCL in hardware is 2^11 ns, while the time unit in the configuration file issued is 2^14 ns.*
+CaaS 交换机的门控模块实现了 802.1Qbv 定义的时间感知整形器，用于根据 PS 配置的 TSN 调度表执行硬件门控调度，以确保关键流量的确定性传输。
+我们的 GCL 由 9 位表示，最高位表示是否启用保护带，其余 8 位表示门控开关。例如，`9'1_0000_0001` 表示启用保护带，并且只有第一个队列的门控开关是打开的。
 
-The following interfaces in `gcl.c/h` are provided to get/set the hardware GCL (set the gate state and time interval seperately):
+*注意，硬件中 GCL 的时间单位为 2^11 ns，而配置文件中发出的时间单位为 2^14 ns。*
+
+`gcl.c/h` 中提供以下接口，用于获取/设置硬件 GCL（分别设置门控状态和时间间隔）：
 
 ```c++
 /**
- * @description: This function is used to get gcl values of the port [portNumber].
- * @param {uint16_t} portNumber port's number.
- * @return {*} 0 by default.
+ * @description: 此函数用于获取端口 [portNumber] 的 GCL 值。
+ * @param {uint16_t} portNumber 端口号。
+ * @return {*} 默认返回 0。
  */
 int get_gcl(uint16_t portNumber) {
   ...
@@ -150,11 +152,11 @@ int get_gcl(uint16_t portNumber) {
 
 ```c++
 /**
- * @description: This function is used to set GCL's value, set port [portNumber] 's GCL[gcl_id] to [value].
- * @param {uint16_t} portNumber port number, start from 0.
- * @param {uint16_t} gcl_id GCL index.
- * @param {uint16_t} value the GCL value to set.
- * @return {*} 0 by default.
+ * @description: 此函数用于设置 GCL 值，将端口 [portNumber] 的 GCL[gcl_id] 设置为 [value]。
+ * @param {uint16_t} portNumber 端口号，从 0 开始。
+ * @param {uint16_t} gcl_id GCL 索引。
+ * @param {uint16_t} value 要设置的 GCL 值。
+ * @return {*} 默认返回 0。
  */
 int set_gcl(uint16_t portNumber, uint16_t gcl_id, uint16_t value) {
     ...
@@ -163,9 +165,9 @@ int set_gcl(uint16_t portNumber, uint16_t gcl_id, uint16_t value) {
 
 ```c++
 /**
- * @description: This function is used to get all GCL time intervals of port [portNumber]. Consider we get time interval is x, the real time interval is (x * 2^8 * 8) nanoseconds.
- * @param {uint16_t} portNumber port number, start from 0.
- * @return {*} 0 by default.
+ * @description: 此函数用于获取端口 [portNumber] 的所有 GCL 时间间隔。考虑到我们获取的时间间隔为 x，实际时间间隔为 (x * 2^8 * 8) 纳秒。
+ * @param {uint16_t} portNumber 端口号，从 0 开始。
+ * @return {*} 默认返回 0。
  */
 int get_gcl_time_interval(uint16_t portNumber)
 {
@@ -175,11 +177,11 @@ int get_gcl_time_interval(uint16_t portNumber)
 
 ```c++
 /**
- * @description: This function is used to set GCL's time interval, set port [portNumber] 's GCL time interval[gcl_id] to [value].
- * @param {uint16_t} portNumber port number, start from 0.
- * @param {uint16_t} gcl_id GCL index.
- * @param {uint16_t} value the GCL time interval x to set. The real time interval is (x * 2^8 * 8) nanoseconds.
- * @return {*} 0 by default.
+ * @description: 此函数用于设置 GCL 的时间间隔，将端口 [portNumber] 的 GCL 时间间隔[gcl_id] 设置为 [value]。
+ * @param {uint16_t} portNumber 端口号，从 0 开始。
+ * @param {uint16_t} gcl_id GCL 索引。
+ * @param {uint16_t} value 要设置的 GCL 时间间隔 x。实际时间间隔为 (x * 2^8 * 8) 纳秒。
+ * @return {*} 默认返回 0。
  */
 int set_gcl_time_interval(uint16_t portNumber, uint16_t gcl_id, uint16_t value)
 {

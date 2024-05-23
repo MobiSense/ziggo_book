@@ -3,13 +3,13 @@
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="How to build the Caas Device Hardware step by step.">
+<meta name="description" content="如何逐步构建 Caas Device 硬件">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/zh/docs/device/hardware-build/">
   <meta property="og:site_name" content="ZIGGO BOOK">
-  <meta property="og:title" content="Hardware Build">
-  <meta property="og:description" content="How to build the Caas Device Hardware step by step.">
+  <meta property="og:title" content="硬件构建">
+  <meta property="og:description" content="如何逐步构建 Caas Device 硬件">
   <meta property="og:locale" content="zh">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
@@ -19,14 +19,14 @@
     <meta property="article:tag" content="ZIGGO-Device">
     <meta property="article:tag" content="Basic">
     <meta property="og:image" content="http://localhost:1313/zh/docs/device/hardware-build/featured.jpg">
-<title>Hardware Build | ZIGGO BOOK</title>
+<title>硬件构建 | ZIGGO BOOK</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
 <link rel="canonical" href="http://localhost:1313/zh/docs/device/hardware-build/">
   <link rel="alternate" hreflang="en" href="http://localhost:1313/docs/device/hardware-build/" title="Hardware Build">
 <link rel="stylesheet" href="/book.min.309b7ed028807cdb68d8d61e26d609f48369c098dbf5e4d8c0dcf4cdf49feafc.css" integrity="sha256-MJt&#43;0CiAfNto2NYeJtYJ9INpwJjb9eTYwNz0zfSf6vw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/zh.search.min.0a35798c78c016e2b218365660d9a17cabc3941c772e735cffb8ebd0a1bcbd84.js" integrity="sha256-CjV5jHjAFuKyGDZWYNmhfKvDlBx3LnNc/7jr0KG8vYQ=" crossorigin="anonymous"></script>
+  <script defer src="/zh.search.min.b77e601a6a6485877260bb76047048cc0366d24bc7803048aae12ec20e97c250.js" integrity="sha256-t35gGmpkhYdyYLt2BHBIzANm0kvHgDBIquEuwg6XwlA=" crossorigin="anonymous"></script>
 
   
 
@@ -331,7 +331,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/zh/docs/device/getting-started/" class="">Getting start</a>
+    <a href="/zh/docs/device/getting-started/" class="">快速入门</a>
   
 
         </li>
@@ -344,7 +344,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/zh/docs/device/system-design/" class="">System Design</a>
+    <a href="/zh/docs/device/system-design/" class="">系统设计</a>
   
 
         </li>
@@ -357,7 +357,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/zh/docs/device/hardware-build/" class="active">Hardware Build</a>
+    <a href="/zh/docs/device/hardware-build/" class="active">硬件构建</a>
   
 
         </li>
@@ -370,7 +370,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/zh/docs/device/software-build/" class="">Software Build</a>
+    <a href="/zh/docs/device/software-build/" class="">软件构建</a>
   
 
         </li>
@@ -422,7 +422,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/zh/docs/device/contributing/" class="">How to contribute</a>
+    <a href="/zh/docs/device/contributing/" class="">如何贡献</a>
   
 
         </li>
@@ -469,7 +469,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>Hardware Build</strong>
+  <strong>硬件构建</strong>
 
   <label for="toc-control">
     
@@ -482,7 +482,7 @@ https://github.com/alex-shpak/hugo-book
   
   <aside class="hidden clearfix">
     
-  <div style="margin: 50px; display:flex; justify-content:center; gap: 25px;">
+  <div style="margin-top:10px; margin-bottom:40px; display:flex; justify-content:center; gap: 25px;">
     <a href="https://github.com/MobiSense/ziggo_book" style="padding: 10px 10px;
 	background-color: rgb(0, 0, 0); /* 设置按钮背景色为橙色 */
 	color: white; /* 设置按钮文字颜色为白色 */
@@ -505,26 +505,26 @@ https://github.com/alex-shpak/hugo-book
 
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#before-start">Before Start</a></li>
-    <li><a href="#table-of-content">Table of Content</a></li>
-    <li><a href="#install-vivado">Install Vivado</a></li>
-    <li><a href="#vivado-project-construction">Vivado project construction</a></li>
+    <li><a href="#开始前">开始前</a></li>
+    <li><a href="#目录">目录</a></li>
+    <li><a href="#安装-vivado">安装 Vivado</a></li>
+    <li><a href="#vivado-项目构建">Vivado 项目构建</a></li>
     <li><a href="#petalinux">Petalinux</a>
       <ul>
-        <li><a href="#1install-ubuntu-os">1.install ubuntu OS</a></li>
-        <li><a href="#2download-petalinux-related-image-files-in-advance">2.Download PetaLinux related image files in advance</a></li>
-        <li><a href="#3activate-the-petalinux-environment">3.Activate the PetaLinux environment</a></li>
-        <li><a href="#4create-petalinux-project">4.Create PetaLinux Project</a></li>
-        <li><a href="#5petalinux-configuration">5.Petalinux Configuration</a></li>
-        <li><a href="#6-sd-card-partition-and-copy-file">6. SD card partition and copy file</a></li>
+        <li><a href="#1-安装-ubuntu-操作系统">1. 安装 Ubuntu 操作系统</a></li>
+        <li><a href="#2-预先下载-petalinux-相关镜像文件">2. 预先下载 PetaLinux 相关镜像文件</a></li>
+        <li><a href="#3-激活-petalinux-环境">3. 激活 PetaLinux 环境</a></li>
+        <li><a href="#4-创建-petalinux-项目">4. 创建 PetaLinux 项目</a></li>
+        <li><a href="#5-petalinux-配置">5. PetaLinux 配置</a></li>
+        <li><a href="#6-sd-卡分区和文件复制">6. SD 卡分区和文件复制</a></li>
       </ul>
     </li>
-    <li><a href="#launch-the-board-and-log-in">Launch the Board and log in</a>
+    <li><a href="#启动开发板并登录">启动开发板并登录</a>
       <ul>
-        <li><a href="#1-launch-the-board">1. Launch the Board</a></li>
-        <li><a href="#2-initialize-ps">2. Initialize PS</a></li>
-        <li><a href="#3-connect-to-internet">3. Connect to Internet</a></li>
-        <li><a href="#4-run-the-software">4. Run the Software</a></li>
+        <li><a href="#1-启动开发板">1. 启动开发板</a></li>
+        <li><a href="#2-初始化-ps">2. 初始化 PS</a></li>
+        <li><a href="#3-连接到互联网">3. 连接到互联网</a></li>
+        <li><a href="#4-运行软件">4. 运行软件</a></li>
       </ul>
     </li>
   </ul>
@@ -539,119 +539,119 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"><h1 id="hardware-build">
-  Hardware Build
-  <a class="anchor" href="#hardware-build">#</a>
+  <article class="markdown book-article"><h1 id="硬件构建">
+  硬件构建
+  <a class="anchor" href="#%e7%a1%ac%e4%bb%b6%e6%9e%84%e5%bb%ba">#</a>
 </h1>
-<h2 id="before-start">
-  Before Start
-  <a class="anchor" href="#before-start">#</a>
+<h2 id="开始前">
+  开始前
+  <a class="anchor" href="#%e5%bc%80%e5%a7%8b%e5%89%8d">#</a>
 </h2>
-<p>If you just want to teach the board to run instead of modifying it, and you use the hardware files we provide, you can skip directly to step <a href="#6-sd-card-partition-and-copy-file">SD card partition and copy file</a>.</p>
-<h2 id="table-of-content">
-  Table of Content
-  <a class="anchor" href="#table-of-content">#</a>
+<p>如果您只想让开发板运行而不进行修改，并且使用我们提供的硬件文件，可以直接跳到步骤 <a href="#6-sd-card-partition-and-copy-file">SD 卡分区和文件复制</a>。</p>
+<h2 id="目录">
+  目录
+  <a class="anchor" href="#%e7%9b%ae%e5%bd%95">#</a>
 </h2>
 <ul>
-<li><a href="#hardware-build">Hardware Build</a>
+<li><a href="#%e7%a1%ac%e4%bb%b6%e6%9e%84%e5%bb%ba">硬件构建</a>
 <ul>
-<li><a href="#before-start">Before Start</a></li>
-<li><a href="#table-of-content">Table of Content</a></li>
-<li><a href="#install-vivado">Install Vivado</a></li>
-<li><a href="#vivado-project-construction">Vivado project construction</a></li>
+<li><a href="#%e5%bc%80%e5%a7%8b%e5%89%8d">开始前</a></li>
+<li><a href="#%e7%9b%ae%e5%bd%95">目录</a></li>
+<li><a href="#%e5%ae%89%e8%a3%85-vivado">安装 Vivado</a></li>
+<li><a href="#vivado-%e9%a1%b9%e7%9b%ae%e6%9e%84%e5%bb%ba">Vivado 项目构建</a></li>
 <li><a href="#petalinux">Petalinux</a>
 <ul>
-<li><a href="#1install-ubuntu-os">1.install ubuntu OS</a></li>
-<li><a href="#2download-petalinux-related-image-files-in-advance">2.Download PetaLinux related image files in advance</a></li>
-<li><a href="#3activate-the-petalinux-environment">3.Activate the PetaLinux environment</a></li>
-<li><a href="#4create-petalinux-project">4.Create PetaLinux Project</a></li>
-<li><a href="#5petalinux-configuration">5.Petalinux Configuration</a></li>
-<li><a href="#6-sd-card-partition-and-copy-file">6. SD card partition and copy file</a>
+<li><a href="#1-%e5%ae%89%e8%a3%85-ubuntu-%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f">1. 安装 Ubuntu 操作系统</a></li>
+<li><a href="#2-%e9%a2%84%e5%85%88%e4%b8%8b%e8%bd%bd-petalinux-%e7%9b%b8%e5%85%b3%e9%95%9c%e5%83%8f%e6%96%87%e4%bb%b6">2. 预先下载 PetaLinux 相关镜像文件</a></li>
+<li><a href="#3-%e6%bf%80%e6%b4%bb-petalinux-%e7%8e%af%e5%a2%83">3. 激活 PetaLinux 环境</a></li>
+<li><a href="#4-%e5%88%9b%e5%bb%ba-petalinux-%e9%a1%b9%e7%9b%ae">4. 创建 PetaLinux 项目</a></li>
+<li><a href="#5-petalinux-%e9%85%8d%e7%bd%ae">5. PetaLinux 配置</a></li>
+<li><a href="#6-sd-%e5%8d%a1%e5%88%86%e5%8c%ba%e5%92%8c%e6%96%87%e4%bb%b6%e5%a4%8d%e5%88%b6">6. SD 卡分区和文件复制</a>
 <ul>
-<li><a href="#file-downloading">File downloading</a></li>
-<li><a href="#sd-card-partition">SD card partition</a></li>
-<li><a href="#copy-files-into-sd-card">Copy files into SD card</a></li>
+<li><a href="#%e6%96%87%e4%bb%b6%e4%b8%8b%e8%bd%bd">文件下载</a></li>
+<li><a href="#sd-%e5%8d%a1%e5%88%86%e5%8c%ba">SD 卡分区</a></li>
+<li><a href="#%e5%a4%8d%e5%88%b6%e6%96%87%e4%bb%b6%e5%88%b0-sd-%e5%8d%a1">复制文件到 SD 卡</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#launch-the-board-and-log-in">Launch the Board and log in</a>
+<li><a href="#%e5%90%af%e5%8a%a8%e5%bc%80%e5%8f%91%e6%9d%bf%e5%b9%b6%e7%99%bb%e5%bd%95">启动开发板并登录</a>
 <ul>
-<li><a href="#1-launch-the-board">1. Launch the Board</a></li>
-<li><a href="#2-initialize-ps">2. Initialize PS</a></li>
-<li><a href="#3-connect-to-internet">3. Connect to Internet</a></li>
-<li><a href="#4-run-the-software">4. Run the Software</a></li>
+<li><a href="#1-%e5%90%af%e5%8a%a8%e5%bc%80%e5%8f%91%e6%9d%bf">1. 启动开发板</a></li>
+<li><a href="#2-%e5%88%9d%e5%a7%8b%e5%8c%96-ps">2. 初始化 PS</a></li>
+<li><a href="#3-%e8%bf%9e%e6%8e%a5%e5%88%b0%e4%ba%92%e8%81%94%e7%bd%91">3. 连接到互联网</a></li>
+<li><a href="#4-%e8%bf%90%e8%a1%8c%e8%bd%af%e4%bb%b6">4. 运行软件</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
-<h2 id="install-vivado">
-  Install Vivado
-  <a class="anchor" href="#install-vivado">#</a>
+<h2 id="安装-vivado">
+  安装 Vivado
+  <a class="anchor" href="#%e5%ae%89%e8%a3%85-vivado">#</a>
 </h2>
-<p>You can download Vivado <a href="https://www.xilinx.com/products/design-tools/vivado.html">here</a>.</p>
-<p>We are using Vivado version 2020.1 (note: a unified version is required, otherwise running may cause problems).</p>
-<h2 id="vivado-project-construction">
-  Vivado project construction
-  <a class="anchor" href="#vivado-project-construction">#</a>
+<p>您可以在 <a href="https://www.xilinx.com/products/design-tools/vivado.html">这里</a> 下载 Vivado。</p>
+<p>我们使用的是 Vivado 2020.1 版本（注意：需要统一版本，否则运行可能会出现问题）。</p>
+<h2 id="vivado-项目构建">
+  Vivado 项目构建
+  <a class="anchor" href="#vivado-%e9%a1%b9%e7%9b%ae%e6%9e%84%e5%bb%ba">#</a>
 </h2>
 <ol>
-<li>clone the git repository for the hardware part.</li>
-<li>Open Vivado and enter the command <code>cd Porject_Dir</code> in Tcl Console and <code>source ./tsn_device.tcl</code>. After the command is executed, Vivado will automatically open the created project. Here, we will first close Vivado and rename the folder where the project is located to <code>Work_ Dir</code>, so that git can correctly ignore this directory and enter <code>Work_ Dir</code>, double-click the <code>.xpr</code> file to open the project again.</li>
+<li>克隆硬件部分的 git 仓库。</li>
+<li>打开 Vivado 并在 Tcl 控制台中输入命令 <code>cd Project_Dir</code> 和 <code>source ./tsn_device.tcl</code>。命令执行后，Vivado 将自动打开创建的项目。此时，我们将先关闭 Vivado 并将项目所在文件夹重命名为 <code>Work_Dir</code>，以便 git 可以正确忽略该目录，然后进入 <code>Work_Dir</code>，双击 <code>.xpr</code> 文件再次打开项目。</li>
 </ol>
 <p><img src="./vivado_tcl_console.png" alt="" /></p>
 <p><img src="./vivado_workdir.png" alt="" /></p>
-<ol>
-<li>Click <code>Generate Bitstream</code></li>
+<ol start="3">
+<li>点击 <code>Generate Bitstream</code></li>
 </ol>
 <p><img src="./vivado_bitstream.png" alt="" /></p>
-<ol>
+<ol start="4">
 <li>
-<p>Export the xsa file. In Vivado, File Export Export Hardware. Select Fixed for Platform type. Select include bitstream for Output. Click Finish to export the xsa file.</p>
-<p>Exported xsa file path: <code>Work_Dir/tns+tsn_device.xsa</code></p>
+<p>导出 xsa 文件。在 Vivado 中，选择 File Export Export Hardware。平台类型选择 Fixed。输出选择 include bitstream。点击 Finish 导出 xsa 文件。</p>
+<p>导出的 xsa 文件路径：<code>Work_Dir/tns+tsn_device.xsa</code></p>
 </li>
 </ol>
 <h2 id="petalinux">
   Petalinux
   <a class="anchor" href="#petalinux">#</a>
 </h2>
-<h3 id="1install-ubuntu-os">
-  1.install ubuntu OS
-  <a class="anchor" href="#1install-ubuntu-os">#</a>
+<h3 id="1-安装-ubuntu-操作系统">
+  1. 安装 Ubuntu 操作系统
+  <a class="anchor" href="#1-%e5%ae%89%e8%a3%85-ubuntu-%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f">#</a>
 </h3>
-<p>The following compilation processes are all completed within the virtual machine.</p>
-<p>We recommend using the following configuration:</p>
-<pre tabindex="0"><code>Virtual machine version: VMware Workstation 16 Pro
-Ubuntu version: ubuntu-16.04.3-desktop-amd64.iso
-</code></pre><h3 id="2download-petalinux-related-image-files-in-advance">
-  2.Download PetaLinux related image files in advance
-  <a class="anchor" href="#2download-petalinux-related-image-files-in-advance">#</a>
+<p>以下编译过程均在虚拟机中完成。</p>
+<p>我们推荐使用以下配置：</p>
+<pre tabindex="0"><code>虚拟机版本：VMware Workstation 16 Pro
+Ubuntu 版本：ubuntu-16.04.3-desktop-amd64.iso
+</code></pre><h3 id="2-预先下载-petalinux-相关镜像文件">
+  2. 预先下载 PetaLinux 相关镜像文件
+  <a class="anchor" href="#2-%e9%a2%84%e5%85%88%e4%b8%8b%e8%bd%bd-petalinux-%e7%9b%b8%e5%85%b3%e9%95%9c%e5%83%8f%e6%96%87%e4%bb%b6">#</a>
 </h3>
-<p>Enter website: <a href="https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools/archive.html">https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools/archive.html</a></p>
-<p>Select 2020.1 to find <code>PetaLinux Tools sstate-cache artifacts</code> and download <code>sstate_ arm_ 2020.1</code> and <code>downloads</code> and save the downloads in a specified directory in the virtual machine on January 2021 (the directory for this document is set to/home/alinx/data/)</p>
+<p>进入网站：https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools/archive.html</p>
+<p>选择 2020.1 找到 <code>PetaLinux Tools sstate-cache artifacts</code> 并下载 <code>sstate_arm_2020.1</code> 和 <code>downloads</code>，并将下载的文件保存在虚拟机的指定目录（本文档中的目录设置为 /home/alinx/data/）</p>
 <p>​    <img src="./download_petalinux.png" alt="" /></p>
-<h3 id="3activate-the-petalinux-environment">
-  3.Activate the PetaLinux environment
-  <a class="anchor" href="#3activate-the-petalinux-environment">#</a>
+<h3 id="3-激活-petalinux-环境">
+  3. 激活 PetaLinux 环境
+  <a class="anchor" href="#3-%e6%bf%80%e6%b4%bb-petalinux-%e7%8e%af%e5%a2%83">#</a>
 </h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>source /opt/pkg/petalinux/settings.sh
-</span></span></code></pre></div><p>​    Automatically activate the PetaLinux environment every time Terminal is started.</p>
-<h3 id="4create-petalinux-project">
-  4.Create PetaLinux Project
-  <a class="anchor" href="#4create-petalinux-project">#</a>
+</span></span></code></pre></div><p>​    每次启动终端时自动激活 PetaLinux 环境。</p>
+<h3 id="4-创建-petalinux-项目">
+  4. 创建 PetaLinux 项目
+  <a class="anchor" href="#4-%e5%88%9b%e5%bb%ba-petalinux-%e9%a1%b9%e7%9b%ae">#</a>
 </h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>petalinux-create --type project --template zynq --name &lt;project_name&gt;
 </span></span><span style="display:flex;"><span>cd &lt;project_name&gt;
-</span></span></code></pre></div><h3 id="5petalinux-configuration">
-  5.Petalinux Configuration
-  <a class="anchor" href="#5petalinux-configuration">#</a>
+</span></span></code></pre></div><h3 id="5-petalinux-配置">
+  5. PetaLinux 配置
+  <a class="anchor" href="#5-petalinux-%e9%85%8d%e7%bd%ae">#</a>
 </h3>
 <ol>
-<li>Import Hardware Configuration</li>
+<li>导入硬件配置</li>
 </ol>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>petalinux-config --get-hw-description &lt;PATH-TO-XSA Directory&gt;
-</span></span></code></pre></div><p>Then you will enter the menuconfig page and configure as follows:</p>
+</span></span></code></pre></div><p>然后您将进入 menuconfig 页面，按照以下配置：</p>
 <pre tabindex="0"><code>Subsystem AUTO Hardware Settings
 -&gt; Ethernet Settings  
   -&gt; [*] Randomise MAC address
@@ -664,18 +664,18 @@ Yocto Settings (Use downloaded image)
 -&gt; Local sstate feeds settings: /home/alinx/data/sstate_arm_2020.1/arm
 -&gt; Add pre-mirror url: file:///home/alinx/data/downloads
 </code></pre><ol start="2">
-<li>make <code>Kernel Module</code></li>
+<li>制作 <code>Kernel Module</code></li>
 </ol>
-<p>​    make a module named &ldquo;<code>dma proxy</code>&rdquo;:</p>
+<p>​    制作一个名为 &ldquo;<code>dma proxy</code>&rdquo; 的模块：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>petalinux-create -t modules -n dma-proxy --enable
-</span></span></code></pre></div><p>​    replace the dma-proxy folder:</p>
+</span></span></code></pre></div><p>​    替换 dma-proxy 文件夹：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>rm -rf project-spec/meta-user/recipes-modules/*
-</span></span></code></pre></div><p>download our dma-proxy (from <a href="https://cloud.tsinghua.edu.cn/f/85cfd8e8174e4689b79b/">here</a>) and unzip in <code>project-spec/meta-user/recipes-modules/</code></p>
+</span></span></code></pre></div><p>下载我们的 dma-proxy（从 <a href="https://cloud.tsinghua.edu.cn/f/85cfd8e8174e4689b79b/">这里</a>）并解压到 <code>project-spec/meta-user/recipes-modules/</code> 目录中。</p>
 <ol start="3">
-<li>Configuring the kernel</li>
+<li>配置内核</li>
 </ol>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>petalinux-config -c kernel
-</span></span></code></pre></div><p>Entering the <code>menuconfig</code> page, and do:</p>
+</span></span></code></pre></div><p>进入 <code>menuconfig</code> 页面，进行以下配置：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Device Drivers 
 </span></span><span style="display:flex;"><span>-&gt; Userspace I/O drivers 
 </span></span><span style="display:flex;"><span>  -&gt; <span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Userspace I/O platform driver with generic IRQ handling 
@@ -692,9 +692,9 @@ Yocto Settings (Use downloaded image)
 </span></span><span style="display:flex;"><span>-&gt; Preemption Model    
 </span></span><span style="display:flex;"><span>  -&gt; <span style="color:#f92672">(</span>X<span style="color:#f92672">)</span> No Forced Preemption <span style="color:#f92672">(</span>Server<span style="color:#f92672">)</span>
 </span></span></code></pre></div><ol start="4">
-<li>Configuring rootfs</li>
+<li>配置 rootfs</li>
 </ol>
-<p>Edit file <code>project-spec/meta-user/conf/user-rootfsconfig</code>, and <em><strong>add</strong></em> the following configuration:</p>
+<p>编辑文件 <code>project-spec/meta-user/conf/user-rootfsconfig</code>，并<em><strong>添加</strong></em>以下配置：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>CONFIG_sudo
 </span></span><span style="display:flex;"><span>CONFIG_sudo-dev
 </span></span><span style="display:flex;"><span>CONFIG_dnf
@@ -722,25 +722,25 @@ Yocto Settings (Use downloaded image)
 </span></span><span style="display:flex;"><span>CONFIG_cmake
 </span></span><span style="display:flex;"><span>CONFIG_util-linux
 </span></span><span style="display:flex;"><span>CONFIG_net-tools
-</span></span></code></pre></div><p>Save and exit.</p>
-<p>Input:</p>
+</span></span></code></pre></div><p>保存并退出。</p>
+<p>输入：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>petalinux-config -c rootfs
-</span></span></code></pre></div><p>Then you will enter the menuconfig page and configure as follows:</p>
+</span></span></code></pre></div><p>然后您将进入 menuconfig 页面，按照以下配置：</p>
 <pre tabindex="0"><code>Image Features 
 -&gt; [*] package management   
   -&gt; (http://petalinux.xilinx.com/sswreleases/rel-v2020/feeds/zc702-zynq7/) Package feed url.
 user packages
 -&gt; SELECT ALL
 </code></pre><ol start="5">
-<li>Compile the device tree</li>
+<li>编译设备树</li>
 </ol>
-<pre tabindex="0"><code>petalinux-build -c device-tree
-</code></pre><ol start="6">
-<li>Modify the device tree</li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>petalinux-build -c device-tree
+</span></span></code></pre></div><ol start="6">
+<li>修改设备树</li>
 </ol>
-<p>The generated device tree is located in <code>components/plnx_workspace/device tree/device tree/pl.dtsi</code> directory, we need to make modifications based on this file to meet some of our peripheral needs. The modified files are stored in the <code>project-spec/meta user/recipes bsp/device tree/files/system-user.dtsi</code> directory.</p>
+<p>生成的设备树位于 <code>components/plnx_workspace/device-tree/device-tree/pl.dtsi</code> 目录，我们需要基于该文件进行修改以满足我们的一些外设需求。修改后的文件存储在 <code>project-spec/meta-user/recipes-bsp/device-tree/files/system-user.dtsi</code> 目录中。</p>
 <blockquote>
-<p>Note: Between the <code>//&gt;&gt;&gt;</code> and <code>//&lt;&lt;&lt;</code> is the content added between the comments.</p>
+<p>注意：在 <code>//&gt;&gt;&gt;</code> 和 <code>//&lt;&lt;&lt;</code> 之间是注释中添加的内容。</p>
 </blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#f92672">/</span>include<span style="color:#f92672">/</span> <span style="color:#e6db74">&#34;system-conf.dtsi&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">/</span> {
@@ -761,7 +761,9 @@ user packages
 </span></span><span style="display:flex;"><span>        };
 </span></span><span style="display:flex;"><span>        chosen{
 </span></span><span style="display:flex;"><span>                        bootargs <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;console=ttyPS0,115200 earlyprintk cma=256M uio_pdrv_genirq.of_id=generic-uio root=/dev/mmcblk0p2 rw rootwait&#34;</span>;
-</span></span><span style="display:flex;"><span>      stdout<span style="color:#f92672">-</span>path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;serial0:115200n8&#34;</span>;
+</span></span><span style="display:flex;"><span>      stdout
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;serial0:115200n8&#34;</span>;
 </span></span><span style="display:flex;"><span>        };
 </span></span><span style="display:flex;"><span>};
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&amp;</span>gem1 {
@@ -773,67 +775,67 @@ user packages
 </span></span><span style="display:flex;"><span>    };
 </span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div><ol start="7">
-<li>Complie</li>
+<li>编译</li>
 </ol>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>petalinux-build
 </span></span></code></pre></div><ol start="8">
-<li>Pack</li>
+<li>打包</li>
 </ol>
-<p>Here, you need to copy the bitstream file generated by Vivado to the virtual machine.  (You can export bitstream file to where you want).</p>
+<p>在这里，您需要将 Vivado 生成的比特流文件复制到虚拟机。（您可以将比特流文件导出到您想要的位置）。</p>
 <p><img src="./export_bitstream.png" alt="" /></p>
-<p>Then:</p>
+<p>然后：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd images/linux
 </span></span><span style="display:flex;"><span>petalinux-package --boot --fsbl zynq_fsbl.elf --fpga &lt;FPGA bitstream path&gt; --u-boot --force
-</span></span></code></pre></div><p>After that, you can get 4 key file: <code>BOOT.BIN</code> <code>boot.scr</code> <code>image.ub</code> <code>rootfs.tar.gz</code></p>
-<h3 id="6-sd-card-partition-and-copy-file">
-  6. SD card partition and copy file
-  <a class="anchor" href="#6-sd-card-partition-and-copy-file">#</a>
+</span></span></code></pre></div><p>之后，您可以得到 4 个关键文件：<code>BOOT.BIN</code>、<code>boot.scr</code>、<code>image.ub</code>、<code>rootfs.tar.gz</code></p>
+<h3 id="6-sd-卡分区和文件复制">
+  6. SD 卡分区和文件复制
+  <a class="anchor" href="#6-sd-%e5%8d%a1%e5%88%86%e5%8c%ba%e5%92%8c%e6%96%87%e4%bb%b6%e5%a4%8d%e5%88%b6">#</a>
 </h3>
-<h4 id="file-downloading">
-  File downloading
-  <a class="anchor" href="#file-downloading">#</a>
+<h4 id="文件下载">
+  文件下载
+  <a class="anchor" href="#%e6%96%87%e4%bb%b6%e4%b8%8b%e8%bd%bd">#</a>
 </h4>
-<p>Download the following file from <a href="https://cloud.tsinghua.edu.cn/d/0bbc00543e5b4b82a6ea/">this</a> public link or from preceding steps:</p>
+<p>从 <a href="https://cloud.tsinghua.edu.cn/d/0bbc00543e5b4b82a6ea/">这个</a>公共链接或从前述步骤下载以下文件：</p>
 <ul>
 <li>BOOT.BIN</li>
 <li>boot.scr</li>
 <li>image.ub</li>
 <li>rootfs.tar.gz</li>
 </ul>
-<h4 id="sd-card-partition">
-  SD card partition
-  <a class="anchor" href="#sd-card-partition">#</a>
+<h4 id="sd-卡分区">
+  SD 卡分区
+  <a class="anchor" href="#sd-%e5%8d%a1%e5%88%86%e5%8c%ba">#</a>
 </h4>
-<p>In order to boot the TSNPerf, you are supposed to have a micro SD card with &gt;32GiB storage. Then use:</p>
+<p>为了启动 TSNPerf，您需要一个大于 32GiB 存储容量的 micro SD 卡。然后使用：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt-get install gparted
 </span></span><span style="display:flex;"><span>sudo gparted
-</span></span></code></pre></div><p>Parition it into two partition below</p>
+</span></span></code></pre></div><p>将其分为以下两个分区：</p>
 <ul>
 <li>
-<p>BOOT: store boot files from petalinux</p>
-<p>Free space preceding (MiB): 4</p>
-<p>New size (MiB): 500</p>
-<p>File system: fat32</p>
-<p>Label: BOOT</p>
+<p>BOOT：存储来自 petalinux 的启动文件</p>
+<p>前置空闲空间（MiB）：4</p>
+<p>新大小（MiB）：500</p>
+<p>文件系统：fat32</p>
+<p>标签：BOOT</p>
 </li>
 <li>
-<p>ROOTFS: store debian system rootfs</p>
-<p>Free space preceding (MiB): 0</p>
-<p>Free space following (MiB): 0</p>
-<p>File system: ext4</p>
-<p>Label: ROOTFS</p>
+<p>ROOTFS：存储 debian 系统 rootfs</p>
+<p>前置空闲空间（MiB）：0</p>
+<p>后置空闲空间（MiB）：0</p>
+<p>文件系统：ext4</p>
+<p>标签：ROOTFS</p>
 </li>
 </ul>
-<h4 id="copy-files-into-sd-card">
-  Copy files into SD card
-  <a class="anchor" href="#copy-files-into-sd-card">#</a>
+<h4 id="复制文件到-sd-卡">
+  复制文件到 SD 卡
+  <a class="anchor" href="#%e5%a4%8d%e5%88%b6%e6%96%87%e4%bb%b6%e5%88%b0-sd-%e5%8d%a1">#</a>
 </h4>
-<p>Mound SD card:</p>
+<p>挂载 SD 卡：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo mount /dev/sda1 /media/alinx/BOOT/
 </span></span><span style="display:flex;"><span>sudo mount /dev/sda2 /media/alinx/ROOTFS/
-</span></span></code></pre></div><p>Remove original files:</p>
+</span></span></code></pre></div><p>删除原始文件：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo rm -rf /media/alinx/BOOT/* /media/alinx/ROOTFS/*
-</span></span></code></pre></div><p>Copy files:</p>
+</span></span></code></pre></div><p>复制文件：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo cp BOOT.BIN boot.scr image.ub /media/alinx/BOOT
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>sudo tar -zxvf rootfs.tar.gz -C /media/alinx/ROOTFS
@@ -841,41 +843,41 @@ user packages
 </span></span><span style="display:flex;"><span>sync
 </span></span><span style="display:flex;"><span>sudo chown root:root /media/alinx/ROOTFS
 </span></span><span style="display:flex;"><span>sudo chmod <span style="color:#ae81ff">755</span> /media/alinx/ROOTFS
-</span></span></code></pre></div><h2 id="launch-the-board-and-log-in">
-  Launch the Board and log in
-  <a class="anchor" href="#launch-the-board-and-log-in">#</a>
+</span></span></code></pre></div><h2 id="启动开发板并登录">
+  启动开发板并登录
+  <a class="anchor" href="#%e5%90%af%e5%8a%a8%e5%bc%80%e5%8f%91%e6%9d%bf%e5%b9%b6%e7%99%bb%e5%bd%95">#</a>
 </h2>
-<h3 id="1-launch-the-board">
-  1. Launch the Board
-  <a class="anchor" href="#1-launch-the-board">#</a>
+<h3 id="1-启动开发板">
+  1. 启动开发板
+  <a class="anchor" href="#1-%e5%90%af%e5%8a%a8%e5%bc%80%e5%8f%91%e6%9d%bf">#</a>
 </h3>
-<p>Plug the SD card into FPGA board, turn the switch to SD card boot mode.</p>
-<p><img src="./FPGA_boot_mode_switch.png" alt="SD boot" /></p>
-<h3 id="2-initialize-ps">
-  2. Initialize PS
-  <a class="anchor" href="#2-initialize-ps">#</a>
+<p>将 SD 卡插入 FPGA 板，将开关切换到 SD 卡启动模式。</p>
+<p><img src="./FPGA_boot_mode_switch.png" alt="SD 启动" /></p>
+<h3 id="2-初始化-ps">
+  2. 初始化 PS
+  <a class="anchor" href="#2-%e5%88%9d%e5%a7%8b%e5%8c%96-ps">#</a>
 </h3>
-<p>Plug in SD card, setup AX7021 board to boot on SD, power on.</p>
-<p>Connect a PC to the UART port of the board. We recommend using MobaXterm to connect the serial. Set up the Speed to 115200, Flow Control to None.</p>
+<p>插入 SD 卡，设置 AX7021 板从 SD 启动，打开电源。</p>
+<p>将 PC 连接到开发板的 UART 端口。我们推荐使用 MobaXterm 连接串行端口。将速度设置为 115200，流控制设置为 None。</p>
 <p><img src="./moba_serial.png" alt="MobaXterm" /></p>
-<p>The default username and password are as follows:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">username:</span> <span style="color:#e6db74">&#34;root&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">password:</span> <span style="color:#e6db74">&#34;root&#34;</span>
-</span></span></code></pre></div><p>Execute the initilization script to set up the linux environment. (<code>hardware/init_os.sh</code>)</p>
+<p>默认用户名和密码如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">用户名：</span><span style="color:#e6db74">&#34;root&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">密码：</span><span style="color:#e6db74">&#34;root&#34;</span>
+</span></span></code></pre></div><p>执行初始化脚本设置 Linux 环境。(<code>hardware/init_os.sh</code>)</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sh init_os.sh
-</span></span></code></pre></div><p>You can freely configure the host name, IP address, and MAC address, etc with the script, and can modify the script if needed.</p>
-<h3 id="3-connect-to-internet">
-  3. Connect to Internet
-  <a class="anchor" href="#3-connect-to-internet">#</a>
+</span></span></code></pre></div><p>您可以自由配置主机名、IP 地址和 MAC 地址等，并可根据需要修改脚本。</p>
+<h3 id="3-连接到互联网">
+  3. 连接到互联网
+  <a class="anchor" href="#3-%e8%bf%9e%e6%8e%a5%e5%88%b0%e4%ba%92%e8%81%94%e7%bd%91">#</a>
 </h3>
-<p>Connect the PC&rsquo;s network port to the device&rsquo;s <strong>PS</strong> network port (ETH0).</p>
-<p>Set up PC&rsquo;s corresponding port to be in the same subnet with the device (i.e., 192.168.137.x).</p>
-<p>Afterwards, you can connect to the device through <code>ssh</code> and copy any Software files needed.</p>
-<h3 id="4-run-the-software">
-  4. Run the Software
-  <a class="anchor" href="#4-run-the-software">#</a>
+<p>将 PC 的网络端口连接到设备的 <strong>PS</strong> 网络端口（ETH0）。</p>
+<p>将 PC 的相应端口设置为与设备在同一子网内（即 192.168.137.x）。</p>
+<p>之后，您可以通过 <code>ssh</code> 连接到设备，并复制所需的软件文件。</p>
+<h3 id="4-运行软件">
+  4. 运行软件
+  <a class="anchor" href="#4-%e8%bf%90%e8%a1%8c%e8%bd%af%e4%bb%b6">#</a>
 </h3>
-<p>Please refer to the software part of this repo for further instructions.</p>
+<p>请参阅此仓库的软件部分了解进一步的说明。</p>
 </article>
  
       
@@ -934,7 +936,7 @@ padding-top: 100px;">
     <aside class="book-toc">
       <div class="book-toc-content">
         
-  <div style="margin: 50px; display:flex; justify-content:center; gap: 25px;">
+  <div style="margin-top:10px; margin-bottom:40px; display:flex; justify-content:center; gap: 25px;">
     <a href="https://github.com/MobiSense/ziggo_book" style="padding: 10px 10px;
 	background-color: rgb(0, 0, 0); /* 设置按钮背景色为橙色 */
 	color: white; /* 设置按钮文字颜色为白色 */
@@ -957,26 +959,26 @@ padding-top: 100px;">
 
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#before-start">Before Start</a></li>
-    <li><a href="#table-of-content">Table of Content</a></li>
-    <li><a href="#install-vivado">Install Vivado</a></li>
-    <li><a href="#vivado-project-construction">Vivado project construction</a></li>
+    <li><a href="#开始前">开始前</a></li>
+    <li><a href="#目录">目录</a></li>
+    <li><a href="#安装-vivado">安装 Vivado</a></li>
+    <li><a href="#vivado-项目构建">Vivado 项目构建</a></li>
     <li><a href="#petalinux">Petalinux</a>
       <ul>
-        <li><a href="#1install-ubuntu-os">1.install ubuntu OS</a></li>
-        <li><a href="#2download-petalinux-related-image-files-in-advance">2.Download PetaLinux related image files in advance</a></li>
-        <li><a href="#3activate-the-petalinux-environment">3.Activate the PetaLinux environment</a></li>
-        <li><a href="#4create-petalinux-project">4.Create PetaLinux Project</a></li>
-        <li><a href="#5petalinux-configuration">5.Petalinux Configuration</a></li>
-        <li><a href="#6-sd-card-partition-and-copy-file">6. SD card partition and copy file</a></li>
+        <li><a href="#1-安装-ubuntu-操作系统">1. 安装 Ubuntu 操作系统</a></li>
+        <li><a href="#2-预先下载-petalinux-相关镜像文件">2. 预先下载 PetaLinux 相关镜像文件</a></li>
+        <li><a href="#3-激活-petalinux-环境">3. 激活 PetaLinux 环境</a></li>
+        <li><a href="#4-创建-petalinux-项目">4. 创建 PetaLinux 项目</a></li>
+        <li><a href="#5-petalinux-配置">5. PetaLinux 配置</a></li>
+        <li><a href="#6-sd-卡分区和文件复制">6. SD 卡分区和文件复制</a></li>
       </ul>
     </li>
-    <li><a href="#launch-the-board-and-log-in">Launch the Board and log in</a>
+    <li><a href="#启动开发板并登录">启动开发板并登录</a>
       <ul>
-        <li><a href="#1-launch-the-board">1. Launch the Board</a></li>
-        <li><a href="#2-initialize-ps">2. Initialize PS</a></li>
-        <li><a href="#3-connect-to-internet">3. Connect to Internet</a></li>
-        <li><a href="#4-run-the-software">4. Run the Software</a></li>
+        <li><a href="#1-启动开发板">1. 启动开发板</a></li>
+        <li><a href="#2-初始化-ps">2. 初始化 PS</a></li>
+        <li><a href="#3-连接到互联网">3. 连接到互联网</a></li>
+        <li><a href="#4-运行软件">4. 运行软件</a></li>
       </ul>
     </li>
   </ul>

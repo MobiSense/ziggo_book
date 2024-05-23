@@ -30,7 +30,7 @@
       <description>Docs to enable CaaS Switches&amp;rsquo; time synchronization logic and set up TSN GCL (gate control list), switch forwarding rules (including to dual-DMA).</description>
     </item>
     <item>
-      <title>TestBed搭建流程</title>
+      <title>TestBed Setup Process</title>
       <link>http://localhost:1313/docs/device/testbed/</link>
       <pubDate>Wed, 01 May 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/docs/device/testbed/</guid>

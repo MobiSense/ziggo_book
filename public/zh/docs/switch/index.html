@@ -3,13 +3,25 @@
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="ZIGGO CaaS Switch: A flexible, standard-compliant, and control-function-virtualized TSN switch platform#Table of Contents#ZIGGO CaaS Switch: A flexible, standard-compliant, and control-function-virtualized TSN switch platform Table of Contents Introduction ZIGGO Open Platform Demo Features Read before start Getting Started System Design Demo APP Tutorial License and Citation TODO List Contributing Introduction#ZIGGO is a flexible, standard-compliant, and control-function-virtualized TSN switch platform ready for industrial control, automotive electronics, and other time-sensitive applications.">
+<meta name="description" content="ZIGGO CaaS Switch: 一种灵活、符合标准且控制功能虚拟化的TSN交换机平台#目录#ZIGGO CaaS Switch: 一种灵活、符合标准且控制功能虚拟化的TSN交换机平台 目录 简介 ZIGGO 开放平台 演示 功能 开始前阅读 快速入门 系统设计 演示应用教程 许可和引用 待办事项 贡献 简介#ZIGGO 是一个 灵活、符合标准 且 控制功能虚拟化 的 TSN 交换机平台，适用于工业控制、汽车电子及其他时间敏感应用。
+这是 ZIGGO CaaS Switch 的文档。（我们还提供符合 IEEE 802.1 TSN 标准的 ZIGGO-Device。）
+ZIGGO 开放平台#ZIGGO 开放平台的构建包括三个层次：网络设备、管理工具和演示应用。更多详细信息请见 ZIGGO-Device。
+演示#我们提供了 TSN 交换机的演示视频。视频展示了 ZIGGO-CaaS-Switch 相较于普通交换机的优越性能。
+图片左侧是我们使用的 ZYNQ 开发板，右侧是我们构建的 TSN 显示板。
+点击图片观看视频！或者点击这里。
+功能#ZIGGO 支持同时传输 信息技术（IT） 和 操作技术（OT） 数据流量，并提供 QoS 保证。">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/zh/docs/switch/">
   <meta property="og:site_name" content="ZIGGO BOOK">
   <meta property="og:title" content="ZIGGO Switch">
-  <meta property="og:description" content="ZIGGO CaaS Switch: A flexible, standard-compliant, and control-function-virtualized TSN switch platform#Table of Contents#ZIGGO CaaS Switch: A flexible, standard-compliant, and control-function-virtualized TSN switch platform Table of Contents Introduction ZIGGO Open Platform Demo Features Read before start Getting Started System Design Demo APP Tutorial License and Citation TODO List Contributing Introduction#ZIGGO is a flexible, standard-compliant, and control-function-virtualized TSN switch platform ready for industrial control, automotive electronics, and other time-sensitive applications.">
+  <meta property="og:description" content="ZIGGO CaaS Switch: 一种灵活、符合标准且控制功能虚拟化的TSN交换机平台#目录#ZIGGO CaaS Switch: 一种灵活、符合标准且控制功能虚拟化的TSN交换机平台 目录 简介 ZIGGO 开放平台 演示 功能 开始前阅读 快速入门 系统设计 演示应用教程 许可和引用 待办事项 贡献 简介#ZIGGO 是一个 灵活、符合标准 且 控制功能虚拟化 的 TSN 交换机平台，适用于工业控制、汽车电子及其他时间敏感应用。
+这是 ZIGGO CaaS Switch 的文档。（我们还提供符合 IEEE 802.1 TSN 标准的 ZIGGO-Device。）
+ZIGGO 开放平台#ZIGGO 开放平台的构建包括三个层次：网络设备、管理工具和演示应用。更多详细信息请见 ZIGGO-Device。
+演示#我们提供了 TSN 交换机的演示视频。视频展示了 ZIGGO-CaaS-Switch 相较于普通交换机的优越性能。
+图片左侧是我们使用的 ZYNQ 开发板，右侧是我们构建的 TSN 显示板。
+点击图片观看视频！或者点击这里。
+功能#ZIGGO 支持同时传输 信息技术（IT） 和 操作技术（OT） 数据流量，并提供 QoS 保证。">
   <meta property="og:locale" content="zh">
   <meta property="og:type" content="website">
 <title>ZIGGO Switch | ZIGGO BOOK</title>
@@ -19,7 +31,7 @@
   <link rel="alternate" hreflang="en" href="http://localhost:1313/docs/switch/" title="ZIGGO Switch">
 <link rel="stylesheet" href="/book.min.309b7ed028807cdb68d8d61e26d609f48369c098dbf5e4d8c0dcf4cdf49feafc.css" integrity="sha256-MJt&#43;0CiAfNto2NYeJtYJ9INpwJjb9eTYwNz0zfSf6vw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/zh.search.min.0a35798c78c016e2b218365660d9a17cabc3941c772e735cffb8ebd0a1bcbd84.js" integrity="sha256-CjV5jHjAFuKyGDZWYNmhfKvDlBx3LnNc/7jr0KG8vYQ=" crossorigin="anonymous"></script>
+  <script defer src="/zh.search.min.b77e601a6a6485877260bb76047048cc0366d24bc7803048aae12ec20e97c250.js" integrity="sha256-t35gGmpkhYdyYLt2BHBIzANm0kvHgDBIquEuwg6XwlA=" crossorigin="anonymous"></script>
 
   
 
@@ -226,7 +238,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/zh/docs/switch/system-design/" class="">System Design</a>
+    <a href="/zh/docs/switch/system-design/" class="">系统设计</a>
   
 
         </li>
@@ -239,7 +251,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/zh/docs/switch/hardware-build/" class="">Hardware Build</a>
+    <a href="/zh/docs/switch/hardware-build/" class="">硬件构建</a>
   
 
         </li>
@@ -252,7 +264,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/zh/docs/switch/software-build/" class="">Software Build</a>
+    <a href="/zh/docs/switch/software-build/" class="">软件构建</a>
   
 
         </li>
@@ -265,7 +277,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/zh/docs/switch/contributing/" class="">How to contribute</a>
+    <a href="/zh/docs/switch/contributing/" class="">如何贡献</a>
   
 
         </li>
@@ -325,7 +337,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/zh/docs/device/getting-started/" class="">Getting start</a>
+    <a href="/zh/docs/device/getting-started/" class="">快速入门</a>
   
 
         </li>
@@ -338,7 +350,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/zh/docs/device/system-design/" class="">System Design</a>
+    <a href="/zh/docs/device/system-design/" class="">系统设计</a>
   
 
         </li>
@@ -351,7 +363,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/zh/docs/device/hardware-build/" class="">Hardware Build</a>
+    <a href="/zh/docs/device/hardware-build/" class="">硬件构建</a>
   
 
         </li>
@@ -364,7 +376,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/zh/docs/device/software-build/" class="">Software Build</a>
+    <a href="/zh/docs/device/software-build/" class="">软件构建</a>
   
 
         </li>
@@ -416,7 +428,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/zh/docs/device/contributing/" class="">How to contribute</a>
+    <a href="/zh/docs/device/contributing/" class="">如何贡献</a>
   
 
         </li>
@@ -476,7 +488,7 @@ https://github.com/alex-shpak/hugo-book
   
   <aside class="hidden clearfix">
     
-  <div style="margin: 50px; display:flex; justify-content:center; gap: 25px;">
+  <div style="margin-top:10px; margin-bottom:40px; display:flex; justify-content:center; gap: 25px;">
     <a href="https://github.com/MobiSense/ziggo_book" style="padding: 10px 10px;
 	background-color: rgb(0, 0, 0); /* 设置按钮背景色为橙色 */
 	color: white; /* 设置按钮文字颜色为白色 */
@@ -499,18 +511,18 @@ https://github.com/alex-shpak/hugo-book
 
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#table-of-contents">Table of Contents</a></li>
-    <li><a href="#introduction">Introduction</a></li>
-    <li><a href="#ziggo-open-platform">ZIGGO Open Platform</a></li>
-    <li><a href="#demo">Demo</a></li>
-    <li><a href="#features">Features</a></li>
-    <li><a href="#read-before-start">Read before start</a></li>
-    <li><a href="#getting-started">Getting Started</a></li>
-    <li><a href="#system-design">System Design</a></li>
-    <li><a href="#demo-app-tutorial">Demo APP Tutorial</a></li>
-    <li><a href="#license-and-citation">License and Citation</a></li>
-    <li><a href="#todo-list">TODO List</a></li>
-    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#目录">目录</a></li>
+    <li><a href="#简介">简介</a></li>
+    <li><a href="#ziggo-开放平台">ZIGGO 开放平台</a></li>
+    <li><a href="#演示">演示</a></li>
+    <li><a href="#功能">功能</a></li>
+    <li><a href="#开始前阅读">开始前阅读</a></li>
+    <li><a href="#快速入门">快速入门</a></li>
+    <li><a href="#系统设计">系统设计</a></li>
+    <li><a href="#演示应用教程">演示应用教程</a></li>
+    <li><a href="#许可和引用">许可和引用</a></li>
+    <li><a href="#待办事项">待办事项</a></li>
+    <li><a href="#贡献">贡献</a></li>
   </ul>
 </nav>
 
@@ -524,116 +536,115 @@ https://github.com/alex-shpak/hugo-book
       
       
   <article class="markdown book-article"><!-- raw HTML omitted -->
-<h1 id="ziggo-caas-switch-aflexiblestandard-compliant-andcontrol-function-virtualizedtsn-switch-platform">
-  ZIGGO CaaS Switch: A flexible, standard-compliant, and control-function-virtualized TSN switch platform
-  <a class="anchor" href="#ziggo-caas-switch-aflexiblestandard-compliant-andcontrol-function-virtualizedtsn-switch-platform">#</a>
+<h1 id="ziggo-caas-switch-一种灵活符合标准且控制功能虚拟化的tsn交换机平台">
+  ZIGGO CaaS Switch: 一种灵活、符合标准且控制功能虚拟化的TSN交换机平台
+  <a class="anchor" href="#ziggo-caas-switch-%e4%b8%80%e7%a7%8d%e7%81%b5%e6%b4%bb%e7%ac%a6%e5%90%88%e6%a0%87%e5%87%86%e4%b8%94%e6%8e%a7%e5%88%b6%e5%8a%9f%e8%83%bd%e8%99%9a%e6%8b%9f%e5%8c%96%e7%9a%84tsn%e4%ba%a4%e6%8d%a2%e6%9c%ba%e5%b9%b3%e5%8f%b0">#</a>
 </h1>
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
 <p><img src="figs/banner.jpg" alt="" /></p>
-<h2 id="table-of-contents">
-  Table of Contents
-  <a class="anchor" href="#table-of-contents">#</a>
+<h2 id="目录">
+  目录
+  <a class="anchor" href="#%e7%9b%ae%e5%bd%95">#</a>
 </h2>
 <ul>
-<li><a href="#ziggo-caas-switch-aflexiblestandard-compliant-andcontrol-function-virtualizedtsn-switch-platform">ZIGGO CaaS Switch: A flexible, standard-compliant, and control-function-virtualized TSN switch platform</a>
+<li><a href="#ziggo-caas-switch-%e4%b8%80%e7%a7%8d%e7%81%b5%e6%b4%bb%e7%ac%a6%e5%90%88%e6%a0%87%e5%87%86%e4%b8%94%e6%8e%a7%e5%88%b6%e5%8a%9f%e8%83%bd%e8%99%9a%e6%8b%9f%e5%8c%96%e7%9a%84tsn%e4%ba%a4%e6%8d%a2%e6%9c%ba%e5%b9%b3%e5%8f%b0">ZIGGO CaaS Switch: 一种灵活、符合标准且控制功能虚拟化的TSN交换机平台</a>
 <ul>
-<li><a href="#table-of-contents">Table of Contents</a></li>
-<li><a href="#introduction">Introduction</a></li>
-<li><a href="#ziggo-open-platform">ZIGGO Open Platform</a></li>
-<li><a href="#demo">Demo</a></li>
-<li><a href="#features">Features</a></li>
-<li><a href="#read-before-start">Read before start</a></li>
-<li><a href="#getting-started">Getting Started</a></li>
-<li><a href="#system-design">System Design</a></li>
-<li><a href="#demo-app-tutorial">Demo APP Tutorial</a></li>
-<li><a href="#license-and-citation">License and Citation</a></li>
-<li><a href="#todo-list">TODO List</a></li>
-<li><a href="#contributing">Contributing</a></li>
+<li><a href="#%e7%9b%ae%e5%bd%95">目录</a></li>
+<li><a href="#%e7%ae%80%e4%bb%8b">简介</a></li>
+<li><a href="#ziggo-%e5%bc%80%e6%94%be%e5%b9%b3%e5%8f%b0">ZIGGO 开放平台</a></li>
+<li><a href="#%e6%bc%94%e7%a4%ba">演示</a></li>
+<li><a href="#%e5%8a%9f%e8%83%bd">功能</a></li>
+<li><a href="#%e5%bc%80%e5%a7%8b%e5%89%8d%e9%98%85%e8%af%bb">开始前阅读</a></li>
+<li><a href="#%e5%bf%ab%e9%80%9f%e5%85%a5%e9%97%a8">快速入门</a></li>
+<li><a href="#%e7%b3%bb%e7%bb%9f%e8%ae%be%e8%ae%a1">系统设计</a></li>
+<li><a href="#%e6%bc%94%e7%a4%ba%e5%ba%94%e7%94%a8%e6%95%99%e7%a8%8b">演示应用教程</a></li>
+<li><a href="#%e8%ae%b8%e5%8f%af%e5%92%8c%e5%bc%95%e7%94%a8">许可和引用</a></li>
+<li><a href="#%e5%be%85%e5%8a%9e%e4%ba%8b%e9%a1%b9">待办事项</a></li>
+<li><a href="#%e8%b4%a1%e7%8c%ae">贡献</a></li>
 </ul>
 </li>
 </ul>
-<h2 id="introduction">
-  Introduction
-  <a class="anchor" href="#introduction">#</a>
+<h2 id="简介">
+  简介
+  <a class="anchor" href="#%e7%ae%80%e4%bb%8b">#</a>
 </h2>
-<p>ZIGGO is a <code>flexible</code>, <code>standard-compliant</code>, and <code>control-function-virtualized</code> TSN switch platform ready for <strong>industrial control</strong>, <strong>automotive electronics</strong>, and other <strong>time-sensitive applications</strong>.</p>
-<p>This is the document for the ZIGGO CaaS Switch. (We also offer <a href="https://github.com/Mobisense/Ziggo-Device">ZIGGO-Device</a> that comply with the IEEE 802.1 TSN standard.)</p>
-<h2 id="ziggo-open-platform">
-  ZIGGO Open Platform
-  <a class="anchor" href="#ziggo-open-platform">#</a>
+<p>ZIGGO 是一个 <code>灵活</code>、<code>符合标准</code> 且 <code>控制功能虚拟化</code> 的 TSN 交换机平台，适用于<strong>工业控制</strong>、<strong>汽车电子</strong>及其他<strong>时间敏感应用</strong>。</p>
+<p>这是 ZIGGO CaaS Switch 的文档。（我们还提供符合 IEEE 802.1 TSN 标准的 <a href="https://github.com/Mobisense/Ziggo-Device">ZIGGO-Device</a>。）</p>
+<h2 id="ziggo-开放平台">
+  ZIGGO 开放平台
+  <a class="anchor" href="#ziggo-%e5%bc%80%e6%94%be%e5%b9%b3%e5%8f%b0">#</a>
 </h2>
 <p><img src="figs/demo-app.png" alt="" /></p>
-<p>The construction of the ZIGGO Open Platform consists of three levels: network device, management tools, and a Demo App. More details in <a href="https://github.com/Mobisense/Ziggo-Device">ZIGGO-Device</a>.</p>
-<h2 id="demo">
-  Demo
-  <a class="anchor" href="#demo">#</a>
+<p>ZIGGO 开放平台的构建包括三个层次：网络设备、管理工具和演示应用。更多详细信息请见 <a href="https://github.com/Mobisense/Ziggo-Device">ZIGGO-Device</a>。</p>
+<h2 id="演示">
+  演示
+  <a class="anchor" href="#%e6%bc%94%e7%a4%ba">#</a>
 </h2>
-<p>We provide a demonstration video of the TSN switch. It demonstrates the superior performance of the <code>ZIGGO-CaaS-Switch</code> compared to the normal switch.</p>
-<p>The left side of the picture is the ZYNQ development board we use, and the right side is the TSN display board we built.</p>
-<p><a href="https://cloud.tsinghua.edu.cn/f/b307da6840d84e5f9ff1/"><img src="figs/testbed.jpg" alt="Watch the video" /></a></p>
+<p>我们提供了 TSN 交换机的演示视频。视频展示了 <code>ZIGGO-CaaS-Switch</code> 相较于普通交换机的优越性能。</p>
+<p>图片左侧是我们使用的 ZYNQ 开发板，右侧是我们构建的 TSN 显示板。</p>
+<p><a href="https://cloud.tsinghua.edu.cn/f/b307da6840d84e5f9ff1/"><img src="figs/testbed.jpg" alt="观看视频" /></a></p>
 <blockquote>
-<p>Click the pic to watch the video! Or just click <a href="https://cloud.tsinghua.edu.cn/f/b307da6840d84e5f9ff1/">here</a>.</p>
+<p>点击图片观看视频！或者点击<a href="https://cloud.tsinghua.edu.cn/f/b307da6840d84e5f9ff1/">这里</a>。</p>
 </blockquote>
-<h2 id="features">
-  Features
-  <a class="anchor" href="#features">#</a>
+<h2 id="功能">
+  功能
+  <a class="anchor" href="#%e5%8a%9f%e8%83%bd">#</a>
 </h2>
 <ul>
 <li>
-<p>ZIGGO supports the simultaneous transmission of both <code>Information Technology (IT)</code> and <code>Operation Technology (OT)</code> data traffic with QoS guarantee.</p>
+<p>ZIGGO 支持同时传输 <code>信息技术（IT）</code> 和 <code>操作技术（OT）</code> 数据流量，并提供 QoS 保证。</p>
 </li>
 <li>
-<p>ZIGGO complies with IEEE standards <code>802.1AS</code>, <code>Qav</code>, <code>Qbv</code>, and <code>Qcc</code>.</p>
+<p>ZIGGO 符合 IEEE 标准 <code>802.1AS</code>、<code>Qav</code>、<code>Qbv</code> 和 <code>Qcc</code>。</p>
 </li>
 <li>
-<p>ZIGGO provides <code>Real-time</code> and <code>Deterministic</code> Ethernet transport</p>
+<p>ZIGGO 提供 <code>实时</code> 和 <code>确定性</code> 以太网传输</p>
 <ul>
 <li>
-<p>ZIGGO achieve <strong>Zero Packet Loss</strong> , <strong>Microsecond-level Latency</strong> with <strong>Nanosecond-level Jitter Gate Ability</strong>.</p>
+<p>ZIGGO 实现 <strong>零丢包</strong>、<strong>微秒级延迟</strong> 和 <strong>纳秒级抖动门控能力</strong>。</p>
 </li>
 <li>
-<p>ZIGGO guarantee <strong>Gigabit Throughput</strong>.</p>
+<p>ZIGGO 保证 <strong>千兆吞吐量</strong>。</p>
 </li>
 <li>
-<p>ZIGGO provide gate accuracy applicable to <strong>All Ethernet Frame Sizes</strong>.</p>
+<p>ZIGGO 提供适用于 <strong>所有以太网帧大小</strong> 的门控精度。</p>
 </li>
 </ul>
 </li>
 </ul>
-<h2 id="read-before-start">
-  Read before start
-  <a class="anchor" href="#read-before-start">#</a>
+<h2 id="开始前阅读">
+  开始前阅读
+  <a class="anchor" href="#%e5%bc%80%e5%a7%8b%e5%89%8d%e9%98%85%e8%af%bb">#</a>
 </h2>
-<p>Getting started with ZIGGO-CaaS-Switch/ZIGGO-Device is a <em><strong>pretty hard</strong></em> task. Users/developers need to have sufficient basic knowledge and be prepare to for a long periond of learning and debugging.</p>
-<p>Please refer to <a href="/ziggo_book/docs/switch/basic_knowledge/">basic_knowledge.md</a> to check if you have ability to use ZIGGO competently.</p>
-<h2 id="getting-started">
-  Getting Started
-  <a class="anchor" href="#getting-started">#</a>
+<p>开始使用 ZIGGO-CaaS-Switch/ZIGGO-Device 是一个<em><strong>相当困难</strong></em>的任务。用户/开发者需要具备足够的基础知识，并准备好进行长时间的学习和调试。</p>
+<p>请参考 <a href="/ziggo_book/zh/docs/switch/basic_knowledge/">basic_knowledge.md</a> 以检查您是否有能力胜任 ZIGGO。</p>
+<h2 id="快速入门">
+  快速入门
+  <a class="anchor" href="#%e5%bf%ab%e9%80%9f%e5%85%a5%e9%97%a8">#</a>
 </h2>
-<p>Please refer to <a href="/ziggo_book/docs/switch/require/">required.md</a>  to  get prepared.</p>
-<p>Please refer to <a href="/ziggo_book/docs/switch/hardware-build/">hardware-build.md</a> for the build hardware for ZIGGO Evaluation Toolkit and <a href="/ziggo_book/docs/switch/software-build/">software-build.md</a> to run time synchronization logic and set up TSN GCL .</p>
-<h2 id="system-design">
-  System Design
-  <a class="anchor" href="#system-design">#</a>
+<p>请参考 <a href="/ziggo_book/zh/docs/switch/require/">required.md</a> 进行准备。</p>
+<p>请参考 <a href="/ziggo_book/zh/docs/switch/hardware-build/">hardware-build.md</a> 构建 ZIGGO 评估工具包的硬件，并参考 <a href="/ziggo_book/zh/docs/switch/software-build/">software-build.md</a> 运行时间同步逻辑并设置 TSN GCL。</p>
+<h2 id="系统设计">
+  系统设计
+  <a class="anchor" href="#%e7%b3%bb%e7%bb%9f%e8%ae%be%e8%ae%a1">#</a>
 </h2>
-<p>ZIGGO is implemented on ZYNQ-7000 SoC and exploits ZYNQ&rsquo;s both hardware and software programmability.</p>
+<p>ZIGGO 实现于 ZYNQ-7000 SoC 上，利用 ZYNQ 的硬件和软件可编程性。</p>
 <p><img src="figs/framework.jpg" alt="framework" /></p>
-<p>We also provide more in-depth <a href="/ziggo_book/docs/switch/system-design/">documentation</a> explaining specific design principles for ZIGGO CaaS Switch.</p>
-<h2 id="demo-app-tutorial">
-  Demo APP Tutorial
-  <a class="anchor" href="#demo-app-tutorial">#</a>
+<p>我们还提供了更深入的<a href="/ziggo_book/zh/docs/switch/system-design/">文档</a>，解释 ZIGGO CaaS Switch 的具体设计原则。</p>
+<h2 id="演示应用教程">
+  演示应用教程
+  <a class="anchor" href="#%e6%bc%94%e7%a4%ba%e5%ba%94%e7%94%a8%e6%95%99%e7%a8%8b">#</a>
 </h2>
-<p>We also provide a <a href="/ziggo_book/docs/device/testbed/">testbed build document</a>(in ZIGGO Device) that allows you to build a real-time Ethernet system using the ZIGGO swtich and ZIGGO Device.</p>
-<p>Through this platform, we can measure the <code>delay</code> and <code>jitter</code> of TSN time-critcial traffic, the switch&rsquo;s <code>gating capability</code>, <code>bandwidth guarantee</code> and <code>gating accuracy</code>.</p>
-<p>Replacing ZIGGO CaaS switches with commercial TSN switches can also test its above capabilities.</p>
-<h2 id="license-and-citation">
-  License and Citation
-  <a class="anchor" href="#license-and-citation">#</a>
+<p>我们还提供了一个 <a href="/ziggo_book/zh/docs/device/testbed/">测试平台构建文档</a>(在 ZIGGO Device 中)，允许您使用 ZIGGO 交换机和 ZIGGO 设备构建实时以太网系统。</p>
+<p>通过该平台，我们可以测量 TSN 时间关键流量的 <code>延迟</code> 和 <code>抖动</code>、交换机的 <code>门控能力</code>、<code>带宽保证</code> 和 <code>门控精度</code>。</p>
+<p>用商业 TSN 交换机替换 ZIGGO CaaS 交换机也可以测试其上述能力。</p>
+<h2 id="许可和引用">
+  许可和引用
+  <a class="anchor" href="#%e8%ae%b8%e5%8f%af%e5%92%8c%e5%bc%95%e7%94%a8">#</a>
 </h2>
-<p>ZIGGO is released under a <a href="https://github.com/MobiSense/Ziggo-CaaS-Switch/blob/main/LICENSE.txt">MIT license</a>.</p>
-<p>Please consider citing our papers if the project helps your research with the following BibTex:</p>
+<p>ZIGGO 根据 <a href="https://github.com/MobiSense/Ziggo-CaaS-Switch/blob/main/LICENSE.txt">MIT 许可</a> 发布。</p>
+<p>如果该项目对您的研究有帮助，请考虑引用我们的论文，BibTex 如下：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bibtex" data-lang="bibtex"><span style="display:flex;"><span><span style="color:#a6e22e">@inproceedings</span>{caas,
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">author</span>=<span style="color:#e6db74">{Yang, Zheng and Zhao, Yi and Dang, Fan and He, Xiaowu and Wu, Jiahang and Cao, Hao and Wang, Zeyu and Liu, Yunhao}</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">booktitle</span>=<span style="color:#e6db74">{IEEE INFOCOM 2023 - IEEE Conference on Computer Communications}</span>,
@@ -651,43 +662,43 @@ https://github.com/alex-shpak/hugo-book
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">number</span>=<span style="color:#e6db74">{}</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">pages</span>=<span style="color:#e6db74">{691-701}</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">doi</span>=<span style="color:#e6db74">{10.1109/ICDCS54860.2022.00072}</span>}
-</span></span></code></pre></div><h2 id="todo-list">
-  TODO List
-  <a class="anchor" href="#todo-list">#</a>
+</span></span></code></pre></div><h2 id="待办事项">
+  待办事项
+  <a class="anchor" href="#%e5%be%85%e5%8a%9e%e4%ba%8b%e9%a1%b9">#</a>
 </h2>
 <ul>
 <li>
-<p><input checked="" disabled="" type="checkbox"> ZIGGO CaaS Switch Release</p>
+<p><input checked="" disabled="" type="checkbox"> ZIGGO CaaS Switch 发布</p>
 </li>
 <li>
-<p><input checked="" disabled="" type="checkbox"> ZIGGO Evaluation Toolkit Release</p>
+<p><input checked="" disabled="" type="checkbox"> ZIGGO 评估工具包发布</p>
 </li>
 <li>
-<p><input checked="" disabled="" type="checkbox"> ZIGGO Evaluation Toolkit Source Code</p>
+<p><input checked="" disabled="" type="checkbox"> ZIGGO 评估工具包源代码</p>
 </li>
 <li>
-<p><input checked="" disabled="" type="checkbox"> Tutorial for build a testbed</p>
+<p><input checked="" disabled="" type="checkbox"> 搭建测试平台教程</p>
 </li>
 <li>
-<p><input disabled="" type="checkbox"> Test Case for TSN</p>
+<p><input disabled="" type="checkbox"> TSN 测试用例</p>
 </li>
 </ul>
 <blockquote>
-<p>We will expand each test in the tutorial to multiple test cases to cover different edge cases and comprehensively test the performance of TSN switches.</p>
+<p>我们将在教程中扩展每个测试到多个测试用例，以涵盖不同的边缘情况并全面测试 TSN 交换机的性能。</p>
 </blockquote>
 <ul>
-<li><input disabled="" type="checkbox"> Support Device List</li>
+<li><input disabled="" type="checkbox"> 支持设备列表</li>
 </ul>
 <blockquote>
-<p>At present, we have only tested our own Ziggo switches and are testing other commercial switches (such as Huawei ,H3C and NXP). We expect to maintain a list of test results in the future.</p>
+<p>目前，我们仅测试了自己的 Ziggo 交换机，并正在测试其他商业交换机（如华为、H3C 和 NXP）。我们预计将来维护一个测试结果列表。</p>
 </blockquote>
-<h2 id="contributing">
-  Contributing
-  <a class="anchor" href="#contributing">#</a>
+<h2 id="贡献">
+  贡献
+  <a class="anchor" href="#%e8%b4%a1%e7%8c%ae">#</a>
 </h2>
-<p>Please see the <a href="/ziggo_book/docs/switch/contributing/">guide</a> for information on how to ask for help or contribute to the development of ZIGGO!</p>
+<p>请参阅<a href="/ziggo_book/zh/docs/switch/contributing/">指南</a>，了解如何寻求帮助或为 ZIGGO 的开发做出贡献！</p>
 <blockquote>
-<p>The development team will only answer questions on github issues and reject other forms of questions.</p>
+<p>开发团队只会回答 GitHub 问题上的问题，拒绝其他形式的提问。</p>
 </blockquote>
 </article>
  
@@ -747,7 +758,7 @@ padding-top: 100px;">
     <aside class="book-toc">
       <div class="book-toc-content">
         
-  <div style="margin: 50px; display:flex; justify-content:center; gap: 25px;">
+  <div style="margin-top:10px; margin-bottom:40px; display:flex; justify-content:center; gap: 25px;">
     <a href="https://github.com/MobiSense/ziggo_book" style="padding: 10px 10px;
 	background-color: rgb(0, 0, 0); /* 设置按钮背景色为橙色 */
 	color: white; /* 设置按钮文字颜色为白色 */
@@ -770,18 +781,18 @@ padding-top: 100px;">
 
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#table-of-contents">Table of Contents</a></li>
-    <li><a href="#introduction">Introduction</a></li>
-    <li><a href="#ziggo-open-platform">ZIGGO Open Platform</a></li>
-    <li><a href="#demo">Demo</a></li>
-    <li><a href="#features">Features</a></li>
-    <li><a href="#read-before-start">Read before start</a></li>
-    <li><a href="#getting-started">Getting Started</a></li>
-    <li><a href="#system-design">System Design</a></li>
-    <li><a href="#demo-app-tutorial">Demo APP Tutorial</a></li>
-    <li><a href="#license-and-citation">License and Citation</a></li>
-    <li><a href="#todo-list">TODO List</a></li>
-    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#目录">目录</a></li>
+    <li><a href="#简介">简介</a></li>
+    <li><a href="#ziggo-开放平台">ZIGGO 开放平台</a></li>
+    <li><a href="#演示">演示</a></li>
+    <li><a href="#功能">功能</a></li>
+    <li><a href="#开始前阅读">开始前阅读</a></li>
+    <li><a href="#快速入门">快速入门</a></li>
+    <li><a href="#系统设计">系统设计</a></li>
+    <li><a href="#演示应用教程">演示应用教程</a></li>
+    <li><a href="#许可和引用">许可和引用</a></li>
+    <li><a href="#待办事项">待办事项</a></li>
+    <li><a href="#贡献">贡献</a></li>
   </ul>
 </nav>
 

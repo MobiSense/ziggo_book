@@ -5,110 +5,108 @@ bookCollapseSection: true
 ---
 <div align="center">
 
-# ZIGGO Device: A flexible and standard-compliant toolkit for TSN performance evaluation.
+# ZIGGO Device: 一种灵活且符合标准的TSN性能评估工具包
 
 </div>
 
 <h3 align="center">
-    <a href="http://tns.thss.tsinghua.edu.cn/ziggo/">Project Page</a> |
-    <a href="https://ieeexplore.ieee.org/document/10228980">Paper</a> |
+    <a href="http://tns.thss.tsinghua.edu.cn/ziggo/">项目页面</a> |
+    <a href="https://ieeexplore.ieee.org/document/10228980">论文</a> |
     <a href="https://github.com/Mobisense/Ziggo-CaaS-Switch">ZIGGO-CaaS-Switch</a> |
     <a href="https://github.com/MobiSense/Ziggo-Device">ZIGGO-Device</a> 
 </h3>
 
 ![](figs/banner.jpg)
 
-## Table of Contents
+## 目录
 
-- [ZIGGO Device: A flexible and standard-compliant toolkit for TSN performance evaluation.](#ziggo-device-a-flexible-and-standard-compliant-toolkit-for-tsn-performance-evaluation)
-  - [Table of Contents](#table-of-contents)
-  - [Introduction](#introduction)
-  - [ZIGGO Open Platform](#ziggo-open-platform)
-  - [Demo](#demo)
-  - [Features](#features)
-  - [Read before start](#read-before-start)
-  - [Getting Started](#getting-started)
-  - [System Design](#system-design)
-  - [Demo APP Tutorial](#demo-app-tutorial)
-  - [License and Citation](#license-and-citation)
-  - [TODO List](#todo-list)
-  - [Contributing](#contributing)
+- [ZIGGO Device: 一种灵活且符合标准的TSN性能评估工具包](#ziggo-device-一种灵活且符合标准的tsn性能评估工具包)
+  - [目录](#目录)
+  - [简介](#简介)
+  - [ZIGGO 开放平台](#ziggo-开放平台)
+  - [演示](#演示)
+  - [功能](#功能)
+  - [开始前阅读](#开始前阅读)
+  - [快速入门](#快速入门)
+  - [系统设计](#系统设计)
+  - [演示应用教程](#演示应用教程)
+  - [许可和引用](#许可和引用)
+  - [待办事项](#待办事项)
+  - [贡献](#贡献)
 
-## Introduction
+## 简介
 
-ZIGGO is a `flexible`, `standard-compliant`, and `control-function-virtualized` TSN switch platform ready for **industrial control**, **automotive electronics**, and other **time-sensitive applications**.
+ZIGGO 是一个 `灵活`、`符合标准` 且 `控制功能虚拟化` 的 TSN 交换机平台，适用于**工业控制**、**汽车电子**及其他**时间敏感应用**。
 
-This is the document for the ZIGGO Device. (We also offer [ZIGGO-CaaS-Switch](https://github.com/Mobisense/Ziggo-CaaS-Switch) that comply with the IEEE 802.1 TSN standard.) Our Device supports testing all standards-compliant switches.
+这是 ZIGGO Device 的文档。（我们还提供符合 IEEE 802.1 TSN 标准的 [ZIGGO-CaaS-Switch](https://github.com/Mobisense/Ziggo-CaaS-Switch)。）我们的设备支持测试所有符合标准的交换机。
 
-## ZIGGO Open Platform
+## ZIGGO 开放平台
 
 ![](./demo-app.png)
 
-The construction of the ZIGGO Open Platform consists of three levels: network device, management tools, and a Demo App:
+ZIGGO 开放平台的构建包括三个层次：网络设备、管理工具和演示应用：
 
-- The software and hardware projects, along with the development board startup [tutorial](/ziggo_book/docs/device/getting-started/), provide instructions for setting up an individual network device.
+- 软件和硬件项目以及开发板启动[教程](/ziggo_book/zh/docs/device/getting-started/)提供了设置单个网络设备的说明。
 
-- The [CNC User Manual](/ziggo_book/docs/device/cnc_manual/) and [Device User Manual](/ziggo_book/docs/device/ziggo_device_manual/) cover system configuration and management tools.
+- [CNC 用户手册](/ziggo_book/zh/docs/device/cnc_manual/)和[设备用户手册](/ziggo_book/zh/docs/device/ziggo_device_manual/)涵盖了系统配置和管理工具。
 
-- Lastly, we offer a comprehensive [Demo App building tutorial](/ziggo_book/docs/device/testbed/) that instructs how to
-  collaboratively build a complete and functional Demo using network devices and
-  management tools.
+- 最后，我们提供了一个全面的[演示应用构建教程](/ziggo_book/zh/docs/device/testbed/)，指导如何使用网络设备和管理工具协作构建一个完整且功能齐全的演示应用。
 
-## Demo
+## 演示
 
-We provide a demonstration video of the TSN switch. It demonstrates the superior performance of the `ZIGGO-CaaS-Switch` compared to the normal switch.
+我们提供了 TSN 交换机的演示视频。视频展示了 `ZIGGO-CaaS-Switch` 相较于普通交换机的优越性能。
 
-The left side of the picture is the ZYNQ development board we use, and the right side is the TSN display board we built.
+图片左侧是我们使用的 ZYNQ 开发板，右侧是我们构建的 TSN 显示板。
 
-[![Watch the video](figs/testbed.jpg)](https://cloud.tsinghua.edu.cn/f/b307da6840d84e5f9ff1/)
+[![观看视频](figs/testbed.jpg)](https://cloud.tsinghua.edu.cn/f/b307da6840d84e5f9ff1/)
 
-> Click the pic to watch the video! Or just click [here](https://cloud.tsinghua.edu.cn/f/b307da6840d84e5f9ff1/).
+> 点击图片观看视频！或者点击[这里](https://cloud.tsinghua.edu.cn/f/b307da6840d84e5f9ff1/)。
 
-## Features
+## 功能
 
-* ZIGGO supports the simultaneous transmission of both `Information Technology (IT)` and `Operation Technology (OT)` data traffic with QoS guarantee.
+* ZIGGO 支持同时传输 `信息技术（IT）` 和 `操作技术（OT）` 数据流量，并提供 QoS 保证。
 
-* ZIGGO complies with IEEE standards `802.1AS`, `Qav`, `Qbv`, and `Qcc`.
+* ZIGGO 符合 IEEE 标准 `802.1AS`、`Qav`、`Qbv` 和 `Qcc`。
 
-* ZIGGO provides `Real-time` and `Deterministic` Ethernet transport
+* ZIGGO 提供 `实时` 和 `确定性` 以太网传输
   
-  * ZIGGO achieve **Zero Packet Loss** , **Microsecond-level Latency** with **Nanosecond-level Jitter Gate Ability**.
-  * ZIGGO guarantee **Gigabit Throughput**.
-  * ZIGGO provide gate accuracy applicable to **All Ethernet Frame Sizes**.
+  * ZIGGO 实现 **零丢包**、**微秒级延迟** 和 **纳秒级抖动门控能力**。
+  * ZIGGO 保证 **千兆吞吐量**。
+  * ZIGGO 提供适用于 **所有以太网帧大小** 的门控精度。
 
-## Read before start
+## 开始前阅读
 
-Getting started with ZIGGO-CaaS-Switch/ZIGGO-Device is a ***pretty hard*** task. Users/developers need to have sufficient basic knowledge and be prepare to for a long periond of learning and debugging.
+开始使用 ZIGGO-CaaS-Switch/ZIGGO-Device 是一个***相当困难***的任务。用户/开发者需要具备足够的基础知识，并准备好进行长时间的学习和调试。
 
-Please refer to [basic_knowledge.md](/ziggo_book/docs/device/basic_knowledge/) to check if you have ability to use ZIGGO competently. 
+请参考 [basic_knowledge.md](/ziggo_book/zh/docs/device/basic_knowledge/) 以检查您是否有能力胜任 ZIGGO。
 
-## Getting Started
+## 快速入门
 
-Please refer to [required.md](/ziggo_book/docs/device/require/)  to  get prepared.
+请参考 [required.md](/ziggo_book/zh/docs/device/require/) 进行准备。
 
-After that, please refer to [getting_started.md](/ziggo_book/docs/device/getting-started/) for the build and run a single ZIGGO Device.
+之后，请参考 [getting_started.md](/ziggo_book/zh/docs/device/getting-started/) 以构建并运行单个 ZIGGO Device。
 
-## System Design
+## 系统设计
 
-ZIGGO is implemented on ZYNQ-7000 SoC and exploits ZYNQ's both hardware and software programmability. 
+ZIGGO 实现于 ZYNQ-7000 SoC 上，并利用 ZYNQ 的硬件和软件可编程性。
 
-![framework](figs/framework.jpg)
+![框架](figs/framework.jpg)
 
-We also provide more in-depth [documentation](/ziggo_book/docs/device/system-design/) explaining specific design principles for ZIGGO Device.
+我们还提供了更深入的[文档](/ziggo_book/zh/docs/device/system-design/)，解释 ZIGGO Device 的具体设计原则。
 
-## Demo APP Tutorial
+## 演示应用教程
 
-We also provide a [testbed build document](/ziggo_book/docs/device/testbed/) that allows you to build a real-time Ethernet system using the ZIGGO swtich and Device. 
+我们还提供了一个[测试平台构建文档](/ziggo_book/zh/docs/device/testbed/)，允许您使用 ZIGGO 交换机和设备构建实时以太网系统。
 
-Through this platform, we can measure the `delay` and `jitter` of TSN time-critcial traffic, the switch's `gating capability`, `bandwidth guarantee` and `gating accuracy`. 
+通过该平台，我们可以测量 TSN 时间关键流量的 `延迟` 和 `抖动`、交换机的 `门控能力`、`带宽保证` 和 `门控精度`。
 
-Replacing ZIGGO CaaS switches with commercial TSN switches can also test its above capabilities.
+用商业 TSN 交换机替换 ZIGGO CaaS 交换机也可以测试其上述能力。
 
-## License and Citation
+## 许可和引用
 
-ZIGGO is released under a [MIT license](https://github.com/MobiSense/Ziggo-Device/blob/main/LICENSE.txt). 
+ZIGGO 根据 [MIT 许可](https://github.com/MobiSense/Ziggo-Device/blob/main/LICENSE.txt) 发布。
 
-Please consider citing our papers if the project helps your research with the following BibTex:
+如果该项目对您的研究有帮助，请考虑引用我们的论文，BibTex 如下：
 
 ```bibtex
 @inproceedings{caas,
@@ -132,22 +130,22 @@ Please consider citing our papers if the project helps your research with the fo
   doi={10.1109/ICDCS54860.2022.00072}}
 ```
 
-## TODO List
+## 待办事项
 
-- [x] ZIGGO CaaS Switch Release
-- [x] ZIGGO Device Release
-- [x] ZIGGO Device Source Code
-- [x] Tutorial for build a testbed
-- [ ] Test Case for TSN
+- [x] ZIGGO CaaS Switch 发布
+- [x] ZIGGO Device 发布
+- [x] ZIGGO Device 源代码
+- [x] 搭建测试平台教程
+- [ ] TSN 测试用例
 
-> We will expand each test in the tutorial to multiple test cases to cover different edge cases and comprehensively test the performance of TSN switches.
+> 我们将在教程中扩展每个测试到多个测试用例，以涵盖不同的边缘情况并全面测试 TSN 交换机的性能。
 
-- [ ] Support Device List
+- [ ] 支持设备列表
 
-> At present, we have only tested our own Ziggo switches and are testing other commercial switches (such as Huawei ,H3C and NXP). We expect to maintain a list of test results in the future.
+> 目前，我们仅测试了自己的 Ziggo 交换机，并正在测试其他商业交换机（如华为、H3C 和 NXP）。我们预计将来维护一个测试结果列表。
 
-## Contributing
+## 贡献
 
-Please see the [guide](/ziggo_book/docs/device/contributing/) for information on how to ask for help or contribute to the development of ZIGGO!
+请参阅[指南](/ziggo_book/zh/docs/device/contributing/)，了解如何寻求帮助或为 ZIGGO 的开发做出贡献！
 
-> The development team will only answer questions on github issues and reject other forms of questions.
+> 开发团队只会回答 GitHub 问题上的问题，拒绝其他形式的提问。

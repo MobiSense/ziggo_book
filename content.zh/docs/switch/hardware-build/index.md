@@ -1,6 +1,6 @@
 ---
-title: Hardware Build
-summary: Hardware:FPGA bitstream & Petalinux system rootfs for TSN Evaluation Toolkit
+title: 硬件构建
+summary: 硬件：用于 TSN 评估工具包的 FPGA 比特流和 Petalinux 系统 rootfs
 date: 2024-05-01
 authors:
   - admin
@@ -12,65 +12,65 @@ image:
   
 weight: 200
 ---
-# Hardware Build
-This repo contains pre-build hardware & system rootfs to boot the **Zynq AX7021** FPGA board from SD card.
+# 硬件构建
+此仓库包含用于从 SD 卡启动 **Zynq AX7021** FPGA 开发板的预构建硬件和系统 rootfs。
 
-## File downloading
+## 文件下载
 
-Download the following file from [this](https://cloud.tsinghua.edu.cn/d/8277c491a8bd4e6a8997/) public link:
+从[这个](https://cloud.tsinghua.edu.cn/d/8277c491a8bd4e6a8997/)公共链接下载以下文件：
 
 * BOOT.BIN
 * boot.scr
 * image.ub
 * rootfs.tar.gz
 
-## SD card partition
+## SD 卡分区
 
-In order to boot the CaaS Switch, you are supposed to have a micro SD card with >32GiB storage. Then use:
+为了启动 CaaS 交换机，您需要一个大于 32GiB 存储容量的 micro SD 卡。然后使用以下命令：
 
 ```bash
 sudo apt-get install gparted
 sudo gparted
 ```
 
-Parition it into two partition below
+将其分为以下两个分区：
 
-* BOOT: store boot files from petalinux
+* BOOT：存储来自 petalinux 的启动文件
   
-    Free space preceding (MiB): 4
+    前置空闲空间（MiB）：4
   
-    New size (MiB): 500
+    新大小（MiB）：500
   
-    File system: fat32
+    文件系统：fat32
   
-    Label: BOOT
+    标签：BOOT
 
-* ROOTFS: store debian system rootfs
+* ROOTFS：存储 debian 系统 rootfs
   
-    Free space preceding (MiB): 0
+    前置空闲空间（MiB）：0
   
-    Free space following (MiB): 0
+    后置空闲空间（MiB）：0
   
-    File system: ext4
+    文件系统：ext4
   
-    Label: ROOTFS
+    标签：ROOTFS
 
-## Copy files into SD card
+## 复制文件到 SD 卡
 
-Mound SD card:
+挂载 SD 卡：
 
 ```bash
 sudo mount /dev/sda1 /media/alinx/BOOT/
 sudo mount /dev/sda2 /media/alinx/ROOTFS/
 ```
 
-Remove original files:
+删除原始文件：
 
 ```bash
 sudo rm -rf /media/alinx/BOOT/* /media/alinx/ROOTFS/*
 ```
 
-Copy files:
+复制文件：
 
 ```bash
 sudo cp BOOT.BIN boot.scr image.ub /media/alinx/BOOT
@@ -82,45 +82,45 @@ sudo chown root:root /media/alinx/ROOTFS
 sudo chmod 755 /media/alinx/ROOTFS
 ```
 
-## Launch the switch
+## 启动交换机
 
-### 1. Launch the Board
+### 1. 启动开发板
 
-Plug the SD card into FPGA board, turn the switch to SD card boot mode.
+将 SD 卡插入 FPGA 开发板，将开关切换到 SD 卡启动模式。
 
-![SD boot](./FPGA_boot_mode_switch.png)
+![SD 启动](./FPGA_boot_mode_switch.png)
 
-### 2. Initialize PS
+### 2. 初始化 PS
 
-Plug in SD card, setup AX7021 board to boot on SD, power on.
+插入 SD 卡，设置 AX7021 开发板从 SD 启动，打开电源。
 
-Connect a PC to the UART port of the board. We recommend using MobaXterm to connect the serial. Set up the Speed to 115200, Flow Control to None.
+将 PC 连接到开发板的 UART 端口。我们推荐使用 MobaXterm 连接串行端口。将速度设置为 115200，流控制设置为 None。
 
 ![MobaXterm](./moba_serial.png)
 
-The default username and password are as follows:
+默认用户名和密码如下：
 
 ```json
-username: "root"
-password: "root"
+用户名："root"
+密码："root"
 ```
 
-Execute the initilization script to set up the linux environment.
+执行初始化脚本设置 Linux 环境。
 
 ```bash
 sh init_os.sh
 ```
 
-You can freely configure the host name, IP address, and MAC address, etc with the script, and can modify the script if needed.
+您可以自由配置主机名、IP 地址和 MAC 地址等，并可根据需要修改脚本。
 
-### 3. Connect to Internet
+### 3. 连接到互联网
 
-Connect the PC's network port to the device's **PS** network port (ETH0).
+将 PC 的网络端口连接到设备的 **PS** 网络端口（ETH0）。
 
-Set up PC's corresponding port to be in the same subnet with the device (i.e., 192.168.137.x).
+将 PC 的相应端口设置为与设备在同一子网内（即 192.168.137.x）。
 
-Afterwards, you can connect to the device through `ssh` and copy any Software files needed.
+之后，您可以通过 `ssh` 连接到设备，并复制所需的软件文件。
 
-### 4. Run the Software
+### 4. 运行软件
 
-Please refer to the software part of this repo for further instructions.
+请参考此仓库的软件部分了解进一步的说明。

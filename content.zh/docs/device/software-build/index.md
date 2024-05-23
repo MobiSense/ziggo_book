@@ -1,6 +1,6 @@
 ---
-title: Software Build
-summary: Docs to enable CaaS Device' time synchronization logic and set up pkt gen.
+title: 软件构建
+summary: 启用 CaaS Device 的时间同步逻辑和设置数据包生成计划的文档
 date: 2024-05-01
 authors:
   - admin
@@ -12,22 +12,22 @@ image:
   
 weight: 985
 ---
-# Software Build
+# 软件构建
 
-This repo contains source code to enable TSN/CaaS TSNPerf' time synchronization logic and set up packet generation plan.
+此仓库包含启用 TSN/CaaS TSNPerf 时间同步逻辑和设置数据包生成计划的源代码。
 
-## Table of Content
+## 目录
 
-- [Software Build](#software-build)
-  - [Table of Content](#table-of-content)
-  - [1. Build](#1-build)
-  - [2. Config](#2-config)
-  - [3. Run](#3-run)
-  - [4. Analyze](#4-analyze)
-    - [4.1 TSNPerf directly analyzes latency and jitter](#41-tsnperf-directly-analyzes-latency-and-jitter)
-    - [4.2 Offline analysis of latency and jitter](#42-offline-analysis-of-latency-and-jitter)
+- [软件构建](#软件构建)
+  - [目录](#目录)
+  - [1. 构建](#1-构建)
+  - [2. 配置](#2-配置)
+  - [3. 运行](#3-运行)
+  - [4. 分析](#4-分析)
+    - [4.1 TSNPerf 直接分析延迟和抖动](#41-tsnperf-直接分析延迟和抖动)
+    - [4.2 离线分析延迟和抖动](#42-离线分析延迟和抖动)
 
-## 1. Build
+## 1. 构建
 
 ```bash
 mkdir build
@@ -36,68 +36,68 @@ cmake ..
 make
 ```
 
-After successfully build, there should be two executables: "time_sync" & "pkt_gen"
+构建成功后，应生成两个可执行文件："time_sync" 和 "pkt_gen"
 
-## 2. Config
+## 2. 配置
 
-The "build" directory contains topology & TSN/CaaS schedule results.
+"build" 目录包含拓扑和 TSN/CaaS 调度结果。
 
-* config.json: topology file, contains node info (type, mac, ptp ports), link between nodes (with ports), and forwarding table.
-* schedule.json: schedule file, contains each links' schedule time interval & each CaaS switch's computation time interval.
+* config.json: 拓扑文件，包含节点信息（类型、MAC、PTP 端口）、节点之间的链路（带端口）和转发表。
+* schedule.json: 调度文件，包含每个链路的调度时间间隔和每个 CaaS 交换机的计算时间间隔。
 
-(Hints: This is similar to a Ziggo Switch)
+（提示：这类似于一个 Ziggo 交换机）
 
-## 3. Run
+## 3. 运行
 
-* Start time syncronization
+* 启动时间同步
 
 ```bash
 ./time_sync
 ```
 
-* Start device critical packet generation
+* 启动设备关键数据包生成
 
 ```bash
 ./pkt_gen
 ```
 
-## 4. Analyze
+## 4. 分析
 
-There are two analysis methods for TSNPerf:
+TSNPerf 有两种分析方法：
 
-> Hint: If you want to use offline anaylze, please switch branch to 'offline_anaylze', and you need to link device to anthor PC(linux) by wire.
+> 提示：如果您想使用离线分析，请切换到 'offline_analyze' 分支，并且需要通过网线将设备连接到另一台 PC（Linux）。
 
-One method is to directly analyze latency and jitter on the TSNPerf. 
+一种方法是在 TSNPerf 上直接分析延迟和抖动。
 
-Another method is to use Device to stamp the received packet and forward it from another port to a powerful desktop computer for packet capture analysis. Even if entering the Device at a gigabit rate, there will be no packet loss. The disadvantage is that a separate program needs to be written offline to analyze the delay and jitter of the packet.
+另一种方法是使用设备对接收的数据包进行时间戳标记，并通过另一个端口转发到功能强大的台式计算机进行数据包捕获分析。即使以千兆位速率进入设备，也不会丢包。缺点是需要离线编写单独的程序来分析数据包的延迟和抖动。
 
-### 4.1 TSNPerf directly analyzes latency and jitter
+### 4.1 TSNPerf 直接分析延迟和抖动
 
-During the operation of the  `time sync` program, after receiving the test data frame, the program will save the delay information of the data frame in the package under the `build/packet_log.csv`   file, save the batch statistics of latency and jitter in the critical directory under the build directory at the same time in the `build/critical_log.csv`.
+在 `time sync` 程序运行期间，接收到测试数据帧后，程序会将数据帧的延迟信息保存在 `build/packet_log.csv` 文件下，同时将延迟和抖动的批量统计信息保存在 `build/critical_log.csv` 文件下。
 
-You can display the content of the header and the last 5 lines using the following command:
+您可以使用以下命令显示标题和最后 5 行的内容：
 
 ```bash
 cat critical.log | head -n1
 cat critical.log | tail -n5
 ```
 
-### 4.2 Offline analysis of latency and jitter
+### 4.2 离线分析延迟和抖动
 
-If conducting offline analysis, it is important to note that the hardware used is located at `offline_analyze` branch. This version will stamp the key data with a receive timestamp and forward it from ETH2. We need to use a PC equipped with a Linux system to capture packets for analysis.
+如果进行离线分析，需要注意使用的硬件位于 `offline_analyze` 分支。此版本会将关键数据标记为接收时间戳，并从 ETH2 转发。我们需要使用一台装有 Linux 系统的 PC 来捕获数据包进行分析。
 
-Example of packet capture command:
+数据包捕获命令示例：
 
 ```bash
 sudo tcpdump -i enx207bd272812b ether src 00:0a:35:00:00:14 -n -B 100000 -w packets.pcapng
 ```
 
-`Enx207bd272812b` is the name of the network card, which can be obtained through ifconfig. `Src` is used to specify that the captured packet comes from a certain MAC address. `-B` is used to specify the buffer size. If packet loss needs to be set to a larger size, you can check the information output after packet capture to see if Dropped by kernel: is 0. If it is not 0, it indicates that there is packet loss in the kernel. `-W` specifies the path to save the file.
+`Enx207bd272812b` 是网卡名称，可以通过 ifconfig 获取。`Src` 用于指定捕获的数据包来自某个 MAC 地址。`-B` 用于指定缓冲区大小。如果需要设置更大的缓冲区大小以避免丢包，可以查看数据包捕获后的输出信息，查看 Dropped by kernel 是否为 0。如果不是 0，则表示内核中存在丢包。`-W` 指定文件的保存路径。
 
-Code for analyzing programs is `analyze_packet.py`
+用于分析程序的代码是 `analyze_packet.py`
 
 ```bash
-python .\analyze_packet.py [capture file path] --step [interval]
+python ./analyze_packet.py [capture file path] --step [interval]
 ```
 
-At the same time, a packet will be generated in the current directory (`packet_log.csv` and `critical_log.csv`).
+同时，将在当前目录生成一个数据包（`packet_log.csv` 和 `critical_log.csv`）。

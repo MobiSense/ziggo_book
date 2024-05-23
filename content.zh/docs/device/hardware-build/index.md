@@ -1,6 +1,6 @@
 ---
-title: Hardware Build
-summary: How to build the Caas Device Hardware step by step.
+title: 硬件构建
+summary: 如何逐步构建 Caas Device 硬件
 date: 2024-05-01
 authors:
   - admin
@@ -12,102 +12,102 @@ image:
   
 weight: 984
 ---
-# Hardware Build
-## Before Start
+# 硬件构建
+## 开始前
 
-If you just want to teach the board to run instead of modifying it, and you use the hardware files we provide, you can skip directly to step [SD card partition and copy file](#6-sd-card-partition-and-copy-file).
+如果您只想让开发板运行而不进行修改，并且使用我们提供的硬件文件，可以直接跳到步骤 [SD 卡分区和文件复制](#6-sd-card-partition-and-copy-file)。
 
-## Table of Content
+## 目录
 
-- [Hardware Build](#hardware-build)
-  - [Before Start](#before-start)
-  - [Table of Content](#table-of-content)
-  - [Install Vivado](#install-vivado)
-  - [Vivado project construction](#vivado-project-construction)
+- [硬件构建](#硬件构建)
+  - [开始前](#开始前)
+  - [目录](#目录)
+  - [安装 Vivado](#安装-vivado)
+  - [Vivado 项目构建](#vivado-项目构建)
   - [Petalinux](#petalinux)
-    - [1.install ubuntu OS](#1install-ubuntu-os)
-    - [2.Download PetaLinux related image files in advance](#2download-petalinux-related-image-files-in-advance)
-    - [3.Activate the PetaLinux environment](#3activate-the-petalinux-environment)
-    - [4.Create PetaLinux Project](#4create-petalinux-project)
-    - [5.Petalinux Configuration](#5petalinux-configuration)
-    - [6. SD card partition and copy file](#6-sd-card-partition-and-copy-file)
-      - [File downloading](#file-downloading)
-      - [SD card partition](#sd-card-partition)
-      - [Copy files into SD card](#copy-files-into-sd-card)
-  - [Launch the Board and log in](#launch-the-board-and-log-in)
-    - [1. Launch the Board](#1-launch-the-board)
-    - [2. Initialize PS](#2-initialize-ps)
-    - [3. Connect to Internet](#3-connect-to-internet)
-    - [4. Run the Software](#4-run-the-software)
+    - [1. 安装 Ubuntu 操作系统](#1-安装-ubuntu-操作系统)
+    - [2. 预先下载 PetaLinux 相关镜像文件](#2-预先下载-petalinux-相关镜像文件)
+    - [3. 激活 PetaLinux 环境](#3-激活-petalinux-环境)
+    - [4. 创建 PetaLinux 项目](#4-创建-petalinux-项目)
+    - [5. PetaLinux 配置](#5-petalinux-配置)
+    - [6. SD 卡分区和文件复制](#6-sd-卡分区和文件复制)
+      - [文件下载](#文件下载)
+      - [SD 卡分区](#sd-卡分区)
+      - [复制文件到 SD 卡](#复制文件到-sd-卡)
+  - [启动开发板并登录](#启动开发板并登录)
+    - [1. 启动开发板](#1-启动开发板)
+    - [2. 初始化 PS](#2-初始化-ps)
+    - [3. 连接到互联网](#3-连接到互联网)
+    - [4. 运行软件](#4-运行软件)
 
-## Install Vivado
+## 安装 Vivado
 
-You can download Vivado [here](https://www.xilinx.com/products/design-tools/vivado.html). 
+您可以在 [这里](https://www.xilinx.com/products/design-tools/vivado.html) 下载 Vivado。
 
-We are using Vivado version 2020.1 (note: a unified version is required, otherwise running may cause problems).
+我们使用的是 Vivado 2020.1 版本（注意：需要统一版本，否则运行可能会出现问题）。
 
-## Vivado project construction
+## Vivado 项目构建
 
-1. clone the git repository for the hardware part.
-2. Open Vivado and enter the command `cd Porject_Dir` in Tcl Console and `source ./tsn_device.tcl`. After the command is executed, Vivado will automatically open the created project. Here, we will first close Vivado and rename the folder where the project is located to `Work_ Dir`, so that git can correctly ignore this directory and enter `Work_ Dir`, double-click the `.xpr` file to open the project again.
+1. 克隆硬件部分的 git 仓库。
+2. 打开 Vivado 并在 Tcl 控制台中输入命令 `cd Project_Dir` 和 `source ./tsn_device.tcl`。命令执行后，Vivado 将自动打开创建的项目。此时，我们将先关闭 Vivado 并将项目所在文件夹重命名为 `Work_Dir`，以便 git 可以正确忽略该目录，然后进入 `Work_Dir`，双击 `.xpr` 文件再次打开项目。
 
 ![](./vivado_tcl_console.png)
 
 ![](./vivado_workdir.png)
 
-1. Click `Generate Bitstream`
+3. 点击 `Generate Bitstream`
 
 ![](./vivado_bitstream.png)
 
-1. Export the xsa file. In Vivado, File Export Export Hardware. Select Fixed for Platform type. Select include bitstream for Output. Click Finish to export the xsa file.
-   
-   Exported xsa file path: `Work_Dir/tns+tsn_device.xsa`
+4. 导出 xsa 文件。在 Vivado 中，选择 File Export Export Hardware。平台类型选择 Fixed。输出选择 include bitstream。点击 Finish 导出 xsa 文件。
+
+   导出的 xsa 文件路径：`Work_Dir/tns+tsn_device.xsa`
 
 ## Petalinux
 
-### 1.install ubuntu OS
+### 1. 安装 Ubuntu 操作系统
 
-The following compilation processes are all completed within the virtual machine.
+以下编译过程均在虚拟机中完成。
 
-We recommend using the following configuration:
+我们推荐使用以下配置：
 
 ```
-Virtual machine version: VMware Workstation 16 Pro
-Ubuntu version: ubuntu-16.04.3-desktop-amd64.iso
+虚拟机版本：VMware Workstation 16 Pro
+Ubuntu 版本：ubuntu-16.04.3-desktop-amd64.iso
 ```
 
-### 2.Download PetaLinux related image files in advance
+### 2. 预先下载 PetaLinux 相关镜像文件
 
-Enter website: https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools/archive.html
+进入网站：https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools/archive.html
 
-Select 2020.1 to find `PetaLinux Tools sstate-cache artifacts` and download `sstate_ arm_ 2020.1` and `downloads` and save the downloads in a specified directory in the virtual machine on January 2021 (the directory for this document is set to/home/alinx/data/)
+选择 2020.1 找到 `PetaLinux Tools sstate-cache artifacts` 并下载 `sstate_arm_2020.1` 和 `downloads`，并将下载的文件保存在虚拟机的指定目录（本文档中的目录设置为 /home/alinx/data/）
 
 ​    ![](./download_petalinux.png)
 
-### 3.Activate the PetaLinux environment
+### 3. 激活 PetaLinux 环境
 
 ```bash
 source /opt/pkg/petalinux/settings.sh
 ```
 
-​    Automatically activate the PetaLinux environment every time Terminal is started.
+​    每次启动终端时自动激活 PetaLinux 环境。
 
-### 4.Create PetaLinux Project
+### 4. 创建 PetaLinux 项目
 
 ```bash
 petalinux-create --type project --template zynq --name <project_name>
 cd <project_name>
 ```
 
-### 5.Petalinux Configuration
+### 5. PetaLinux 配置
 
-1. Import Hardware Configuration
+1. 导入硬件配置
 
 ```bash
 petalinux-config --get-hw-description <PATH-TO-XSA Directory>
 ```
 
-Then you will enter the menuconfig page and configure as follows:
+然后您将进入 menuconfig 页面，按照以下配置：
 
 ```
 Subsystem AUTO Hardware Settings
@@ -123,29 +123,29 @@ Yocto Settings (Use downloaded image)
 -> Add pre-mirror url: file:///home/alinx/data/downloads
 ```
 
-2. make `Kernel Module`
+2. 制作 `Kernel Module`
 
-​    make a module named "`dma proxy`":
+​    制作一个名为 "`dma proxy`" 的模块：
 
 ```bash
 petalinux-create -t modules -n dma-proxy --enable
 ```
 
-​    replace the dma-proxy folder:
+​    替换 dma-proxy 文件夹：
 
 ```bash
 rm -rf project-spec/meta-user/recipes-modules/*
 ```
 
-download our dma-proxy (from [here](https://cloud.tsinghua.edu.cn/f/85cfd8e8174e4689b79b/)) and unzip in `project-spec/meta-user/recipes-modules/`
+下载我们的 dma-proxy（从 [这里](https://cloud.tsinghua.edu.cn/f/85cfd8e8174e4689b79b/)）并解压到 `project-spec/meta-user/recipes-modules/` 目录中。
 
-3. Configuring the kernel
+3. 配置内核
 
 ```bash
 petalinux-config -c kernel
 ```
 
-Entering the `menuconfig` page, and do:
+进入 `menuconfig` 页面，进行以下配置：
 
 ```bash
 Device Drivers 
@@ -165,9 +165,9 @@ General setup
   -> (X) No Forced Preemption (Server)
 ```
 
-4. Configuring rootfs
+4. 配置 rootfs
 
-Edit file `project-spec/meta-user/conf/user-rootfsconfig`, and ***add*** the following configuration:
+编辑文件 `project-spec/meta-user/conf/user-rootfsconfig`，并***添加***以下配置：
 
 ```bash
 CONFIG_sudo
@@ -199,15 +199,15 @@ CONFIG_util-linux
 CONFIG_net-tools
 ```
 
-Save and exit.
+保存并退出。
 
-Input:
+输入：
 
 ```bash
 petalinux-config -c rootfs
 ```
 
-Then you will enter the menuconfig page and configure as follows:
+然后您将进入 menuconfig 页面，按照以下配置：
 
 ```
 Image Features 
@@ -217,17 +217,17 @@ user packages
 -> SELECT ALL
 ```
 
-5. Compile the device tree
+5. 编译设备树
 
-```
+```bash
 petalinux-build -c device-tree
 ```
 
-6. Modify the device tree
+6. 修改设备树
 
-The generated device tree is located in `components/plnx_workspace/device tree/device tree/pl.dtsi` directory, we need to make modifications based on this file to meet some of our peripheral needs. The modified files are stored in the `project-spec/meta user/recipes bsp/device tree/files/system-user.dtsi` directory.
+生成的设备树位于 `components/plnx_workspace/device-tree/device-tree/pl.dtsi` 目录，我们需要基于该文件进行修改以满足我们的一些外设需求。修改后的文件存储在 `project-spec/meta-user/recipes-bsp/device-tree/files/system-user.dtsi` 目录中。
 
-> Note: Between the `//>>>` and `//<<<` is the content added between the comments.
+> 注意：在 `//>>>` 和 `//<<<` 之间是注释中添加的内容。
 
 ```C
 /include/ "system-conf.dtsi"
@@ -249,7 +249,9 @@ The generated device tree is located in `components/plnx_workspace/device tree/d
         };
         chosen{
                         bootargs = "console=ttyPS0,115200 earlyprintk cma=256M uio_pdrv_genirq.of_id=generic-uio root=/dev/mmcblk0p2 rw rootwait";
-      stdout-path = "serial0:115200n8";
+      stdout
+
+-path = "serial0:115200n8";
         };
 };
 &gem1 {
@@ -262,85 +264,85 @@ The generated device tree is located in `components/plnx_workspace/device tree/d
 };
 ```
 
-7. Complie
+7. 编译
 
 ```bash
 petalinux-build
 ```
 
-8. Pack
+8. 打包
 
-Here, you need to copy the bitstream file generated by Vivado to the virtual machine.  (You can export bitstream file to where you want).
+在这里，您需要将 Vivado 生成的比特流文件复制到虚拟机。（您可以将比特流文件导出到您想要的位置）。
 
 ![](./export_bitstream.png)
 
-Then:
+然后：
 
 ```bash
 cd images/linux
 petalinux-package --boot --fsbl zynq_fsbl.elf --fpga <FPGA bitstream path> --u-boot --force
 ```
 
-After that, you can get 4 key file: `BOOT.BIN` `boot.scr` `image.ub` `rootfs.tar.gz`
+之后，您可以得到 4 个关键文件：`BOOT.BIN`、`boot.scr`、`image.ub`、`rootfs.tar.gz`
 
-### 6. SD card partition and copy file
+### 6. SD 卡分区和文件复制
 
-#### File downloading
+#### 文件下载
 
-Download the following file from [this](https://cloud.tsinghua.edu.cn/d/0bbc00543e5b4b82a6ea/) public link or from preceding steps:
+从 [这个](https://cloud.tsinghua.edu.cn/d/0bbc00543e5b4b82a6ea/)公共链接或从前述步骤下载以下文件：
 
 * BOOT.BIN
 * boot.scr
 * image.ub
 * rootfs.tar.gz
 
-#### SD card partition
+#### SD 卡分区
 
-In order to boot the TSNPerf, you are supposed to have a micro SD card with >32GiB storage. Then use:
+为了启动 TSNPerf，您需要一个大于 32GiB 存储容量的 micro SD 卡。然后使用：
 
 ```bash
 sudo apt-get install gparted
 sudo gparted
 ```
 
-Parition it into two partition below
+将其分为以下两个分区：
 
-* BOOT: store boot files from petalinux
+* BOOT：存储来自 petalinux 的启动文件
   
-  Free space preceding (MiB): 4
+  前置空闲空间（MiB）：4
   
-  New size (MiB): 500
+  新大小（MiB）：500
   
-  File system: fat32
+  文件系统：fat32
   
-  Label: BOOT
+  标签：BOOT
 
-* ROOTFS: store debian system rootfs
+* ROOTFS：存储 debian 系统 rootfs
   
-  Free space preceding (MiB): 0
+  前置空闲空间（MiB）：0
   
-  Free space following (MiB): 0
+  后置空闲空间（MiB）：0
   
-  File system: ext4
+  文件系统：ext4
   
-  Label: ROOTFS
+  标签：ROOTFS
 
-#### Copy files into SD card
+#### 复制文件到 SD 卡
 
-Mound SD card:
+挂载 SD 卡：
 
 ```bash
 sudo mount /dev/sda1 /media/alinx/BOOT/
 sudo mount /dev/sda2 /media/alinx/ROOTFS/
 ```
 
-Remove original files:
+删除原始文件：
 
 ```bash
 sudo rm -rf /media/alinx/BOOT/* /media/alinx/ROOTFS/*
 ```
 
-Copy files:
+复制文件：
 
 ```bash
 sudo cp BOOT.BIN boot.scr image.ub /media/alinx/BOOT
@@ -352,45 +354,45 @@ sudo chown root:root /media/alinx/ROOTFS
 sudo chmod 755 /media/alinx/ROOTFS
 ```
 
-## Launch the Board and log in
+## 启动开发板并登录
 
-### 1. Launch the Board
+### 1. 启动开发板
 
-Plug the SD card into FPGA board, turn the switch to SD card boot mode.
+将 SD 卡插入 FPGA 板，将开关切换到 SD 卡启动模式。
 
-![SD boot](./FPGA_boot_mode_switch.png)
+![SD 启动](./FPGA_boot_mode_switch.png)
 
-### 2. Initialize PS
+### 2. 初始化 PS
 
-Plug in SD card, setup AX7021 board to boot on SD, power on.
+插入 SD 卡，设置 AX7021 板从 SD 启动，打开电源。
 
-Connect a PC to the UART port of the board. We recommend using MobaXterm to connect the serial. Set up the Speed to 115200, Flow Control to None.
+将 PC 连接到开发板的 UART 端口。我们推荐使用 MobaXterm 连接串行端口。将速度设置为 115200，流控制设置为 None。
 
 ![MobaXterm](./moba_serial.png)
 
-The default username and password are as follows:
+默认用户名和密码如下：
 
 ```json
-username: "root"
-password: "root"
+用户名："root"
+密码："root"
 ```
 
-Execute the initilization script to set up the linux environment. (`hardware/init_os.sh`)
+执行初始化脚本设置 Linux 环境。(`hardware/init_os.sh`)
 
 ```bash
 sh init_os.sh
 ```
 
-You can freely configure the host name, IP address, and MAC address, etc with the script, and can modify the script if needed.
+您可以自由配置主机名、IP 地址和 MAC 地址等，并可根据需要修改脚本。
 
-### 3. Connect to Internet
+### 3. 连接到互联网
 
-Connect the PC's network port to the device's **PS** network port (ETH0).
+将 PC 的网络端口连接到设备的 **PS** 网络端口（ETH0）。
 
-Set up PC's corresponding port to be in the same subnet with the device (i.e., 192.168.137.x).
+将 PC 的相应端口设置为与设备在同一子网内（即 192.168.137.x）。
 
-Afterwards, you can connect to the device through `ssh` and copy any Software files needed.
+之后，您可以通过 `ssh` 连接到设备，并复制所需的软件文件。
 
-### 4. Run the Software
+### 4. 运行软件
 
-Please refer to the software part of this repo for further instructions.
+请参阅此仓库的软件部分了解进一步的说明。

@@ -6,6 +6,63 @@
     <description>Recent content in Tags on ZIGGO BOOK</description>
     <generator>Hugo</generator>
     <language>zh</language>
+    <lastBuildDate>Wed, 01 May 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/zh/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Basic</title>
+      <link>http://localhost:1313/zh/tags/basic/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/zh/tags/basic/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>CNC</title>
+      <link>http://localhost:1313/zh/tags/cnc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/zh/tags/cnc/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Markdown</title>
+      <link>http://localhost:1313/zh/tags/markdown/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/zh/tags/markdown/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Test Case</title>
+      <link>http://localhost:1313/zh/tags/test-case/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/zh/tags/test-case/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>TSNPerf</title>
+      <link>http://localhost:1313/zh/tags/tsnperf/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/zh/tags/tsnperf/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>ZIGGO</title>
+      <link>http://localhost:1313/zh/tags/ziggo/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/zh/tags/ziggo/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>ZIGGO-Device</title>
+      <link>http://localhost:1313/zh/tags/ziggo-device/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/zh/tags/ziggo-device/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>ZIGGO-SWITCH</title>
+      <link>http://localhost:1313/zh/tags/ziggo-switch/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/zh/tags/ziggo-switch/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>
