@@ -182,5 +182,5 @@ sudo tcpdump -i <网口> ether proto 0xb62c -j adapter_unsynced --time-stamp-pre
 ```shell
 cd /path/to/launchtimedemo
 make
-sudo taskset -c 1 chrt -f 92 ./pcap_replay -c ~/launchtimedemo/config.ini
+sudo taskset -c 1 chrt -f 92 ./tsnperf -c ~/launchtimedemo/config.ini
 ```
