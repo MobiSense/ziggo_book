@@ -88,9 +88,7 @@ use-ziggo-analysis:     false
 pcap-filename:          "/home/i210/launchtimedemo/captured_10w_1500Byte.pcap"
 interface:              "enp1s0"
 smac:                   "00:1b:21:77:ac:ae"
-dmac:                   "00:1b:21:76:ae
-
-:75"
+dmac:                   "00:1b:21:76:ae:75"
 ethertype:              0xb62c
 socket-priority:        0
 vlan-priority:          0
